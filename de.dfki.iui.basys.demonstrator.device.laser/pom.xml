@@ -27,7 +27,7 @@
 
 		<dependency>
 			<groupId>de.dfki.iui.basys.runtime</groupId>
-			<artifactId>de.dfki.iui.basys.runtime.component.rest</artifactId>
+			<artifactId>de.dfki.iui.basys.runtime.component.device.rest</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 

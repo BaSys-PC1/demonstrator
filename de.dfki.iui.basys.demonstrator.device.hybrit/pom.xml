@@ -32,7 +32,7 @@
 		</dependency>
 
 		<dependency>
-			<groupId>de.dfki.iui.basys.runtime</groupId>
+			<groupId>de.dfki.iui.basys.demonstrator</groupId>
 			<artifactId>de.dfki.iui.basys.demonstrator.device.laser</artifactId>
 			<version>${project.version}</version>
 			<scope>test</scope>
