@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<topology:Enterprise xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:capability="http://www.dfki.de/iui/basys/model/capability" xmlns:topology="http://www.dfki.de/iui/basys/model/topology" id="_mkrEADB4Eei1bbwBPPZWOA" name="DemoEnterprise">
+<topology:Enterprise xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:topology="http://www.dfki.de/iui/basys/model/topology" id="_mkrEADB4Eei1bbwBPPZWOA" name="DemoEnterprise">
   <sites id="_m9aUIDB4Eei1bbwBPPZWOA" name="CeBIT Hannover">
     <areas id="_nb0HYDB4Eei1bbwBPPZWOA" name="BMBF Stand">
       <workCenters xsi:type="topology:ProductionLine" id="_nuSXcjB4Eei1bbwBPPZWOA" name="Montage">
@@ -14,15 +14,14 @@
               <assignedResourceType href="model.resourcetype#_GHTn8lIxEeidSe5vp9A3oA"/>
               <assignedResourceInstance href="model.resourceinstance#_PwPREFIxEeidSe5vp9A3oA"/>
             </equipmentModules>
+            <equipmentModules binding="" id="_AzQQwDB5Eei1bbwBPPZWOA" name="Werkerführung">
+              <assignedResourceInstance href="model.resourceinstance#_8cLJ8FIxEeidSe5vp9A3oA"/>
+            </equipmentModules>
           </stations>
           <stations id="_2jROsTB4Eei1bbwBPPZWOA" name="S3">
             <equipmentModules id="_6CV9oDB4Eei1bbwBPPZWOA" name="Deckelaufleger">
-              <capabilityRequirement xsi:type="capability:Pressing" id="_LmHydzDyEeixrJ0x1ZWKig" pressure="50.0"/>
               <assignedResourceType href="model.resourcetype#_yIFSQjB3Eei1bbwBPPZWOA"/>
               <assignedResourceInstance href="model.resourceinstance#_SE5NIDB4Eei1bbwBPPZWOA"/>
-            </equipmentModules>
-            <equipmentModules binding="" id="_AzQQwDB5Eei1bbwBPPZWOA" name="Werkerführung">
-              <assignedResourceInstance href="model.resourceinstance#_8cLJ8FIxEeidSe5vp9A3oA"/>
             </equipmentModules>
             <equipmentModules xsi:type="topology:AGVStation" id="_zzNG4V2TEeit97PGgoQOAQ" name="Station-Festo"/>
           </stations>
@@ -40,7 +39,10 @@
               <assignedResourceType href="model.resourcetype#_LILOCTD5EeiuBvcKgWzd3Q"/>
               <assignedResourceInstance href="model.resourceinstance#_r4sy4DD7EeiuBvcKgWzd3Q"/>
             </equipmentModules>
-            <equipmentModules id="_KjUf0GsVEeiPYI9_h6Hhzw" name="IO-Anzeige"/>
+            <equipmentModules binding="" id="_bbI0sGsZEeixZrynCv8ohQ" name="IO Signal">
+              <assignedResourceType href="model.resourcetype#_XEoEQmsVEeiPYI9_h6Hhzw"/>
+              <assignedResourceInstance href="model.resourceinstance#_TgItAGsZEeixZrynCv8ohQ"/>
+            </equipmentModules>
           </stations>
         </workCells>
       </workCenters>
@@ -50,10 +52,6 @@
           <equipmentModules id="_ROxA8zB5Eei1bbwBPPZWOA" name="Positioniereinheit">
             <assignedResourceType href="model.resourcetype#_0xCaqTD9EeiuBvcKgWzd3Q"/>
             <assignedResourceInstance href="model.resourceinstance#_I4a_oDD-EeiuBvcKgWzd3Q"/>
-          </equipmentModules>
-          <equipmentModules binding="" id="_bbI0sGsZEeixZrynCv8ohQ" name="IO Signal">
-            <assignedResourceType href="model.resourcetype#_XEoEQmsVEeiPYI9_h6Hhzw"/>
-            <assignedResourceInstance href="model.resourceinstance#_TgItAGsZEeixZrynCv8ohQ"/>
           </equipmentModules>
         </storageUnits>
       </workCenters>
@@ -79,7 +77,11 @@
     <areas id="_JUNX8EegEeiuhP6xdl274w" name="DFKI Stand">
       <workCenters xsi:type="topology:ProductionLine" id="_Pn-cEkegEeiuhP6xdl274w">
         <workCells id="_R4WjQUegEeiuhP6xdl274w">
-          <stations id="_Sap_EUegEeiuhP6xdl274w" name="Remote Teach-In"/>
+          <stations id="_Sap_EUegEeiuhP6xdl274w" name="Remote Teach-In">
+            <equipmentModules id="_MOjncIQgEeiYapjrmwE6UQ" name="Positioniereinheit">
+              <assignedResourceType href="model.resourcetype#_0xCaqTD9EeiuBvcKgWzd3Q"/>
+            </equipmentModules>
+          </stations>
         </workCells>
       </workCenters>
     </areas>

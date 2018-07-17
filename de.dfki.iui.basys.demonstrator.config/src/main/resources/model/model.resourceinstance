@@ -145,6 +145,9 @@
   </resourceInstances>
   <resourceInstances id="_8cLJ8FIxEeidSe5vp9A3oA" name="Worker Guidance S2" serialNumber="1233">
     <resourceType href="model.resourcetype#_3cuNYlIxEeidSe5vp9A3oA"/>
+    <capabilityApplications>
+      <capabilityAssertion href="model.resourcetype#_be_uUGWlEeimHJMdsEZOIA"/>
+    </capabilityApplications>
     <role href="model.topology#_AzQQwDB5Eei1bbwBPPZWOA"/>
   </resourceInstances>
   <resourceInstances id="_TgItAGsZEeixZrynCv8ohQ" name="My Hue Light" serialNumber="882378">
