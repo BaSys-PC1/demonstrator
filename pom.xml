@@ -17,7 +17,6 @@
 	<packaging>pom</packaging>
 
 	<modules>
-		<module>de.dfki.iui.basys.demonstrator.config</module>
 		<module>de.dfki.iui.basys.demonstrator.config.cebit2018</module>
 		<module>de.dfki.iui.basys.demonstrator.config.p4p</module>
 		<module>de.dfki.iui.basys.demonstrator.config.zf</module>
