@@ -323,7 +323,7 @@
     <bpmn:sequenceFlow id="SequenceFlow_0jdq0cm" sourceRef="ExclusiveGateway_1692jba" targetRef="ServiceTask_06993ui" />
     <bpmn:sequenceFlow id="SequenceFlow_0tuiowx" sourceRef="ExclusiveGateway_0mrm3py" targetRef="ExclusiveGateway_1xeliu0" />
     <bpmn:sequenceFlow id="SequenceFlow_1k9wkky" sourceRef="ExclusiveGateway_1xeliu0" targetRef="EndEvent_1vehplh" />
-    <bpmn:serviceTask id="ServiceTask_1usetyo" name="Transport KLT zu ZF-Station" camunda:type="external" camunda:topic="BasysTask">
+    <bpmn:serviceTask id="ServiceTask_1usetyo" name="Transport KLT zur Fetik-Station" camunda:type="external" camunda:topic="BasysTask">
       <bpmn:extensionElements>
         <camunda:inputOutput>
           <camunda:inputParameter name="assignee">_rUJzsDJhEei1p5hKOf5Slw</camunda:inputParameter>
@@ -340,7 +340,7 @@
       },
       "appliedOn" : [ {
         "eClass" : "http://www.dfki.de/iui/basys/model/topology#//AGVStation",
-        "$ref" : "http://localhost:8080/services/entity/_14ta0V2TEeit97PGgoQOAQ"
+        "$ref" : "http://localhost:8080/services/entity/_syB-4p7pEeic8M2Zwd41TA"
       } ]
     }
   }</camunda:inputParameter>

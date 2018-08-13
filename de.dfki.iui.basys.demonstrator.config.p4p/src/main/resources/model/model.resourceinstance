@@ -1,22 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resourceinstance:ResourceInstanceRepository xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:capability="http://www.dfki.de/iui/basys/model/capability" xmlns:productdefinition="http://www.dfki.de/iui/basys/model/productdefinition" xmlns:resourceinstance="http://www.dfki.de/iui/basys/model/resourceinstance" xmlns:topology="http://www.dfki.de/iui/basys/model/topology">
-  <resourceInstances id="_SE5NIDB4Eei1bbwBPPZWOA" name="My Festo Component" serialNumber="65465464">
-    <resourceType href="model.resourcetype#_yIFSQjB3Eei1bbwBPPZWOA"/>
-    <capabilityApplications>
-      <capabilityAssertion href="model.resourcetype#_QGmo8F8yEeiUo-65_7rTBQ"/>
-      <capabilityVariants xsi:type="resourceinstance:ManufacturingCapabilityVariant" id="_gTP6cF-lEeixtLE-b5nbbQ" name="Apply light blue cap">
-        <capability xsi:type="capability:PickAndPlace" id="_xio67l8yEeiUo-65_7rTBS" loadCarrierUnit="MATERIAL"/>
-        <appliedOn xsi:type="productdefinition:MaterialEntry" href="model.productdefinition#_IpqbzV29EeixDOGCyjgf_g"/>
-        <appliedOn xsi:type="productdefinition:AssemblyGroupEntry" href="model.productdefinition#_IpqbzF29EeixDOGCyjgf_g"/>
-      </capabilityVariants>
-      <capabilityVariants xsi:type="resourceinstance:ManufacturingCapabilityVariant" id="_gTSWsV-lEeixtLE-b5nbbQ" name="Apply dark blue cap">
-        <capability xsi:type="capability:PickAndPlace" id="_xio67l8yEeiUo-65_7rTBQ" loadCarrierUnit="MATERIAL"/>
-        <appliedOn xsi:type="productdefinition:MaterialEntry" href="model.productdefinition#_IpqbzV29EeixDOGCyjgf_g"/>
-        <appliedOn xsi:type="productdefinition:AssemblyGroupEntry" href="model.productdefinition#_IpqbzF29EeixDOGCyjgf_g"/>
-      </capabilityVariants>
-    </capabilityApplications>
-    <role href="model.topology#_6CV9oDB4Eei1bbwBPPZWOA"/>
-  </resourceInstances>
   <resourceInstances id="_jJdx4DD7EeiuBvcKgWzd3Q" name="My UR3" serialNumber="123">
     <resourceType href="model.resourcetype#_Hi37STD5EeiuBvcKgWzd3Q"/>
     <capabilityApplications>
@@ -85,7 +68,7 @@
       <capabilityAssertion href="model.resourcetype#_vmBh8FNlEei1Nvtoff5AwQ"/>
       <capabilityVariants xsi:type="resourceinstance:LogisticsCapabilityVariant" id="_gTWoI1-lEeixtLE-b5nbbQ" name="KLT to Station-Fetik">
         <capability xsi:type="capability:Transport" id="_H-15P1-WEeieWai6RAB66w" loadCarrierUnit="R_KLT_3215"/>
-        <appliedOn xsi:type="topology:AGVStation" href="model.topology#_zzNG4V2TEeit97PGgoQOAQ"/>
+        <appliedOn xsi:type="topology:AGVStation" href="model.topology#_KDj_QZ7qEeic8M2Zwd41TA"/>
       </capabilityVariants>
       <capabilityVariants xsi:type="resourceinstance:LogisticsCapabilityVariant" id="_gTXPMV-lEeixtLE-b5nbbQ" name="KLT to Station-QA">
         <capability xsi:type="capability:Transport" id="_2NMnH1-WEeieWai6RAB66w" loadCarrierUnit="R_KLT_3215"/>
@@ -97,7 +80,7 @@
       </capabilityVariants>
       <capabilityVariants xsi:type="resourceinstance:LogisticsCapabilityVariant" id="_c6CGAmAgEeiQUsCDRML84w" name="Bottle to Station-Fetik">
         <capability xsi:type="capability:Transport" id="_djDN32AgEeiQUsCDRML84w"/>
-        <appliedOn xsi:type="topology:AGVStation" href="model.topology#_zzNG4V2TEeit97PGgoQOAQ"/>
+        <appliedOn xsi:type="topology:AGVStation" href="model.topology#_KDj_QZ7qEeic8M2Zwd41TA"/>
       </capabilityVariants>
       <capabilityVariants xsi:type="resourceinstance:GeneralCapabilityVariant" id="_gTXPN1-lEeixtLE-b5nbbQ" name="Move to Station-Wait">
         <capability xsi:type="capability:MoveToLocation" id="_cr7MV1-WEeieWai6RAB66w" name="">
@@ -110,8 +93,16 @@
         </capability>
       </capabilityVariants>
       <capabilityVariants xsi:type="resourceinstance:GeneralCapabilityVariant" id="_gTX2RV-lEeixtLE-b5nbbQ" name="Move to Station-Fetik">
-        <capability xsi:type="capability:MoveToLocation" id="_t1_rp1-WEeieWai6RAB66w" name="">
-          <targetLocation xsi:type="topology:AGVStation" href="model.topology#_zzNG4V2TEeit97PGgoQOAQ"/>
+        <capability xsi:type="capability:MoveToLocation" id="_t1_rp1-WEeieWai6RAB66w" name=""/>
+      </capabilityVariants>
+      <capabilityVariants xsi:type="resourceinstance:GeneralCapabilityVariant" binding="" id="_gTXPN1-lEeixtLE-b5nbbQ" name="Move to Station-Cola">
+        <capability xsi:type="capability:MoveToLocation" id="_cr7MV1-WEeieWai6RAB66w" name="">
+          <targetLocation xsi:type="topology:AGVStation" href="model.topology#_rBfZoV2TEeit97PGgoQOAQ"/>
+        </capability>
+      </capabilityVariants>
+      <capabilityVariants xsi:type="resourceinstance:GeneralCapabilityVariant" binding="" id="_gTXPN1-lEeixtLE-b5nbbQ" name="Move to Station-QA">
+        <capability xsi:type="capability:MoveToLocation" id="_cr7MV1-WEeieWai6RAB66w" name="">
+          <targetLocation xsi:type="topology:AGVStation" href="model.topology#_xHhjwV2TEeit97PGgoQOAQ"/>
         </capability>
       </capabilityVariants>
     </capabilityApplications>
@@ -142,10 +133,6 @@
       </capabilityVariants>
     </capabilityApplications>
     <role href="model.topology#_gUuXFFIxEeidSe5vp9A3oA"/>
-  </resourceInstances>
-  <resourceInstances id="_8cLJ8FIxEeidSe5vp9A3oA" name="Worker Guidance S2" serialNumber="1233">
-    <resourceType href="model.resourcetype#_3cuNYlIxEeidSe5vp9A3oA"/>
-    <role href="model.topology#_AzQQwDB5Eei1bbwBPPZWOA"/>
   </resourceInstances>
   <resourceInstances id="_TgItAGsZEeixZrynCv8ohQ" name="My Hue Light" serialNumber="882378">
     <resourceType href="model.resourcetype#_XEoEQmsVEeiPYI9_h6Hhzw"/>

@@ -17,7 +17,7 @@
       <bpmn:incoming>SequenceFlow_1w2c58b</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0g4cfyk</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:serviceTask id="ServiceTask_0s1u5jw" name="Mobiler Roboter fährt zu Festo" camunda:type="external" camunda:topic="BasysTask">
+    <bpmn:serviceTask id="ServiceTask_0s1u5jw" name="Mobiler Roboter fährt zur Fetik-Station" camunda:type="external" camunda:topic="BasysTask">
       <bpmn:extensionElements>
         <camunda:inputOutput>
           <camunda:inputParameter name="assignee">_rUJzsDJhEei1p5hKOf5Slw</camunda:inputParameter>
@@ -33,7 +33,7 @@
         "name" : "",
         "targetLocation" : {
           "eClass" : "http://www.dfki.de/iui/basys/model/topology#//AGVStation",
-          "$ref" : "http://localhost:8080/services/entity/_zzNG4V2TEeit97PGgoQOAQ"
+          "$ref" : "http://localhost:8080/services/entity/_syB-4p7pEeic8M2Zwd41TA"
         }
       }
     }
