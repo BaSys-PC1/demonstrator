@@ -17,13 +17,13 @@ import de.dfki.iui.basys.model.runtime.component.VariableType;
 import de.dfki.iui.basys.model.runtime.component.impl.VariableImpl;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 import de.dfki.iui.basys.runtime.component.device.packml.UnitConfiguration;
+import de.dfki.iui.basys.runtime.component.device.tecs.DeviceStatus;
 import de.dfki.iui.basys.runtime.component.device.tecs.TecsDeviceComponent;
 import de.dfki.iui.hrc.hybritcommand.CommandResponse;
 import de.dfki.iui.hrc.yumi.PickException;
 import de.dfki.iui.hrc.yumi.QAException;
 import de.dfki.iui.hrc.yumi.Yumi;
 import de.dfki.iui.hrc.yumi.YumiState;
-import de.dfki.tecs.Event;
 
 public class YumiComponent extends TecsDeviceComponent {
 
@@ -58,11 +58,6 @@ public class YumiComponent extends TecsDeviceComponent {
 	}
 
 	@Override
-	public void onResetting() {
-		reconnect();
-	}
-
-	@Override
 	public void onStarting() {
 		if (((String) getUnitConfig().getPayload()).equals("PERFORM QA")) {
 			try {			
@@ -86,63 +81,7 @@ public class YumiComponent extends TecsDeviceComponent {
 
 	@Override
 	public void onExecute() {
-		try {
-			boolean executing = true;
-			while (executing) {
-				CommandResponse cr = client.getCommandState();
-				LOGGER.debug("CommandState is " + cr.state);
-				
-//				YumiState ys = client.getState();
-//
-//				if (ys == YumiState.Error || ys == YumiState.Manual) {
-//					executing = false;
-//					setErrorCode(1);
-//					stop();
-//					break;
-//				}
-
-				switch (cr.state) {
-				case ACCEPTED:
-					// wait
-					break;
-				case ABORTED:
-					executing = false;
-					setErrorCode(1);
-					stop();
-					break;
-				case EXECUTING:
-					// wait
-					break;
-				case FINISHED:
-					executing = false;
-					LOGGER.info("QA result was " + cr.getDescription());
-					break;
-				case PAUSED:
-					// ?
-					break;
-				case READY:
-					// ?
-					break;
-				case REJECTED:
-					executing = false;
-					setErrorCode(2);
-					stop();
-					break;
-				default:
-					break;
-				}
-				try {
-					Thread.sleep(100);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			}
-			
-		} catch (TException e) {
-			e.printStackTrace();
-			setErrorCode(3);
-			stop();
-		}
+		busyWait(client);
 	}
 
 	@Override
@@ -169,39 +108,8 @@ public class YumiComponent extends TecsDeviceComponent {
 		sendComponentResponse(ResponseStatus.NOT_OK, getErrorCode());
 	}
 
-	@Override
-	public void onAborting() {
-	}
-
-	@Override
-	public void onClearing() {
-		// perform reconnect
-		close();
-		try {
-			open();
-		} catch (TTransportException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	@Override
-	public void onHolding() {
-	}
-
-	@Override
-	public void onUnholding() {
-	}
-
-	@Override
-	public void onSuspending() {
-	}
-
-	@Override
-	public void onUnsuspending() {
-	}
-
-	private class YumiTECS extends Yumi.Client {
+	
+	private class YumiTECS extends Yumi.Client implements DeviceStatus {
 
 		private TProtocol protocol;
 		private final String businessKey;
@@ -212,6 +120,7 @@ public class YumiComponent extends TecsDeviceComponent {
 			this.businessKey = businessKey;
 		}
 
+		@Override
 		public CommandResponse getCommandState() throws TException {
 			return super.getCommandState(businessKey);
 		}
@@ -234,9 +143,4 @@ public class YumiComponent extends TecsDeviceComponent {
 		}
 	}
 
-	@Override
-	protected void handleTecsEvent(Event event) {
-		// TODO Auto-generated method stub
-		// nothing to do
-	}
 }

@@ -20,10 +20,10 @@ import de.dfki.iui.basys.model.runtime.component.VariableType;
 import de.dfki.iui.basys.model.runtime.component.impl.VariableImpl;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 import de.dfki.iui.basys.runtime.component.device.packml.UnitConfiguration;
+import de.dfki.iui.basys.runtime.component.device.tecs.DeviceStatus;
 import de.dfki.iui.basys.runtime.component.device.tecs.TecsDeviceComponent;
 import de.dfki.iui.hrc.hybritcommand.CommandResponse;
 import de.dfki.iui.hrc.siam.CeBITDialogue;
-import de.dfki.tecs.Event;
 
 public class SiAMComponent extends TecsDeviceComponent {
 
@@ -36,16 +36,13 @@ public class SiAMComponent extends TecsDeviceComponent {
 		resetOnComplete = true;
 		resetOnStopped = true;
 	}
-
-	private String capability = "{\n" + "    \"eClass\" : \"http://www.dfki.de/iui/basys/model/component#//CapabilityRequest\",\n" + "    \"capabilityVariant\" : {\n"
-			+ "      \"eClass\" : \"http://www.dfki.de/iui/basys/model/resourceinstance#//GeneralCapabilityVariant\",\n" + "      \"id\" : \"_VrxwEmsXEeiHwulcobhZhw\",\n"
-			+ "      \"name\" : \"Intention Dialogue\",\n" + "      \"capability\" : {\n" + "        \"eClass\" : \"http://www.dfki.de/iui/basys/model/capability#//InteractionCapability\",\n"
-			+ "        \"id\" : \"_bQ7lVGsYEeixZrynCv8ohQ\",\n" + "        \"topic\" : \"intention\"\n" + "      }\n" + "    }\n" + "  }";
-
+	
 	@Override
-	protected void handleTecsEvent(Event event) {
+	public void connectToExternal() throws ComponentException {
+		super.connectToExternal();
+		client = new SiAMTECS(protocol, businessKey);
 	}
-
+	
 	@Override
 	protected UnitConfiguration translateCapabilityRequest(CapabilityRequest req) {
 		UnitConfiguration config = new UnitConfiguration();
@@ -61,29 +58,6 @@ public class SiAMComponent extends TecsDeviceComponent {
 		return config;
 	}
 
-	@Override
-	public void connectToExternal() throws ComponentException {
-		super.connectToExternal();
-		client = new SiAMTECS(protocol, businessKey);
-	}
-
-	// @Override
-	// public void onResetting() {
-	// close();
-	// try {
-	// open();
-	// } catch (TException e) {
-	// e.printStackTrace();
-	// setErrorCode(1);
-	// stop();
-	// }
-	// }
-
-	@Override
-	public void onResetting() {
-		reconnect();
-	}
-	
 	@Override
 	public void onStarting() {
 		String topic = (String) getUnitConfig().getPayload();
@@ -108,51 +82,7 @@ public class SiAMComponent extends TecsDeviceComponent {
 
 	@Override
 	public void onExecute() {
-		try {
-			boolean executing = true;
-			while (executing) {
-				CommandResponse cr = client.getCommandState();
-
-				switch (cr.state) {
-				case ACCEPTED:
-					// wait
-					break;
-				case ABORTED:
-					executing = false;
-					setErrorCode(1);
-					stop();
-					break;
-				case EXECUTING:
-					// wait
-					break;
-				case FINISHED:
-					executing = false;
-					break;
-				case PAUSED:
-					// ?
-					break;
-				case READY:
-					// ?
-					break;
-				case REJECTED:
-					executing = false;
-					setErrorCode(2);
-					stop();
-					break;
-				default:
-					break;
-				}
-			}
-			try {
-				Thread.sleep(100);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		} catch (TException e) {
-			e.printStackTrace();
-			setErrorCode(3);
-			stop();
-		}
+		busyWait(client);
 	}
 
 	@Override
@@ -194,33 +124,8 @@ public class SiAMComponent extends TecsDeviceComponent {
 		sendComponentResponse(ResponseStatus.NOT_OK, getErrorCode());
 	}
 
-	// @Override
-	// public void onAborting() {}
-	//
-	// @Override
-	// public void onClearing() {
-	// // perform reconecct
-	// close();
-	// try {
-	// open();
-	// } catch (TTransportException e) {
-	// e.printStackTrace();
-	// }
-	// }
-	//
-	// @Override
-	// public void onHolding() {}
-	//
-	// @Override
-	// public void onUnholding() {}
-	//
-	// @Override
-	// public void onSuspending() {}
-	//
-	// @Override
-	// public void onUnsuspending() {}
 
-	private class SiAMTECS extends CeBITDialogue.Client {
+	private class SiAMTECS extends CeBITDialogue.Client implements DeviceStatus {
 		private final String businessKey;
 
 		public SiAMTECS(TProtocol prot, String businessKey) {
@@ -240,6 +145,7 @@ public class SiAMComponent extends TecsDeviceComponent {
 			return super.performDeliveryDialog(businessKey);
 		}
 
+		@Override
 		public CommandResponse getCommandState() throws TException {
 			return super.getCommandState(businessKey);
 		}

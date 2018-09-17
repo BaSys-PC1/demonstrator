@@ -10,6 +10,7 @@ import org.eclipse.milo.opcua.stack.core.types.builtin.NodeId;
 
 import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
+import de.dfki.iui.basys.model.runtime.component.ControlMode;
 import de.dfki.iui.basys.model.runtime.component.ResponseStatus;
 import de.dfki.iui.basys.model.runtime.component.State;
 import de.dfki.iui.basys.runtime.component.ComponentContext;
@@ -61,6 +62,11 @@ public class FestoComponent extends OpcUaDeviceComponent {
 			} catch (Exception e) {
 				throw new ComponentException(new OpcUaException(e));
 			}
+		}
+		else {
+			simulated = false;
+			setMode(ControlMode.MAINTENANCE);
+			simulated = true;
 		}
 	}
 

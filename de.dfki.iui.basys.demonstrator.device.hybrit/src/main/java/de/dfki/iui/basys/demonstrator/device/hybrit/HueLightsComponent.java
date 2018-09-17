@@ -10,23 +10,13 @@ import de.dfki.iui.basys.model.runtime.component.ResponseStatus;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 import de.dfki.iui.basys.runtime.component.device.packml.UnitConfiguration;
 import de.dfki.iui.basys.runtime.component.device.tecs.TecsDeviceComponent;
-import de.dfki.tecs.Event;
 
 public class HueLightsComponent extends TecsDeviceComponent {
 
 	private HueLightsNotifier client;
 	private final String lid;
 	private final long duration = 5000;
-	
-	public HueLightsComponent(ComponentConfiguration config) {
-		super(config);
-		this.lid = "3";
-	}
 
-	@Override
-	protected void handleTecsEvent(Event event) {/* do nothing */}
-
-	
 	String capability = "{\n" + 
 			"    \"eClass\" : \"http://www.dfki.de/iui/basys/model/component#//CapabilityRequest\",\n" + 
 			"    \"capabilityVariant\" : {\n" + 
@@ -39,15 +29,25 @@ public class HueLightsComponent extends TecsDeviceComponent {
 			"        \"qaResult\" : true\n" + 
 			"      }\n" + 
 			"    }\n" + 
-			"  }";
+			"  }";	
 	
+	public HueLightsComponent(ComponentConfiguration config) {
+		super(config);
+		this.lid = "3";
+	}
+
+	@Override
+	public void connectToExternal() throws ComponentException {
+		super.connectToExternal();
+		client = new HueLightsNotifier(protocol, lid);
+	}
+
 	@Override
 	protected UnitConfiguration translateCapabilityRequest(CapabilityRequest req) {
-		
+
 		UnitConfiguration config = new UnitConfiguration();
 
-		if (req.getCapabilityVariant().eClass()
-				.equals(ResourceinstancePackage.eINSTANCE.getGeneralCapabilityVariant())) {
+		if (req.getCapabilityVariant().eClass().equals(ResourceinstancePackage.eINSTANCE.getGeneralCapabilityVariant())) {
 			GeneralCapabilityVariant variant = (GeneralCapabilityVariant) req.getCapabilityVariant();
 			if (variant.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getQAVisualisationCapability())) {
 				QAVisualisationCapability capability = (QAVisualisationCapability) variant.getCapability();
@@ -58,31 +58,19 @@ public class HueLightsComponent extends TecsDeviceComponent {
 				}
 			}
 		}
-		
+
 		return config;
-
 	}
 
 	@Override
-	public void connectToExternal() throws ComponentException {
-		super.connectToExternal();
-		client = new HueLightsNotifier(protocol, lid);
-	}
-	
-	@Override
-	public void onResetting() {
-		reconnect();
-	}
-
-	@Override
-	public void onStarting() {		
+	public void onStarting() {
 		int state = getUnitConfig().getRecipe();
 		client.enableForTime(state > 0, duration);
 	}
 
 	@Override
 	public void onExecute() {
-		while(client.isOn()) {
+		while (client.isOn()) {
 			/* wait until off */
 			try {
 				Thread.sleep(100);
@@ -101,32 +89,5 @@ public class HueLightsComponent extends TecsDeviceComponent {
 	public void onStopping() {
 		sendComponentResponse(ResponseStatus.NOT_OK, 0);
 	}
-
-//	@Override
-//	public void onAborting() {}
-//
-//	@Override
-//	public void onClearing() {
-//		// perform reconecct
-//		close();
-//		try {
-//			open();
-//		} catch (TTransportException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//	}
-//
-//	@Override
-//	public void onHolding() {}
-//
-//	@Override
-//	public void onUnholding() {}
-//
-//	@Override
-//	public void onSuspending() {}
-//
-//	@Override
-//	public void onUnsuspending() {}
-
+	
 }

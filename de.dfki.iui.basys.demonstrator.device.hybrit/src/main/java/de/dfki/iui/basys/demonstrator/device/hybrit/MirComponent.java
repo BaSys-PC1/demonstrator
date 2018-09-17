@@ -34,6 +34,7 @@ import de.dfki.iui.basys.runtime.communication.CommFactory;
 import de.dfki.iui.basys.runtime.component.ComponentContext;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 import de.dfki.iui.basys.runtime.component.device.packml.UnitConfiguration;
+import de.dfki.iui.basys.runtime.component.device.tecs.DeviceStatus;
 import de.dfki.iui.basys.runtime.component.device.tecs.TecsDeviceComponent;
 import de.dfki.iui.hrc.general3d.Point3d;
 import de.dfki.iui.hrc.general3d.Pose;
@@ -265,25 +266,23 @@ public class MirComponent extends TecsDeviceComponent {
 		}
 	}
 
+
+	
 	@Override
-	public void onResetting() {
-		// close();
-		// try {
-		// open();
-		// } catch (TTransportException e1) {
-		// e1.printStackTrace();
-		reconnect();
-		// }
+	public void onResetting() {	
+		super.onResetting();
+		
 		try {
 			client.setState(MIRState.Ready);
 		} catch (TException e) {
 			e.printStackTrace();
 			stop();
-		}
+		}	
 	}
 
 	@Override
-	public void onStarting() {
+	public void onStarting() {		
+		
 		TopologyElement targetElement = ((TopologyElement) getUnitConfig().getPayload());
 
 //		mMoving = true;
@@ -366,63 +365,69 @@ public class MirComponent extends TecsDeviceComponent {
 //
 //	}
 
+	//TODO: do we need the robot state? map "Manual" to PackML mode
 	@Override
 	public void onExecute() {
-		try {
-			boolean executing = true;
-			while (executing) {
-				CommandResponse cs = client.getCommandState();
-				String robotState = client.getRobotState();
-				LOGGER.debug("RobotState is " + robotState);
-				if (robotState.equals("Error") || robotState.equals("Manual")) {
-					executing = false;
-					setErrorCode(1);
-					stop();
-					break;
-				}
-
-				switch (cs.state) {
-				case ABORTED:
-					executing = false;
-					setErrorCode(0);
-					stop();
-					break;
-				case ACCEPTED:
-					// nothing to do, wait until finished
-					break;
-				case EXECUTING:
-					// nothing to do, wait until finished
-					break;
-				case FINISHED:
-					LOGGER.debug("FINISHED");
-					executing = false;
-					break;
-				case PAUSED:
-					/* what to do */
-					break;
-				case READY:
-					/* what to do */
-					break;
-				case REJECTED:
-					executing = false;
-					setErrorCode(2);
-					stop();
-					break;
-				default:
-					break;
-				}
-				try {
-					Thread.sleep(100);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			}
-		} catch (TException e) {
-			e.printStackTrace();
-			setErrorCode(3);
-			stop();
-		}
+		busyWait(client);
 	}
+	
+//	@Override
+//	public void onExecute() {
+//		try {
+//			boolean executing = true;
+//			while (executing) {
+//				CommandResponse cs = client.getCommandState();
+//				String robotState = client.getRobotState();
+//				LOGGER.debug("RobotState is " + robotState);
+//				if (robotState.equals("Error") || robotState.equals("Manual")) {
+//					executing = false;
+//					setErrorCode(1);
+//					stop();
+//					break;
+//				}
+//
+//				switch (cs.state) {
+//				case ABORTED:
+//					executing = false;
+//					setErrorCode(0);
+//					stop();
+//					break;
+//				case ACCEPTED:
+//					// nothing to do, wait until finished
+//					break;
+//				case EXECUTING:
+//					// nothing to do, wait until finished
+//					break;
+//				case FINISHED:
+//					LOGGER.debug("FINISHED");
+//					executing = false;
+//					break;
+//				case PAUSED:
+//					/* what to do */
+//					break;
+//				case READY:
+//					/* what to do */
+//					break;
+//				case REJECTED:
+//					executing = false;
+//					setErrorCode(2);
+//					stop();
+//					break;
+//				default:
+//					break;
+//				}
+//				try {
+//					Thread.sleep(100);
+//				} catch (InterruptedException e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		} catch (TException e) {
+//			e.printStackTrace();
+//			setErrorCode(3);
+//			stop();
+//		}
+//	}
 
 	@Override
 	public void onCompleting() {
@@ -546,7 +551,7 @@ public class MirComponent extends TecsDeviceComponent {
 	/*
 	 * Helper class to communicate with TECS
 	 */
-	private class MirTECS extends MIR.Client {
+	private class MirTECS extends MIR.Client implements DeviceStatus {
 
 		private TProtocol protocol;
 

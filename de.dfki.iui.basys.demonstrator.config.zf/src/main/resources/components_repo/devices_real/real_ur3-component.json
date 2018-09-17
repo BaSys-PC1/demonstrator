@@ -6,5 +6,5 @@
   "componentImplementationJavaClass" : "de.dfki.iui.basys.demonstrator.device.hybrit.Ur3Component",
   "inChannelName" : "_jJdx4DD7EeiuBvcKgWzd3Q#in",
   "outChannelName" : "_jJdx4DD7EeiuBvcKgWzd3Q#out",
-  "externalConnectionString" : "tecs.tcp://10.2.0.105:9090"
+  "externalConnectionString" : "tecs.tcp://10.2.0.98:9090"
 }
