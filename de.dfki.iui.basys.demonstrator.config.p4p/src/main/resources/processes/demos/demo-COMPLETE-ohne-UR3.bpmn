@@ -104,7 +104,7 @@
         "name" : "",
         "targetLocation" : {
           "eClass" : "http://www.dfki.de/iui/basys/model/topology#//AGVStation",
-          "$ref" : "http://localhost:8080/services/entity/_syB-4p7pEeic8M2Zwd41TA"
+          "$ref" : "http://localhost:8080/services/entity/_KDj_QZ7qEeic8M2Zwd41TA"
         }
       }
     }
@@ -290,7 +290,7 @@
       },
       "appliedOn" : [ {
         "eClass" : "http://www.dfki.de/iui/basys/model/topology#//AGVStation",
-        "$ref" : "http://localhost:8080/services/entity/_syB-4p7pEeic8M2Zwd41TA"
+        "$ref" : "http://localhost:8080/services/entity/_KDj_QZ7qEeic8M2Zwd41TA"
       } ]
     }
   }</camunda:inputParameter>
@@ -316,7 +316,7 @@
       },
       "appliedOn" : [ {
         "eClass" : "http://www.dfki.de/iui/basys/model/topology#//AGVStation",
-        "$ref" : "http://localhost:8080/services/entity/_syB-4p7pEeic8M2Zwd41TA"
+        "$ref" : "http://localhost:8080/services/entity/_KDj_QZ7qEeic8M2Zwd41TA"
       } ]
     }
   }</camunda:inputParameter>
