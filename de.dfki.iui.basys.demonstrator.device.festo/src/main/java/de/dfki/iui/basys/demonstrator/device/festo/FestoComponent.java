@@ -1,9 +1,5 @@
 package de.dfki.iui.basys.demonstrator.device.festo;
 
-import java.util.concurrent.locks.Condition;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-
 import org.eclipse.milo.opcua.sdk.client.api.subscriptions.UaMonitoredItem;
 import org.eclipse.milo.opcua.stack.core.types.builtin.DataValue;
 import org.eclipse.milo.opcua.stack.core.types.builtin.NodeId;
@@ -36,16 +32,16 @@ public class FestoComponent extends OpcUaDeviceComponent {
 	private short jobStatus = 0;
 	private short jobErrorCode = 0;
 
-	private Lock lock;
-	private Condition executeCondition;
-	//private Condition stoppingCondition;
+//	private Lock lock;
+//	private Condition executeCondition;
+//  private Condition stoppingCondition;
 	
 	public FestoComponent(ComponentConfiguration config) {
 		super(config);
 
-		lock = new ReentrantLock();
-		executeCondition = lock.newCondition();
-		//stoppingCondition = lock.newCondition();
+//		lock = new ReentrantLock();
+//		executeCondition = lock.newCondition();
+//      stoppingCondition = lock.newCondition();
 		//resetOnComplete = true;
 		// resetOnStopped = true;
 	}
@@ -88,18 +84,7 @@ public class FestoComponent extends OpcUaDeviceComponent {
 
 	@Override
 	public void onExecute() {
-
-		lock.lock();
-		try {
-			System.out.println("WAIT");
-			executeCondition.await();						
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-			return;
-		} finally {
-			lock.unlock();
-		}
-
+		awaitExecuteComplete();
 	}
 	
 	@Override
@@ -218,11 +203,6 @@ public class FestoComponent extends OpcUaDeviceComponent {
 		}
 	}
 
-	public void signalExecuteComplete() {
-		System.out.println("signalExecuteComplete");
-		lock.lock();
-		executeCondition.signalAll();
-		lock.unlock();
-	}
+
 
 }
