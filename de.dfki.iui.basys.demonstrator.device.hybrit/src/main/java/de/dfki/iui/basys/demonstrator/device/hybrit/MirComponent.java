@@ -345,7 +345,8 @@ public class MirComponent extends TecsDeviceComponent {
 				
 				//client.gotoNamedPositionDelayed(targetElement.getName(),5);
 			} else {
-				client.gotoNamedPositionDelayed(targetElement.getName(), 5);
+				//client.gotoNamedPositionDelayed(targetElement.getName(), 5);
+				client.gotoNamedPosition(targetElement.getName());
 			}
 
 			
