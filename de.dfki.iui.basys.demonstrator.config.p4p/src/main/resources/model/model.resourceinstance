@@ -12,7 +12,7 @@
     </capabilityApplications>
     <role href="model.topology#_6lOowWnSEeiQ6ti_SIagCw"/>
   </resourceInstances>
-  <resourceInstances id="_r4sy4DD7EeiuBvcKgWzd3Q" name="My UR10" serialNumber="345">
+  <resourceInstances id="_r4sy4DD7EeiuBvcKgWzd3Q" name="My UR10 (QA)" serialNumber="345">
     <resourceType href="model.resourcetype#_LILOCTD5EeiuBvcKgWzd3Q"/>
     <capabilityApplications>
       <capabilityAssertion href="model.resourcetype#_jNgp8FNhEexbbdo05KXzGQ"/>
@@ -51,7 +51,7 @@
       <capabilityAssertion href="model.resourcetype#_jNgp8FNhEeibbdo05KXzGQ"/>
       <capabilityVariants xsi:type="resourceinstance:LogisticsCapabilityVariant" id="_gTVaBV-lEeixtLE-b5nbbQ" name="Unload MiR (bottle)">
         <capability xsi:type="capability:PickAndPlace" id="_sLcgPl-UEeioxNEjr9hsyQ" loadCarrierUnit="BOTTLE"/>
-        <appliedOn xsi:type="topology:AGVStation" href="model.topology#_xHhjwV2TEeit97PGgoQOAQ"/>
+        <appliedOn xsi:type="topology:AGVStation" href="model.topology#_rBfZoV2TEeit97PGgoQOAQ"/>
         <appliedOn xsi:type="topology:StorageZone" href="model.topology#_NQFk4zB5Eei1bbwBPPZWOA"/>
       </capabilityVariants>
       <capabilityVariants xsi:type="resourceinstance:LogisticsCapabilityVariant" id="_gTWBEV-lEeixtLE-b5nbbQ" name="Load MiR (bottle)">
@@ -60,7 +60,6 @@
         <appliedOn xsi:type="topology:AGVStation" href="model.topology#_rBfZoV2TEeit97PGgoQOAQ"/>
       </capabilityVariants>
     </capabilityApplications>
-    <role href="model.topology#_ROxA8zB5Eei1bbwBPPZWOA"/>
   </resourceInstances>
   <resourceInstances id="_rUJzsDJhEei1p5hKOf5Slw" name="My MiR 100" serialNumber="789">
     <resourceType href="model.resourcetype#_ZRW8sjJhEei1p5hKOf5Slw"/>
@@ -162,5 +161,22 @@
       </capabilityVariants>
     </capabilityApplications>
     <role href="model.topology#_uATSAWtmEeihVrieHNgo3Q"/>
+  </resourceInstances>
+  <resourceInstances id="_A2T0oNw3Eei8VLNfjDdfSQ" name="My UR10 (Cola)" serialNumber="226">
+    <resourceType href="model.resourcetype#_LILOCTD5EeiuBvcKgWzd3Q"/>
+    <capabilityApplications>
+      <capabilityAssertion href="model.resourcetype#_jNgp8FNhEexbbdo05KXzGQ"/>
+      <capabilityVariants xsi:type="resourceinstance:LogisticsCapabilityVariant" binding="" id="_MLKNAtw3Eei8VLNfjDdfSQ" name="Unload MiR (bottle)">
+        <capability xsi:type="capability:PickAndPlace" id="_VfeRDtw3Eei8VLNfjDdfSQ" loadCarrierUnit="BOTTLE"/>
+        <appliedOn xsi:type="topology:AGVStation" href="model.topology#_rBfZoV2TEeit97PGgoQOAQ"/>
+        <appliedOn xsi:type="topology:StorageZone" href="model.topology#_NQFk4zB5Eei1bbwBPPZWOA"/>
+      </capabilityVariants>
+      <capabilityVariants xsi:type="resourceinstance:LogisticsCapabilityVariant" id="_RIXt4tw3Eei8VLNfjDdfSQ" name="Load MiR (bottle)">
+        <capability xsi:type="capability:PickAndPlace" id="_XQaDLtw3Eei8VLNfjDdfSQ" loadCarrierUnit="BOTTLE"/>
+        <appliedOn xsi:type="topology:StorageUnit" href="model.topology#_O8321zB5Eei1bbwBPPZWOA"/>
+        <appliedOn xsi:type="topology:AGVStation" href="model.topology#_rBfZoV2TEeit97PGgoQOAQ"/>
+      </capabilityVariants>
+    </capabilityApplications>
+    <role href="model.topology#_ROxA8zB5Eei1bbwBPPZWOA"/>
   </resourceInstances>
 </resourceinstance:ResourceInstanceRepository>
