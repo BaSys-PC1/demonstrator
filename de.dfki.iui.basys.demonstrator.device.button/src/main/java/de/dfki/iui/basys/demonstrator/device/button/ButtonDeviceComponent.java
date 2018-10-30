@@ -172,7 +172,7 @@ public class ButtonDeviceComponent extends MqttDeviceComponent {
         message.setQos(qos);
         try {
         	mqttClient.publish(topic, message).waitForCompletion();
-        	System.out.printf("publishing message %s on topic %s%n", message, topic);
+        	LOGGER.debug("publishing message %s on topic %s%n", message, topic);
         } catch (MqttException e) {
         	e.printStackTrace();
         }
