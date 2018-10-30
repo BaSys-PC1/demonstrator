@@ -5,5 +5,5 @@
   "componentCategory" : "SERVICE_COMPONENT",
   "componentImplementationJavaClass" : "de.dfki.iui.basys.runtime.processcontrol.impl.CamundaTaskScheduler",
   "inChannelName" : "task-scheduler#in",
-  "externalConnectionString" : "http://lns-90165.sb.dfki.de:8080/engine-rest/"
+  "externalConnectionString" : "http://10.2.10.4:8080/engine-rest/"
 }
