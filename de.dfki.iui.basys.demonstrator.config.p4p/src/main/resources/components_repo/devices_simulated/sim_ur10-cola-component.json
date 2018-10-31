@@ -1,0 +1,14 @@
+{
+  "eClass" : "http://www.dfki.de/iui/basys/model/component#//ComponentConfiguration",
+  "componentCategory" : "DEVICE_COMPONENT",
+  "componentId" : "_A2T0oNw3Eei8VLNfjDdfSQ",
+  "componentName" : "My UR10 Cola (Sim)",
+  "componentImplementationJavaClass" : "de.dfki.iui.basys.demonstrator.device.hybrit.Ur10ColaComponent",
+  "inChannelName" : "_A2T0oNw3Eei8VLNfjDdfSQ#in",
+  "outChannelName" : "_A2T0oNw3Eei8VLNfjDdfSQ#out",
+  "externalConnectionString" : "tecs.tcp://10.2.0.40:9090",
+  "properties" : [ {
+    "key" : "simulated",
+    "value" : "true"
+  }]
+}

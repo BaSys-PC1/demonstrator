@@ -14,6 +14,7 @@ import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.model.runtime.component.ResponseStatus;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 import de.dfki.iui.basys.runtime.component.device.packml.UnitConfiguration;
+import de.dfki.iui.basys.runtime.component.device.tecs.DeviceStatus;
 import de.dfki.iui.basys.runtime.component.device.tecs.TecsDeviceComponent;
 import de.dfki.iui.hrc.general3d.TransformationMatrix;
 import de.dfki.iui.hrc.generalrobots.RobotState;
@@ -25,7 +26,6 @@ import de.dfki.iui.hrc.ur.UR;
 import de.dfki.iui.hrc.ur.URState;
 import de.dfki.iui.hrc.ur.URStatus;
 import de.dfki.iui.hrc.ur.urConstants;
-import de.dfki.tecs.Event;
 
 public class Ur3Component extends TecsDeviceComponent{
 
@@ -57,8 +57,11 @@ public class Ur3Component extends TecsDeviceComponent{
 	}
 
 	@Override
-	protected void handleTecsEvent(Event event) {/* nothing to do */}
-
+	public void connectToExternal() throws ComponentException {
+		super.connectToExternal();
+		client = new Ur3TECS(protocol);
+	}
+	
 	@Override
 	protected UnitConfiguration translateCapabilityRequest(CapabilityRequest req) {
 		UnitConfiguration config = new UnitConfiguration();
@@ -82,40 +85,6 @@ public class Ur3Component extends TecsDeviceComponent{
 		
 		return config;
 	}
-	
-	@Override
-	public void connectToExternal() throws ComponentException {
-		super.connectToExternal();
-		client = new Ur3TECS(protocol);
-	}
-	
-	private void gotoSafePosition() {
-		try {
-			client.MoveToKnownPosition(urConstants.KNOWN_POSE_6);
-			busyWait(); // block until in safe
-		} catch (MoveException e2) {
-			e2.printStackTrace();
-			stop();
-		} catch (TException e2) {
-			e2.printStackTrace();
-			stop();
-		}		
-	}
-	
-	
-	@Override
-	public void onResetting() {
-		reconnect();
-		
-//		try {
-//			TimeUnit.SECONDS.sleep(15);
-//		} catch (InterruptedException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-		
-		//gotoSafePosition();
-	}
 
 	@Override
 	public void onStarting() {
@@ -123,8 +92,7 @@ public class Ur3Component extends TecsDeviceComponent{
 		LOGGER.info("Start executing pose: " + pose);
 		
 		try {
-			client.MoveToKnownPosition(urConstants.KNOWN_POSE_7);
-			busyWait(); // block until in safe_2_home
+			gotoHomeFromSafePosition();
 		
 			client.Load(pose);
 		
@@ -139,105 +107,50 @@ public class Ur3Component extends TecsDeviceComponent{
 
 	@Override
 	public void onExecute() {
-		busyWait();
+		busyWait(client);
 	}	
 	
-	public void busyWait() {
-		try {
-			boolean executing = true;
-			while(executing) {
-				CommandResponse cr = client.getCommandState();
-				LOGGER.debug("CommandState is " + cr.state);
-				 
-//				URState urs = client.getState();				
-//				if (urs == URState.Error || urs == URState.Manual) {
-//					executing = false;
-//					setErrorCode(1);
-//					stop();
-//					break;
-//				}
-				
-				switch(cr.state) {
-				case ACCEPTED: 
-					// wait
-					break;
-				case ABORTED: 
-					executing= false;
-					setErrorCode(1);
-					stop();
-					break;
-				case EXECUTING:
-					// wait
-					break;
-				case FINISHED: 
-					executing=false;
-					break;
-				case PAUSED: 
-					//?
-					break;
-				case READY: 
-					//?
-					break;
-				case REJECTED: 
-					executing=false;
-					setErrorCode(2);
-					stop();
-					break;
-				default: break;
-				}
-				try {
-					Thread.sleep(100);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			}
-		} catch (TException e) {
-			e.printStackTrace();
-			setErrorCode(3);
-			stop();
-		}
-	}
-
 	@Override
 	public void onCompleting() {
-		gotoSafePosition();		
+		gotoSafePosition();
+		//gotoHomePosition();		
 		sendComponentResponse(ResponseStatus.OK, 0);
 	}
 
 	@Override
 	public void onStopping() {
 		gotoSafePosition();
+		//gotoHomePosition();
 		sendComponentResponse(ResponseStatus.NOT_OK, getErrorCode());
 	}
-//
-//	@Override
-//	public void onAborting() {}
-//
-//	@Override
-//	public void onClearing() {
-//		// perform reconecct
-//		close();
-//		try {
-//			open();
-//		} catch (TTransportException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//	}
-//
-//	@Override
-//	public void onHolding() {}
-//
-//	@Override
-//	public void onUnholding() {}
-//
-//	@Override
-//	public void onSuspending() {}
-//
-//	@Override
-//	public void onUnsuspending() {}
+	
+	private void gotoSafePosition() {
+		gotoPosition(urConstants.KNOWN_POSE_6);			
+	}
+	
+	private void gotoHomePosition() {
+		gotoPosition(urConstants.KNOWN_POSE_1);		
+	}
+	
+	private void gotoHomeFromSafePosition() {
+		gotoPosition(urConstants.KNOWN_POSE_7);	
+	}
+	
+	private void gotoPosition(String position) {
+		try {
+			client.MoveToKnownPosition(position);
+			busyWait(client);
+		} catch (MoveException e2) {
+			e2.printStackTrace();
+			stop();
+		} catch (TException e2) {
+			e2.printStackTrace();
+			stop();
+		}		
+	}
 
-	private class Ur3TECS extends UR.Client{
+
+	private class Ur3TECS extends UR.Client implements DeviceStatus {
 
 		private TProtocol protocol;
 		

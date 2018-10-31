@@ -1,15 +1,11 @@
 package de.dfki.iui.basys.demonstrator.device.hybrit;
 
-import java.util.AbstractMap.SimpleEntry;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 
 import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TProtocol;
@@ -38,6 +34,7 @@ import de.dfki.iui.basys.runtime.communication.CommFactory;
 import de.dfki.iui.basys.runtime.component.ComponentContext;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 import de.dfki.iui.basys.runtime.component.device.packml.UnitConfiguration;
+import de.dfki.iui.basys.runtime.component.device.tecs.DeviceStatus;
 import de.dfki.iui.basys.runtime.component.device.tecs.TecsDeviceComponent;
 import de.dfki.iui.hrc.general3d.Point3d;
 import de.dfki.iui.hrc.general3d.Pose;
@@ -58,10 +55,10 @@ public class MirComponent extends TecsDeviceComponent {
 	private double mETA;
 	private TopologyElement mTargetLocation;
 	private TopologyElement mSourceLocation;
-	private long mEstimatedETA;
-	private Thread mETAThread;
-	protected boolean mMoving;
-	private Map<SimpleEntry<String, String>, Long> mEstimatedETAs = new HashMap<>();
+//	private long mEstimatedETA;
+//	private Thread mETAThread;
+//	protected boolean mMoving;
+//	private Map<SimpleEntry<String, String>, Long> mEstimatedETAs = new HashMap<>();
 	private Client restClient;
 	private String mRest_URI;
 
@@ -78,41 +75,41 @@ public class MirComponent extends TecsDeviceComponent {
 		connectToTecs("robot-mir-04", subscribeTo, "tecs.mrk40.dfki.lan", 9000);
 		mRest_URI = "http://robot-mir-04.mrk40.dfki.lan:8080/v1.0.0/mission_queue";
 
-		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Wait", "Station-QA"), 42500L);
-		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Wait", "Station-Festo"), 65000L);
-		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Wait", "Station-BaSys"), 65000L);
-		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Wait", "Station-Cola"), 65000L);
-		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Wait", "Station-TeachIn"), 65000L);
-
-		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-QA", "Station-Wait"), 65000L);
-		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-QA", "Station-Festo"), 65000L);
-		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-QA", "Station-BaSys"), 42500L);
-		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-QA", "Station-Cola"), 65000L);
-		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-QA", "Station-TeachIn"), 65000L);
-
-		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Festo", "Station-QA"), 65000L);
-		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Festo", "Station-Wait"), 65000L);
-		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Festo", "Station-BaSys"), 65000L);
-		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Festo", "Station-Cola"), 65000L);
-		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Festo", "Station-TeachIn"), 65000L);
-
-		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-BaSys", "Station-QA"), 65000L);
-		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-BaSys", "Station-Festo"), 65000L);
-		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-BaSys", "Station-Wait"), 65000L);
-		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-BaSys", "Station-Cola"), 65000L);
-		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-BaSys", "Station-TeachIn"), 65000L);
-
-		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Cola", "Station-QA"), 65000L);
-		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Cola", "Station-Festo"), 65000L);
-		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Cola", "Station-BaSys"), 65000L);
-		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Cola", "Station-Wait"), 65000L);
-		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Cola", "Station-TeachIn"), 65000L);
-
-		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-TeachIn", "Station-QA"), 65000L);
-		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-TeachIn", "Station-Festo"), 65000L);
-		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-TeachIn", "Station-BaSys"), 65000L);
-		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-TeachIn", "Station-Wait"), 65000L);
-		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-TeachIn", "Station-Cola"), 65000L);
+//		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Wait", "Station-QA"), 42500L);
+//		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Wait", "Station-Festo"), 65000L);
+//		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Wait", "Station-BaSys"), 65000L);
+//		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Wait", "Station-Cola"), 65000L);
+//		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Wait", "Station-TeachIn"), 65000L);
+//
+//		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-QA", "Station-Wait"), 65000L);
+//		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-QA", "Station-Festo"), 65000L);
+//		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-QA", "Station-BaSys"), 42500L);
+//		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-QA", "Station-Cola"), 65000L);
+//		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-QA", "Station-TeachIn"), 65000L);
+//
+//		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Festo", "Station-QA"), 65000L);
+//		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Festo", "Station-Wait"), 65000L);
+//		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Festo", "Station-BaSys"), 65000L);
+//		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Festo", "Station-Cola"), 65000L);
+//		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Festo", "Station-TeachIn"), 65000L);
+//
+//		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-BaSys", "Station-QA"), 65000L);
+//		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-BaSys", "Station-Festo"), 65000L);
+//		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-BaSys", "Station-Wait"), 65000L);
+//		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-BaSys", "Station-Cola"), 65000L);
+//		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-BaSys", "Station-TeachIn"), 65000L);
+//
+//		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Cola", "Station-QA"), 65000L);
+//		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Cola", "Station-Festo"), 65000L);
+//		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Cola", "Station-BaSys"), 65000L);
+//		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Cola", "Station-Wait"), 65000L);
+//		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Cola", "Station-TeachIn"), 65000L);
+//
+//		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-TeachIn", "Station-QA"), 65000L);
+//		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-TeachIn", "Station-Festo"), 65000L);
+//		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-TeachIn", "Station-BaSys"), 65000L);
+//		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-TeachIn", "Station-Wait"), 65000L);
+//		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-TeachIn", "Station-Cola"), 65000L);
 
 		restClient = ClientBuilder.newClient();
 
@@ -269,58 +266,56 @@ public class MirComponent extends TecsDeviceComponent {
 		}
 	}
 
+
+	
 	@Override
-	public void onResetting() {
-		// close();
-		// try {
-		// open();
-		// } catch (TTransportException e1) {
-		// e1.printStackTrace();
-		reconnect();
-		// }
+	public void onResetting() {	
+		super.onResetting();
+		
 		try {
 			client.setState(MIRState.Ready);
 		} catch (TException e) {
 			e.printStackTrace();
 			stop();
-		}
+		}	
 	}
 
 	@Override
-	public void onStarting() {
+	public void onStarting() {		
+		
 		TopologyElement targetElement = ((TopologyElement) getUnitConfig().getPayload());
 
-		mMoving = true;
+//		mMoving = true;
 		try {
-			if (mSourceLocation != null)
-				mEstimatedETA = getEstimatedETA(mSourceLocation, mTargetLocation);
-			mETAThread = new Thread(new Runnable() {
-
-				@Override
-				public void run() {
-
-					while (mMoving) {
-						Property prop = componentConfig.getProperty("estimatedETA");
-						if (prop == null) {
-							prop = new ComponentFactoryImpl().createProperty();
-							prop.setKey("estimatedETA");
-							componentConfig.getProperties().add(prop);
-						}
-
-						prop.setValue(mEstimatedETA + "");
-						mEstimatedETA -= 1000;
-						if (mEstimatedETA <= 0) {
-							mEstimatedETA = 1;
-						}
-						try {
-							Thread.sleep(1000);
-						} catch (InterruptedException e) {
-							e.printStackTrace();
-						}
-					}
-				}
-			});
-			mETAThread.start();
+//			if (mSourceLocation != null)
+//				mEstimatedETA = getEstimatedETA(mSourceLocation, mTargetLocation);
+//			mETAThread = new Thread(new Runnable() {
+//
+//				@Override
+//				public void run() {
+//
+//					while (mMoving) {
+//						Property prop = componentConfig.getProperty("estimatedETA");
+//						if (prop == null) {
+//							prop = new ComponentFactoryImpl().createProperty();
+//							prop.setKey("estimatedETA");
+//							componentConfig.getProperties().add(prop);
+//						}
+//
+//						prop.setValue(mEstimatedETA + "");
+//						mEstimatedETA -= 1000;
+//						if (mEstimatedETA <= 0) {
+//							mEstimatedETA = 1;
+//						}
+//						try {
+//							Thread.sleep(1000);
+//						} catch (InterruptedException e) {
+//							e.printStackTrace();
+//						}
+//					}
+//				}
+//			});
+//			mETAThread.start();
 
 			LOGGER.info("Moving to position: " + targetElement.getName());
 			String payload = JsonUtils.toString(targetElement);
@@ -332,6 +327,7 @@ public class MirComponent extends TecsDeviceComponent {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			//TODO rename Festo to Fetik?
 			if (mSourceLocation != null && mSourceLocation.getName().equals("Station-Festo")
 					&& mTargetLocation.getName().equals("Station-QA")) {
 
@@ -349,7 +345,8 @@ public class MirComponent extends TecsDeviceComponent {
 				
 				//client.gotoNamedPositionDelayed(targetElement.getName(),5);
 			} else {
-				client.gotoNamedPositionDelayed(targetElement.getName(), 5);
+				//client.gotoNamedPositionDelayed(targetElement.getName(), 5);
+				client.gotoNamedPosition(targetElement.getName());
 			}
 
 			
@@ -362,82 +359,88 @@ public class MirComponent extends TecsDeviceComponent {
 		}
 	}
 
-	private long getEstimatedETA(TopologyElement sourceLocation, TopologyElement targetLocation) {
-		if (sourceLocation.getId().equals(targetLocation.getId()))
-			return 1;
-		return mEstimatedETAs.get(new SimpleEntry<String, String>(sourceLocation.getName(), targetLocation.getName()));
+//	private long getEstimatedETA(TopologyElement sourceLocation, TopologyElement targetLocation) {
+//		//if (sourceLocation.getId().equals(targetLocation.getId()))
+//			return 1;
+//		//return mEstimatedETAs.get(new SimpleEntry<String, String>(sourceLocation.getName(), targetLocation.getName()));
+//
+//	}
 
-	}
-
+	//TODO: do we need the robot state? map "Manual" to PackML mode
 	@Override
 	public void onExecute() {
-		try {
-			boolean executing = true;
-			while (executing) {
-				CommandResponse cs = client.getCommandState();
-				String robotState = client.getRobotState();
-				LOGGER.debug("RobotState is " + robotState);
-				if (robotState.equals("Error") || robotState.equals("Manual")) {
-					executing = false;
-					setErrorCode(1);
-					stop();
-					break;
-				}
-
-				switch (cs.state) {
-				case ABORTED:
-					executing = false;
-					setErrorCode(0);
-					stop();
-					break;
-				case ACCEPTED:
-					// nothing to do, wait until finished
-					break;
-				case EXECUTING:
-					// nothing to do, wait until finished
-					break;
-				case FINISHED:
-					LOGGER.debug("FINISHED");
-					executing = false;
-					break;
-				case PAUSED:
-					/* what to do */
-					break;
-				case READY:
-					/* what to do */
-					break;
-				case REJECTED:
-					executing = false;
-					setErrorCode(2);
-					stop();
-					break;
-				default:
-					break;
-				}
-				try {
-					Thread.sleep(100);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			}
-		} catch (TException e) {
-			e.printStackTrace();
-			setErrorCode(3);
-			stop();
-		}
+		busyWait(client);
 	}
+	
+//	@Override
+//	public void onExecute() {
+//		try {
+//			boolean executing = true;
+//			while (executing) {
+//				CommandResponse cs = client.getCommandState();
+//				String robotState = client.getRobotState();
+//				LOGGER.debug("RobotState is " + robotState);
+//				if (robotState.equals("Error") || robotState.equals("Manual")) {
+//					executing = false;
+//					setErrorCode(1);
+//					stop();
+//					break;
+//				}
+//
+//				switch (cs.state) {
+//				case ABORTED:
+//					executing = false;
+//					setErrorCode(0);
+//					stop();
+//					break;
+//				case ACCEPTED:
+//					// nothing to do, wait until finished
+//					break;
+//				case EXECUTING:
+//					// nothing to do, wait until finished
+//					break;
+//				case FINISHED:
+//					LOGGER.debug("FINISHED");
+//					executing = false;
+//					break;
+//				case PAUSED:
+//					/* what to do */
+//					break;
+//				case READY:
+//					/* what to do */
+//					break;
+//				case REJECTED:
+//					executing = false;
+//					setErrorCode(2);
+//					stop();
+//					break;
+//				default:
+//					break;
+//				}
+//				try {
+//					Thread.sleep(100);
+//				} catch (InterruptedException e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		} catch (TException e) {
+//			e.printStackTrace();
+//			setErrorCode(3);
+//			stop();
+//		}
+//	}
 
 	@Override
 	public void onCompleting() {
 		// mir is in the position
 
 		mSourceLocation = mTargetLocation;
-		mMoving = false;
-		try {
-			mETAThread.join();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+//		mMoving = false;
+//		try {
+//			mETAThread.join();
+//		} catch (InterruptedException e) {
+//			e.printStackTrace();
+//		}
 		Property prop = componentConfig.getProperty("estimatedETA");
 		if (prop == null) {
 			prop = new ComponentFactoryImpl().createProperty();
@@ -452,7 +455,7 @@ public class MirComponent extends TecsDeviceComponent {
 
 	@Override
 	public void onStopping() {
-		mMoving = false;
+//		mMoving = false;
 		sendComponentResponse(ResponseStatus.NOT_OK, getErrorCode());
 		try {
 			client.stopMovement();
@@ -549,7 +552,7 @@ public class MirComponent extends TecsDeviceComponent {
 	/*
 	 * Helper class to communicate with TECS
 	 */
-	private class MirTECS extends MIR.Client {
+	private class MirTECS extends MIR.Client implements DeviceStatus {
 
 		private TProtocol protocol;
 

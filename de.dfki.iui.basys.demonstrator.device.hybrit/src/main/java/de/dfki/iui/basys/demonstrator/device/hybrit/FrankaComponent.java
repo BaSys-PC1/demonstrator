@@ -15,6 +15,7 @@ import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.model.runtime.component.ResponseStatus;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 import de.dfki.iui.basys.runtime.component.device.packml.UnitConfiguration;
+import de.dfki.iui.basys.runtime.component.device.tecs.DeviceStatus;
 import de.dfki.iui.basys.runtime.component.device.tecs.TecsDeviceComponent;
 import de.dfki.iui.hrc.franka.ActionException;
 import de.dfki.iui.hrc.franka.Franka;
@@ -189,61 +190,8 @@ public class FrankaComponent extends TecsDeviceComponent{
 
 	@Override
 	public void onExecute() {
-		try {
-			boolean executing = true;
-			while(executing) {
-				CommandResponse cr = client.getCommandState();
-				LOGGER.debug("CommandState is " + cr.state);
-//				FrankaState fs = client.getState();
-//				
-//				if (fs == FrankaState.Error || fs == FrankaState.Manual) {
-//					executing = false;
-//					setErrorCode(1);
-//					stop();
-//					break;
-//				}
-				
-				switch(cr.state) {
-				case ACCEPTED: 
-					// wait
-					break;
-				case ABORTED: 
-					executing= false;
-					setErrorCode(1);
-					stop();
-					break;
-				case EXECUTING:
-					// wait
-					break;
-				case FINISHED: 
-					executing=false;
-					break;
-				case PAUSED: 
-					//?
-					break;
-				case READY: 
-					//?
-					break;
-				case REJECTED: 
-					executing=false;
-					setErrorCode(2);
-					stop();
-					break;
-				default: break;
-				}				
-				try {
-					Thread.sleep(100);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}				
-			}
-			
-		} catch (TException e) {
-			e.printStackTrace();
-			setErrorCode(3);
-			stop();
-		}
-	}
+		busyWait(client);
+	}	
 
 	@Override
 	public void onCompleting() {
@@ -255,33 +203,7 @@ public class FrankaComponent extends TecsDeviceComponent{
 		sendComponentResponse(ResponseStatus.NOT_OK, getErrorCode());
 	}
 
-//	@Override
-//	public void onAborting() {}
-//
-//	@Override
-//	public void onClearing() {
-//		// perform reconnect
-//		close();
-//		try {
-//			open();
-//		} catch (TTransportException e) {
-//			e.printStackTrace();
-//		}
-//	}
-//
-//	@Override
-//	public void onHolding() {}
-//
-//	@Override
-//	public void onUnholding() {}
-//
-//	@Override
-//	public void onSuspending() {}
-//
-//	@Override
-//	public void onUnsuspending() {}
-
-	private class FrankaTECS extends Franka.Client{
+	private class FrankaTECS extends Franka.Client implements DeviceStatus {
 
 		private TProtocol protocol;
 		

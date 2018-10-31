@@ -15,6 +15,7 @@ import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.model.runtime.component.ResponseStatus;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 import de.dfki.iui.basys.runtime.component.device.packml.UnitConfiguration;
+import de.dfki.iui.basys.runtime.component.device.tecs.DeviceStatus;
 import de.dfki.iui.basys.runtime.component.device.tecs.TecsDeviceComponent;
 import de.dfki.iui.hrc.general3d.TransformationMatrix;
 import de.dfki.iui.hrc.generalrobots.RobotState;
@@ -26,7 +27,6 @@ import de.dfki.iui.hrc.ur.UR;
 import de.dfki.iui.hrc.ur.URState;
 import de.dfki.iui.hrc.ur.URStatus;
 import de.dfki.iui.hrc.ur.urConstants;
-import de.dfki.tecs.Event;
 
 public class Ur10Component extends TecsDeviceComponent {
 
@@ -37,8 +37,10 @@ public class Ur10Component extends TecsDeviceComponent {
 	}
 
 	@Override
-	protected void handleTecsEvent(Event event) {
-		/* nothing to do */}
+	public void connectToExternal() throws ComponentException {
+		super.connectToExternal();
+		client = new Ur10TECS(protocol);
+	}
 
 	@Override
 	protected UnitConfiguration translateCapabilityRequest(CapabilityRequest req) {
@@ -78,37 +80,6 @@ public class Ur10Component extends TecsDeviceComponent {
 	}
 
 	@Override
-	public void connectToExternal() throws ComponentException {
-		super.connectToExternal();
-		client = new Ur10TECS(protocol);
-	}
-
-	@Override
-	public void onResetting() {
-		reconnect();
-//		close();
-//		try {
-//			open();
-//			if (!simulated) {
-//				client.MoveToKnownPosition(urConstants.KNOWN_POSE_1);
-//				onExecute(); // block until in KnownPose1
-//			}
-//		} catch (TTransportException e) {
-//			setErrorCode(1);
-//			stop();
-//			e.printStackTrace();
-//		} catch (MoveException e) {
-//			e.printStackTrace();
-//			setErrorCode(1);
-//			stop();
-//		} catch (TException e) {
-//			e.printStackTrace();
-//			setErrorCode(1);
-//			stop();
-//		}
-	}
-
-	@Override
 	public void onStarting() {
 		String pose = (String) getUnitConfig().getPayload();
 		LOGGER.info("Start executing pose: " + pose);
@@ -132,61 +103,8 @@ public class Ur10Component extends TecsDeviceComponent {
 
 	@Override
 	public void onExecute() {
-		try {
-			boolean executing = true;
-			while (executing) {
-				CommandResponse cr = client.getCommandState();
-				LOGGER.debug("CommandState is " + cr.state);
-				
-//				URState urs = client.getState();
-//				if (urs == URState.Error || urs == URState.Manual) {
-//					executing = false;
-//					setErrorCode(1);
-//					stop();
-//					break;
-//				}
-
-				switch (cr.state) {
-				case ACCEPTED:
-					// wait
-					break;
-				case ABORTED:
-					executing = false;
-					setErrorCode(1);
-					stop();
-					break;
-				case EXECUTING:
-					// wait
-					break;
-				case FINISHED:
-					executing = false;
-					break;
-				case PAUSED:
-					// ?
-					break;
-				case READY:
-					// ?
-					break;
-				case REJECTED:
-					executing = false;
-					setErrorCode(2);
-					stop();
-					break;
-				default:
-					break;
-				}
-				try {
-					Thread.sleep(100);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			}
-		} catch (TException e) {
-			e.printStackTrace();
-			setErrorCode(3);
-			stop();
-		}
-	}
+		busyWait(client);
+	}	
 
 	@Override
 	public void onCompleting() {
@@ -198,39 +116,8 @@ public class Ur10Component extends TecsDeviceComponent {
 		sendComponentResponse(ResponseStatus.NOT_OK, getErrorCode());
 	}
 
-//	@Override
-//	public void onAborting() {
-//	}
-//
-//	@Override
-//	public void onClearing() {
-//		// perform reconecct
-//		close();
-//		try {
-//			open();
-//		} catch (TTransportException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//	}
-//
-//	@Override
-//	public void onHolding() {
-//	}
-//
-//	@Override
-//	public void onUnholding() {
-//	}
-//
-//	@Override
-//	public void onSuspending() {
-//	}
-//
-//	@Override
-//	public void onUnsuspending() {
-//	}
 
-	private class Ur10TECS extends UR.Client {
+	private class Ur10TECS extends UR.Client implements DeviceStatus {
 
 		private TProtocol protocol;
 

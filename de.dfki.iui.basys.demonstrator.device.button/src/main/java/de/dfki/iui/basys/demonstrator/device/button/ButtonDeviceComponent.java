@@ -50,8 +50,24 @@ public class ButtonDeviceComponent extends MqttDeviceComponent {
 	public void activate(ComponentContext context) throws ComponentException {
 		super.activate(context);
 		
+		if (isConnectedToExternal()) {
+			selfCheck();
+		}
+		
 	}
 
+	private void selfCheck() {
+		LOGGER.info("start self-check...");
+
+		switchDeactivate();
+		sleep(1);
+		switchActivate();
+		sleep(1);
+		switchDeactivate();
+		
+		LOGGER.info("self-check done");		
+	}
+	
 	@Override
 	public void onStarting() {
 		
@@ -84,6 +100,10 @@ public class ButtonDeviceComponent extends MqttDeviceComponent {
 		sendComponentResponse(ResponseStatus.OK, 0);
 	}
 	
+	@Override
+	public void onStopping() {
+		selfCheck();
+	}
 	
 	@Override
 	public void onResetting() {
@@ -152,7 +172,7 @@ public class ButtonDeviceComponent extends MqttDeviceComponent {
         message.setQos(qos);
         try {
         	mqttClient.publish(topic, message).waitForCompletion();
-        	System.out.printf("publishing message %s on topic %s%n", message, topic);
+        	LOGGER.debug("publishing message %s on topic %s%n", message, topic);
         } catch (MqttException e) {
         	e.printStackTrace();
         }
