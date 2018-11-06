@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="CP1252"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <parent>
+    <groupId>de.dfki.cos.basys</groupId>
+    <artifactId>demonstrator</artifactId>
+    <version>0.1.1-SNAPSHOT</version>
+  </parent>
+
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>de.dfki.cos.basys.demonstrator</groupId>
+  <artifactId>config</artifactId>
+
+  <name>BaSys 4.0 Demonstrator - Configurations</name>
+
+  <packaging>pom</packaging>
+  <version>0.1.1-SNAPSHOT</version>
+ 
+  <modules>
+	<module>de.dfki.cos.basys.demonstrator.config.cebit2018</module>  
+	<module>de.dfki.cos.basys.demonstrator.config.p4p</module>  
+	<module>de.dfki.cos.basys.demonstrator.config.zf</module>  
+  </modules>
+  
+</project>

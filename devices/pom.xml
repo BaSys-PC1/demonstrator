@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="CP1252"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <parent>
+    <groupId>de.dfki.cos.basys</groupId>
+    <artifactId>demonstrator</artifactId>
+    <version>0.1.1-SNAPSHOT</version>
+  </parent>
+
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>de.dfki.cos.basys.demonstrator</groupId>
+  <artifactId>device</artifactId>
+
+  <name>BaSys 4.0 Demonstrator - Device Integrations</name>
+
+  <packaging>pom</packaging>
+  <version>0.1.1-SNAPSHOT</version>
+
+   <modules>
+    <module>de.dfki.cos.basys.demonstrator.device.button</module>
+    <module>de.dfki.cos.basys.demonstrator.device.festo</module>
+    <module>de.dfki.cos.basys.demonstrator.device.hybrit</module>
+    <module>de.dfki.cos.basys.demonstrator.device.laser</module>
+  </modules>
+  
+</project>
