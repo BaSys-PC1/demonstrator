@@ -26,7 +26,7 @@
 		<dependency>
 			<groupId>de.dfki.cos.basys.platform.runtime</groupId>
 			<artifactId>de.dfki.cos.basys.platform.runtime.component.device.mqtt</artifactId>
-			<version>${project.version}</version>
+			<version>${version.basys.platform}</version>
 		</dependency>
 
 		<!-- comment to remove all imported (non-local) bundles from your compilation 
@@ -35,6 +35,7 @@
 			<type>pom</type>
 			<groupId>${project.parent.groupId}</groupId>
 			<artifactId>provision</artifactId>
+			<version>${project.version}</version>
 			<optional>true</optional>
 		</dependency>
 
