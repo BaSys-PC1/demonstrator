@@ -21,6 +21,7 @@
     <module>de.dfki.cos.basys.demonstrator.device.festo</module>
     <module>de.dfki.cos.basys.demonstrator.device.hybrit</module>
     <module>de.dfki.cos.basys.demonstrator.device.laser</module>
+    <module>de.dfki.cos.basys.demonstrator.device.mirrest</module>
   </modules>
   
 </project>
