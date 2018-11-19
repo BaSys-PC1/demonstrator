@@ -19,6 +19,7 @@
   <modules>
 	<module>de.dfki.cos.basys.demonstrator.config.cebit2018</module>  
 	<module>de.dfki.cos.basys.demonstrator.config.p4p</module>  
+	<module>de.dfki.cos.basys.demonstrator.config.pss2</module>  
 	<module>de.dfki.cos.basys.demonstrator.config.zf</module>  
   </modules>
   
