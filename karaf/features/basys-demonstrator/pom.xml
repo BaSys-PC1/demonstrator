@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>de.dfki.cos.basys.demonstrator.karaf</groupId>
+		<artifactId>features</artifactId>
+		<version>0.1.1-SNAPSHOT</version>
+	</parent>
+
+	<groupId>de.dfki.cos.basys.demonstrator.karaf.features</groupId>
+	<artifactId>basys-demonstrator</artifactId>
+
+	<name>BaSys 4.0 Demonstrator - Karaf Feature - Extensions and Devices</name>
+	<description>The BaSys 4.0 Demonstrator Karaf Feature with platform extensions and device implementations</description>
+
+	<packaging>kar</packaging>
+
+	<properties>
+		<version.basys.platform>0.1.1-SNAPSHOT</version.basys.platform>
+	</properties>
+	
+	<dependencies>
+			
+		<dependency>
+			<groupId>de.dfki.cos.basys.platform.karaf.features</groupId>
+			<artifactId>basys-runtime</artifactId>
+			<version>${version.basys.platform}</version>
+			<classifier>features</classifier>
+			<type>xml</type>
+		</dependency>
+
+ 		<dependency>
+			<groupId>de.dfki.cos.basys.demonstrator.platform</groupId>
+			<artifactId>de.dfki.cos.basys.platform.runtime.connector</artifactId>
+			<version>${project.version}</version>
+			<type>bundle</type>
+		</dependency>
+ 
+		<dependency>
+			<groupId>de.dfki.cos.basys.demonstrator.platform</groupId>
+			<artifactId>de.dfki.cos.basys.platform.runtime.component.device.stako</artifactId>
+			<version>${project.version}</version>
+			<type>bundle</type>
+		</dependency>
+		
+		<dependency>
+			<groupId>de.dfki.cos.basys.demonstrator.platform</groupId>
+			<artifactId>de.dfki.cos.basys.platform.runtime.component.device.tecs</artifactId>
+			<version>${project.version}</version>
+			<type>bundle</type>
+		</dependency>
+		
+		<dependency>
+			<groupId>de.dfki.cos.basys.demonstrator.device</groupId>
+			<artifactId>de.dfki.cos.basys.demonstrator.device.button</artifactId>
+			<version>${project.version}</version>
+			<type>bundle</type>
+		</dependency>
+		
+		<dependency>
+			<groupId>de.dfki.cos.basys.demonstrator.device</groupId>
+			<artifactId>de.dfki.cos.basys.demonstrator.device.festo</artifactId>
+			<version>${project.version}</version>
+			<type>bundle</type>
+		</dependency>		
+		
+		<dependency>
+			<groupId>de.dfki.cos.basys.demonstrator.device</groupId>
+			<artifactId>de.dfki.cos.basys.demonstrator.device.hybrit</artifactId>
+			<version>${project.version}</version>
+			<type>bundle</type>
+		</dependency>		
+		
+		<dependency>
+			<groupId>de.dfki.cos.basys.demonstrator.device</groupId>
+			<artifactId>de.dfki.cos.basys.demonstrator.device.laser</artifactId>
+			<version>${project.version}</version>
+			<type>bundle</type>
+		</dependency>		
+		
+		<dependency>
+			<groupId>de.dfki.cos.basys.demonstrator.device</groupId>
+			<artifactId>de.dfki.cos.basys.demonstrator.device.mirrest</artifactId>
+			<version>${project.version}</version>
+			<type>bundle</type>
+		</dependency>
+		
+	</dependencies>
+
+</project>

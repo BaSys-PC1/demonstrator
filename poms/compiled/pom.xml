@@ -18,7 +18,7 @@
   <packaging>pom</packaging>
 
   <properties>
-	<version.basys.common>0.2.0</version.basys.common>
+	<version.basys.common>0.2.1</version.basys.common>
 	<version.basys.platform>0.1.1-SNAPSHOT</version.basys.platform>
   </properties>
   
