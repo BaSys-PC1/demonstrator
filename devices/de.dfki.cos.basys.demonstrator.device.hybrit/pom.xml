@@ -25,14 +25,14 @@
 
 		<dependency>
 			<groupId>de.dfki.cos.basys.demonstrator.platform</groupId>
-			<artifactId>de.dfki.cos.basys.platform.runtime.component.device.tecs</artifactId>
-			<version>${version.basys.platform}</version>
+			<artifactId>de.dfki.cos.basys.platform.runtime.component.device.tecs</artifactId>			
+			<version>${project.version}</version>
 		</dependency>
 		
 		<dependency>
 			<groupId>de.dfki.cos.basys.demonstrator.wrapper-bundle-settings</groupId>
-			<artifactId>de.dfki.iui.hue-api</artifactId>
-			<version>0.1.1-SNAPSHOT</version>
+			<artifactId>de.dfki.iui.hue-api</artifactId>			
+			<version>${project.version}</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.json/json -->
