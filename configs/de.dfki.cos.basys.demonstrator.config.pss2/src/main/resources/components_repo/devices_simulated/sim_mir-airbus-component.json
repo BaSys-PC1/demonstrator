@@ -1,0 +1,17 @@
+{
+  "eClass" : "http://www.dfki.de/iui/basys/model/component#//ComponentConfiguration",
+  "componentCategory" : "DEVICE_COMPONENT",
+  "componentId" : "tbd",
+  "componentName" : "Airbus MiR 200 (Sim)",
+  "componentImplementationJavaClass" : "de.dfki.iui.basys.demonstrator.device.mirrest.MirRestComponent",
+  "inChannelName" : "tbd#in",
+  "outChannelName" : "tbd#out",
+  "externalConnectionString" : "http://robot-mir-01.mrk40.dfki.lan",
+  "properties" : [ {
+    "key" : "auth",
+    "value" : "YWRtaW46OGM2OTc2ZTViNTQxMDQxNWJkZTkwOGJkNGRlZTE1ZGZiMTY3YTljODczZmM0YmI4YTgxZjZmMmFiNDQ4YTkxOA=="
+  },{
+    "key" : "simulated",
+    "value" : "true"
+  }]
+}

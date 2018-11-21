@@ -1,0 +1,17 @@
+{
+  "eClass" : "http://www.dfki.de/iui/basys/model/component#//ComponentConfiguration",
+  "componentCategory" : "DEVICE_COMPONENT",
+  "componentId" : "tbd",
+  "componentName" : "My Smartwatch (Sim)",
+  "componentImplementationJavaClass" : "de.dfki.iui.basys.demonstrator.device.hybrit.SmartWatchComponent",
+  "inChannelName" : "tbd#in",
+  "outChannelName" : "tbd#out",
+  "externalConnectionString" : "tecs.tcp://10.250.6.13:9030",
+  "properties" : [ {
+    "key" : "ps-uri",
+    "value" : "tecs-ps://smartwatch-lg-3691@10.250.6.15:9000"
+  },{
+    "key" : "simulated",
+    "value" : "true"
+  }]
+}
