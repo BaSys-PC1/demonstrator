@@ -25,9 +25,16 @@
 
 		<dependency>
 			<groupId>de.dfki.cos.basys.platform.runtime</groupId>
-			<artifactId>de.dfki.cos.basys.platform.runtime.component</artifactId>
+			<artifactId>de.dfki.cos.basys.platform.runtime.component.device.rest</artifactId>
 			<version>${version.basys.platform}</version>
 		</dependency>
+
+		<dependency>
+			<groupId>de.dfki.cos.basys.common</groupId>
+			<artifactId>de.dfki.cos.basys.common.mirrestclient</artifactId>
+			<version>0.2.2-SNAPSHOT</version>
+		</dependency>
+
 
 		<!-- comment to remove all imported (non-local) bundles from your compilation 
 			classpath -->
