@@ -230,4 +230,7 @@
     </capabilityApplications>
     <role href="model.topology#_hx68AOHHEeieRbude1ENJg"/>
   </resourceInstances>
+  <resourceInstances id="_2s80wO5aEeiMDIqI5-KD3Q" name="My Smartwatch" serialNumber="555844">
+    <resourceType href="model.resourcetype#_oh3PEe5aEeiMDIqI5-KD3Q"/>
+  </resourceInstances>
 </resourceinstance:ResourceInstanceRepository>

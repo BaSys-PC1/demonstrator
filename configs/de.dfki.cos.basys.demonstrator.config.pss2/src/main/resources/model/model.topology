@@ -101,6 +101,8 @@
       <equipmentModules id="_wDUpROHAEeieRbude1ENJg" name="Mobile Lifter">
         <assignedResourceInstance href="model.resourceinstance#_rnjBgOHAEeieRbude1ENJg"/>
       </equipmentModules>
+      <equipmentModules xsi:type="topology:AGVStation" id="_OeDfBe5GEeiwXpX4q8WAnQ" name="EntryPosition"/>
+      <equipmentModules xsi:type="topology:AGVStation" id="_PVRa5e5GEeiwXpX4q8WAnQ" name="ColaStation"/>
     </areas>
   </sites>
 </topology:Enterprise>

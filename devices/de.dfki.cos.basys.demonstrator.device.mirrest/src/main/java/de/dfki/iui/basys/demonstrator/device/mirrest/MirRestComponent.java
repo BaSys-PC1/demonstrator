@@ -26,6 +26,7 @@ public class MirRestComponent extends DeviceComponent {
 	
 	public MirRestComponent(ComponentConfiguration config) {
 		super(config);
+		resetOnComplete = true;
 	}
 	
 	@Override
@@ -37,31 +38,37 @@ public class MirRestComponent extends DeviceComponent {
 	@Override
 	protected UnitConfiguration translateCapabilityRequest(CapabilityRequest req) {
 
+		// Recipe No. 1 is mapped to gotoSymbolicPosition
+		// Recipe No. 2 is mapped to enqueueMissionInstanceByName
+		
 		UnitConfiguration config = new UnitConfiguration();
 
 		CapabilityVariant<?> c = req.getCapabilityVariant();
 		TopologyElement te = null;
 		if (c.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getMoveToLocation())) {
 			te = ((MoveToLocation) c.getCapability()).getTargetLocation();
+			config.setRecipe(1);
+			config.setPayload(te);
 		}
 
 		if (c.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getTransport())) {
 			LogisticsCapabilityVariant variant = (LogisticsCapabilityVariant) c;
 			te = variant.getAppliedOn().get(0);
+			config.setRecipe(1);
+			config.setPayload(te);
+		}
+		
+		// TODO recipe 2		
+		if (false) {
+			String missionName = "";
+			config.setRecipe(2);
+			config.setPayload(missionName);
 		}
 
 		config.setPayload(te);
 		return config;
 	}
 	
-	@Override
-	public void activate(ComponentContext context) throws ComponentException {
-		super.activate(context);
-		
-	
-	}
-
-
 	@Override
 	public void onResetting() {
 		Status status = client.setRobotStatus(MiRState.READY);
@@ -70,13 +77,20 @@ public class MirRestComponent extends DeviceComponent {
 	
 	@Override
 	public void onStarting() {		
-		TopologyElement targetElement = ((TopologyElement) getUnitConfig().getPayload());
-		LOGGER.info("Moving to position: " + targetElement.getName());
-		try {
-			currentMission = client.gotoSymbolicPosition(targetElement.getName());
-		} catch (Exception e) {
-			e.printStackTrace();
-			stop();
+		int recipe = getUnitConfig().getRecipe();
+		
+		if (recipe == 1) {
+			TopologyElement targetElement = ((TopologyElement) getUnitConfig().getPayload());
+			LOGGER.info("Moving to position: " + targetElement.getName());
+			try {
+				currentMission = client.gotoSymbolicPosition(targetElement.getName());
+			} catch (Exception e) {
+				e.printStackTrace();
+				stop();
+			}
+		} else if (recipe == 2) {
+			String missionName = ((String) getUnitConfig().getPayload());
+			currentMission = client.enqueueMissionInstanceByName(missionName);
 		}
 	}
 	
@@ -93,12 +107,17 @@ public class MirRestComponent extends DeviceComponent {
 					break;
 				case "executing":
 					break;
-				case "finished":
+				case "done":
 					executing=false;
 					break;
 				case "failed":
-					executing= false;
+					executing=false;
 					setErrorCode(1);
+					stop();
+					break;
+				case "aborted":
+					executing=false;
+					setErrorCode(2);
 					stop();
 					break;
 				default:

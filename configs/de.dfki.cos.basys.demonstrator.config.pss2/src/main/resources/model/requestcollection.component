@@ -125,4 +125,7 @@
       <capability xsi:type="capability:InteractionCapability" id="_pWLoxGsYEeixZrynCv8ohQ" topic="delivery"/>
     </capabilityVariant>
   </componentRequests>
+  <componentRequests xsi:type="component:CapabilityRequest">
+    <capabilityVariant xsi:type="resourceinstance:GeneralCapabilityVariant" id="_6-GnQ-5iEeizGfoqKGHkYw"/>
+  </componentRequests>
 </component:ComponentRequestCollection>

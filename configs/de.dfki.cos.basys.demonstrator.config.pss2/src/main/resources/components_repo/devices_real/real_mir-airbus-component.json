@@ -2,7 +2,7 @@
   "eClass" : "http://www.dfki.de/iui/basys/model/component#//ComponentConfiguration",
   "componentCategory" : "DEVICE_COMPONENT",
   "componentId" : "_rnjBgOHAEeieRbude1ENJg",
-  "componentName" : "Airbus MiR 200 (Sim)",
+  "componentName" : "Airbus MiR 200",
   "componentImplementationJavaClass" : "de.dfki.iui.basys.demonstrator.device.mirrest.MirRestComponent",
   "inChannelName" : "_rnjBgOHAEeieRbude1ENJg#in",
   "outChannelName" : "_rnjBgOHAEeieRbude1ENJg#out",
@@ -10,8 +10,5 @@
   "properties" : [ {
     "key" : "auth",
     "value" : "YWRtaW46OGM2OTc2ZTViNTQxMDQxNWJkZTkwOGJkNGRlZTE1ZGZiMTY3YTljODczZmM0YmI4YTgxZjZmMmFiNDQ4YTkxOA=="
-  },{
-    "key" : "simulated",
-    "value" : "true"
   }]
 }

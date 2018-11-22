@@ -1,8 +1,13 @@
 package de.dfki.iui.basys.demonstrator.device.hybrit;
 
+import java.net.URI;
+
 import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TProtocol;
 
+import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
+import de.dfki.iui.basys.model.domain.capability.MoveToLocation;
+import de.dfki.iui.basys.model.domain.resourceinstance.CapabilityVariant;
 import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.model.runtime.component.ResponseStatus;
@@ -19,11 +24,11 @@ import de.dfki.tecs.Event;
 import de.dfki.tecs.ps.PSClient;
 import de.dfki.tecs.ps.PSFactory;
 
-public class SmartWatchComponent extends TecsDeviceComponent {
+public class SmartwatchComponent extends TecsDeviceComponent {
 
-	private SmartWatchTECS client;
+	private SmartwatchTECS client;
 
-	public SmartWatchComponent(ComponentConfiguration config) {
+	public SmartwatchComponent(ComponentConfiguration config) {
 		super(config);
 		// TODO Auto-generated constructor stub
 	}
@@ -33,19 +38,30 @@ public class SmartWatchComponent extends TecsDeviceComponent {
 		super.connectToExternal();
 		String psUri = componentConfig.getProperty("ps-uri").getValue();
 
-		client = new SmartWatchTECS(protocol, psUri);
+		client = new SmartwatchTECS(protocol, psUri);
 	}
 
 	@Override
 	protected UnitConfiguration translateCapabilityRequest(CapabilityRequest req) {
 		// TODO Auto-generated method stub
-
+		
+		UnitConfiguration config = new UnitConfiguration();
+		
+		CapabilityVariant<?> c = req.getCapabilityVariant();
+		if (c.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getQAVisualisationCapability())) {
+			config.setPayload("hallo");
+		}
+		
 		// falls Provisioning --> übersetzte nach HumanTaskDTO
-		// HumanTaskDTO task = new HumanTaskDTO("businessKey","operationId","description for worker","clientId");
+		if (c.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getMoveToLocation())) {
+			HumanTaskDTO task = new HumanTaskDTO("businessKey","operationId","description for worker","smartwatch-lg-3691");
+			config.setPayload(task);
+		}
+		
 		
 		// falls InteractionCapability --> nehm topic String
 
-		return null;
+		return config;
 	}
 
 	@Override
@@ -90,13 +106,13 @@ public class SmartWatchComponent extends TecsDeviceComponent {
 		sendComponentResponse(ResponseStatus.NOT_OK, getErrorCode());
 	}
 
-	public class SmartWatchTECS extends Smartwatch.Client implements DeviceStatus {
+	public class SmartwatchTECS extends Smartwatch.Client implements DeviceStatus {
 		private final TProtocol prot;
 		private PSClient psClient;
 		private Thread psThread;
 		private CommandState cmdState;
 
-		public SmartWatchTECS(TProtocol prot, String psUri) {
+		public SmartwatchTECS(TProtocol prot, String psUri) {
 			super(prot);
 			this.prot = prot;
 
@@ -106,7 +122,7 @@ public class SmartWatchComponent extends TecsDeviceComponent {
 		private void init(String psUri) {
 			cmdState = CommandState.READY;
 
-			psClient = PSFactory.createPSClient(psUri);
+			psClient = PSFactory.createPSClient(URI.create(psUri));
 			psClient.subscribe("CommandStateEvent");
 			psClient.connect();
 
@@ -114,8 +130,7 @@ public class SmartWatchComponent extends TecsDeviceComponent {
 				while (true) {
 					while (psClient.canRecv()) {
 						Event event = psClient.recv();
-						LOGGER.debug("Received event of type {} on channel {} from {}.", event.getEtype(),
-								event.getChannel(), event.getSource());
+						LOGGER.debug("Received event of type {} on channel {} from {}.", event.getEtype(), event.getChannel(), event.getSource());
 						if (event.is("CommandStateEvent")) {
 							CommandStateEvent cse = new CommandStateEvent();
 							event.parseData(cse);

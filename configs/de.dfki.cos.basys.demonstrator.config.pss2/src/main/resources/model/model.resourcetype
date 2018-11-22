@@ -416,5 +416,6 @@
         </pattern>
       </capabilityAssertions>
     </resourceTypes>
+    <resourceTypes xsi:type="resourcetype:MovableTool" id="_oh3PEe5aEeiMDIqI5-KD3Q" name="Smartwatch"/>
   </catalogues>
 </resourcetype:ResourceTypeCatalogueCollection>
