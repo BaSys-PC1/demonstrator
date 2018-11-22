@@ -32,6 +32,10 @@
       </equipmentModules>
       <equipmentModules xsi:type="topology:AGVStation" id="_OeDfBe5GEeiwXpX4q8WAnQ" name="EntryPosition"/>
       <equipmentModules xsi:type="topology:AGVStation" id="_PVRa5e5GEeiwXpX4q8WAnQ" name="ColaStation"/>
+      <equipmentModules id="_0PwApO6pEeiRCMnnQ5xACA" name="Cordless Screwdriver">
+        <assignedResourceType href="model.resourcetype#_cFpPVOG_EeieRbude1ENJg"/>
+        <assignedResourceInstance href="model.resourceinstance#_hqO5QOG_EeieRbude1ENJg"/>
+      </equipmentModules>
     </areas>
   </sites>
 </topology:Enterprise>

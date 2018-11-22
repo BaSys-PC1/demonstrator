@@ -6,8 +6,6 @@
       <capabilityAssertion href="model.resourcetype#_jNgp8FNhEeibbdo05KXxGQ"/>
       <capabilityVariants xsi:type="resourceinstance:ManufacturingCapabilityVariant" id="_gTTk01-lEeixtLE-b5nbbQ" name="Apply light blue cap">
         <capability xsi:type="capability:PickAndPlace" id="_xio67l8yEeiUo-65_7rTBT" loadCarrierUnit="MATERIAL"/>
-        <appliedOn xsi:type="productdefinition:MaterialEntry" href="model.productdefinition#_IpqbzV29EeixDOGCyjgf_g"/>
-        <appliedOn xsi:type="productdefinition:AssemblyGroupEntry" href="model.productdefinition#_IpqbzF29EeixDOGCyjgf_g"/>
       </capabilityVariants>
     </capabilityApplications>
   </resourceInstances>
@@ -32,7 +30,6 @@
       <capabilityAssertion href="model.resourcetype#_jNg99FNhEeibbdo05KXzGQ"/>
       <capabilityVariants xsi:type="resourceinstance:ManufacturingCapabilityVariant" id="_gTUy-F-lEeixtLE-b5nbbQ" name="Inspect radial seal ring">
         <capability xsi:type="capability:Inspect" id="_eSUpwl-TEeioxNEjr9hsyQ"/>
-        <appliedOn xsi:type="productdefinition:AssemblyGroupEntry" href="model.productdefinition#_IphR0F29EeixDOGCyjgf_g"/>
       </capabilityVariants>
     </capabilityApplications>
   </resourceInstances>
@@ -146,6 +143,7 @@
   </resourceInstances>
   <resourceInstances id="_hqO5QOG_EeieRbude1ENJg" name="My Akkuschrauber" serialNumber="6658744">
     <resourceType href="model.resourcetype#_cFpPVOG_EeieRbude1ENJg"/>
+    <role href="model.topology#_0PwApO6pEeiRCMnnQ5xACA"/>
   </resourceInstances>
   <resourceInstances id="_rrDawOG7EeieRbude1ENJg" name="My MobiPick" serialNumber="66589">
     <resourceType href="model.resourcetype#_eRh05OG7EeieRbude1ENJg"/>

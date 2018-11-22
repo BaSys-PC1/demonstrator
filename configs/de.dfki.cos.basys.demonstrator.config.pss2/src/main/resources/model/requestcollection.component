@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<component:ComponentRequestCollection xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:capability="http://www.dfki.de/iui/basys/model/capability" xmlns:component="http://www.dfki.de/iui/basys/model/component" xmlns:resourceinstance="http://www.dfki.de/iui/basys/model/resourceinstance" xmlns:topology="http://www.dfki.de/iui/basys/model/topology">
+<component:ComponentRequestCollection xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:capability="http://www.dfki.de/iui/basys/model/capability" xmlns:component="http://www.dfki.de/iui/basys/model/component" xmlns:productdefinition="http://www.dfki.de/iui/basys/model/productdefinition" xmlns:resourceinstance="http://www.dfki.de/iui/basys/model/resourceinstance" xmlns:topology="http://www.dfki.de/iui/basys/model/topology">
   <componentRequests xsi:type="component:ChangeModeRequest" mode="CHANGE_OVER"/>
   <componentRequests xsi:type="component:ChangeModeRequest" mode="PRODUCTION"/>
   <componentRequests xsi:type="component:ChangeModeRequest" mode="SIMULATION"/>
@@ -13,50 +13,94 @@
     </capabilityVariant>
   </componentRequests>
   <componentRequests xsi:type="component:CapabilityRequest">
-    <capabilityVariant xsi:type="resourceinstance:GeneralCapabilityVariant" id="_HScaA-6gEei8pumxNykfZQ" name="Move To Logistikbahnhof">
-      <capability xsi:type="capability:MoveToLocation" id="_H_WjaO6gEei8pumxNykfZQ">
+    <capabilityVariant xsi:type="resourceinstance:GeneralCapabilityVariant" id="_HScaA-6gEei8aumxNykfZQ" name="Move To Logistikbahnhof">
+      <capability xsi:type="capability:MoveToLocation" id="_H_WjaO7gEei8pumxNykfZQ">
         <targetLocation xsi:type="topology:AGVStation" href="model.topology#_RJOKleGqEeieRbude1ENJg"/>
       </capability>
     </capabilityVariant>
   </componentRequests>
   <componentRequests xsi:type="component:CapabilityRequest">
-    <capabilityVariant xsi:type="resourceinstance:GeneralCapabilityVariant" id="_HScaA-6gEei8pumxNykfZQ" name="Move To MiR200-Bahnhof">
-      <capability xsi:type="capability:MoveToLocation" id="_H_WjaO6gEei8pumxNykfZQ" name="">
+    <capabilityVariant xsi:type="resourceinstance:GeneralCapabilityVariant" id="_HScaA-6gEei5pumxNykfZQ" name="Move To MiR200-Bahnhof">
+      <capability xsi:type="capability:MoveToLocation" id="_H_WjaO6gtti8pumxNykfZQ" name="">
         <targetLocation xsi:type="topology:AGVStation" href="model.topology#_f9hsZeGqEeieRbude1ENJg"/>
       </capability>
     </capabilityVariant>
   </componentRequests>
   <componentRequests xsi:type="component:CapabilityRequest">
-    <capabilityVariant xsi:type="resourceinstance:GeneralCapabilityVariant" id="_HScaA-6gEei8pumxNykfZQ" name="Move To Mobipick-Bahnhof">
-      <capability xsi:type="capability:MoveToLocation" id="_H_WjaO6gEei8pumxNykfZQ">
+    <capabilityVariant xsi:type="resourceinstance:GeneralCapabilityVariant" id="_HScaA-6gEei8pumxNgkfZQ" name="Move To Mobipick-Bahnhof">
+      <capability xsi:type="capability:MoveToLocation" id="_H_WjaO6gEep8pumxNykfZQ">
         <targetLocation xsi:type="topology:AGVStation" href="model.topology#_cQgoFeGqEeieRbude1ENJg"/>
       </capability>
     </capabilityVariant>
   </componentRequests>
   <componentRequests xsi:type="component:CapabilityRequest">
-    <capabilityVariant xsi:type="resourceinstance:GeneralCapabilityVariant" id="_HScaA-6gEei8pumxNykfZQ" name="Move To Raceway A">
-      <capability xsi:type="capability:MoveToLocation" id="_H_WjaO6gEei8pumxNykfZQ">
+    <capabilityVariant xsi:type="resourceinstance:GeneralCapabilityVariant" id="_HScaA-6gE4i8pumxNykfZQ" name="Move To Raceway A">
+      <capability xsi:type="capability:MoveToLocation" id="_H_WjaO6gEei8tumxNykfZQ">
         <targetLocation xsi:type="topology:AGVStation" href="model.topology#_2yVg9eGqEeieRbude1ENJg"/>
       </capability>
     </capabilityVariant>
   </componentRequests>
-  <componentRequests xsi:type="component:CapabilityRequest">
-    <capabilityVariant xsi:type="resourceinstance:GeneralCapabilityVariant" id="_HScaA-6gEei8pumxNykfZQ">
-      <capability xsi:type="capability:MoveToLocation" id="_H_WjaO6gEei8pumxNykfZQ"/>
-    </capabilityVariant>
-  </componentRequests>
   <componentRequests xsi:type="component:CapabilityRequest" componentId="">
-    <capabilityVariant xsi:type="resourceinstance:GeneralCapabilityVariant" id="_HScaA-6gEei8pumxNykfZQ" name="Move To Robotable-Bahnhof">
-      <capability xsi:type="capability:MoveToLocation" id="_H_WjaO6gEei8pumxNykfZQ" name="">
+    <capabilityVariant xsi:type="resourceinstance:GeneralCapabilityVariant" id="_HScaA-6gkei8pumxNykfZQ" name="Move To Robotable-Bahnhof">
+      <capability xsi:type="capability:MoveToLocation" id="_H_WOaO6gEei8pumxNykfZQ" name="">
         <targetLocation xsi:type="topology:AGVStation" href="model.topology#_awb8deGqEeieRbude1ENJg"/>
       </capability>
     </capabilityVariant>
   </componentRequests>
   <componentRequests xsi:type="component:CapabilityRequest">
-    <capabilityVariant xsi:type="resourceinstance:GeneralCapabilityVariant" id="_HScaA-6gEei8pumxNykfZQ" name="Move To Werkzeugtisch">
-      <capability xsi:type="capability:MoveToLocation" id="_H_WjaO6gEei8pumxNykfZQ" name="">
+    <capabilityVariant xsi:type="resourceinstance:GeneralCapabilityVariant" id="_HSlaA-6gEei8pumxNykfZQ" name="Move To Werkzeugtisch">
+      <capability xsi:type="capability:MoveToLocation" id="_H_WjaO6gEii8pumxNykfZQ" name="">
         <targetLocation xsi:type="topology:AGVStation" href="model.topology#_5GIvleGqEeieRbude1ENJg"/>
       </capability>
     </capabilityVariant>
+  </componentRequests>
+  <componentRequests xsi:type="component:CapabilityRequest">
+    <capabilityVariant xsi:type="resourceinstance:LogisticsCapabilityVariant" id="_D-l8Qu6jEei8I-ezQSuPCg" name="Raceways auf Tisch legen">
+      <capability xsi:type="capability:Provisioning" id="_Vp6HcO6jEeiRCMnnQ5xACA" loadCarrierUnit="MATERIAL"/>
+      <appliedOn xsi:type="topology:EquipmentModule" href="model.topology#_YR04EOHCEeieRbude1ENJg"/>
+    </capabilityVariant>
+  </componentRequests>
+  <componentRequests xsi:type="component:CapabilityRequest">
+    <capabilityVariant xsi:type="resourceinstance:LogisticsCapabilityVariant" binding="" id="_Psn3Yu6oEeiRCMnnQ5xACA" name="Logistiktisch zu Montageort">
+      <capability xsi:type="capability:Provisioning" id="_aSPV3e6pEeiRCMnnQ5xACA" loadCarrierUnit="TOOL"/>
+      <appliedOn xsi:type="topology:EquipmentModule" href="model.topology#_hx68AOHHEeieRbude1ENJg"/>
+      <appliedOn xsi:type="topology:AGVStation" href="model.topology#_2yVg9eGqEeieRbude1ENJg"/>
+    </capabilityVariant>
+  </componentRequests>
+  <componentRequests xsi:type="component:CapabilityRequest">
+    <capabilityVariant xsi:type="resourceinstance:LogisticsCapabilityVariant" id="_d91dwu6pEeiRCMnnQ5xACA" name="Robotisch zu Montageort">
+      <capability xsi:type="capability:Provisioning" id="_kVC3je6pEeiRCMnnQ5xACA" loadCarrierUnit="TOOL"/>
+      <appliedOn xsi:type="topology:EquipmentModule" href="model.topology#_hx68AOHHEeieRbude1ENJg"/>
+      <appliedOn xsi:type="topology:AGVStation" href="model.topology#_2yVg9eGqEeieRbude1ENJg"/>
+    </capabilityVariant>
+  </componentRequests>
+  <componentRequests xsi:type="component:CapabilityRequest">
+    <capabilityVariant xsi:type="resourceinstance:LogisticsCapabilityVariant" binding="" id="_n3Fa0u6pEeiRCMnnQ5xACA" name="Schrauber zu Montageort">
+      <capability xsi:type="capability:Provisioning" id="_rz7q_e6pEeiRCMnnQ5xACA" loadCarrierUnit="TOOL"/>
+      <appliedOn xsi:type="topology:EquipmentModule" href="model.topology#_0PwApO6pEeiRCMnnQ5xACA"/>
+      <appliedOn xsi:type="topology:AGVStation" href="model.topology#_2yVg9eGqEeieRbude1ENJg"/>
+    </capabilityVariant>
+  </componentRequests>
+  <componentRequests xsi:type="component:CapabilityRequest">
+    <capabilityVariant xsi:type="resourceinstance:ManufacturingCapabilityVariant" id="_IkDAQe6qEeiRCMnnQ5xACA" name="Raceway anhalten">
+      <capability xsi:type="capability:Provisioning" id="_L4Nfze6qEeiRCMnnQ5xACA" loadCarrierUnit="MATERIAL"/>
+      <appliedOn xsi:type="productdefinition:MaterialEntry" href="model.productdefinition#_9rG-geHJEeieRbude1ENJg"/>
+    </capabilityVariant>
+  </componentRequests>
+  <componentRequests xsi:type="component:CapabilityRequest">
+    <capabilityVariant xsi:type="resourceinstance:LogisticsCapabilityVariant" id="_Y_zoEu6qEeiRCMnnQ5xACA" name="Schrauber entgegennehmen">
+      <capability xsi:type="capability:NotifyWorker" id="_b280bu6qEeiRCMnnQ5xACA" name="" content="Schrauber nehmen"/>
+      <appliedOn xsi:type="topology:EquipmentModule" href="model.topology#_0PwApO6pEeiRCMnnQ5xACA"/>
+    </capabilityVariant>
+  </componentRequests>
+  <componentRequests xsi:type="component:CapabilityRequest">
+    <capabilityVariant xsi:type="resourceinstance:ManufacturingCapabilityVariant" id="_teerse6qEeiRCMnnQ5xACA" name="Raceway verschrauben">
+      <capability xsi:type="capability:Screwing" id="_uLfivO6qEeiRCMnnQ5xACA"/>
+      <appliedOn xsi:type="productdefinition:MaterialEntry" href="model.productdefinition#_9rG-geHJEeieRbude1ENJg"/>
+      <appliedOn xsi:type="productdefinition:MaterialEntry" href="model.productdefinition#_bgJlQe6nEeiRCMnnQ5xACA"/>
+    </capabilityVariant>
+  </componentRequests>
+  <componentRequests xsi:type="component:CapabilityRequest">
+    <capabilityVariant xsi:type="resourceinstance:LogisticsCapabilityVariant" id="_7nvscu6qEeiRCMnnQ5xACA" name="Feinpositionieren"/>
   </componentRequests>
 </component:ComponentRequestCollection>
