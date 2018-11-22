@@ -30,7 +30,7 @@ public class SmartwatchComponent extends TecsDeviceComponent {
 
 	public SmartwatchComponent(ComponentConfiguration config) {
 		super(config);
-		// TODO Auto-generated constructor stub
+		resetOnComplete = true;
 	}
 
 	@Override
