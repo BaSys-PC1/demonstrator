@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<component:ComponentRequestCollection xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:capability="http://www.dfki.de/iui/basys/model/capability" xmlns:component="http://www.dfki.de/iui/basys/model/component" xmlns:productdefinition="http://www.dfki.de/iui/basys/model/productdefinition" xmlns:resourceinstance="http://www.dfki.de/iui/basys/model/resourceinstance" xmlns:topology="http://www.dfki.de/iui/basys/model/topology">
+<component:ComponentRequestCollection xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:capability="http://www.dfki.de/iui/basys/model/capability" xmlns:component="http://www.dfki.de/iui/basys/model/component" xmlns:resourceinstance="http://www.dfki.de/iui/basys/model/resourceinstance" xmlns:topology="http://www.dfki.de/iui/basys/model/topology">
   <componentRequests xsi:type="component:ChangeModeRequest" mode="CHANGE_OVER"/>
   <componentRequests xsi:type="component:ChangeModeRequest" mode="PRODUCTION"/>
   <componentRequests xsi:type="component:ChangeModeRequest" mode="SIMULATION"/>
@@ -55,52 +55,58 @@
     </capabilityVariant>
   </componentRequests>
   <componentRequests xsi:type="component:CapabilityRequest">
-    <capabilityVariant xsi:type="resourceinstance:LogisticsCapabilityVariant" id="_D-l8Qu6jEei8I-ezQSuPCg" name="Raceways auf Tisch legen">
-      <capability xsi:type="capability:Provisioning" id="_Vp6HcO6jEeiRCMnnQ5xACA" loadCarrierUnit="MATERIAL"/>
-      <appliedOn xsi:type="topology:EquipmentModule" href="model.topology#_YR04EOHCEeieRbude1ENJg"/>
+    <capabilityVariant xsi:type="resourceinstance:HandlingCapabilityVariant" id="_6aTtsO8SEeiCkq8wQOcW2w" name="Raceways auf Tisch legen">
+      <capability xsi:type="capability:Buffering" id="_68JPcu8SEeiCkq8wQOcW2w"/>
+      <object href="model.productdefinition#_9rG-geHJEeieRbude1ENJg"/>
+      <to href="model.topology#_YR04EOHCEeieRbude1ENJg"/>
     </capabilityVariant>
   </componentRequests>
   <componentRequests xsi:type="component:CapabilityRequest">
     <capabilityVariant xsi:type="resourceinstance:LogisticsCapabilityVariant" binding="" id="_Psn3Yu6oEeiRCMnnQ5xACA" name="Logistiktisch zu Montageort">
-      <capability xsi:type="capability:Provisioning" id="_aSPV3e6pEeiRCMnnQ5xACA" loadCarrierUnit="TOOL"/>
+      <capability xsi:type="capability:Transport" id="_NVtAv-8TEeiCkq8wQOcW2w" loadCarrierUnit="TOOL"/>
       <appliedOn xsi:type="topology:EquipmentModule" href="model.topology#_hx68AOHHEeieRbude1ENJg"/>
       <appliedOn xsi:type="topology:AGVStation" href="model.topology#_2yVg9eGqEeieRbude1ENJg"/>
     </capabilityVariant>
   </componentRequests>
   <componentRequests xsi:type="component:CapabilityRequest">
     <capabilityVariant xsi:type="resourceinstance:LogisticsCapabilityVariant" id="_d91dwu6pEeiRCMnnQ5xACA" name="Robotisch zu Montageort">
-      <capability xsi:type="capability:Provisioning" id="_kVC3je6pEeiRCMnnQ5xACA" loadCarrierUnit="TOOL"/>
+      <capability xsi:type="capability:Transport" id="_SAyPz-8TEeiCkq8wQOcW2w" loadCarrierUnit="TOOL"/>
       <appliedOn xsi:type="topology:EquipmentModule" href="model.topology#_hx68AOHHEeieRbude1ENJg"/>
       <appliedOn xsi:type="topology:AGVStation" href="model.topology#_2yVg9eGqEeieRbude1ENJg"/>
     </capabilityVariant>
   </componentRequests>
   <componentRequests xsi:type="component:CapabilityRequest">
     <capabilityVariant xsi:type="resourceinstance:LogisticsCapabilityVariant" binding="" id="_n3Fa0u6pEeiRCMnnQ5xACA" name="Schrauber zu Montageort">
-      <capability xsi:type="capability:Provisioning" id="_rz7q_e6pEeiRCMnnQ5xACA" loadCarrierUnit="TOOL"/>
+      <capability xsi:type="capability:Transport" id="_WnQrr-8TEeiCkq8wQOcW2w"/>
       <appliedOn xsi:type="topology:EquipmentModule" href="model.topology#_0PwApO6pEeiRCMnnQ5xACA"/>
       <appliedOn xsi:type="topology:AGVStation" href="model.topology#_2yVg9eGqEeieRbude1ENJg"/>
     </capabilityVariant>
   </componentRequests>
   <componentRequests xsi:type="component:CapabilityRequest">
-    <capabilityVariant xsi:type="resourceinstance:ManufacturingCapabilityVariant" id="_IkDAQe6qEeiRCMnnQ5xACA" name="Raceway anhalten">
-      <capability xsi:type="capability:Provisioning" id="_L4Nfze6qEeiRCMnnQ5xACA" loadCarrierUnit="MATERIAL"/>
-      <appliedOn xsi:type="productdefinition:MaterialEntry" href="model.productdefinition#_9rG-geHJEeieRbude1ENJg"/>
+    <capabilityVariant xsi:type="resourceinstance:HandlingCapabilityVariant" id="_boVY1O8TEeiCkq8wQOcW2w" name="Raceway an Montageort führen">
+      <capability xsi:type="capability:Guiding" id="_cLzSZ-8TEeiCkq8wQOcW2w"/>
+      <object href="model.productdefinition#_9rG-geHJEeieRbude1ENJg"/>
+      <from href="model.topology#_YR04EOHCEeieRbude1ENJg"/>
+      <to href="model.topology#_bDfJYuGsEeieRbude1ENJg"/>
+    </capabilityVariant>
+  </componentRequests>
+  <componentRequests xsi:type="component:CapabilityRequest">
+    <capabilityVariant xsi:type="resourceinstance:AssemblyCapabilityVariant" id="_cun_le8gEeixOO_gaDuDtQ" name="Raceway verschrauben">
+      <capability xsi:type="capability:Screwing" id="_uLfivO6qEeiRCMnnQ5xACA"/>
+      <object href="model.productdefinition#_9rG-geHJEeieRbude1ENJg"/>
     </capabilityVariant>
   </componentRequests>
   <componentRequests xsi:type="component:CapabilityRequest">
     <capabilityVariant xsi:type="resourceinstance:LogisticsCapabilityVariant" id="_Y_zoEu6qEeiRCMnnQ5xACA" name="Schrauber entgegennehmen">
-      <capability xsi:type="capability:NotifyWorker" id="_b280bu6qEeiRCMnnQ5xACA" name="" content="Schrauber nehmen"/>
+      <capability xsi:type="capability:Take" id="_97rvmu8iEeiD38uMs-vpkQ"/>
       <appliedOn xsi:type="topology:EquipmentModule" href="model.topology#_0PwApO6pEeiRCMnnQ5xACA"/>
     </capabilityVariant>
   </componentRequests>
   <componentRequests xsi:type="component:CapabilityRequest">
-    <capabilityVariant xsi:type="resourceinstance:ManufacturingCapabilityVariant" id="_teerse6qEeiRCMnnQ5xACA" name="Raceway verschrauben">
-      <capability xsi:type="capability:Screwing" id="_uLfivO6qEeiRCMnnQ5xACA"/>
-      <appliedOn xsi:type="productdefinition:MaterialEntry" href="model.productdefinition#_9rG-geHJEeieRbude1ENJg"/>
-      <appliedOn xsi:type="productdefinition:MaterialEntry" href="model.productdefinition#_bgJlQe6nEeiRCMnnQ5xACA"/>
+    <capabilityVariant xsi:type="resourceinstance:HandlingCapabilityVariant" id="_Ork0NO8jEeiD38uMs-vpkQ">
+      <capability xsi:type="capability:PassingOn" id="_QE1GSO8jEeiD38uMs-vpkQ"/>
+      <object href="model.productdefinition#_9rG-geHJEeieRbude1ENJg"/>
+      <to href="model.topology#_bDfJYuGsEeieRbude1ENJg"/>
     </capabilityVariant>
-  </componentRequests>
-  <componentRequests xsi:type="component:CapabilityRequest">
-    <capabilityVariant xsi:type="resourceinstance:LogisticsCapabilityVariant" id="_7nvscu6qEeiRCMnnQ5xACA" name="Feinpositionieren"/>
   </componentRequests>
 </component:ComponentRequestCollection>
