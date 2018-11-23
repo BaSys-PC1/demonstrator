@@ -29,7 +29,7 @@
       <groupId>${wrapped.groupId}</groupId>
       <artifactId>${wrapped.artifactId}</artifactId>
       <version>${wrapped.version}</version>
-      <optional>true</optional>
+      <optional>false</optional>
     </dependency>
   </dependencies>
 

@@ -27,6 +27,8 @@ public class UrRpcComponent extends DeviceComponent {
 	public void connectToExternal() throws ComponentException {
 		super.connectToExternal();
 		client = new UrRpcClient(getConfig().getExternalConnectionString());
+		client.setCurrentRoutine(1);
+		LOGGER.info(client.getCurrentStatus().toString());
 	}
 	
 	@Override

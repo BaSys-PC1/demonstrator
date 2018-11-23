@@ -33,9 +33,14 @@ public class MobipickComponent extends RosDeviceComponent {
 	@Override
 	public void activate(ComponentContext context) throws ComponentException {	
 		super.activate(context);
+	}
+	
+	@Override
+	public void connectToExternal() throws ComponentException {
+		super.connectToExternal();
 		
 		client = new ActionClient(ros, "/mobipick/actor/plan_and_execute", "pbr_msgs/PlanAndExecuteAction");
-		client.initialize();		
+		client.initialize();
 	}
 	
 	@Override
