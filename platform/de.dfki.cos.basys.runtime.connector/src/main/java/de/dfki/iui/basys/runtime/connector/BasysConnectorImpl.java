@@ -472,7 +472,7 @@ public class BasysConnectorImpl extends ServiceComponent implements BasysConnect
 					// Demo nach Deckel fügen beendet
 
 					try {
-						CapabilityVariant<?> variant = null;
+						CapabilityVariant<?, ?> variant = null;
 						if (msg.getCapType() == 1) {
 							variant = JsonUtils.fromString(jsonVariantLightBlue, CapabilityVariant.class);
 						} else if (msg.getCapType() == 2) {

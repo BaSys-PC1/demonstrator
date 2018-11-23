@@ -43,7 +43,7 @@ public class MirRestComponent extends DeviceComponent {
 		
 		UnitConfiguration config = new UnitConfiguration();
 
-		CapabilityVariant<?> c = req.getCapabilityVariant();
+		CapabilityVariant<?, ?> c = req.getCapabilityVariant();
 		TopologyElement te = null;
 		if (c.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getMoveToLocation())) {
 			te = ((MoveToLocation) c.getCapability()).getTargetLocation();
@@ -54,18 +54,18 @@ public class MirRestComponent extends DeviceComponent {
 		if (c.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getTransport())) {
 			LogisticsCapabilityVariant variant = (LogisticsCapabilityVariant) c;
 			te = variant.getAppliedOn().get(0);
-			config.setRecipe(1);
-			config.setPayload(te);
+			if (te.getId().equals("_hx68AOHHEeieRbude1ENJg")) { //Robotable
+				String missionName = getConfig().getProperty("missionName_Robotable").getValue();
+				config.setPayload(missionName);
+				config.setRecipe(2);
+			}
+			if (te.getId().equals("_YR04EOHCEeieRbude1ENJg")) { //Logistiktisch
+				String missionName = getConfig().getProperty("missionName_Logistiktisch").getValue();
+				config.setPayload(missionName);
+				config.setRecipe(2);
+			}
 		}
 		
-		// TODO recipe 2		
-		if (false) {
-			String missionName = "";
-			config.setRecipe(2);
-			config.setPayload(missionName);
-		}
-
-		config.setPayload(te);
 		return config;
 	}
 	
@@ -77,9 +77,7 @@ public class MirRestComponent extends DeviceComponent {
 	
 	@Override
 	public void onStarting() {		
-		int recipe = getUnitConfig().getRecipe();
-		
-		if (recipe == 1) {
+		if (getUnitConfig().getRecipe() == 1) {
 			TopologyElement targetElement = ((TopologyElement) getUnitConfig().getPayload());
 			LOGGER.info("Moving to position: " + targetElement.getName());
 			try {
@@ -88,7 +86,7 @@ public class MirRestComponent extends DeviceComponent {
 				e.printStackTrace();
 				stop();
 			}
-		} else if (recipe == 2) {
+		} else if (getUnitConfig().getRecipe() == 2) {
 			String missionName = ((String) getUnitConfig().getPayload());
 			currentMission = client.enqueueMissionInstanceByName(missionName);
 		}

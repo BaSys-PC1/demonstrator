@@ -47,14 +47,24 @@ public class SmartwatchComponent extends TecsDeviceComponent {
 		
 		UnitConfiguration config = new UnitConfiguration();
 		
-		CapabilityVariant<?> c = req.getCapabilityVariant();
+		CapabilityVariant<?, ?> c = req.getCapabilityVariant();
 		if (c.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getQAVisualisationCapability())) {
 			config.setPayload("hallo");
 		}
-		
-		// falls Provisioning --> übersetzte nach HumanTaskDTO
-		if (c.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getMoveToLocation())) {
-			HumanTaskDTO task = new HumanTaskDTO("businessKey","operationId","description for worker","smartwatch-lg-3691");
+		if (c.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getBuffering())) {
+			HumanTaskDTO task = new HumanTaskDTO("businessKey","operationId","Raceways bereitstellen","smartwatch-lg-3691");
+			config.setPayload(task);
+		}
+		if (c.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getScrewing())) {
+			HumanTaskDTO task = new HumanTaskDTO("businessKey","operationId","Raceway montieren","smartwatch-lg-3691");
+			config.setPayload(task);
+		}
+		if (c.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getTake())) {
+			HumanTaskDTO task = new HumanTaskDTO("businessKey","operationId","Akkuschrauber nehmen","smartwatch-lg-3691");
+			config.setPayload(task);
+		}
+		if (c.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getPassingOn())) {
+			HumanTaskDTO task = new HumanTaskDTO("businessKey","operationId","Raceway feinjustieren","smartwatch-lg-3691");
 			config.setPayload(task);
 		}
 		

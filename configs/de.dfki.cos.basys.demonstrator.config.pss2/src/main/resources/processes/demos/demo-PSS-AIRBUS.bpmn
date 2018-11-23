@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_1s0fg5a" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="1.15.1">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_1s0fg5a" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="1.15.1">
   <bpmn:process id="demo-PSS2-AIRBUS" name="demo-PSS2-AIRBUS" isExecutable="true">
     <bpmn:startEvent id="StartEvent_1">
       <bpmn:outgoing>SequenceFlow_03t2vvu</bpmn:outgoing>
@@ -30,7 +30,7 @@
   }</camunda:inputParameter>
         </camunda:inputOutput>
       </bpmn:extensionElements>
-      <bpmn:incoming>SequenceFlow_03t2vvu</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_1bmbwt8</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0uta2wl</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:sequenceFlow id="SequenceFlow_0uta2wl" sourceRef="Task_0o4paul" targetRef="ServiceTask_1yyysmz" />
@@ -87,7 +87,7 @@
       },
       "appliedOn" : [ {
         "eClass" : "http://www.dfki.de/iui/basys/model/topology#//EquipmentModule",
-        "$ref" : "http://localhost:8080/services/entity/_hx68AOHHEeieRbude1ENJg"
+        "$ref" : "http://localhost:8080/services/entity/_YR04EOHCEeieRbude1ENJg"
       }, {
         "eClass" : "http://www.dfki.de/iui/basys/model/topology#//AGVStation",
         "$ref" : "http://localhost:8080/services/entity/_2yVg9eGqEeieRbude1ENJg"
@@ -125,7 +125,7 @@
   }</camunda:inputParameter>
         </camunda:inputOutput>
       </bpmn:extensionElements>
-      <bpmn:incoming>SequenceFlow_0kny3l9</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_0rni5aj</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1nmfr0x</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:sequenceFlow id="SequenceFlow_1bbtzv3" sourceRef="ServiceTask_1sfawe0" targetRef="ExclusiveGateway_18j2pjp" />
@@ -191,11 +191,11 @@
   }</camunda:inputParameter>
         </camunda:inputOutput>
       </bpmn:extensionElements>
-      <bpmn:incoming>SequenceFlow_0weeg50</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_1e0hi6x</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1ng3mlh</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:sequenceFlow id="SequenceFlow_0dyki85" sourceRef="ExclusiveGateway_0e8zau5" targetRef="ServiceTask_1jyovw3" />
-    <bpmn:sequenceFlow id="SequenceFlow_0weeg50" sourceRef="ExclusiveGateway_0e8zau5" targetRef="ServiceTask_1dcjo9y" />
+    <bpmn:sequenceFlow id="SequenceFlow_0weeg50" sourceRef="ExclusiveGateway_0e8zau5" targetRef="IntermediateCatchEvent_02rowgb" />
     <bpmn:serviceTask id="ServiceTask_0mag8vr" name="Werker feinpositioniert Raceway für Endmontage" camunda:type="external" camunda:topic="BasysTask">
       <bpmn:extensionElements>
         <camunda:inputOutput>
@@ -247,25 +247,16 @@
   }</camunda:inputParameter>
         </camunda:inputOutput>
       </bpmn:extensionElements>
-      <bpmn:incoming>SequenceFlow_0wedr4m</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_1o3zawy</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1riyl4k</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:parallelGateway id="ExclusiveGateway_1gn6hv0">
-      <bpmn:incoming>SequenceFlow_0uxnazb</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_0wedr4m</bpmn:outgoing>
-    </bpmn:parallelGateway>
     <bpmn:sequenceFlow id="SequenceFlow_05pzchr" sourceRef="ServiceTask_08yxyda" targetRef="EndEvent_02hg0xv" />
-    <bpmn:sequenceFlow id="SequenceFlow_0uxnazb" sourceRef="ServiceTask_0mag8vr" targetRef="ExclusiveGateway_1gn6hv0" />
-    <bpmn:sequenceFlow id="SequenceFlow_0wedr4m" sourceRef="ExclusiveGateway_1gn6hv0" targetRef="ServiceTask_0n9l1c3" />
+    <bpmn:sequenceFlow id="SequenceFlow_0uxnazb" sourceRef="ServiceTask_0mag8vr" targetRef="IntermediateCatchEvent_1o1fc0w" />
     <bpmn:endEvent id="EndEvent_17aufrq">
       <bpmn:incoming>SequenceFlow_1ng3mlh</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="SequenceFlow_1ng3mlh" sourceRef="ServiceTask_1dcjo9y" targetRef="EndEvent_17aufrq" />
-    <bpmn:parallelGateway id="ExclusiveGateway_0un5dj4">
-      <bpmn:incoming>SequenceFlow_1riyl4k</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_1qi7l3h</bpmn:outgoing>
-    </bpmn:parallelGateway>
-    <bpmn:sequenceFlow id="SequenceFlow_1riyl4k" sourceRef="ServiceTask_0n9l1c3" targetRef="ExclusiveGateway_0un5dj4" />
+    <bpmn:sequenceFlow id="SequenceFlow_1riyl4k" sourceRef="ServiceTask_0n9l1c3" targetRef="IntermediateCatchEvent_17qj86r" />
     <bpmn:serviceTask id="ServiceTask_0od9kss" name="Werker montiert Raceway" camunda:type="external" camunda:topic="BasysTask">
       <bpmn:extensionElements>
         <camunda:inputOutput>
@@ -288,10 +279,9 @@
   }</camunda:inputParameter>
         </camunda:inputOutput>
       </bpmn:extensionElements>
-      <bpmn:incoming>SequenceFlow_1qi7l3h</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_083t488</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_10jl49s</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:sequenceFlow id="SequenceFlow_1qi7l3h" sourceRef="ExclusiveGateway_0un5dj4" targetRef="ServiceTask_0od9kss" />
     <bpmn:endEvent id="EndEvent_02hg0xv">
       <bpmn:incoming>SequenceFlow_05pzchr</bpmn:incoming>
     </bpmn:endEvent>
@@ -299,7 +289,7 @@
       <bpmn:incoming>SequenceFlow_10jl49s</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="SequenceFlow_10jl49s" sourceRef="ServiceTask_0od9kss" targetRef="EndEvent_0vv0tzw" />
-    <bpmn:sequenceFlow id="SequenceFlow_0kny3l9" sourceRef="ExclusiveGateway_18j2pjp" targetRef="ServiceTask_068rviy" />
+    <bpmn:sequenceFlow id="SequenceFlow_0kny3l9" sourceRef="ExclusiveGateway_18j2pjp" targetRef="IntermediateCatchEvent_02ia355" />
     <bpmn:serviceTask id="ServiceTask_1jyovw3" name="Reset RoboTable" camunda:type="external" camunda:topic="BasysTask">
       <bpmn:extensionElements>
         <camunda:inputOutput>
@@ -342,13 +332,58 @@
     <bpmn:sequenceFlow id="SequenceFlow_07kcfta" sourceRef="ServiceTask_1yyysmz" targetRef="ServiceTask_1sfawe0" />
     <bpmn:sequenceFlow id="SequenceFlow_1d1use8" sourceRef="ServiceTask_02v2fjb" targetRef="ServiceTask_08yxyda" />
     <bpmn:sequenceFlow id="SequenceFlow_0714xhu" sourceRef="ServiceTask_1jyovw3" targetRef="ServiceTask_1hkg0kh" />
-    <bpmn:sequenceFlow id="SequenceFlow_03t2vvu" sourceRef="StartEvent_1" targetRef="Task_0o4paul" />
+    <bpmn:sequenceFlow id="SequenceFlow_03t2vvu" sourceRef="StartEvent_1" targetRef="ServiceTask_113iee9" />
+    <bpmn:serviceTask id="ServiceTask_113iee9" name="Reset Smartwatch" camunda:type="external" camunda:topic="BasysTask">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="assignee">_2s80wO5aEeiMDIqI5-KD3Q</camunda:inputParameter>
+          <camunda:inputParameter name="command">{
+    "eClass" : "http://www.dfki.de/iui/basys/model/component#//CommandRequest",
+    "controlCommand" : "RESET"
+  }</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_03t2vvu</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1bmbwt8</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="SequenceFlow_1bmbwt8" sourceRef="ServiceTask_113iee9" targetRef="Task_0o4paul" />
+    <bpmn:intermediateCatchEvent id="IntermediateCatchEvent_02ia355">
+      <bpmn:incoming>SequenceFlow_0kny3l9</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0rni5aj</bpmn:outgoing>
+      <bpmn:timerEventDefinition id="TimerEventDefinition_16dqv2f">
+        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT1S</bpmn:timeDuration>
+      </bpmn:timerEventDefinition>
+    </bpmn:intermediateCatchEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_0rni5aj" sourceRef="IntermediateCatchEvent_02ia355" targetRef="ServiceTask_068rviy" />
+    <bpmn:intermediateCatchEvent id="IntermediateCatchEvent_02rowgb">
+      <bpmn:incoming>SequenceFlow_0weeg50</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1e0hi6x</bpmn:outgoing>
+      <bpmn:timerEventDefinition id="TimerEventDefinition_1gmwk7a">
+        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT1S</bpmn:timeDuration>
+      </bpmn:timerEventDefinition>
+    </bpmn:intermediateCatchEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_1e0hi6x" sourceRef="IntermediateCatchEvent_02rowgb" targetRef="ServiceTask_1dcjo9y" />
+    <bpmn:intermediateCatchEvent id="IntermediateCatchEvent_1o1fc0w">
+      <bpmn:incoming>SequenceFlow_0uxnazb</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1o3zawy</bpmn:outgoing>
+      <bpmn:timerEventDefinition id="TimerEventDefinition_17f00d0">
+        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT1S</bpmn:timeDuration>
+      </bpmn:timerEventDefinition>
+    </bpmn:intermediateCatchEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_1o3zawy" sourceRef="IntermediateCatchEvent_1o1fc0w" targetRef="ServiceTask_0n9l1c3" />
+    <bpmn:intermediateCatchEvent id="IntermediateCatchEvent_17qj86r">
+      <bpmn:incoming>SequenceFlow_1riyl4k</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_083t488</bpmn:outgoing>
+      <bpmn:timerEventDefinition id="TimerEventDefinition_0zl7n41">
+        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT1S</bpmn:timeDuration>
+      </bpmn:timerEventDefinition>
+    </bpmn:intermediateCatchEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_083t488" sourceRef="IntermediateCatchEvent_17qj86r" targetRef="ServiceTask_0od9kss" />
     <bpmn:textAnnotation id="TextAnnotation_0fdh338">
       <bpmn:text>Wo sind die Schrauben?
 Fixierung Raceway
 Rückzug UR10
-Endmontage Raceway
-</bpmn:text>
+Endmontage Raceway</bpmn:text>
     </bpmn:textAnnotation>
     <bpmn:association id="Association_1co7yyq" sourceRef="ServiceTask_0od9kss" targetRef="TextAnnotation_0fdh338" />
     <bpmn:textAnnotation id="TextAnnotation_0b2n8jq">
@@ -363,7 +398,7 @@ Endmontage Raceway
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="demo-PSS2-AIRBUS">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
-        <dc:Bounds x="6" y="514" width="36" height="36" />
+        <dc:Bounds x="-104" y="514" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="ServiceTask_1klqkb1_di" bpmnElement="Task_0o4paul">
         <dc:Bounds x="92" y="492" width="100" height="80" />
@@ -371,28 +406,28 @@ Endmontage Raceway
       <bpmndi:BPMNEdge id="SequenceFlow_0uta2wl_di" bpmnElement="SequenceFlow_0uta2wl">
         <di:waypoint x="142" y="492" />
         <di:waypoint x="142" y="405" />
-        <di:waypoint x="242" y="405" />
+        <di:waypoint x="192" y="405" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="ParallelGateway_1c89owc_di" bpmnElement="ExclusiveGateway_18j2pjp">
-        <dc:Bounds x="516" y="380" width="50" height="50" />
+        <dc:Bounds x="450" y="380" width="50" height="50" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="ServiceTask_08yxyda_di" bpmnElement="ServiceTask_08yxyda">
         <dc:Bounds x="1284" y="622" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_115g9kk_di" bpmnElement="SequenceFlow_115g9kk">
-        <di:waypoint x="541" y="430" />
-        <di:waypoint x="541" y="662" />
+        <di:waypoint x="475" y="430" />
+        <di:waypoint x="475" y="662" />
         <di:waypoint x="793" y="662" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="ServiceTask_1sfawe0_di" bpmnElement="ServiceTask_1sfawe0">
-        <dc:Bounds x="388" y="365" width="100" height="80" />
+        <dc:Bounds x="315" y="365" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="ServiceTask_068rviy_di" bpmnElement="ServiceTask_068rviy">
         <dc:Bounds x="599" y="365" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_1bbtzv3_di" bpmnElement="SequenceFlow_1bbtzv3">
-        <di:waypoint x="488" y="405" />
-        <di:waypoint x="516" y="405" />
+        <di:waypoint x="415" y="405" />
+        <di:waypoint x="450" y="405" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="ParallelGateway_00wngsi_di" bpmnElement="ExclusiveGateway_0e8zau5">
         <dc:Bounds x="723" y="380" width="50" height="50" />
@@ -414,7 +449,7 @@ Endmontage Raceway
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_0weeg50_di" bpmnElement="SequenceFlow_0weeg50">
         <di:waypoint x="773" y="405" />
-        <di:waypoint x="1502" y="405" />
+        <di:waypoint x="1425" y="405" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="ServiceTask_0mag8vr_di" bpmnElement="ServiceTask_0mag8vr">
         <dc:Bounds x="1061" y="492" width="100" height="80" />
@@ -426,20 +461,13 @@ Endmontage Raceway
       <bpmndi:BPMNShape id="ServiceTask_0n9l1c3_di" bpmnElement="ServiceTask_0n9l1c3">
         <dc:Bounds x="1284" y="492" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="ParallelGateway_0yknv6d_di" bpmnElement="ExclusiveGateway_1gn6hv0">
-        <dc:Bounds x="1201" y="507" width="50" height="50" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_05pzchr_di" bpmnElement="SequenceFlow_05pzchr">
         <di:waypoint x="1384" y="662" />
         <di:waypoint x="1637" y="662" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_0uxnazb_di" bpmnElement="SequenceFlow_0uxnazb">
         <di:waypoint x="1161" y="532" />
-        <di:waypoint x="1201" y="532" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="SequenceFlow_0wedr4m_di" bpmnElement="SequenceFlow_0wedr4m">
-        <di:waypoint x="1251" y="532" />
-        <di:waypoint x="1284" y="532" />
+        <di:waypoint x="1209" y="533" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="EndEvent_17aufrq_di" bpmnElement="EndEvent_17aufrq">
         <dc:Bounds x="1637" y="387" width="36" height="36" />
@@ -448,20 +476,13 @@ Endmontage Raceway
         <di:waypoint x="1602" y="405" />
         <di:waypoint x="1637" y="405" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="ParallelGateway_1pggbf6_di" bpmnElement="ExclusiveGateway_0un5dj4">
-        <dc:Bounds x="1418" y="507" width="50" height="50" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_1riyl4k_di" bpmnElement="SequenceFlow_1riyl4k">
         <di:waypoint x="1384" y="532" />
-        <di:waypoint x="1418" y="532" />
+        <di:waypoint x="1425" y="532" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="ServiceTask_0od9kss_di" bpmnElement="ServiceTask_0od9kss">
         <dc:Bounds x="1502" y="492" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="SequenceFlow_1qi7l3h_di" bpmnElement="SequenceFlow_1qi7l3h">
-        <di:waypoint x="1468" y="532" />
-        <di:waypoint x="1502" y="532" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="EndEvent_02hg0xv_di" bpmnElement="EndEvent_02hg0xv">
         <dc:Bounds x="1637" y="644" width="36" height="36" />
       </bpmndi:BPMNShape>
@@ -473,8 +494,8 @@ Endmontage Raceway
         <di:waypoint x="1637" y="532" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_0kny3l9_di" bpmnElement="SequenceFlow_0kny3l9">
-        <di:waypoint x="566" y="405" />
-        <di:waypoint x="599" y="405" />
+        <di:waypoint x="500" y="405" />
+        <di:waypoint x="520" y="405" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="ServiceTask_1jyovw3_di" bpmnElement="ServiceTask_1jyovw3">
         <dc:Bounds x="793" y="492" width="100" height="80" />
@@ -483,11 +504,11 @@ Endmontage Raceway
         <dc:Bounds x="793" y="622" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="ServiceTask_1yyysmz_di" bpmnElement="ServiceTask_1yyysmz">
-        <dc:Bounds x="242" y="365" width="100" height="80" />
+        <dc:Bounds x="192" y="365" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_07kcfta_di" bpmnElement="SequenceFlow_07kcfta">
-        <di:waypoint x="342" y="405" />
-        <di:waypoint x="388" y="405" />
+        <di:waypoint x="292" y="405" />
+        <di:waypoint x="315" y="405" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_1d1use8_di" bpmnElement="SequenceFlow_1d1use8">
         <di:waypoint x="893" y="662" />
@@ -498,8 +519,8 @@ Endmontage Raceway
         <di:waypoint x="926" y="532" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_03t2vvu_di" bpmnElement="SequenceFlow_03t2vvu">
-        <di:waypoint x="42" y="532" />
-        <di:waypoint x="92" y="532" />
+        <di:waypoint x="-68" y="532" />
+        <di:waypoint x="-36" y="532" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="TextAnnotation_0fdh338_di" bpmnElement="TextAnnotation_0fdh338">
         <dc:Bounds x="1639" y="434" width="206" height="66" />
@@ -519,8 +540,43 @@ Endmontage Raceway
         <dc:Bounds x="488" y="285" width="100" height="42" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Association_15b20yo_di" bpmnElement="Association_15b20yo">
-        <di:waypoint x="478" y="365" />
-        <di:waypoint x="517" y="327" />
+        <di:waypoint x="415" y="376" />
+        <di:waypoint x="502" y="327" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ServiceTask_113iee9_di" bpmnElement="ServiceTask_113iee9">
+        <dc:Bounds x="-36" y="492" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1bmbwt8_di" bpmnElement="SequenceFlow_1bmbwt8">
+        <di:waypoint x="64" y="532" />
+        <di:waypoint x="92" y="532" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="IntermediateCatchEvent_02ia355_di" bpmnElement="IntermediateCatchEvent_02ia355">
+        <dc:Bounds x="520" y="387" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0rni5aj_di" bpmnElement="SequenceFlow_0rni5aj">
+        <di:waypoint x="556" y="405" />
+        <di:waypoint x="599" y="405" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="IntermediateCatchEvent_02rowgb_di" bpmnElement="IntermediateCatchEvent_02rowgb">
+        <dc:Bounds x="1425" y="387" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1e0hi6x_di" bpmnElement="SequenceFlow_1e0hi6x">
+        <di:waypoint x="1461" y="405" />
+        <di:waypoint x="1502" y="405" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="IntermediateCatchEvent_1o1fc0w_di" bpmnElement="IntermediateCatchEvent_1o1fc0w">
+        <dc:Bounds x="1209" y="515" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1o3zawy_di" bpmnElement="SequenceFlow_1o3zawy">
+        <di:waypoint x="1245" y="533" />
+        <di:waypoint x="1284" y="532" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="IntermediateCatchEvent_17qj86r_di" bpmnElement="IntermediateCatchEvent_17qj86r">
+        <dc:Bounds x="1425" y="514" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_083t488_di" bpmnElement="SequenceFlow_083t488">
+        <di:waypoint x="1461" y="532" />
+        <di:waypoint x="1502" y="532" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

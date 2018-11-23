@@ -126,7 +126,7 @@ public class MirComponent extends TecsDeviceComponent {
 
 		UnitConfiguration config = new UnitConfiguration();
 
-		CapabilityVariant<?> c = req.getCapabilityVariant();
+		CapabilityVariant<?, ?> c = req.getCapabilityVariant();
 		TopologyElement te = null;
 		if (c.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getMoveToLocation())) {
 			te = ((MoveToLocation) c.getCapability()).getTargetLocation();

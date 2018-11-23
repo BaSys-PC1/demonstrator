@@ -37,7 +37,7 @@ public class LaserDeviceComponent extends RestDeviceComponent {
 		
 		// in einem CapabilityRequest steckt nun eine CapabilityVariant. Diese enthält
 		// wiederum eine Capability (dp, 22.05.2018)
-		CapabilityVariant<?> c = req.getCapabilityVariant();
+		CapabilityVariant<?, ?> c = req.getCapabilityVariant();
 
 		Projection p;
 		if (c.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getProjectPath())) {
