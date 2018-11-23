@@ -64,7 +64,7 @@
   <componentRequests xsi:type="component:CapabilityRequest">
     <capabilityVariant xsi:type="resourceinstance:LogisticsCapabilityVariant" binding="" id="_Psn3Yu6oEeiRCMnnQ5xACA" name="Logistiktisch zu Montageort">
       <capability xsi:type="capability:Transport" id="_NVtAv-8TEeiCkq8wQOcW2w" loadCarrierUnit="TOOL"/>
-      <appliedOn xsi:type="topology:EquipmentModule" href="model.topology#_hx68AOHHEeieRbude1ENJg"/>
+      <appliedOn xsi:type="topology:EquipmentModule" href="model.topology#_YR04EOHCEeieRbude1ENJg"/>
       <appliedOn xsi:type="topology:AGVStation" href="model.topology#_2yVg9eGqEeieRbude1ENJg"/>
     </capabilityVariant>
   </componentRequests>

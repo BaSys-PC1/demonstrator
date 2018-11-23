@@ -34,7 +34,7 @@
         <assignedResourceInstance href="model.resourceinstance#_rrDawOG7EeieRbude1ENJg"/>
       </equipmentModules>
       <equipmentModules xsi:type="topology:AGVStation" id="_cQgoFeGqEeieRbude1ENJg" name="MobiPick Bahnhof"/>
-      <equipmentModules xsi:type="topology:AGVStation" id="_f9hsZeGqEeieRbude1ENJg" name="MiR200 Bahnhof"/>
+      <equipmentModules xsi:type="topology:AGVStation" id="_f9hsZeGqEeieRbude1ENJg" name="MiR200-Station"/>
       <equipmentModules xsi:type="topology:AGVStation" id="_WhMNdeGtEeieRbude1ENJg" name="Ladestation"/>
       <equipmentModules xsi:type="topology:AGVStation" id="_OeDfBe5GEeiwXpX4q8WAnQ" name="EntryPosition"/>
       <equipmentModules xsi:type="topology:AGVStation" id="_PVRa5e5GEeiwXpX4q8WAnQ" name="ColaStation"/>

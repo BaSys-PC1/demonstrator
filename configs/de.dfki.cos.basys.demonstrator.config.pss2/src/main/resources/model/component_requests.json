@@ -158,7 +158,7 @@
       },
       "appliedOn" : [ {
         "eClass" : "http://www.dfki.de/iui/basys/model/topology#//EquipmentModule",
-        "$ref" : "http://localhost:8080/services/entity/_hx68AOHHEeieRbude1ENJg"
+        "$ref" : "http://localhost:8080/services/entity/_YR04EOHCEeieRbude1ENJg"
       }, {
         "eClass" : "http://www.dfki.de/iui/basys/model/topology#//AGVStation",
         "$ref" : "http://localhost:8080/services/entity/_2yVg9eGqEeieRbude1ENJg"
