@@ -16,6 +16,7 @@ import de.dfki.iui.basys.runtime.component.device.packml.UnitConfiguration;
 
 public class UrRpcComponent extends DeviceComponent {	
 	
+	UrRpcClient client = null;
 	
 	public UrRpcComponent(ComponentConfiguration config) {
 		super(config);
@@ -25,6 +26,7 @@ public class UrRpcComponent extends DeviceComponent {
 	@Override
 	public void connectToExternal() throws ComponentException {
 		super.connectToExternal();
+		client = new UrRpcClient(getConfig().getExternalConnectionString());
 	}
 	
 	@Override
@@ -34,10 +36,10 @@ public class UrRpcComponent extends DeviceComponent {
 		
 		CapabilityVariant<?, ?> c = req.getCapabilityVariant();
 		
-		if (c.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getGuiding())) {
-			config.setRecipe(1);
+		if (c.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getGuiding())) {			
+			int recipe = Integer.parseInt(getConfig().getProperty("recipe").getValue());					
+			config.setRecipe(recipe);
 		}
-
 		return config;
 		
 	}
@@ -49,14 +51,31 @@ public class UrRpcComponent extends DeviceComponent {
 	
 	@Override
 	public void onStarting() {		
-		if (getUnitConfig().getRecipe() == 1) {
-			// TODO: RPC call here
-		}
+		if (getUnitConfig().getRecipe() > 0)
+			client.setCurrentRoutine(getUnitConfig().getRecipe());
 	}
 	
 	@Override
 	public void onExecute() {
-		// TODO:check status
+		boolean executing = true;
+		while(executing) {
+			String state = client.getCurrentStatus().toString();
+			switch (state) {
+			case "busy":
+				// wait for completion
+				break;
+			case "finished":
+				executing=false;
+				break;
+			default:
+				break;
+			}
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}		
 	}
 
 	@Override
