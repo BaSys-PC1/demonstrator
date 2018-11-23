@@ -27,6 +27,12 @@
 			<groupId>de.dfki.cos.basys.platform.runtime</groupId>
 			<artifactId>de.dfki.cos.basys.platform.runtime.component.device.xmlrpc</artifactId>
 			<version>${version.basys.platform}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.apache.xmlrpc</groupId>
+					<artifactId>xmlrpc-client</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 		<!-- comment to remove all imported (non-local) bundles from your compilation 
