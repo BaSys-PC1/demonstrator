@@ -35,10 +35,6 @@
     <module>de.dfki.iui.libHRC</module>
     <module>de.dfki.tecs.libtecs</module>
     <module>de.dfki.iui.hue-api</module>
-<<<<<<< develop
-=======
-    <module>org.apache.xmlrpc.xmlrpc-client</module>
->>>>>>> 51a812c delete unused wrappers
   </modules>
 
 </project>
