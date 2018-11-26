@@ -59,8 +59,12 @@ public class UrRpcComponent extends XmlRpcDeviceComponent {
 	
 	@Override
 	public void onStarting() {		
-		if (getUnitConfig().getRecipe() > 0)
+		if (getUnitConfig().getRecipe() > 0) {
 			setCurrentRoutine(getUnitConfig().getRecipe());
+			// FIXME: do we need to wait a short time? 
+			// From the second command onwards, the rpc server has a status of finished, 
+			// which can be queried in onExecute if the UR responds slower than the internal state change to execute
+		}
 	}
 	
 	@Override
