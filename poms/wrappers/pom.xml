@@ -35,11 +35,6 @@
     <module>de.dfki.iui.libHRC</module>
     <module>de.dfki.tecs.libtecs</module>
     <module>de.dfki.iui.hue-api</module>
-    <module>org.apache.xmlrpc.xmlrpc-client</module>
-    <module>org.apache.xmlrpc.xmlrpc-common</module>
-    <module>org.apache.ws.commons.util.ws-commons-util</module>
-    <module>xml-apis.xml-apis</module>
-	<module>commons-httpclient.commons-httpclient</module>
   </modules>
 
 </project>
