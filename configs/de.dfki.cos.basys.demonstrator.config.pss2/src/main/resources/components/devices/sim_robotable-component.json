@@ -1,0 +1,17 @@
+{
+  "eClass" : "http://www.dfki.de/iui/basys/model/component#//ComponentConfiguration",
+  "componentCategory" : "DEVICE_COMPONENT",
+  "componentId" : "_apHtUOHHEeieRbude1ENJg",
+  "componentName" : "My RoboTable (Sim)",
+  "componentImplementationJavaClass" : "de.dfki.iui.basys.demonstrator.device.urrpc.UrRpcComponent",
+  "inChannelName" : "_apHtUOHHEeieRbude1ENJg#in",
+  "outChannelName" : "_apHtUOHHEeieRbude1ENJg#out",
+  "externalConnectionString" : "http://10.2.0.40:8081",
+  "properties" : [ {
+    "key" : "recipe",
+    "value" : "1"
+  },{
+    "key" : "simulated",
+    "value" : "true"
+  }]
+}
