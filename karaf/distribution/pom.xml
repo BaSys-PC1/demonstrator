@@ -88,14 +88,14 @@
         </dependency>
 	        
 	    <!-- https://mvnrepository.com/artifact/com.eclipsesource.jaxrs/features -->
-		<dependency>
+ 	<!-- 	<dependency>
 		    <groupId>com.eclipsesource.jaxrs</groupId>
 		    <artifactId>features</artifactId>
 		    <version>5.3.1</version>
             <classifier>features</classifier>
             <type>xml</type>
             <scope>runtime</scope>
-		</dependency>
+		</dependency> -->
 			  
 		<dependency>
             <groupId>de.dfki.cos.basys.demonstrator.karaf.features</groupId>
@@ -156,7 +156,11 @@
 				<startupFeatures>      
 					<feature>eventadmin</feature> 
 					<feature>webconsole</feature>
-					<feature>jetty</feature>   
+					<feature>src</feature>
+					<feature>http</feature>
+					<feature>jetty</feature>
+					
+					<feature>wrap</feature>
 					<!-- 	   
 					<feature>war</feature>     
 					<feature>basys-runtime</feature>  -->        

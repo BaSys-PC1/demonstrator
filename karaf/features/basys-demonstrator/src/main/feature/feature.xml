@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <features xmlns="http://karaf.apache.org/xmlns/features/v1.5.0" name="BaSys-4.0">
-    <feature name="basys-demonstrator">    	
+    <feature name="basys-demonstrator">   
+    	<!--  <bundle start-level="30">mvn:com.eclipsesource.jaxrs/jersey-min/2.22.2</bundle>  	 
+        <bundle start-level="30">mvn:org.glassfish.jersey.media/jersey-media-json-jackson/2.22.2</bundle> -->
+<!--     	
+        <bundle start-level="20">mvn:org.glassfish.jersey.media/jersey-media-json-jackson/2.26</bundle>
+        --><!-- 
+        <bundle start-level="12">mvn:org.glassfish.jersey.inject/jersey-hk2/2.26</bundle> 
+        <bundle start-level="20"> mvn:org.glassfish.jersey.containers/jersey-container-servlet/2.26</bundle> -->
     </feature>
 </features> 
