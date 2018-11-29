@@ -15,7 +15,7 @@ public class UrRpcComponent extends XmlRpcDeviceComponent {
 		
 	public UrRpcComponent(ComponentConfiguration config) {
 		super(config);
-		resetOnComplete = true;
+		//resetOnComplete = true;
 	}
 	
 	@Override
@@ -44,10 +44,23 @@ public class UrRpcComponent extends XmlRpcDeviceComponent {
 		
 		CapabilityVariant<?, ?> c = req.getCapabilityVariant();
 		
+		
+		/*
+		 * 1: Raceway
+		 * 2: Wait
+		 * 3: Home Position
+		 */
+		int recipe = 0;
+		
 		if (c.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getGuiding())) {			
-			int recipe = Integer.parseInt(getConfig().getProperty("recipe").getValue());					
-			config.setRecipe(recipe);
+			recipe = 1;				
+		} else if (c.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getInteractionCapability())) {			
+			recipe = 2;				
+		} else if (c.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getMoveToLocation())) {			
+			recipe = 3;					
 		}
+		
+		config.setRecipe(recipe);
 		return config;
 		
 	}

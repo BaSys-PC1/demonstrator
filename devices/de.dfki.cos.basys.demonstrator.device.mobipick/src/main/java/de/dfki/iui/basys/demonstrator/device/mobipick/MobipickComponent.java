@@ -148,6 +148,10 @@ public class MobipickComponent extends RosDeviceComponent {
 			@Override
 			public void handleResult(JsonObject result) {
 				System.out.println("RESULT: " + result.toString());
+				if (result.toString().contains("false")) {
+					setErrorCode(1);
+				}
+				
 				signalExecuteComplete();
 			}
 			

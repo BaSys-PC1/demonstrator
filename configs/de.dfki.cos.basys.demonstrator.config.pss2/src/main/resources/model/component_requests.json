@@ -273,5 +273,28 @@
         "$ref" : "http://localhost:8080/services/entity/_bDfJYuGsEeieRbude1ENJg"
       }
     }
+  }, {
+    "eClass" : "http://www.dfki.de/iui/basys/model/component#//CapabilityRequest",
+    "capabilityVariant" : {
+      "eClass" : "http://www.dfki.de/iui/basys/model/resourceinstance#//GeneralCapabilityVariant",
+      "id" : "_AVNdU_PeEei3sNJG4Bmkrw",
+      "name" : "Goto Home Position",
+      "capability" : {
+        "eClass" : "http://www.dfki.de/iui/basys/model/capability#//MoveToLocation",
+        "id" : "_BiGHSPPeEei3sNJG4Bmkrw",
+        "name" : "HOME_POSITION"
+      }
+    }
+  }, {
+    "eClass" : "http://www.dfki.de/iui/basys/model/component#//CapabilityRequest",
+    "capabilityVariant" : {
+      "eClass" : "http://www.dfki.de/iui/basys/model/resourceinstance#//GeneralCapabilityVariant",
+      "id" : "_QSup8_PeEei3sNJG4Bmkrw",
+      "capability" : {
+        "eClass" : "http://www.dfki.de/iui/basys/model/capability#//InteractionCapability",
+        "id" : "_RPbi1PPeEei3sNJG4Bmkrw",
+        "name" : "WAIT_FOR_RETREAT"
+      }
+    }
   } ]
 }

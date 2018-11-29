@@ -109,4 +109,14 @@
       <to href="model.topology#_bDfJYuGsEeieRbude1ENJg"/>
     </capabilityVariant>
   </componentRequests>
+  <componentRequests xsi:type="component:CapabilityRequest">
+    <capabilityVariant xsi:type="resourceinstance:GeneralCapabilityVariant" id="_AVNdU_PeEei3sNJG4Bmkrw" name="Goto Home Position">
+      <capability xsi:type="capability:MoveToLocation" id="_BiGHSPPeEei3sNJG4Bmkrw" name="HOME_POSITION"/>
+    </capabilityVariant>
+  </componentRequests>
+  <componentRequests xsi:type="component:CapabilityRequest">
+    <capabilityVariant xsi:type="resourceinstance:GeneralCapabilityVariant" id="_QSup8_PeEei3sNJG4Bmkrw">
+      <capability xsi:type="capability:InteractionCapability" id="_RPbi1PPeEei3sNJG4Bmkrw" name="WAIT_FOR_RETREAT"/>
+    </capabilityVariant>
+  </componentRequests>
 </component:ComponentRequestCollection>

@@ -30,7 +30,7 @@ public class SmartwatchComponent extends TecsDeviceComponent {
 
 	public SmartwatchComponent(ComponentConfiguration config) {
 		super(config);
-		resetOnComplete = true;
+		//resetOnComplete = true;
 	}
 
 	@Override
@@ -64,7 +64,7 @@ public class SmartwatchComponent extends TecsDeviceComponent {
 			config.setPayload(task);
 		}
 		if (c.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getPassingOn())) {
-			HumanTaskDTO task = new HumanTaskDTO("businessKey","operationId","Raceway feinjustieren","smartwatch-lg-3691");
+			HumanTaskDTO task = new HumanTaskDTO("businessKey","operationId","Raceway montieren","smartwatch-lg-3691");
 			config.setPayload(task);
 		}
 		
@@ -72,6 +72,12 @@ public class SmartwatchComponent extends TecsDeviceComponent {
 		// falls InteractionCapability --> nehm topic String
 
 		return config;
+	}
+	
+	@Override
+	public void onResetting() {
+		super.onResetting();
+		client.reset();
 	}
 
 	@Override
@@ -161,7 +167,11 @@ public class SmartwatchComponent extends TecsDeviceComponent {
 
 			psThread.start();
 		}
-
+		
+		public void reset() {
+			cmdState = CommandState.READY;
+		}
+		
 		public synchronized CommandResponse getCommandState() {
 			CommandResponse response = new CommandResponse(cmdState, "");
 			return response;
