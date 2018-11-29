@@ -2,7 +2,7 @@
   "eClass" : "http://www.dfki.de/iui/basys/model/component#//ComponentConfiguration",
   "componentCategory" : "DEVICE_COMPONENT",
   "componentId" : "_2s80wO5aEeiMDIqI5-KD3Q",
-  "componentName" : "My Smartwatch (Sim)",
+  "componentName" : "My Smartwatch",
   "componentImplementationJavaClass" : "de.dfki.iui.basys.demonstrator.device.hybrit.SmartwatchComponent",
   "inChannelName" : "_2s80wO5aEeiMDIqI5-KD3Q#in",
   "outChannelName" : "_2s80wO5aEeiMDIqI5-KD3Q#out",

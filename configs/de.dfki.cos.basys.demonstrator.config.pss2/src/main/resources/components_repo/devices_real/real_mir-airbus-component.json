@@ -6,7 +6,7 @@
   "componentImplementationJavaClass" : "de.dfki.iui.basys.demonstrator.device.mirrest.MirRestComponent",
   "inChannelName" : "_rnjBgOHAEeieRbude1ENJg#in",
   "outChannelName" : "_rnjBgOHAEeieRbude1ENJg#out",
-  "externalConnectionString" : "http://robot-mir-01.mrk40.dfki.lan",
+  "externalConnectionString" : "http://10.250.6.23",
   "properties" : [ {
     "key" : "auth",
     "value" : "YWRtaW46OGM2OTc2ZTViNTQxMDQxNWJkZTkwOGJkNGRlZTE1ZGZiMTY3YTljODczZmM0YmI4YTgxZjZmMmFiNDQ4YTkxOA=="

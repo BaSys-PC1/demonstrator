@@ -68,11 +68,14 @@ public class ChimpComponentTest {
 		component.activate(emptyContext);
 		assertTrue(component.isConnectedToExternal());
 		
+		sleep(30);
+		
 		component.deactivate();		
 		assertTrue(!component.isConnectedToExternal());
 	}
 
 	@Test
+	@Ignore
 	public void testComponentLifecycleComplete() throws ComponentException {
 		DeviceComponent component = new MobipickComponent(componentConfig);
 		assertTrue(!component.isConnectedToExternal());
@@ -90,12 +93,34 @@ public class ChimpComponentTest {
 				"		{\r\n" + 
 				"			\"id\" : \"task0\",\r\n" + 
 				"			\"type\" : \"bring\" ,\r\n" + 
-				"			\"args\" : [\"screwdriver1\", \"worker1\", \"workArea1\"]\r\n" + 
+				"			\"args\" : [\"Powerdrill\", \"sempr:LocalCS_78\"]\r\n" + 
 				"		}\r\n" + 
 				"	],\r\n" + 
 				"	\"constraints\" : []\r\n" + 
 				"}"; 
+	
+//		String goalString = "{\r\n" + 
+//				"	\"tasks\" : [\r\n" + 
+//				"		{\r\n" + 
+//				"			\"id\" : \"task0\",\r\n" + 
+//				"			\"type\" : \"!move_arm\" ,\r\n" + 
+//				"			\"args\" : [\"ur5\", \"observe100cm_right\", \"false\"]\r\n" + 
+//				"		}\r\n" + 
+//				"	],\r\n" + 
+//				"	\"constraints\" : []\r\n" + 
+//				"}"; 		
 		
+//		String goalString = "{\r\n" + 
+//				"	\"tasks\" : [\r\n" + 
+//				"		{\r\n" + 
+//				"			\"id\" : \"task0\",\r\n" + 
+//				"			\"type\" : \"!recognize_objects\" ,\r\n" + 
+//				"			\"args\" : [\"sempr:SpatialObject_53\"]\r\n" + 
+//				"		}\r\n" + 
+//				"	],\r\n" + 
+//				"	\"constraints\" : []\r\n" + 
+//				"}"; 
+
 		JsonReader jsonReader = Json.createReader(new StringReader(goalString));
 		JsonObject goalObject = jsonReader.readObject();
 		jsonReader.close();
