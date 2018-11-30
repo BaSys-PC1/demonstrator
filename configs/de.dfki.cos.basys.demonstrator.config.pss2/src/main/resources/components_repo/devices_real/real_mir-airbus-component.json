@@ -12,9 +12,9 @@
     "value" : "YWRtaW46OGM2OTc2ZTViNTQxMDQxNWJkZTkwOGJkNGRlZTE1ZGZiMTY3YTljODczZmM0YmI4YTgxZjZmMmFiNDQ4YTkxOA=="
   },{
     "key" : "missionName_Robotable",
-    "value" : "tbd"
+    "value" : "BringRobotTable"
   },{
     "key" : "missionName_Logistiktisch",
-    "value" : "tbd"
+    "value" : "BringLogisticsTable"
   }]
 }

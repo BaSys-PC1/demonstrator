@@ -6,7 +6,7 @@
   "componentImplementationJavaClass" : "de.dfki.iui.basys.demonstrator.device.urrpc.UrRpcComponent",
   "inChannelName" : "_apHtUOHHEeieRbude1ENJg#in",
   "outChannelName" : "_apHtUOHHEeieRbude1ENJg#out",
-  "externalConnectionString" : "http://10.2.0.40:8081",
+  "externalConnectionString" : "http://10.250.6.29:8081",
   "properties" : [ {
     "key" : "recipe",
     "value" : "1"

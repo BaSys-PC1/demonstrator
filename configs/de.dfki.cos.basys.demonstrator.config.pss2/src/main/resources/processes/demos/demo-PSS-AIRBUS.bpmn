@@ -35,7 +35,7 @@
     </bpmn:serviceTask>
     <bpmn:sequenceFlow id="SequenceFlow_0uta2wl" sourceRef="Task_0o4paul" targetRef="ServiceTask_1yyysmz" />
     <bpmn:parallelGateway id="ExclusiveGateway_18j2pjp">
-      <bpmn:incoming>SequenceFlow_1bbtzv3</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_0fymss7</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_115g9kk</bpmn:outgoing>
       <bpmn:outgoing>SequenceFlow_0kny3l9</bpmn:outgoing>
     </bpmn:parallelGateway>
@@ -96,8 +96,8 @@
   }</camunda:inputParameter>
         </camunda:inputOutput>
       </bpmn:extensionElements>
-      <bpmn:incoming>SequenceFlow_07kcfta</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_1bbtzv3</bpmn:outgoing>
+      <bpmn:incoming>SequenceFlow_09eevvp</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1l91928</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:serviceTask id="ServiceTask_068rviy" name="MiR200 bringt Robotertisch zum Montageort" camunda:type="external" camunda:topic="BasysTask">
       <bpmn:extensionElements>
@@ -125,16 +125,14 @@
   }</camunda:inputParameter>
         </camunda:inputOutput>
       </bpmn:extensionElements>
-      <bpmn:incoming>SequenceFlow_0rni5aj</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_1nmfr0x</bpmn:outgoing>
+      <bpmn:incoming>SequenceFlow_1imjt17</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0fymss7</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:sequenceFlow id="SequenceFlow_1bbtzv3" sourceRef="ServiceTask_1sfawe0" targetRef="ExclusiveGateway_18j2pjp" />
     <bpmn:parallelGateway id="ExclusiveGateway_0e8zau5">
-      <bpmn:incoming>SequenceFlow_1nmfr0x</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_1l91928</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0dyki85</bpmn:outgoing>
-      <bpmn:outgoing>SequenceFlow_0weeg50</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_1ei3ray</bpmn:outgoing>
     </bpmn:parallelGateway>
-    <bpmn:sequenceFlow id="SequenceFlow_1nmfr0x" sourceRef="ServiceTask_068rviy" targetRef="ExclusiveGateway_0e8zau5" />
     <bpmn:serviceTask id="ServiceTask_1hkg0kh" name="Greifarmroboter stellen Raceway am Flügel bereit" camunda:type="external" camunda:topic="BasysTask">
       <bpmn:extensionElements>
         <camunda:inputOutput>
@@ -166,7 +164,7 @@
         </camunda:inputOutput>
       </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_0714xhu</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_18jdeeh</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_061posf</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:serviceTask id="ServiceTask_1dcjo9y" name="MiR200 fährt zurück zum Bahnhof" camunda:type="external" camunda:topic="BasysTask">
       <bpmn:extensionElements>
@@ -191,39 +189,8 @@
   }</camunda:inputParameter>
         </camunda:inputOutput>
       </bpmn:extensionElements>
-      <bpmn:incoming>SequenceFlow_1e0hi6x</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_1ng3mlh</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:sequenceFlow id="SequenceFlow_0dyki85" sourceRef="ExclusiveGateway_0e8zau5" targetRef="ServiceTask_1jyovw3" />
-    <bpmn:sequenceFlow id="SequenceFlow_0weeg50" sourceRef="ExclusiveGateway_0e8zau5" targetRef="IntermediateCatchEvent_02rowgb" />
-    <bpmn:serviceTask id="ServiceTask_0mag8vr" name="Werker montiert Raceway" camunda:type="external" camunda:topic="BasysTask">
-      <bpmn:extensionElements>
-        <camunda:inputOutput>
-          <camunda:inputParameter name="assignee">_2s80wO5aEeiMDIqI5-KD3Q</camunda:inputParameter>
-          <camunda:inputParameter name="command">{
-    "eClass" : "http://www.dfki.de/iui/basys/model/component#//CapabilityRequest",
-    "capabilityVariant" : {
-      "eClass" : "http://www.dfki.de/iui/basys/model/resourceinstance#//HandlingCapabilityVariant",
-      "id" : "_Ork0NO8jEeiD38uMs-vpkQ",
-      "capability" : {
-        "eClass" : "http://www.dfki.de/iui/basys/model/capability#//PassingOn",
-        "id" : "_QE1GSO8jEeiD38uMs-vpkQ"
-      },
-      "object" : {
-        "eClass" : "http://www.dfki.de/iui/basys/model/productdefinition#//MaterialEntry",
-        "$ref" : "http://localhost:8080/services/entity/_9rG-geHJEeieRbude1ENJg"
-      },
-      "to" : {
-        "eClass" : "http://www.dfki.de/iui/basys/model/topology#//WorkCell",
-        "$ref" : "http://localhost:8080/services/entity/_bDfJYuGsEeieRbude1ENJg"
-      }
-    }
-  }</camunda:inputParameter>
-        </camunda:inputOutput>
-      </bpmn:extensionElements>
-      <bpmn:incoming>SequenceFlow_0xzpeg5</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_0gygg1h</bpmn:outgoing>
-    </bpmn:serviceTask>
     <bpmn:serviceTask id="ServiceTask_0n9l1c3" name="Werker nimmt Akkuschrauber entgegen" camunda:type="external" camunda:topic="BasysTask">
       <bpmn:extensionElements>
         <camunda:inputOutput>
@@ -249,9 +216,8 @@
     </bpmn:serviceTask>
     <bpmn:sequenceFlow id="SequenceFlow_05pzchr" sourceRef="ServiceTask_08yxyda" targetRef="EndEvent_02hg0xv" />
     <bpmn:endEvent id="EndEvent_17aufrq">
-      <bpmn:incoming>SequenceFlow_1ng3mlh</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_1ei3ray</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:sequenceFlow id="SequenceFlow_1ng3mlh" sourceRef="ServiceTask_1dcjo9y" targetRef="EndEvent_17aufrq" />
     <bpmn:serviceTask id="ServiceTask_0od9kss" name="Werker montiert Raceway" camunda:type="external" camunda:topic="BasysTask">
       <bpmn:extensionElements>
         <camunda:inputOutput>
@@ -279,9 +245,9 @@
       <bpmn:incoming>SequenceFlow_05pzchr</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:endEvent id="EndEvent_0vv0tzw">
-      <bpmn:incoming>SequenceFlow_1tbwuu7</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_0qqbp89</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:sequenceFlow id="SequenceFlow_0kny3l9" sourceRef="ExclusiveGateway_18j2pjp" targetRef="IntermediateCatchEvent_02ia355" />
+    <bpmn:sequenceFlow id="SequenceFlow_0kny3l9" sourceRef="ExclusiveGateway_18j2pjp" targetRef="ServiceTask_1emkwhq" />
     <bpmn:serviceTask id="ServiceTask_1jyovw3" name="Reset RoboTable" camunda:type="external" camunda:topic="BasysTask">
       <bpmn:extensionElements>
         <camunda:inputOutput>
@@ -319,9 +285,8 @@
         </camunda:inputOutput>
       </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_0uta2wl</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_07kcfta</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_1imjt17</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:sequenceFlow id="SequenceFlow_07kcfta" sourceRef="ServiceTask_1yyysmz" targetRef="ServiceTask_1sfawe0" />
     <bpmn:sequenceFlow id="SequenceFlow_1d1use8" sourceRef="ServiceTask_02v2fjb" targetRef="ServiceTask_08yxyda" />
     <bpmn:sequenceFlow id="SequenceFlow_0714xhu" sourceRef="ServiceTask_1jyovw3" targetRef="ServiceTask_1hkg0kh" />
     <bpmn:sequenceFlow id="SequenceFlow_03t2vvu" sourceRef="StartEvent_1" targetRef="ServiceTask_113iee9" />
@@ -339,59 +304,65 @@
       <bpmn:outgoing>SequenceFlow_1bmbwt8</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:sequenceFlow id="SequenceFlow_1bmbwt8" sourceRef="ServiceTask_113iee9" targetRef="Task_0o4paul" />
-    <bpmn:intermediateCatchEvent id="IntermediateCatchEvent_02ia355">
-      <bpmn:incoming>SequenceFlow_0kny3l9</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_0rni5aj</bpmn:outgoing>
-      <bpmn:timerEventDefinition id="TimerEventDefinition_16dqv2f">
-        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT1S</bpmn:timeDuration>
-      </bpmn:timerEventDefinition>
-    </bpmn:intermediateCatchEvent>
-    <bpmn:sequenceFlow id="SequenceFlow_0rni5aj" sourceRef="IntermediateCatchEvent_02ia355" targetRef="ServiceTask_068rviy" />
-    <bpmn:intermediateCatchEvent id="IntermediateCatchEvent_02rowgb">
-      <bpmn:incoming>SequenceFlow_0weeg50</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_1e0hi6x</bpmn:outgoing>
-      <bpmn:timerEventDefinition id="TimerEventDefinition_1gmwk7a">
-        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT1S</bpmn:timeDuration>
-      </bpmn:timerEventDefinition>
-    </bpmn:intermediateCatchEvent>
-    <bpmn:sequenceFlow id="SequenceFlow_1e0hi6x" sourceRef="IntermediateCatchEvent_02rowgb" targetRef="ServiceTask_1dcjo9y" />
-    <bpmn:serviceTask id="ServiceTask_1dl43yu" name="UR10: Warten auf Rückzugsignal" camunda:type="external" camunda:topic="BasysTask">
+    <bpmn:sequenceFlow id="SequenceFlow_1imjt17" sourceRef="ServiceTask_1yyysmz" targetRef="ServiceTask_068rviy" />
+    <bpmn:sequenceFlow id="SequenceFlow_0fymss7" sourceRef="ServiceTask_068rviy" targetRef="ExclusiveGateway_18j2pjp" />
+    <bpmn:sequenceFlow id="SequenceFlow_1l91928" sourceRef="ServiceTask_1sfawe0" targetRef="ExclusiveGateway_0e8zau5" />
+    <bpmn:parallelGateway id="ParallelGateway_1kgin0m">
+      <bpmn:incoming>SequenceFlow_0j515sx</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_1wgkk9n</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0qqbp89</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:parallelGateway id="ParallelGateway_1jn5um9">
+      <bpmn:incoming>SequenceFlow_061posf</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1yrp5nh</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_1yet5ig</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:sequenceFlow id="SequenceFlow_1yrp5nh" sourceRef="ParallelGateway_1jn5um9" targetRef="ServiceTask_0vps64x" />
+    <bpmn:sequenceFlow id="SequenceFlow_1yet5ig" sourceRef="ParallelGateway_1jn5um9" targetRef="ServiceTask_0drufd4" />
+    <bpmn:serviceTask id="ServiceTask_14rfsut" name="Werker montiert Raceway" camunda:type="external" camunda:topic="BasysTask">
       <bpmn:extensionElements>
         <camunda:inputOutput>
-          <camunda:inputParameter name="assignee">_apHtUOHHEeieRbude1ENJg</camunda:inputParameter>
+          <camunda:inputParameter name="assignee">_2s80wO5aEeiMDIqI5-KD3Q</camunda:inputParameter>
           <camunda:inputParameter name="command">{
     "eClass" : "http://www.dfki.de/iui/basys/model/component#//CapabilityRequest",
     "capabilityVariant" : {
-      "eClass" : "http://www.dfki.de/iui/basys/model/resourceinstance#//GeneralCapabilityVariant",
-      "id" : "_QSup8_PeEei3sNJG4Bmkrw",
+      "eClass" : "http://www.dfki.de/iui/basys/model/resourceinstance#//HandlingCapabilityVariant",
+      "id" : "_Ork0NO8jEeiD38uMs-vpkQ",
       "capability" : {
-        "eClass" : "http://www.dfki.de/iui/basys/model/capability#//InteractionCapability",
-        "id" : "_RPbi1PPeEei3sNJG4Bmkrw",
-        "name" : "WAIT_FOR_RETREAT"
+        "eClass" : "http://www.dfki.de/iui/basys/model/capability#//PassingOn",
+        "id" : "_QE1GSO8jEeiD38uMs-vpkQ"
+      },
+      "object" : {
+        "eClass" : "http://www.dfki.de/iui/basys/model/productdefinition#//MaterialEntry",
+        "$ref" : "http://localhost:8080/services/entity/_9rG-geHJEeieRbude1ENJg"
+      },
+      "to" : {
+        "eClass" : "http://www.dfki.de/iui/basys/model/topology#//WorkCell",
+        "$ref" : "http://localhost:8080/services/entity/_bDfJYuGsEeieRbude1ENJg"
       }
     }
   }</camunda:inputParameter>
         </camunda:inputOutput>
       </bpmn:extensionElements>
-      <bpmn:incoming>SequenceFlow_16d8nls</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_1fu07y6</bpmn:outgoing>
+      <bpmn:incoming>SequenceFlow_0hdmx5b</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0j515sx</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:sequenceFlow id="SequenceFlow_18jdeeh" sourceRef="ServiceTask_1hkg0kh" targetRef="ExclusiveGateway_0ht1ox6" />
-    <bpmn:sequenceFlow id="SequenceFlow_0gygg1h" sourceRef="ServiceTask_0mag8vr" targetRef="ExclusiveGateway_08lyrfx" />
-    <bpmn:parallelGateway id="ExclusiveGateway_0ht1ox6">
-      <bpmn:incoming>SequenceFlow_18jdeeh</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_16d8nls</bpmn:outgoing>
-      <bpmn:outgoing>SequenceFlow_0xzpeg5</bpmn:outgoing>
-    </bpmn:parallelGateway>
-    <bpmn:parallelGateway id="ExclusiveGateway_08lyrfx">
-      <bpmn:incoming>SequenceFlow_0gygg1h</bpmn:incoming>
-      <bpmn:incoming>SequenceFlow_09i6qzz</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_1tbwuu7</bpmn:outgoing>
-    </bpmn:parallelGateway>
-    <bpmn:sequenceFlow id="SequenceFlow_16d8nls" sourceRef="ExclusiveGateway_0ht1ox6" targetRef="ServiceTask_1dl43yu" />
-    <bpmn:sequenceFlow id="SequenceFlow_1fu07y6" sourceRef="ServiceTask_1dl43yu" targetRef="ServiceTask_05drpg9" />
-    <bpmn:sequenceFlow id="SequenceFlow_0xzpeg5" sourceRef="ExclusiveGateway_0ht1ox6" targetRef="ServiceTask_0mag8vr" />
-    <bpmn:serviceTask id="ServiceTask_0h30ruf" name="UR10: Homeposition anfahren" camunda:type="external" camunda:topic="BasysTask">
+    <bpmn:sequenceFlow id="SequenceFlow_0j515sx" sourceRef="ServiceTask_14rfsut" targetRef="ParallelGateway_1kgin0m" />
+    <bpmn:serviceTask id="ServiceTask_0vps64x" name="Reset Smartwatch" camunda:type="external" camunda:topic="BasysTask">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="assignee">_2s80wO5aEeiMDIqI5-KD3Q</camunda:inputParameter>
+          <camunda:inputParameter name="command">{
+    "eClass" : "http://www.dfki.de/iui/basys/model/component#//CommandRequest",
+    "controlCommand" : "RESET"
+  }</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_1yrp5nh</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0hdmx5b</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="SequenceFlow_0hdmx5b" sourceRef="ServiceTask_0vps64x" targetRef="ServiceTask_14rfsut" />
+    <bpmn:serviceTask id="ServiceTask_0su0iym" name="UR10: Homeposition anfahren" camunda:type="external" camunda:topic="BasysTask">
       <bpmn:extensionElements>
         <camunda:inputOutput>
           <camunda:inputParameter name="assignee">_apHtUOHHEeieRbude1ENJg</camunda:inputParameter>
@@ -410,234 +381,277 @@
   }</camunda:inputParameter>
         </camunda:inputOutput>
       </bpmn:extensionElements>
-      <bpmn:incoming>SequenceFlow_0nn1670</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_09i6qzz</bpmn:outgoing>
+      <bpmn:incoming>SequenceFlow_0yoxvr9</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1wgkk9n</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:sequenceFlow id="SequenceFlow_09i6qzz" sourceRef="ServiceTask_0h30ruf" targetRef="ExclusiveGateway_08lyrfx" />
-    <bpmn:sequenceFlow id="SequenceFlow_1tbwuu7" sourceRef="ExclusiveGateway_08lyrfx" targetRef="EndEvent_0vv0tzw" />
-    <bpmn:serviceTask id="ServiceTask_05drpg9" name="WAIT" camunda:type="external" camunda:topic="BasysTask">
+    <bpmn:sequenceFlow id="SequenceFlow_1wgkk9n" sourceRef="ServiceTask_0su0iym" targetRef="ParallelGateway_1kgin0m" />
+    <bpmn:serviceTask id="ServiceTask_03bgk6n" name="Reset RoboTable" camunda:type="external" camunda:topic="BasysTask">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="assignee">_apHtUOHHEeieRbude1ENJg</camunda:inputParameter>
+          <camunda:inputParameter name="command">{
+    "eClass" : "http://www.dfki.de/iui/basys/model/component#//CommandRequest",
+    "controlCommand" : "RESET"
+  }</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_00hc3nd</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0yoxvr9</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="SequenceFlow_0yoxvr9" sourceRef="ServiceTask_03bgk6n" targetRef="ServiceTask_0su0iym" />
+    <bpmn:serviceTask id="ServiceTask_1kdsx5h" name="WAIT" camunda:type="external" camunda:topic="BasysTask">
       <bpmn:extensionElements>
         <camunda:inputOutput>
           <camunda:inputParameter name="assignee">WAIT</camunda:inputParameter>
           <camunda:inputParameter name="command">1000</camunda:inputParameter>
         </camunda:inputOutput>
       </bpmn:extensionElements>
-      <bpmn:incoming>SequenceFlow_1fu07y6</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_0nn1670</bpmn:outgoing>
+      <bpmn:incoming>SequenceFlow_1pwihyd</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_00hc3nd</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:sequenceFlow id="SequenceFlow_0nn1670" sourceRef="ServiceTask_05drpg9" targetRef="ServiceTask_0h30ruf" />
-    <bpmn:textAnnotation id="TextAnnotation_0fdh338">
-      <bpmn:text>Wo sind die Schrauben?
-Fixierung Raceway
-Rückzug UR10
-Endmontage Raceway</bpmn:text>
-    </bpmn:textAnnotation>
-    <bpmn:textAnnotation id="TextAnnotation_0b2n8jq">
-      <bpmn:text>Wie kommt der Tisch zurück?</bpmn:text>
-    </bpmn:textAnnotation>
-    <bpmn:association id="Association_02dmnvu" sourceRef="ServiceTask_068rviy" targetRef="TextAnnotation_0b2n8jq" />
-    <bpmn:textAnnotation id="TextAnnotation_1k1yubn">
-      <bpmn:text>Wie kommt der Tisch zurück?</bpmn:text>
-    </bpmn:textAnnotation>
-    <bpmn:association id="Association_15b20yo" sourceRef="ServiceTask_1sfawe0" targetRef="TextAnnotation_1k1yubn" />
+    <bpmn:sequenceFlow id="SequenceFlow_00hc3nd" sourceRef="ServiceTask_1kdsx5h" targetRef="ServiceTask_03bgk6n" />
+    <bpmn:serviceTask id="ServiceTask_1b2ot4c" name="UR10: Warten auf Rückzugsignal" camunda:type="external" camunda:topic="BasysTask">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="assignee">_apHtUOHHEeieRbude1ENJg</camunda:inputParameter>
+          <camunda:inputParameter name="command">{
+    "eClass" : "http://www.dfki.de/iui/basys/model/component#//CapabilityRequest",
+    "capabilityVariant" : {
+      "eClass" : "http://www.dfki.de/iui/basys/model/resourceinstance#//GeneralCapabilityVariant",
+      "id" : "_QSup8_PeEei3sNJG4Bmkrw",
+      "capability" : {
+        "eClass" : "http://www.dfki.de/iui/basys/model/capability#//InteractionCapability",
+        "id" : "_RPbi1PPeEei3sNJG4Bmkrw",
+        "name" : "WAIT_FOR_RETREAT"
+      }
+    }
+  }</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_0wjlhaj</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1pwihyd</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="SequenceFlow_1pwihyd" sourceRef="ServiceTask_1b2ot4c" targetRef="ServiceTask_1kdsx5h" />
+    <bpmn:serviceTask id="ServiceTask_0drufd4" name="Reset RoboTable" camunda:type="external" camunda:topic="BasysTask">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="assignee">_apHtUOHHEeieRbude1ENJg</camunda:inputParameter>
+          <camunda:inputParameter name="command">{
+    "eClass" : "http://www.dfki.de/iui/basys/model/component#//CommandRequest",
+    "controlCommand" : "RESET"
+  }</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_1yet5ig</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0wjlhaj</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="SequenceFlow_0wjlhaj" sourceRef="ServiceTask_0drufd4" targetRef="ServiceTask_1b2ot4c" />
+    <bpmn:sequenceFlow id="SequenceFlow_061posf" sourceRef="ServiceTask_1hkg0kh" targetRef="ParallelGateway_1jn5um9" />
+    <bpmn:sequenceFlow id="SequenceFlow_0qqbp89" sourceRef="ParallelGateway_1kgin0m" targetRef="EndEvent_0vv0tzw" />
+    <bpmn:sequenceFlow id="SequenceFlow_1ei3ray" sourceRef="ExclusiveGateway_0e8zau5" targetRef="EndEvent_17aufrq" />
+    <bpmn:serviceTask id="ServiceTask_1emkwhq" name="WAIT" camunda:type="external" camunda:topic="BasysTask">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="assignee">WAIT</camunda:inputParameter>
+          <camunda:inputParameter name="command">2000</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_0kny3l9</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_09eevvp</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="SequenceFlow_09eevvp" sourceRef="ServiceTask_1emkwhq" targetRef="ServiceTask_1sfawe0" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="demo-PSS2-AIRBUS">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
-        <dc:Bounds x="-104" y="514" width="36" height="36" />
+        <dc:Bounds x="43" y="645" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="ServiceTask_1klqkb1_di" bpmnElement="Task_0o4paul">
-        <dc:Bounds x="92" y="492" width="100" height="80" />
+        <dc:Bounds x="238" y="623" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_0uta2wl_di" bpmnElement="SequenceFlow_0uta2wl">
-        <di:waypoint x="142" y="492" />
-        <di:waypoint x="142" y="405" />
-        <di:waypoint x="192" y="405" />
+        <di:waypoint x="338" y="663" />
+        <di:waypoint x="374" y="663" />
+        <di:waypoint x="374" y="414" />
+        <di:waypoint x="417" y="414" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="ParallelGateway_1c89owc_di" bpmnElement="ExclusiveGateway_18j2pjp">
-        <dc:Bounds x="450" y="380" width="50" height="50" />
+        <dc:Bounds x="675" y="389" width="50" height="50" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="ServiceTask_08yxyda_di" bpmnElement="ServiceTask_08yxyda">
-        <dc:Bounds x="1130" y="743" width="100" height="80" />
+        <dc:Bounds x="1584" y="752" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_115g9kk_di" bpmnElement="SequenceFlow_115g9kk">
-        <di:waypoint x="475" y="430" />
-        <di:waypoint x="475" y="783" />
-        <di:waypoint x="793" y="783" />
+        <di:waypoint x="700" y="439" />
+        <di:waypoint x="700" y="792" />
+        <di:waypoint x="1453" y="792" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="ServiceTask_1sfawe0_di" bpmnElement="ServiceTask_1sfawe0">
-        <dc:Bounds x="315" y="365" width="100" height="80" />
+        <dc:Bounds x="918" y="374" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="ServiceTask_068rviy_di" bpmnElement="ServiceTask_068rviy">
-        <dc:Bounds x="599" y="365" width="100" height="80" />
+        <dc:Bounds x="549" y="374" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="SequenceFlow_1bbtzv3_di" bpmnElement="SequenceFlow_1bbtzv3">
-        <di:waypoint x="415" y="405" />
-        <di:waypoint x="450" y="405" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="ParallelGateway_00wngsi_di" bpmnElement="ExclusiveGateway_0e8zau5">
-        <dc:Bounds x="723" y="380" width="50" height="50" />
+        <dc:Bounds x="1056" y="389" width="50" height="50" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="SequenceFlow_1nmfr0x_di" bpmnElement="SequenceFlow_1nmfr0x">
-        <di:waypoint x="699" y="405" />
-        <di:waypoint x="723" y="405" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="ServiceTask_1hkg0kh_di" bpmnElement="ServiceTask_1hkg0kh">
-        <dc:Bounds x="926" y="492" width="100" height="80" />
+        <dc:Bounds x="1259" y="501" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="ServiceTask_1dcjo9y_di" bpmnElement="ServiceTask_1dcjo9y">
-        <dc:Bounds x="1502" y="365" width="100" height="80" />
+        <dc:Bounds x="1861" y="293" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_0dyki85_di" bpmnElement="SequenceFlow_0dyki85">
-        <di:waypoint x="748" y="430" />
-        <di:waypoint x="748" y="532" />
-        <di:waypoint x="793" y="532" />
+        <di:waypoint x="1081" y="439" />
+        <di:waypoint x="1081" y="541" />
+        <di:waypoint x="1126" y="541" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="SequenceFlow_0weeg50_di" bpmnElement="SequenceFlow_0weeg50">
-        <di:waypoint x="773" y="405" />
-        <di:waypoint x="1425" y="405" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="ServiceTask_0mag8vr_di" bpmnElement="ServiceTask_0mag8vr">
-        <dc:Bounds x="1130" y="614" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="ServiceTask_0n9l1c3_di" bpmnElement="ServiceTask_0n9l1c3">
-        <dc:Bounds x="1251" y="284" width="100" height="80" />
+        <dc:Bounds x="1584" y="293" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_05pzchr_di" bpmnElement="SequenceFlow_05pzchr">
-        <di:waypoint x="1230" y="783" />
-        <di:waypoint x="1637" y="783" />
+        <di:waypoint x="1684" y="792" />
+        <di:waypoint x="2241" y="792" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="EndEvent_17aufrq_di" bpmnElement="EndEvent_17aufrq">
-        <dc:Bounds x="1637" y="387" width="36" height="36" />
+        <dc:Bounds x="2241" y="396" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="SequenceFlow_1ng3mlh_di" bpmnElement="SequenceFlow_1ng3mlh">
-        <di:waypoint x="1602" y="405" />
-        <di:waypoint x="1637" y="405" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="ServiceTask_0od9kss_di" bpmnElement="ServiceTask_0od9kss">
-        <dc:Bounds x="1377" y="284" width="100" height="80" />
+        <dc:Bounds x="1722" y="293" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="EndEvent_02hg0xv_di" bpmnElement="EndEvent_02hg0xv">
-        <dc:Bounds x="1637" y="765" width="36" height="36" />
+        <dc:Bounds x="2241" y="774" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="EndEvent_0vv0tzw_di" bpmnElement="EndEvent_0vv0tzw">
-        <dc:Bounds x="1637" y="514" width="36" height="36" />
+        <dc:Bounds x="2241" y="523" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_0kny3l9_di" bpmnElement="SequenceFlow_0kny3l9">
-        <di:waypoint x="500" y="405" />
-        <di:waypoint x="520" y="405" />
+        <di:waypoint x="725" y="414" />
+        <di:waypoint x="763" y="414" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="ServiceTask_1jyovw3_di" bpmnElement="ServiceTask_1jyovw3">
-        <dc:Bounds x="793" y="492" width="100" height="80" />
+        <dc:Bounds x="1126" y="501" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="ServiceTask_02v2fjb_di" bpmnElement="ServiceTask_02v2fjb">
-        <dc:Bounds x="793" y="743" width="100" height="80" />
+        <dc:Bounds x="1453" y="752" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="ServiceTask_1yyysmz_di" bpmnElement="ServiceTask_1yyysmz">
-        <dc:Bounds x="192" y="365" width="100" height="80" />
+        <dc:Bounds x="417" y="374" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="SequenceFlow_07kcfta_di" bpmnElement="SequenceFlow_07kcfta">
-        <di:waypoint x="292" y="405" />
-        <di:waypoint x="315" y="405" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_1d1use8_di" bpmnElement="SequenceFlow_1d1use8">
-        <di:waypoint x="893" y="783" />
-        <di:waypoint x="1130" y="783" />
+        <di:waypoint x="1553" y="792" />
+        <di:waypoint x="1584" y="792" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_0714xhu_di" bpmnElement="SequenceFlow_0714xhu">
-        <di:waypoint x="893" y="532" />
-        <di:waypoint x="926" y="532" />
+        <di:waypoint x="1226" y="541" />
+        <di:waypoint x="1259" y="541" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_03t2vvu_di" bpmnElement="SequenceFlow_03t2vvu">
-        <di:waypoint x="-68" y="532" />
-        <di:waypoint x="-36" y="532" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="TextAnnotation_0fdh338_di" bpmnElement="TextAnnotation_0fdh338">
-        <dc:Bounds x="1639" y="434" width="206" height="66" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="TextAnnotation_0b2n8jq_di" bpmnElement="TextAnnotation_0b2n8jq">
-        <dc:Bounds x="699" y="285" width="100" height="42" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="Association_02dmnvu_di" bpmnElement="Association_02dmnvu">
-        <di:waypoint x="689" y="365" />
-        <di:waypoint x="728" y="327" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="TextAnnotation_1k1yubn_di" bpmnElement="TextAnnotation_1k1yubn">
-        <dc:Bounds x="488" y="285" width="100" height="42" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="Association_15b20yo_di" bpmnElement="Association_15b20yo">
-        <di:waypoint x="415" y="376" />
-        <di:waypoint x="502" y="327" />
+        <di:waypoint x="79" y="663" />
+        <di:waypoint x="111" y="663" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="ServiceTask_113iee9_di" bpmnElement="ServiceTask_113iee9">
-        <dc:Bounds x="-36" y="492" width="100" height="80" />
+        <dc:Bounds x="111" y="623" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_1bmbwt8_di" bpmnElement="SequenceFlow_1bmbwt8">
-        <di:waypoint x="64" y="532" />
-        <di:waypoint x="92" y="532" />
+        <di:waypoint x="211" y="663" />
+        <di:waypoint x="238" y="663" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="IntermediateCatchEvent_02ia355_di" bpmnElement="IntermediateCatchEvent_02ia355">
-        <dc:Bounds x="520" y="387" width="36" height="36" />
+      <bpmndi:BPMNEdge id="SequenceFlow_1imjt17_di" bpmnElement="SequenceFlow_1imjt17">
+        <di:waypoint x="517" y="414" />
+        <di:waypoint x="549" y="414" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0fymss7_di" bpmnElement="SequenceFlow_0fymss7">
+        <di:waypoint x="649" y="414" />
+        <di:waypoint x="675" y="414" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1l91928_di" bpmnElement="SequenceFlow_1l91928">
+        <di:waypoint x="1018" y="414" />
+        <di:waypoint x="1056" y="414" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ParallelGateway_1kgin0m_di" bpmnElement="ParallelGateway_1kgin0m">
+        <dc:Bounds x="2130" y="516" width="50" height="50" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="SequenceFlow_0rni5aj_di" bpmnElement="SequenceFlow_0rni5aj">
-        <di:waypoint x="556" y="405" />
-        <di:waypoint x="599" y="405" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="IntermediateCatchEvent_02rowgb_di" bpmnElement="IntermediateCatchEvent_02rowgb">
-        <dc:Bounds x="1425" y="387" width="36" height="36" />
+      <bpmndi:BPMNShape id="ParallelGateway_1jn5um9_di" bpmnElement="ParallelGateway_1jn5um9">
+        <dc:Bounds x="1383" y="516" width="50" height="50" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="SequenceFlow_1e0hi6x_di" bpmnElement="SequenceFlow_1e0hi6x">
-        <di:waypoint x="1461" y="405" />
-        <di:waypoint x="1502" y="405" />
+      <bpmndi:BPMNEdge id="SequenceFlow_1yrp5nh_di" bpmnElement="SequenceFlow_1yrp5nh">
+        <di:waypoint x="1408" y="566" />
+        <di:waypoint x="1408" y="663" />
+        <di:waypoint x="1453" y="663" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="ServiceTask_1dl43yu_di" bpmnElement="ServiceTask_1dl43yu">
-        <dc:Bounds x="1130" y="492" width="100" height="80" />
+      <bpmndi:BPMNEdge id="SequenceFlow_1yet5ig_di" bpmnElement="SequenceFlow_1yet5ig">
+        <di:waypoint x="1433" y="541" />
+        <di:waypoint x="1453" y="541" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ServiceTask_14rfsut_di" bpmnElement="ServiceTask_14rfsut">
+        <dc:Bounds x="1587" y="623" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="SequenceFlow_18jdeeh_di" bpmnElement="SequenceFlow_18jdeeh">
-        <di:waypoint x="1026" y="532" />
-        <di:waypoint x="1059" y="532" />
+      <bpmndi:BPMNEdge id="SequenceFlow_0j515sx_di" bpmnElement="SequenceFlow_0j515sx">
+        <di:waypoint x="1687" y="663" />
+        <di:waypoint x="2155" y="663" />
+        <di:waypoint x="2155" y="566" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="SequenceFlow_0gygg1h_di" bpmnElement="SequenceFlow_0gygg1h">
-        <di:waypoint x="1230" y="654" />
-        <di:waypoint x="1520" y="654" />
-        <di:waypoint x="1520" y="557" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="ParallelGateway_1csci4j_di" bpmnElement="ExclusiveGateway_0ht1ox6">
-        <dc:Bounds x="1059" y="507" width="50" height="50" />
+      <bpmndi:BPMNShape id="ServiceTask_0vps64x_di" bpmnElement="ServiceTask_0vps64x">
+        <dc:Bounds x="1453" y="623" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="ParallelGateway_0aq68ar_di" bpmnElement="ExclusiveGateway_08lyrfx">
-        <dc:Bounds x="1495" y="507" width="50" height="50" />
+      <bpmndi:BPMNEdge id="SequenceFlow_0hdmx5b_di" bpmnElement="SequenceFlow_0hdmx5b">
+        <di:waypoint x="1553" y="663" />
+        <di:waypoint x="1587" y="663" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ServiceTask_0su0iym_di" bpmnElement="ServiceTask_0su0iym">
+        <dc:Bounds x="1989" y="501" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="SequenceFlow_16d8nls_di" bpmnElement="SequenceFlow_16d8nls">
-        <di:waypoint x="1109" y="532" />
-        <di:waypoint x="1130" y="532" />
+      <bpmndi:BPMNEdge id="SequenceFlow_1wgkk9n_di" bpmnElement="SequenceFlow_1wgkk9n">
+        <di:waypoint x="2089" y="541" />
+        <di:waypoint x="2130" y="541" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="SequenceFlow_1fu07y6_di" bpmnElement="SequenceFlow_1fu07y6">
-        <di:waypoint x="1230" y="532" />
-        <di:waypoint x="1251" y="532" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="SequenceFlow_0xzpeg5_di" bpmnElement="SequenceFlow_0xzpeg5">
-        <di:waypoint x="1084" y="557" />
-        <di:waypoint x="1084" y="654" />
-        <di:waypoint x="1130" y="654" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="ServiceTask_0h30ruf_di" bpmnElement="ServiceTask_0h30ruf">
-        <dc:Bounds x="1377" y="492" width="100" height="80" />
+      <bpmndi:BPMNShape id="ServiceTask_03bgk6n_di" bpmnElement="ServiceTask_03bgk6n">
+        <dc:Bounds x="1850" y="501" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="SequenceFlow_09i6qzz_di" bpmnElement="SequenceFlow_09i6qzz">
-        <di:waypoint x="1477" y="532" />
-        <di:waypoint x="1495" y="532" />
+      <bpmndi:BPMNEdge id="SequenceFlow_0yoxvr9_di" bpmnElement="SequenceFlow_0yoxvr9">
+        <di:waypoint x="1950" y="541" />
+        <di:waypoint x="1989" y="541" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="SequenceFlow_1tbwuu7_di" bpmnElement="SequenceFlow_1tbwuu7">
-        <di:waypoint x="1545" y="532" />
-        <di:waypoint x="1637" y="532" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="ServiceTask_05drpg9_di" bpmnElement="ServiceTask_05drpg9">
-        <dc:Bounds x="1251" y="492" width="100" height="80" />
+      <bpmndi:BPMNShape id="ServiceTask_1kdsx5h_di" bpmnElement="ServiceTask_1kdsx5h">
+        <dc:Bounds x="1722" y="501" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="SequenceFlow_0nn1670_di" bpmnElement="SequenceFlow_0nn1670">
-        <di:waypoint x="1351" y="532" />
-        <di:waypoint x="1377" y="532" />
+      <bpmndi:BPMNEdge id="SequenceFlow_00hc3nd_di" bpmnElement="SequenceFlow_00hc3nd">
+        <di:waypoint x="1822" y="541" />
+        <di:waypoint x="1850" y="541" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ServiceTask_1b2ot4c_di" bpmnElement="ServiceTask_1b2ot4c">
+        <dc:Bounds x="1587" y="501" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1pwihyd_di" bpmnElement="SequenceFlow_1pwihyd">
+        <di:waypoint x="1687" y="541" />
+        <di:waypoint x="1722" y="541" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ServiceTask_0drufd4_di" bpmnElement="ServiceTask_0drufd4">
+        <dc:Bounds x="1453" y="501" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0wjlhaj_di" bpmnElement="SequenceFlow_0wjlhaj">
+        <di:waypoint x="1553" y="541" />
+        <di:waypoint x="1587" y="541" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_061posf_di" bpmnElement="SequenceFlow_061posf">
+        <di:waypoint x="1359" y="541" />
+        <di:waypoint x="1383" y="541" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0qqbp89_di" bpmnElement="SequenceFlow_0qqbp89">
+        <di:waypoint x="2180" y="541" />
+        <di:waypoint x="2241" y="541" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1ei3ray_di" bpmnElement="SequenceFlow_1ei3ray">
+        <di:waypoint x="1106" y="414" />
+        <di:waypoint x="2241" y="414" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ServiceTask_1emkwhq_di" bpmnElement="ServiceTask_1emkwhq">
+        <dc:Bounds x="763" y="374" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_09eevvp_di" bpmnElement="SequenceFlow_09eevvp">
+        <di:waypoint x="863" y="414" />
+        <di:waypoint x="918" y="414" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
