@@ -416,6 +416,12 @@
         </pattern>
       </capabilityAssertions>
     </resourceTypes>
-    <resourceTypes xsi:type="resourcetype:MovableTool" id="_oh3PEe5aEeiMDIqI5-KD3Q" name="Smartwatch"/>
+    <resourceTypes xsi:type="resourcetype:MovableTool" id="_oh3PEe5aEeiMDIqI5-KD3Q" name="Smartwatch">
+      <capabilityAssertions binding="" id="_HyHOUPlxEeie-749oDWDFA" name="InformTask">
+        <pattern>
+          <type href="http://www.dfki.de/iui/basys/model/capability#//InteractionCapability"/>
+        </pattern>
+      </capabilityAssertions>
+    </resourceTypes>
   </catalogues>
 </resourcetype:ResourceTypeCatalogueCollection>
