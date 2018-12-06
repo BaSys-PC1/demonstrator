@@ -149,7 +149,7 @@
     <resourceType href="model.resourcetype#_eRh05OG7EeieRbude1ENJg"/>
     <capabilityApplications>
       <capabilityAssertion href="model.resourcetype#_9kv40OG-EeieRbude1ENJg"/>
-      <capabilityVariants xsi:type="resourceinstance:GeneralCapabilityVariant" id="_CSDgA-HAEeieRbude1ENJg">
+      <capabilityVariants xsi:type="resourceinstance:GeneralCapabilityVariant" id="_CSDgA-HAEeieRbude1ENJg" name="Bringe Akkuschrauber zu Montageort Raceway A">
         <capability xsi:type="capability:LogisticsCapability" id="_YKPUTeHAEeieRbude1ENJg"/>
         <appliedOn xsi:type="resourcetype:MovableTool" href="model.resourcetype#_cFpPVOG_EeieRbude1ENJg"/>
       </capabilityVariants>
@@ -160,25 +160,36 @@
     <resourceType href="model.resourcetype#_77wTIlNmEei1Nvtofg5AwQ"/>
     <capabilityApplications>
       <capabilityAssertion href="model.resourcetype#_vmBh8FNlEei1Nvtofg5AwQ"/>
-      <capabilityVariants xsi:type="resourceinstance:LogisticsCapabilityVariant" id="_jQ5qMuHBEeieRbude1ENJg" name="Fahre Tisch nach Raceway A">
-        <capability xsi:type="capability:Transport" id="_lnl0z-HBEeieRbude1ENJg"/>
-        <appliedOn xsi:type="topology:AGVStation" href="model.topology#_2yVg9eGqEeieRbude1ENJg"/>
-      </capabilityVariants>
-      <capabilityVariants xsi:type="resourceinstance:LogisticsCapabilityVariant" id="_Jij8YuHEEeieRbude1ENJg" name="Fahre Tisch nach Logistik Bahnhof">
-        <capability xsi:type="capability:Transport" id="_KBhJT-HEEeieRbude1ENJg"/>
-        <appliedOn xsi:type="topology:AGVStation" href="model.topology#_RJOKleGqEeieRbude1ENJg"/>
-      </capabilityVariants>
-      <capabilityVariants xsi:type="resourceinstance:GeneralCapabilityVariant" id="_Z8pwQ-HEEeieRbude1ENJg" name="Move To Logistik Bahnhof">
+      <capabilityVariants xsi:type="resourceinstance:GeneralCapabilityVariant" id="_Z8pwQ-HEEeieRbude1ENJg" name="Fahre zum Logistikbahnhof">
         <capability xsi:type="capability:MoveToLocation" id="_chlySOHEEeieRbude1ENJg">
           <targetLocation xsi:type="topology:AGVStation" href="model.topology#_RJOKleGqEeieRbude1ENJg"/>
         </capability>
         <appliedOn xsi:type="topology:AGVStation" href="model.topology#_RJOKleGqEeieRbude1ENJg"/>
       </capabilityVariants>
-      <capabilityVariants xsi:type="resourceinstance:GeneralCapabilityVariant" id="_aekKg-HEEeieRbude1ENJg" name="Move To Raceway A">
+      <capabilityVariants xsi:type="resourceinstance:GeneralCapabilityVariant" id="_IftCM_lzEei4X68iv-0HRw" name="Fahre zum Roboterbahnhof">
+        <capability xsi:type="capability:MoveToLocation" id="_K23G6PlzEei4X68iv-0HRw">
+          <targetLocation xsi:type="topology:AGVStation" href="model.topology#_awb8deGqEeieRbude1ENJg"/>
+        </capability>
+      </capabilityVariants>
+      <capabilityVariants xsi:type="resourceinstance:GeneralCapabilityVariant" id="_aekKg-HEEeieRbude1ENJg" name="Fahre zum Montageort Raceway A">
         <capability xsi:type="capability:MoveToLocation" id="_dVxBOOHEEeieRbude1ENJg">
           <targetLocation xsi:type="topology:AGVStation" href="model.topology#_2yVg9eGqEeieRbude1ENJg"/>
         </capability>
         <appliedOn xsi:type="topology:AGVStation" href="model.topology#_2yVg9eGqEeieRbude1ENJg"/>
+      </capabilityVariants>
+      <capabilityVariants xsi:type="resourceinstance:LogisticsCapabilityVariant" id="_jQ5qMuHBEeieRbude1ENJg" name="Fahre Logistiktisch zum Montageort Raceway A">
+        <capability xsi:type="capability:Transport" id="_lnl0z-HBEeieRbude1ENJg"/>
+        <appliedOn xsi:type="topology:AGVStation" href="model.topology#_2yVg9eGqEeieRbude1ENJg"/>
+      </capabilityVariants>
+      <capabilityVariants xsi:type="resourceinstance:LogisticsCapabilityVariant" id="_Jij8YuHEEeieRbude1ENJg" name="Fahre Logistiktisch zum Logistikbahnhof">
+        <capability xsi:type="capability:Transport" id="_KBhJT-HEEeieRbude1ENJg"/>
+        <appliedOn xsi:type="topology:AGVStation" href="model.topology#_RJOKleGqEeieRbude1ENJg"/>
+      </capabilityVariants>
+      <capabilityVariants xsi:type="resourceinstance:LogisticsCapabilityVariant" id="_ZeZX8vlzEei4X68iv-0HRw" name="Fahre Robotertisch zum Roboterbahnhof">
+        <capability xsi:type="capability:Transport" id="_bB387_lzEei4X68iv-0HRw"/>
+      </capabilityVariants>
+      <capabilityVariants xsi:type="resourceinstance:LogisticsCapabilityVariant" id="_txSCUvlzEei4X68iv-0HRw" name="Fahre Robotertisch zum Montageort Raceway A">
+        <capability xsi:type="capability:Transport" id="_uHqiD_lzEei4X68iv-0HRw"/>
       </capabilityVariants>
     </capabilityApplications>
     <role href="model.topology#_wDUpROHAEeieRbude1ENJg"/>
@@ -187,9 +198,17 @@
     <resourceType href="model.resourcetype#_dMG5ZOHFEeieRbude1ENJg"/>
     <capabilityApplications>
       <capabilityAssertion href="model.resourcetype#_8i2A0OHHEeieRbude1ENJg"/>
-      <capabilityVariants xsi:type="resourceinstance:ManufacturingCapabilityVariant" id="_wiZRQeHIEeieRbude1ENJg">
+      <capabilityVariants xsi:type="resourceinstance:ManufacturingCapabilityVariant" id="_wiZRQeHIEeieRbude1ENJg" name="Positioniere Raceway an Montageort Raceway A">
         <appliedOn xsi:type="productdefinition:MaterialEntry" href="model.productdefinition#_9rG-geHJEeieRbude1ENJg"/>
       </capabilityVariants>
+    </capabilityApplications>
+    <capabilityApplications>
+      <capabilityAssertion href="model.resourcetype#_TRFrsPl0Eei4X68iv-0HRw"/>
+      <capabilityVariants id="_nI6xwPl0Eei4X68iv-0HRw" name="Fahre in Ausgangsposition"/>
+    </capabilityApplications>
+    <capabilityApplications>
+      <capabilityAssertion href="model.resourcetype#_eJuCIPl0Eei4X68iv-0HRw"/>
+      <capabilityVariants id="_vOaSMPl0Eei4X68iv-0HRw" name="Warte auf Rückzugssignal"/>
     </capabilityApplications>
     <role href="model.topology#_hx68AOHHEeieRbude1ENJg"/>
   </resourceInstances>
@@ -197,10 +216,7 @@
     <resourceType href="model.resourcetype#_oh3PEe5aEeiMDIqI5-KD3Q"/>
     <capabilityApplications>
       <capabilityAssertion href="model.resourcetype#_HyHOUPlxEeie-749oDWDFA"/>
-      <capabilityVariants id="_hYgZsPlxEeie-749oDWDFA" name="Raceway bereitstellen"/>
-    </capabilityApplications>
-    <capabilityApplications>
-      <capabilityAssertion href="model.resourcetype#_HyHOUPlxEeie-749oDWDFA"/>
+      <capabilityVariants id="_hYgZsPlxEeie-749oDWDFA" name="Raceways auf Logistiktisch bereitlegen"/>
       <capabilityVariants id="_pP-sQPlxEeie-749oDWDFA" name="Raceway montieren"/>
     </capabilityApplications>
   </resourceInstances>

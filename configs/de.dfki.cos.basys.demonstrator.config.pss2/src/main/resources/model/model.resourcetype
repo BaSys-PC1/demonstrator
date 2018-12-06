@@ -415,6 +415,16 @@
           </slot>
         </pattern>
       </capabilityAssertions>
+      <capabilityAssertions id="_TRFrsPl0Eei4X68iv-0HRw" name="GotoPose">
+        <pattern>
+          <type href="http://www.dfki.de/iui/basys/model/capability#//MoveToLocation"/>
+        </pattern>
+      </capabilityAssertions>
+      <capabilityAssertions id="_eJuCIPl0Eei4X68iv-0HRw" name="WaitForWorker">
+        <pattern>
+          <type href="http://www.dfki.de/iui/basys/model/capability#//InteractionCapability"/>
+        </pattern>
+      </capabilityAssertions>
     </resourceTypes>
     <resourceTypes xsi:type="resourcetype:MovableTool" id="_oh3PEe5aEeiMDIqI5-KD3Q" name="Smartwatch">
       <capabilityAssertions binding="" id="_HyHOUPlxEeie-749oDWDFA" name="InformTask">
