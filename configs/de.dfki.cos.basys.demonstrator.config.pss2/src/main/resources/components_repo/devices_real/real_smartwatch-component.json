@@ -6,7 +6,7 @@
   "componentImplementationJavaClass" : "de.dfki.iui.basys.demonstrator.device.hybrit.SmartwatchComponent",
   "inChannelName" : "_2s80wO5aEeiMDIqI5-KD3Q#in",
   "outChannelName" : "_2s80wO5aEeiMDIqI5-KD3Q#out",
-  "externalConnectionString" : "tecs.tcp://10.250.6.129:9030",
+  "externalConnectionString" : "tecs.tcp://10.250.6.13:9030",
   "properties" : [ {
     "key" : "ps-uri",
     "value" : "tecs-ps://smartwatch-lg-3691@10.250.6.14:9000"
