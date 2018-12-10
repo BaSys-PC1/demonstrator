@@ -3,7 +3,7 @@
   "componentCategory" : "DEVICE_COMPONENT",
   "componentId" : "_2s80wO5aEeiMDIqI5-KD3Q",
   "componentName" : "My Smartwatch (Sim)",
-  "componentImplementationJavaClass" : "de.dfki.iui.basys.demonstrator.device.hybrit.SmartwatchComponent",
+  "componentImplementationJavaClass" : "de.dfki.cos.basys.demonstrator.device.hybrit.SmartwatchComponent",
   "inChannelName" : "_2s80wO5aEeiMDIqI5-KD3Q#in",
   "outChannelName" : "_2s80wO5aEeiMDIqI5-KD3Q#out",
   "externalConnectionString" : "tecs.tcp://10.250.6.13:9030",

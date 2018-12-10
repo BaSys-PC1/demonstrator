@@ -3,7 +3,7 @@
   "componentCategory" : "DEVICE_COMPONENT",
   "componentId" : "_rnjBgOHAEeieRbude1ENJg",
   "componentName" : "Airbus MiR 200",
-  "componentImplementationJavaClass" : "de.dfki.iui.basys.demonstrator.device.mirrest.MirRestComponent",
+  "componentImplementationJavaClass" : "de.dfki.cos.basys.demonstrator.device.mirrest.MirRestComponent",
   "inChannelName" : "_rnjBgOHAEeieRbude1ENJg#in",
   "outChannelName" : "_rnjBgOHAEeieRbude1ENJg#out",
   "externalConnectionString" : "http://10.250.6.23",

@@ -3,7 +3,7 @@
   "componentCategory" : "DEVICE_COMPONENT",
   "componentId" : "_apHtUOHHEeieRbude1ENJg",
   "componentName" : "My RoboTable (Sim)",
-  "componentImplementationJavaClass" : "de.dfki.iui.basys.demonstrator.device.urrpc.UrRpcComponent",
+  "componentImplementationJavaClass" : "de.dfki.cos.basys.demonstrator.device.urrpc.UrRpcComponent",
   "inChannelName" : "_apHtUOHHEeieRbude1ENJg#in",
   "outChannelName" : "_apHtUOHHEeieRbude1ENJg#out",
   "externalConnectionString" : "http://10.2.0.40:8081",

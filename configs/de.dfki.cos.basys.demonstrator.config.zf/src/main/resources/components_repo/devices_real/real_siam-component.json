@@ -3,7 +3,7 @@
   "componentCategory" : "DEVICE_COMPONENT",
   "componentId" : "_7B_KMGtnEeihVrieHNgo3Q",
   "componentName" : "SiAM Component",
-  "componentImplementationJavaClass" : "de.dfki.iui.basys.demonstrator.device.hybrit.SiAMComponent",
+  "componentImplementationJavaClass" : "de.dfki.cos.basys.demonstrator.device.hybrit.SiAMComponent",
   "inChannelName" : "_7B_KMGtnEeihVrieHNgo3Q#in",
   "outChannelName" : "_7B_KMGtnEeihVrieHNgo3Q#out",
   "externalConnectionString" : "tecs.tcp://10.2.0.101:10000"

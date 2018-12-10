@@ -3,7 +3,7 @@
   "componentCategory" : "DEVICE_COMPONENT",
   "componentId" : "_wojNMDD7EeiuBvcKgWzd3Q",
   "componentName" : "My YuMi (Sim)",
-  "componentImplementationJavaClass" : "de.dfki.iui.basys.demonstrator.device.hybrit.YumiComponent",
+  "componentImplementationJavaClass" : "de.dfki.cos.basys.demonstrator.device.hybrit.YumiComponent",
   "inChannelName" : "_wojNMDD7EeiuBvcKgWzd3Q#in",
   "outChannelName" : "_wojNMDD7EeiuBvcKgWzd3Q#out",
   "externalConnectionString" : "tecs.tcp://10.2.0.45:9031",

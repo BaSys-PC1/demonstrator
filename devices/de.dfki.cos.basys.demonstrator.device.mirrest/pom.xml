@@ -10,7 +10,7 @@
 
 	<properties>
 		<bundle.symbolicName>de.dfki.cos.basys.demonstrator.device.mirrest</bundle.symbolicName>
-		<bundle.namespace>de.dfki.iui.basys.demonstrator.device.mirrest</bundle.namespace>
+		<bundle.namespace>de.dfki.cos.basys.demonstrator.device.mirrest</bundle.namespace>
 	</properties>
 
 	<modelVersion>4.0.0</modelVersion>

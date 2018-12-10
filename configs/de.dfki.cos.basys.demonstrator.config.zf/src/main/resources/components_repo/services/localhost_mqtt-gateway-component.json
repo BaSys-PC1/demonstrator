@@ -3,7 +3,7 @@
   "componentId" : "mqtt-gateway",
   "componentName" : "mqtt-gateway",
   "componentCategory" : "MANAGEMENT_COMPONENT",
-  "componentImplementationJavaClass" : "de.dfki.iui.basys.runtime.gateway.MqttGatewayComponent",
+  "componentImplementationJavaClass" : "de.dfki.cos.basys.platform.runtime.gateway.MqttGatewayComponent",
   "externalConnectionString" : "tcp://localhost:1883",
   "properties" : [ {
     "key" : "incoming",

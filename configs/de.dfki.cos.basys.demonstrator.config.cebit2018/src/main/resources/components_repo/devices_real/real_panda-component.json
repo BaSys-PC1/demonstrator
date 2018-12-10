@@ -3,7 +3,7 @@
   "componentCategory" : "DEVICE_COMPONENT",
   "componentId" : "_I4a_oDD-EeiuBvcKgWzd3Q",
   "componentName" : "My Panda",
-  "componentImplementationJavaClass" : "de.dfki.iui.basys.demonstrator.device.hybrit.FrankaComponent",
+  "componentImplementationJavaClass" : "de.dfki.cos.basys.demonstrator.device.hybrit.FrankaComponent",
   "inChannelName" : "_I4a_oDD-EeiuBvcKgWzd3Q#in",
   "outChannelName" : "_I4a_oDD-EeiuBvcKgWzd3Q#out",
   "externalConnectionString" : "tecs.tcp://10.2.0.85:9090"
