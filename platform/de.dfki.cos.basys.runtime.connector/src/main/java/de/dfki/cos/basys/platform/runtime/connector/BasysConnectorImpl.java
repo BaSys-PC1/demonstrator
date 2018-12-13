@@ -26,27 +26,27 @@ import org.eclipse.emf.ecore.EObject;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import de.dfki.cos.basys.common.emf.json.JsonUtils;
+import de.dfki.cos.basys.platform.model.domain.linebalancing.LineBalancingAssignment;
+import de.dfki.cos.basys.platform.model.domain.linebalancing.LinebalancingPackage;
+import de.dfki.cos.basys.platform.model.domain.resourceinstance.CapabilityVariant;
+import de.dfki.cos.basys.platform.model.runtime.communication.Channel;
+import de.dfki.cos.basys.platform.model.runtime.communication.ChannelListener;
+import de.dfki.cos.basys.platform.model.runtime.communication.Notification;
+import de.dfki.cos.basys.platform.model.runtime.communication.Request;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentFactory;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentResponse;
+import de.dfki.cos.basys.platform.model.runtime.component.ProcessRequest;
+import de.dfki.cos.basys.platform.model.runtime.component.Property;
+import de.dfki.cos.basys.platform.model.runtime.component.ResponseStatus;
+import de.dfki.cos.basys.platform.model.runtime.component.Variable;
+import de.dfki.cos.basys.platform.model.runtime.component.VariableType;
+import de.dfki.cos.basys.platform.model.runtime.component.impl.VariableImpl;
 import de.dfki.cos.basys.platform.runtime.communication.CommFactory;
 import de.dfki.cos.basys.platform.runtime.component.ComponentException;
 import de.dfki.cos.basys.platform.runtime.component.device.DeviceComponentController;
 import de.dfki.cos.basys.platform.runtime.component.service.ServiceComponent;
-import de.dfki.iui.basys.model.domain.linebalancing.LineBalancingAssignment;
-import de.dfki.iui.basys.model.domain.linebalancing.LinebalancingPackage;
-import de.dfki.iui.basys.model.domain.resourceinstance.CapabilityVariant;
-import de.dfki.iui.basys.model.runtime.communication.Channel;
-import de.dfki.iui.basys.model.runtime.communication.ChannelListener;
-import de.dfki.iui.basys.model.runtime.communication.Notification;
-import de.dfki.iui.basys.model.runtime.communication.Request;
-import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
-import de.dfki.iui.basys.model.runtime.component.ComponentFactory;
-import de.dfki.iui.basys.model.runtime.component.ComponentPackage;
-import de.dfki.iui.basys.model.runtime.component.ComponentResponse;
-import de.dfki.iui.basys.model.runtime.component.ProcessRequest;
-import de.dfki.iui.basys.model.runtime.component.Property;
-import de.dfki.iui.basys.model.runtime.component.ResponseStatus;
-import de.dfki.iui.basys.model.runtime.component.Variable;
-import de.dfki.iui.basys.model.runtime.component.VariableType;
-import de.dfki.iui.basys.model.runtime.component.impl.VariableImpl;
 
 public class BasysConnectorImpl extends ServiceComponent implements BasysConnector, MessageListener {
 
@@ -106,7 +106,7 @@ public class BasysConnectorImpl extends ServiceComponent implements BasysConnect
 			new ChannelListener() {
 
 				@Override
-				public de.dfki.iui.basys.model.runtime.communication.Response handleRequest(Channel channel, Request req) {
+				public de.dfki.cos.basys.platform.model.runtime.communication.Response handleRequest(Channel channel, Request req) {
 					return null;
 				}
 
@@ -348,7 +348,7 @@ public class BasysConnectorImpl extends ServiceComponent implements BasysConnect
 							new ChannelListener() {
 
 								@Override
-								public de.dfki.iui.basys.model.runtime.communication.Response handleRequest(Channel channel, Request req) {
+								public de.dfki.cos.basys.platform.model.runtime.communication.Response handleRequest(Channel channel, Request req) {
 									return null;
 								}
 

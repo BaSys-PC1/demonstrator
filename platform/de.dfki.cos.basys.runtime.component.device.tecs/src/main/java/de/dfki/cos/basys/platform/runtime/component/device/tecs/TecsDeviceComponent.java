@@ -9,9 +9,9 @@ import org.apache.thrift.protocol.TProtocol;
 import org.apache.thrift.transport.TSocket;
 import org.apache.thrift.transport.TTransportException;
 
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration;
 import de.dfki.cos.basys.platform.runtime.component.ComponentException;
 import de.dfki.cos.basys.platform.runtime.component.device.DeviceComponent;
-import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.hrc.hybritcommand.CommandResponse;
 import de.dfki.tecs.Event;
 import de.dfki.tecs.ps.PSClient;

@@ -4,7 +4,7 @@
   "componentName" : "mqtt-gateway",
   "componentCategory" : "MANAGEMENT_COMPONENT",
   "componentImplementationJavaClass" : "de.dfki.cos.basys.platform.runtime.gateway.MqttGatewayComponent",
-  "externalConnectionString" : "tcp://10.250.6.206:1883",
+  "externalConnectionString" : "tcp://lns-90165.sb.dfki.de:1883",
   "properties" : [ {
     "key" : "incoming",
     "value" : "basys/components/command task-scheduler#in"

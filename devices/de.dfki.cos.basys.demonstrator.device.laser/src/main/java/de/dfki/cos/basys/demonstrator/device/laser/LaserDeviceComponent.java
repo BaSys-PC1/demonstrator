@@ -13,15 +13,15 @@ import de.dfki.cos.basys.demonstrator.device.laser.action.Projection;
 import de.dfki.cos.basys.demonstrator.device.laser.action.StopProjection;
 import de.dfki.cos.basys.demonstrator.device.laser.projectionentities.PEMovingArrows;
 import de.dfki.cos.basys.demonstrator.device.laser.projectionentities.PEMovingETA;
+import de.dfki.cos.basys.platform.model.data.CartesianCoordinate;
+import de.dfki.cos.basys.platform.model.domain.capability.CapabilityPackage;
+import de.dfki.cos.basys.platform.model.domain.capability.ProjectETA;
+import de.dfki.cos.basys.platform.model.domain.capability.ProjectPath;
+import de.dfki.cos.basys.platform.model.domain.resourceinstance.CapabilityVariant;
+import de.dfki.cos.basys.platform.model.runtime.component.CapabilityRequest;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration;
 import de.dfki.cos.basys.platform.runtime.component.device.packml.UnitConfiguration;
 import de.dfki.cos.basys.platform.runtime.component.device.rest.RestDeviceComponent;
-import de.dfki.iui.basys.model.data.CartesianCoordinate;
-import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
-import de.dfki.iui.basys.model.domain.capability.ProjectETA;
-import de.dfki.iui.basys.model.domain.capability.ProjectPath;
-import de.dfki.iui.basys.model.domain.resourceinstance.CapabilityVariant;
-import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
-import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 
 public class LaserDeviceComponent extends RestDeviceComponent {
 

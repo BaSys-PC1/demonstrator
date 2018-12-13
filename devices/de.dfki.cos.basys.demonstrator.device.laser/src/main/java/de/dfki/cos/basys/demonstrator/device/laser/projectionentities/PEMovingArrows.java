@@ -6,7 +6,7 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import de.dfki.cos.basys.demonstrator.device.laser.EProjectionColor;
-import de.dfki.iui.basys.model.data.CartesianCoordinate;
+import de.dfki.cos.basys.platform.model.data.CartesianCoordinate;
 
 public class PEMovingArrows extends ProjectionEntity {
 

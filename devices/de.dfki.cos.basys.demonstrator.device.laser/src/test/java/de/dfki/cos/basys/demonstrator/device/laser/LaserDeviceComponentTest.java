@@ -16,25 +16,25 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 
 import de.dfki.cos.basys.common.emf.json.JsonUtils;
 import de.dfki.cos.basys.demonstrator.device.laser.LaserDeviceComponent;
+import de.dfki.cos.basys.platform.model.data.CartesianCoordinate;
+import de.dfki.cos.basys.platform.model.data.DataFactory;
+import de.dfki.cos.basys.platform.model.data.Path;
+import de.dfki.cos.basys.platform.model.data.impl.CartesianCoordinateImpl;
+import de.dfki.cos.basys.platform.model.domain.capability.CapabilityFactory;
+import de.dfki.cos.basys.platform.model.domain.capability.ProjectETA;
+import de.dfki.cos.basys.platform.model.domain.capability.ProjectPath;
+import de.dfki.cos.basys.platform.model.domain.resourceinstance.GeneralCapabilityVariant;
+import de.dfki.cos.basys.platform.model.domain.resourceinstance.ResourceinstanceFactory;
+import de.dfki.cos.basys.platform.model.runtime.communication.Request;
+import de.dfki.cos.basys.platform.model.runtime.component.CapabilityRequest;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentCategory;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentFactory;
+import de.dfki.cos.basys.platform.model.runtime.component.State;
+import de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentConfigurationImpl;
 import de.dfki.cos.basys.platform.runtime.communication.CommFactory;
 import de.dfki.cos.basys.platform.runtime.component.ComponentContext;
 import de.dfki.cos.basys.platform.runtime.component.ComponentException;
-import de.dfki.iui.basys.model.data.CartesianCoordinate;
-import de.dfki.iui.basys.model.data.DataFactory;
-import de.dfki.iui.basys.model.data.Path;
-import de.dfki.iui.basys.model.data.impl.CartesianCoordinateImpl;
-import de.dfki.iui.basys.model.domain.capability.CapabilityFactory;
-import de.dfki.iui.basys.model.domain.capability.ProjectETA;
-import de.dfki.iui.basys.model.domain.capability.ProjectPath;
-import de.dfki.iui.basys.model.domain.resourceinstance.GeneralCapabilityVariant;
-import de.dfki.iui.basys.model.domain.resourceinstance.ResourceinstanceFactory;
-import de.dfki.iui.basys.model.runtime.communication.Request;
-import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
-import de.dfki.iui.basys.model.runtime.component.ComponentCategory;
-import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
-import de.dfki.iui.basys.model.runtime.component.ComponentFactory;
-import de.dfki.iui.basys.model.runtime.component.State;
-import de.dfki.iui.basys.model.runtime.component.impl.ComponentConfigurationImpl;
 
 public class LaserDeviceComponentTest {
 

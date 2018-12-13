@@ -1,15 +1,15 @@
 package de.dfki.cos.basys.demonstrator.device.hybrit;
 
+import de.dfki.cos.basys.platform.model.domain.capability.CapabilityPackage;
+import de.dfki.cos.basys.platform.model.domain.capability.QAVisualisationCapability;
+import de.dfki.cos.basys.platform.model.domain.resourceinstance.GeneralCapabilityVariant;
+import de.dfki.cos.basys.platform.model.domain.resourceinstance.ResourceinstancePackage;
+import de.dfki.cos.basys.platform.model.runtime.component.CapabilityRequest;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration;
+import de.dfki.cos.basys.platform.model.runtime.component.ResponseStatus;
 import de.dfki.cos.basys.platform.runtime.component.ComponentException;
 import de.dfki.cos.basys.platform.runtime.component.device.packml.UnitConfiguration;
 import de.dfki.cos.basys.platform.runtime.component.device.tecs.TecsDeviceComponent;
-import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
-import de.dfki.iui.basys.model.domain.capability.QAVisualisationCapability;
-import de.dfki.iui.basys.model.domain.resourceinstance.GeneralCapabilityVariant;
-import de.dfki.iui.basys.model.domain.resourceinstance.ResourceinstancePackage;
-import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
-import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
-import de.dfki.iui.basys.model.runtime.component.ResponseStatus;
 
 public class HueLightsComponent extends TecsDeviceComponent {
 

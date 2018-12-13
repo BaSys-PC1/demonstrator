@@ -6,18 +6,18 @@ import de.dfki.cos.basys.common.mirrestclient.MirRestClient;
 import de.dfki.cos.basys.common.mirrestclient.MirRestClientImpl;
 import de.dfki.cos.basys.common.mirrestclient.dto.MissionInstanceInfo;
 import de.dfki.cos.basys.common.mirrestclient.dto.Status;
+import de.dfki.cos.basys.platform.model.domain.capability.CapabilityPackage;
+import de.dfki.cos.basys.platform.model.domain.capability.MoveToLocation;
+import de.dfki.cos.basys.platform.model.domain.resourceinstance.CapabilityVariant;
+import de.dfki.cos.basys.platform.model.domain.resourceinstance.LogisticsCapabilityVariant;
+import de.dfki.cos.basys.platform.model.domain.topology.TopologyElement;
+import de.dfki.cos.basys.platform.model.runtime.component.CapabilityRequest;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration;
+import de.dfki.cos.basys.platform.model.runtime.component.ResponseStatus;
 import de.dfki.cos.basys.platform.runtime.component.ComponentContext;
 import de.dfki.cos.basys.platform.runtime.component.ComponentException;
 import de.dfki.cos.basys.platform.runtime.component.device.DeviceComponent;
 import de.dfki.cos.basys.platform.runtime.component.device.packml.UnitConfiguration;
-import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
-import de.dfki.iui.basys.model.domain.capability.MoveToLocation;
-import de.dfki.iui.basys.model.domain.resourceinstance.CapabilityVariant;
-import de.dfki.iui.basys.model.domain.resourceinstance.LogisticsCapabilityVariant;
-import de.dfki.iui.basys.model.domain.topology.TopologyElement;
-import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
-import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
-import de.dfki.iui.basys.model.runtime.component.ResponseStatus;
 
 public class MirRestComponent extends DeviceComponent {	
 	

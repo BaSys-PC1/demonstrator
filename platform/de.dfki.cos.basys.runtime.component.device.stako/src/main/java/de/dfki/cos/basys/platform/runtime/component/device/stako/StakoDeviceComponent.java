@@ -1,8 +1,8 @@
 package de.dfki.cos.basys.platform.runtime.component.device.stako;
 
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration;
 import de.dfki.cos.basys.platform.runtime.component.ComponentException;
 import de.dfki.cos.basys.platform.runtime.component.device.DeviceComponent;
-import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 
 public abstract class StakoDeviceComponent extends DeviceComponent {
 
