@@ -20,7 +20,8 @@
 	<packaging>kar</packaging>
 
 	<properties>
-		<version.basys.platform>0.2.1-SNAPSHOT</version.basys.platform>
+		<version.basys.common>0.2.4-SNAPSHOT</version.basys.common>
+		<version.basys.platform>0.2.4-SNAPSHOT</version.basys.platform>
 	</properties>
 	
 	<dependencies>
@@ -102,33 +103,17 @@
 			<version>${project.version}</version>
 			<type>bundle</type>
 		</dependency>
-
+		
 		<dependency>
-			<groupId>de.dfki.cos.basys.common</groupId>
-			<artifactId>jersey-min</artifactId>
-			<version>2.22.2</version>
+			<groupId>de.dfki.cos.basys.platform.wrapper-bundle-settings</groupId>
+			<artifactId>jersey-bundle</artifactId>
+			<version>${version.basys.platform}</version>
 			<type>bundle</type>
 			<exclusions>
 				<exclusion>
-					<groupId>org.glassfish.jersey.containers</groupId>
-					<artifactId>jersey-container-servlet</artifactId>
+					<groupId>*</groupId>
+					<artifactId>*</artifactId>
 				</exclusion>
-				<exclusion>
-					<groupId>org.glassfish.jersey.media</groupId>
-					<artifactId>jersey-media-sse</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.glassfish.jersey.media</groupId>
-					<artifactId>jersey-media-multipart</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.glassfish.jersey.media</groupId>
-					<artifactId>jersey-media-json-jackson</artifactId>
-				</exclusion>
-<!-- 				<exclusion>
-					<groupId>org.glassfish.jersey.inject</groupId>
-					<artifactId>jersey-hk2</artifactId>
-				</exclusion> -->
 			</exclusions>
 		</dependency>
 
@@ -143,100 +128,6 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-
-	<!-- 	<dependency>
-		    <groupId>org.glassfish.jersey.inject</groupId>
-		    <artifactId>jersey-hk2</artifactId>
-			<version>${version.jersey}</version> 
-			<exclusions>
-				<exclusion>
-		          <groupId>javax.inject</groupId>
-		          <artifactId>javax.inject</artifactId>
-		        </exclusion>
-			</exclusions>
-		</dependency>
-
-		<dependency>
-			<groupId>org.glassfish.jersey.containers</groupId>
-			<artifactId>jersey-container-servlet</artifactId>
-			<version>${version.jersey}</version>
-		</dependency> -->
-		<!-- 
-		<dependency>
-			<groupId>org.glassfish.jersey.media</groupId>
-			<artifactId>jersey-media-sse</artifactId>
-			<version>${version.jersey}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.glassfish.jersey.media</groupId>
-			<artifactId>jersey-media-multipart</artifactId>
-			<version>${version.jersey}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.glassfish.jersey.media</groupId>
-			<artifactId>jersey-media-json-jackson</artifactId>
-			<version>${version.jersey}</version> 
-		</dependency>  -->
-
-
- 	<!-- 	<dependency>
-			<groupId>org.glassfish.jersey.media</groupId>
-			<artifactId>jersey-media-json-jackson</artifactId>
-			<version>${jersey-version}</version>
-			<exclusions>
-				<exclusion>
-		          <groupId>org.glassfish.jersey.core</groupId>
-		          <artifactId>jersey-common</artifactId>
-		        </exclusion>		        
-				<exclusion>
-		          <groupId>javax.ws.rs</groupId>
-		          <artifactId>javax.ws.rs-api</artifactId>
-		        </exclusion> 
-			</exclusions>
-		</dependency> 
-		
-		
-		<dependency>
-			<groupId>org.glassfish.jersey.bundles.repackaged</groupId>
-			<artifactId>jersey-guava</artifactId>
-			<version>2.22.2</version>
-		</dependency> -->
-		
-	<!-- 	<dependency>
-		  <groupId>com.eclipsesource.jaxrs</groupId>
-		  <artifactId>jersey-all</artifactId>
-		  <version>2.22.2</version>
-		</dependency> -->
-
-
-	 	<!-- <dependency>
-			<groupId>org.glassfish.jersey.core</groupId>
-			<artifactId>jersey-server</artifactId>
-			<version>${version.jersey}</version>
-		</dependency>
-	 	<dependency>
-			<groupId>org.glassfish.jersey.core</groupId>
-			<artifactId>jersey-client</artifactId>
-			<version>${version.jersey}</version>
-		</dependency>
-		 
-		<dependency>
-			<groupId>org.glassfish.jersey.containers</groupId>
-			<artifactId>jersey-container-servlet</artifactId>
-			<version>${version.jersey}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.glassfish.jersey.media</groupId>
-			<artifactId>jersey-media-sse</artifactId>
-			<version>${version.jersey}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.glassfish.jersey.media</groupId>
-			<artifactId>jersey-media-multipart</artifactId>
-			<version>${version.jersey}</version>
-		</dependency>		
-		-->
 
 	</dependencies>
 
