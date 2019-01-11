@@ -108,20 +108,15 @@ public class SiAMComponent extends TecsDeviceComponent {
 					variables.add(var);
 				}
 	
-				sendComponentResponse(ResponseStatus.OK, 0, variables);
+				handleCapabilityResponse(ResponseStatus.OK, 0, variables);
 			} else {
-				sendComponentResponse(ResponseStatus.OK, 0);
+				handleCapabilityResponse(ResponseStatus.OK, 0);
 			}
 
 		} catch (TException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
-
-	@Override
-	public void onStopping() {
-		sendComponentResponse(ResponseStatus.NOT_OK, getErrorCode());
 	}
 
 

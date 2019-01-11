@@ -79,15 +79,5 @@ public class HueLightsComponent extends TecsDeviceComponent {
 			}
 		}
 	}
-
-	@Override
-	public void onCompleting() {
-		sendComponentResponse(ResponseStatus.OK, 0);
-	}
-
-	@Override
-	public void onStopping() {
-		sendComponentResponse(ResponseStatus.NOT_OK, 0);
-	}
 	
 }

@@ -57,15 +57,15 @@ public class ScaleComponent extends OpcUaDeviceComponent {
 	
 	@Override
 	public void onCompleting() {
+		super.onCompleting();
 		stopMeasurement();
-		sendComponentResponse(ResponseStatus.OK, 0);
 	}
 
 	@Override
 	public void onStopping() {
 		// erstmal analog zu onCompleting
-		stopMeasurement();
-		sendComponentResponse(ResponseStatus.OK, 0);		
+		super.onCompleting(); // super.onStopping();
+		stopMeasurement();		
 	}
 
 	@Override

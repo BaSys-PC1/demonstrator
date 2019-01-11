@@ -103,17 +103,6 @@ public class UrRpcComponent extends XmlRpcDeviceComponent {
 		}		
 	}
 
-	@Override
-	public void onCompleting() {		
-		sendComponentResponse(ResponseStatus.OK, 0);
-	}
-	
-	@Override
-	public void onStopping() {
-		sendComponentResponse(ResponseStatus.NOT_OK, getErrorCode());
-	}
-	
-	
 	/*
 	 * private XML-RPC functions 
 	 */

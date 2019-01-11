@@ -86,13 +86,6 @@ public class FestoComponent extends OpcUaDeviceComponent {
 	public void onExecute() {
 		awaitExecuteComplete();
 	}
-	
-	@Override
-	public void onCompleting() {
-		super.onCompleting();
-
-		sendComponentResponse(ResponseStatus.OK, 0);
-	}
 
 	@Override
 	public void onStopping() {
@@ -100,18 +93,18 @@ public class FestoComponent extends OpcUaDeviceComponent {
 			short jobErrorCode = readValue(NODE_VARIABLE_JOB_ERRORCODE);
 			if (jobErrorCode != 0) {
 				// internal error report
-				// do nothing
+				setErrorCode(jobErrorCode);
 			} else {
 				// external stop
 				int lidNumber = getUnitConfig().getRecipe();
 				cancelJob((short) lidNumber);
 			}
-
-			sendComponentResponse(ResponseStatus.NOT_OK, jobErrorCode);
+			
 		} catch (OpcUaException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+		super.onStopping();
 	}
 
 	@Override

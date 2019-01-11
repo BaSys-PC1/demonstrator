@@ -106,17 +106,6 @@ public class Ur10Component extends TecsDeviceComponent {
 		busyWait(client);
 	}	
 
-	@Override
-	public void onCompleting() {
-		sendComponentResponse(ResponseStatus.OK, 0);
-	}
-
-	@Override
-	public void onStopping() {
-		sendComponentResponse(ResponseStatus.NOT_OK, getErrorCode());
-	}
-
-
 	private class Ur10TECS extends UR.Client implements DeviceStatus {
 
 		private TProtocol protocol;

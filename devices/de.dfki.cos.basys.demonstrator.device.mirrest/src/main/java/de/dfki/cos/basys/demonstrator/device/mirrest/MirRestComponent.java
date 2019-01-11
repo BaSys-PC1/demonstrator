@@ -136,14 +136,12 @@ public class MirRestComponent extends DeviceComponent {
 		
 	}
 
-	@Override
-	public void onCompleting() {		
-		sendComponentResponse(ResponseStatus.OK, 0);
-	}
+
 	
 	@Override
 	public void onStopping() {
-		sendComponentResponse(ResponseStatus.NOT_OK, getErrorCode());
+		super.onStopping();
+		
 		try {
 			Status status = client.setRobotStatus(MiRState.PAUSED);
 			if (currentMission != null) {
@@ -153,7 +151,7 @@ public class MirRestComponent extends DeviceComponent {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
+		}		
 	}
 	
 	

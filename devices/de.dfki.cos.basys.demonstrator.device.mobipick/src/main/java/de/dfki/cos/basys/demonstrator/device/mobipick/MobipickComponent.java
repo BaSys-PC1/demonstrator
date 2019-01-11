@@ -173,19 +173,5 @@ public class MobipickComponent extends RosDeviceComponent {
 			stop();
 		}
 	}
-
-	@Override
-	public void onCompleting() {
-		sendComponentResponse(ResponseStatus.OK, 0);
-	}
-
-	@Override
-	public void onStopping() {
-		//TODO: handle cancellation from user
-		sendComponentResponse(ResponseStatus.NOT_OK, getErrorCode());
-	}
-
-	
-
 	
 }

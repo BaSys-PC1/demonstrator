@@ -112,16 +112,6 @@ public class SmartwatchComponent extends TecsDeviceComponent {
 		busyWait(client);
 	}
 
-	@Override
-	public void onCompleting() {
-		sendComponentResponse(ResponseStatus.OK, 0);
-	}
-
-	@Override
-	public void onStopping() {
-		sendComponentResponse(ResponseStatus.NOT_OK, getErrorCode());
-	}
-
 	public class SmartwatchTECS extends Smartwatch.Client implements DeviceStatus {
 		private final TProtocol prot;
 		private PSClient psClient;

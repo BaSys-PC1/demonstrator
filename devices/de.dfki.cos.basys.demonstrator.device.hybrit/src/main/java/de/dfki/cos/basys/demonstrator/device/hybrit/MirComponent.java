@@ -450,13 +450,13 @@ public class MirComponent extends TecsDeviceComponent {
 
 		prop.setValue("0");
 
-		sendComponentResponse(ResponseStatus.OK, 0);
+		super.onCompleting();
 	}
 
 	@Override
 	public void onStopping() {
 //		mMoving = false;
-		sendComponentResponse(ResponseStatus.NOT_OK, getErrorCode());
+		super.onStopping();
 		try {
 			client.stopMovement();
 		} catch (TException e) {

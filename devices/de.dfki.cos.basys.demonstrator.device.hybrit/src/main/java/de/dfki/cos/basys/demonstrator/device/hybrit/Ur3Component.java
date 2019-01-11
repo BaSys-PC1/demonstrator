@@ -114,14 +114,14 @@ public class Ur3Component extends TecsDeviceComponent{
 	public void onCompleting() {
 		gotoSafePosition();
 		//gotoHomePosition();		
-		sendComponentResponse(ResponseStatus.OK, 0);
+		super.onCompleting();
 	}
 
 	@Override
 	public void onStopping() {
 		gotoSafePosition();
 		//gotoHomePosition();
-		sendComponentResponse(ResponseStatus.NOT_OK, getErrorCode());
+		super.onStopping();
 	}
 	
 	private void gotoSafePosition() {

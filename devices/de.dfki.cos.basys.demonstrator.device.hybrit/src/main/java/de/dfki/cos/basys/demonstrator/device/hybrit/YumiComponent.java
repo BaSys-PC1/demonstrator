@@ -95,19 +95,13 @@ public class YumiComponent extends TecsDeviceComponent {
 					.value(cr.getDescription().equals("io") ? "true" : "false")
 					.build();
 			
-			sendComponentResponse(ResponseStatus.OK, 0, qaResult);
+			handleCapabilityResponse(ResponseStatus.OK, 0, qaResult);
 			//sendComponentResponse(ResponseStatus.OK, 0);
 		} catch (TException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-
-	@Override
-	public void onStopping() {
-		sendComponentResponse(ResponseStatus.NOT_OK, getErrorCode());
-	}
-
 	
 	private class YumiTECS extends Yumi.Client implements DeviceStatus {
 

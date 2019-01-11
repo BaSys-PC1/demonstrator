@@ -193,16 +193,6 @@ public class FrankaComponent extends TecsDeviceComponent{
 		busyWait(client);
 	}	
 
-	@Override
-	public void onCompleting() {
-		sendComponentResponse(ResponseStatus.OK, 0);
-	}
-
-	@Override
-	public void onStopping() {
-		sendComponentResponse(ResponseStatus.NOT_OK, getErrorCode());
-	}
-
 	private class FrankaTECS extends Franka.Client implements DeviceStatus {
 
 		private TProtocol protocol;

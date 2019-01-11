@@ -94,15 +94,13 @@ public class ButtonDeviceComponent extends MqttDeviceComponent {
 	@Override
 	public void onCompleting() {
 		switchDeactivate();
-		
-		//TODO: notify Basys
-		//outChannel.sendMessage("");
-		sendComponentResponse(ResponseStatus.OK, 0);
+		super.onCompleting();
 	}
 	
 	@Override
 	public void onStopping() {
 		selfCheck();
+		super.onStopping();
 	}
 	
 	@Override
