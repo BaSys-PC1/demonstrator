@@ -342,7 +342,7 @@ public class BasysConnectorImpl extends ServiceComponent implements BasysConnect
 					request.setBusinessKey(UUID.randomUUID().toString());
 					
 					Variable var = new VariableImpl.Builder().name("resourceInstanceId").value(resourceInstanceId).type(VariableType.STRING).build();
-					request.setVariable(var);
+					request.getVariables().add(var);
 					
 					componentOut = CommFactory.getInstance().openChannel(context.getSharedChannelPool(), resourceInstanceId + "#out", false,
 							new ChannelListener() {
@@ -398,7 +398,7 @@ public class BasysConnectorImpl extends ServiceComponent implements BasysConnect
 					try {
 						String payload = JsonUtils.toString(request);
 						Notification not = CommFactory.getInstance().createNotification(payload);						
-						Channel taskSchedulerIn = CommFactory.getInstance().openChannel(context.getSharedChannelPool(), "task-scheduler#in", false, null);
+						Channel taskSchedulerIn = CommFactory.getInstance().openChannel(context.getSharedChannelPool(), "process-controller#in", false, null);
 						taskSchedulerIn.sendNotification(not);
 					} catch (JsonProcessingException e) {
 						// TODO Auto-generated catch block

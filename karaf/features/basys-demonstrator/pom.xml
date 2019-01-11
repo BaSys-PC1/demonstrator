@@ -20,8 +20,8 @@
 	<packaging>kar</packaging>
 
 	<properties>
-		<version.basys.common>0.2.4-SNAPSHOT</version.basys.common>
-		<version.basys.platform>0.2.4-SNAPSHOT</version.basys.platform>
+		<version.basys.common>0.2.5-SNAPSHOT</version.basys.common>
+		<version.basys.platform>0.2.5-SNAPSHOT</version.basys.platform>
 	</properties>
 	
 	<dependencies>
