@@ -378,4 +378,23 @@
       </capabilityAssertions>
     </resourceTypes>
   </catalogues>
+  <catalogues manufacturer="Bosch Rexroth">
+    <resourceTypes xsi:type="resourcetype:Tool" id="_kMkUIiYQEemIQdfsybOlKw" name="ErgoSpin">
+      <capabilityAssertions id="_q2sCwCYQEemIQdfsybOlKw">
+        <pattern>
+          <type href="http://www.dfki.de/iui/basys/model/capability#//Screwing"/>
+          <slot>
+            <feature xsi:type="ecore:EAttribute" href="http://www.dfki.de/iui/basys/model/capability#//Screwing/torque"/>
+            <range xsi:type="pattern:PValue">
+              <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+              <restrictions>
+                <restriction xsi:type="pattern:PDoubleRestriction" function=">=" value="2.6"/>
+                <restriction xsi:type="pattern:PDoubleRestriction" function="&lt;=" value="13.0"/>
+              </restrictions>
+            </range>
+          </slot>
+        </pattern>
+      </capabilityAssertions>
+    </resourceTypes>
+  </catalogues>
 </resourcetype:ResourceTypeCatalogueCollection>
