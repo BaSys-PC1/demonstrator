@@ -15,7 +15,6 @@
         <appliedOn xsi:type="productdefinition:AssemblyGroupEntry" href="model.productdefinition#_IpqbzF29EeixDOGCyjgf_g"/>
       </capabilityVariants>
     </capabilityApplications>
-    <role href="model.topology#_6CV9oDB4Eei1bbwBPPZWOA"/>
   </resourceInstances>
   <resourceInstances id="_jJdx4DD7EeiuBvcKgWzd3Q" name="My UR3" serialNumber="123">
     <resourceType href="model.resourcetype#_Hi37STD5EeiuBvcKgWzd3Q"/>
@@ -27,7 +26,6 @@
         <appliedOn xsi:type="productdefinition:AssemblyGroupEntry" href="model.productdefinition#_IpqbzF29EeixDOGCyjgf_g"/>
       </capabilityVariants>
     </capabilityApplications>
-    <role href="model.topology#_6lOowWnSEeiQ6ti_SIagCw"/>
   </resourceInstances>
   <resourceInstances id="_r4sy4DD7EeiuBvcKgWzd3Q" name="My UR10" serialNumber="345">
     <resourceType href="model.resourcetype#_LILOCTD5EeiuBvcKgWzd3Q"/>
@@ -49,7 +47,6 @@
         <appliedOn xsi:type="topology:Station" href="model.topology#_F6qPdzB5Eei1bbwBPPZWOA"/>
       </capabilityVariants>
     </capabilityApplications>
-    <role href="model.topology#_HlgntTB5Eei1bbwBPPZWOA"/>
   </resourceInstances>
   <resourceInstances id="_wojNMDD7EeiuBvcKgWzd3Q" name="My YuMi" serialNumber="567">
     <resourceType href="model.resourcetype#_NnuuyTD7EeiuBvcKgWzd3Q"/>
@@ -60,7 +57,6 @@
         <appliedOn xsi:type="productdefinition:AssemblyGroupEntry" href="model.productdefinition#_IphR0F29EeixDOGCyjgf_g"/>
       </capabilityVariants>
     </capabilityApplications>
-    <role href="model.topology#_IvknEDB5Eei1bbwBPPZWOA"/>
   </resourceInstances>
   <resourceInstances id="_I4a_oDD-EeiuBvcKgWzd3Q" name="My Panda" serialNumber="678">
     <resourceType href="model.resourcetype#_0xCaqTD9EeiuBvcKgWzd3Q"/>
@@ -77,7 +73,6 @@
         <appliedOn xsi:type="topology:AGVStation" href="model.topology#_rBfZoV2TEeit97PGgoQOAQ"/>
       </capabilityVariants>
     </capabilityApplications>
-    <role href="model.topology#_ROxA8zB5Eei1bbwBPPZWOA"/>
   </resourceInstances>
   <resourceInstances id="_rUJzsDJhEei1p5hKOf5Slw" name="My MiR 100" serialNumber="789">
     <resourceType href="model.resourcetype#_ZRW8sjJhEei1p5hKOf5Slw"/>
@@ -115,7 +110,6 @@
         </capability>
       </capabilityVariants>
     </capabilityApplications>
-    <role href="model.topology#_yb80hGnSEeiQ6ti_SIagCw"/>
   </resourceInstances>
   <resourceInstances id="_PwPREFIxEeidSe5vp9A3oA" name="My Button" serialNumber="890">
     <resourceType href="model.resourcetype#_GHTn8lIxEeidSe5vp9A3oA"/>
@@ -125,7 +119,6 @@
         <capability xsi:type="capability:SwitchConfirmationCapability" id="_cG8ChWfyEeicaOUv4-YIYQ"/>
       </capabilityVariants>
     </capabilityApplications>
-    <role href="model.topology#_rcKlkFIxEeidSe5vp9A3oA"/>
   </resourceInstances>
   <resourceInstances binding="" id="_RtlHgFIxEeidSe5vp9A3oA" name="My Laser" serialNumber="901">
     <resourceType href="model.resourcetype#_BcwkYlIxEeidSe5vp9A3oA"/>
@@ -141,14 +134,12 @@
         <capability xsi:type="capability:ProjectPath" id="_T_faMGfyEeicaOUv4-YIYQ"/>
       </capabilityVariants>
     </capabilityApplications>
-    <role href="model.topology#_gUuXFFIxEeidSe5vp9A3oA"/>
   </resourceInstances>
   <resourceInstances id="_8cLJ8FIxEeidSe5vp9A3oA" name="Worker Guidance S2" serialNumber="1233">
     <resourceType href="model.resourcetype#_3cuNYlIxEeidSe5vp9A3oA"/>
     <capabilityApplications>
       <capabilityAssertion href="model.resourcetype#_be_uUGWlEeimHJMdsEZOIA"/>
     </capabilityApplications>
-    <role href="model.topology#_AzQQwDB5Eei1bbwBPPZWOA"/>
   </resourceInstances>
   <resourceInstances id="_TgItAGsZEeixZrynCv8ohQ" name="My Hue Light" serialNumber="882378">
     <resourceType href="model.resourcetype#_XEoEQmsVEeiPYI9_h6Hhzw"/>
@@ -161,7 +152,6 @@
         <capability xsi:type="capability:QAVisualisationCapability" id="_yV0rbGtnEeihVrieHNgo3Q" qaResult="true"/>
       </capabilityVariants>
     </capabilityApplications>
-    <role href="model.topology#_bbI0sGsZEeixZrynCv8ohQ"/>
   </resourceInstances>
   <resourceInstances id="_7B_KMGtnEeihVrieHNgo3Q" name="My SiAM" serialNumber="2018442378">
     <resourceType href="model.resourcetype#_Euwm8mtnEeihVrieHNgo3Q"/>
@@ -177,6 +167,5 @@
         <capability xsi:type="capability:InteractionCapability" id="_mOge1GtoEeihVrieHNgo3Q" topic="delivery"/>
       </capabilityVariants>
     </capabilityApplications>
-    <role href="model.topology#_uATSAWtmEeihVrieHNgo3Q"/>
   </resourceInstances>
 </resourceinstance:ResourceInstanceRepository>

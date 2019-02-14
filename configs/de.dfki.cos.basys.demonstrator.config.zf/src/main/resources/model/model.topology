@@ -9,7 +9,10 @@
             <equipmentModules xsi:type="topology:AGVStation" id="_14ta0V2TEeit97PGgoQOAQ" name="Station-BaSys"/>
           </stations>
           <stations id="_2P5mwTB4Eei1bbwBPPZWOA" name="S2">
-            <equipmentModules id="_5vbBoDB4Eei1bbwBPPZWOA" name="Schrauber"/>
+            <equipmentModules id="_5vbBoDB4Eei1bbwBPPZWOA" name="Schrauber">
+              <assignedResourceType href="model.resourcetype#_kMkUIiYQEemIQdfsybOlKw"/>
+              <assignedResourceInstance href="model.resourceinstance#__aNxMCYQEemIQdfsybOlKw"/>
+            </equipmentModules>
             <equipmentModules id="_rcKlkFIxEeidSe5vp9A3oA" name="Handtaster">
               <assignedResourceType href="model.resourcetype#_GHTn8lIxEeidSe5vp9A3oA"/>
               <assignedResourceInstance href="model.resourceinstance#_PwPREFIxEeidSe5vp9A3oA"/>
