@@ -1,5 +1,8 @@
 package de.dfki.cos.basys.demonstrator.device.urrpc;
 
+import java.util.List;
+import java.util.Map;
+
 import org.apache.xmlrpc.XmlRpcException;
 
 import de.dfki.cos.basys.platform.model.domain.capability.CapabilityPackage;
@@ -11,9 +14,9 @@ import de.dfki.cos.basys.platform.runtime.component.ComponentException;
 import de.dfki.cos.basys.platform.runtime.component.device.packml.UnitConfiguration;
 import de.dfki.cos.basys.platform.runtime.component.device.xmlrpc.XmlRpcDeviceComponent;
 
-public class UrRpcComponent extends XmlRpcDeviceComponent {	
+public class UrRpcComponent2 extends XmlRpcDeviceComponent {	
 		
-	public UrRpcComponent(ComponentConfiguration config) {
+	public UrRpcComponent2(ComponentConfiguration config) {
 		super(config);
 		//resetOnComplete = true;
 	}
@@ -73,6 +76,13 @@ public class UrRpcComponent extends XmlRpcDeviceComponent {
 	@Override
 	public void onStarting() {		
 		if (getUnitConfig().getRecipe() > 0) {
+			
+			if (getUnitConfig().getRecipe() == 4) {
+			
+				//ask the WM for indexes
+				//setElementsId(ids);
+			}
+			
 			setCurrentRoutine(getUnitConfig().getRecipe());
 			// FIXME: do we need to wait a short time? 
 			// From the second command onwards, the rpc server has a status of finished, 
@@ -88,6 +98,9 @@ public class UrRpcComponent extends XmlRpcDeviceComponent {
 			switch (state) {
 			case "busy":
 				// wait for completion
+				//check for element states
+				// get_element_state param=id
+				// if change detected: update WM
 				break;
 			case "finished":
 				executing=false;
@@ -131,6 +144,15 @@ public class UrRpcComponent extends XmlRpcDeviceComponent {
 		Object params[] = { code };
 		try {
 			client.execute("set_routine", params);
+		} catch (XmlRpcException ex) {
+			LOGGER.error("Exception occurred: {}", ex.toString());
+		}
+	}
+
+	
+	private void setElementsIds(List<Map<String,Object>> elements) {	
+		try {
+			client.execute("set_elements_ids", elements);
 		} catch (XmlRpcException ex) {
 			LOGGER.error("Exception occurred: {}", ex.toString());
 		}

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_062ggb8" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="2.2.4">
+  <bpmn:process id="test-BROETJE-MIR100-UR10-SEALING" name="test-BROETJE-MIR100-UR10-SEALING" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_0el8r5b">
+      <bpmn:outgoing>SequenceFlow_1hya500</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:endEvent id="EndEvent_17h0qyj">
+      <bpmn:incoming>SequenceFlow_1hya500</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_1hya500" sourceRef="StartEvent_0el8r5b" targetRef="EndEvent_17h0qyj" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="test-BROETJE-MIR100-UR10-SEALING">
+      <bpmndi:BPMNShape id="StartEvent_0el8r5b_di" bpmnElement="StartEvent_0el8r5b">
+        <dc:Bounds x="359" y="97" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_17h0qyj_di" bpmnElement="EndEvent_17h0qyj">
+        <dc:Bounds x="445" y="97" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1hya500_di" bpmnElement="SequenceFlow_1hya500">
+        <di:waypoint x="395" y="115" />
+        <di:waypoint x="445" y="115" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

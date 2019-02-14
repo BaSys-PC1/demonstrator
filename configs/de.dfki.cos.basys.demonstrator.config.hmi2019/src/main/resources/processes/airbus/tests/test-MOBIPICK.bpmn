@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_062ggb8" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="1.15.1">
+  <bpmn:process id="test-MOBIPICK" name="test-MOBIPICK" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1oa94k6">
+      <bpmn:outgoing>SequenceFlow_1rvnokn</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_1rvnokn" sourceRef="StartEvent_1oa94k6" targetRef="ServiceTask_1e87vpf" />
+    <bpmn:endEvent id="EndEvent_1rvvri9">
+      <bpmn:incoming>SequenceFlow_0td74x6</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:serviceTask id="ServiceTask_1e87vpf" name="Reset MobiPick" camunda:type="external" camunda:topic="BasysTask">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="assignee">_rrDawOG7EeieRbude1ENJg</camunda:inputParameter>
+          <camunda:inputParameter name="command">{
+    "eClass" : "http://www.dfki.de/iui/basys/model/component#//CommandRequest",
+    "controlCommand" : "RESET"
+  }</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_1rvnokn</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_02liudj</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="SequenceFlow_02liudj" sourceRef="ServiceTask_1e87vpf" targetRef="ServiceTask_02477vj" />
+    <bpmn:serviceTask id="ServiceTask_02477vj" name="MobiPick beschafft Akkuschrauber, übergibt und fährt heim." camunda:type="external" camunda:topic="BasysTask">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="assignee">_rrDawOG7EeieRbude1ENJg</camunda:inputParameter>
+          <camunda:inputParameter name="command">{
+    "eClass" : "http://www.dfki.de/iui/basys/model/component#//CapabilityRequest",
+    "capabilityVariant" : {
+      "eClass" : "http://www.dfki.de/iui/basys/model/resourceinstance#//LogisticsCapabilityVariant",
+      "binding" : "",
+      "id" : "_n3Fa0u6pEeiRCMnnQ5xACA",
+      "name" : "Schrauber zu Montageort",
+      "capability" : {
+        "eClass" : "http://www.dfki.de/iui/basys/model/capability#//Transport",
+        "id" : "_WnQrr-8TEeiCkq8wQOcW2w"
+      },
+      "appliedOn" : [ {
+        "eClass" : "http://www.dfki.de/iui/basys/model/topology#//EquipmentModule",
+        "$ref" : "http://localhost:8080/services/entity/_0PwApO6pEeiRCMnnQ5xACA"
+      }, {
+        "eClass" : "http://www.dfki.de/iui/basys/model/topology#//AGVStation",
+        "$ref" : "http://localhost:8080/services/entity/_2yVg9eGqEeieRbude1ENJg"
+      } ]
+    }
+  }</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_02liudj</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0td74x6</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="SequenceFlow_0td74x6" sourceRef="ServiceTask_02477vj" targetRef="EndEvent_1rvvri9" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="test-MOBIPICK">
+      <bpmndi:BPMNShape id="StartEvent_1oa94k6_di" bpmnElement="StartEvent_1oa94k6">
+        <dc:Bounds x="218" y="142" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="106" y="195" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1rvnokn_di" bpmnElement="SequenceFlow_1rvnokn">
+        <di:waypoint x="254" y="160" />
+        <di:waypoint x="315" y="160" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="EndEvent_1rvvri9_di" bpmnElement="EndEvent_1rvvri9">
+        <dc:Bounds x="689" y="142" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_1e87vpf_di" bpmnElement="ServiceTask_1e87vpf">
+        <dc:Bounds x="315" y="120" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_02liudj_di" bpmnElement="SequenceFlow_02liudj">
+        <di:waypoint x="415" y="160" />
+        <di:waypoint x="490" y="160" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ServiceTask_02477vj_di" bpmnElement="ServiceTask_02477vj">
+        <dc:Bounds x="490" y="120" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0td74x6_di" bpmnElement="SequenceFlow_0td74x6">
+        <di:waypoint x="590" y="160" />
+        <di:waypoint x="689" y="160" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

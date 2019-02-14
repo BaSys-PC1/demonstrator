@@ -1,0 +1,23 @@
+{
+  "eClass" : "http://www.dfki.de/iui/basys/model/component#//ComponentConfiguration",
+  "componentCategory" : "DEVICE_COMPONENT",
+  "componentId" : "_kZY0UC91EemDsYHPQ-MfMA",
+  "componentName" : "Broetje MiR100-2 (Sim)",
+  "componentImplementationJavaClass" : "de.dfki.cos.basys.demonstrator.device.mirrest.MirRestComponent",
+  "inChannelName" : "_kZY0UC91EemDsYHPQ-MfMA#in",
+  "outChannelName" : "_kZY0UC91EemDsYHPQ-MfMA#out",
+  "externalConnectionString" : "http://10.250.6.23",
+  "properties" : [ {
+    "key" : "auth",
+    "value" : "YWRtaW46OGM2OTc2ZTViNTQxMDQxNWJkZTkwOGJkNGRlZTE1ZGZiMTY3YTljODczZmM0YmI4YTgxZjZmMmFiNDQ4YTkxOA=="
+  },{
+    "key" : "missionName_Robotable",
+    "value" : "BringRobotTable"
+  },{
+    "key" : "missionName_Logistiktisch",
+    "value" : "BringLogisticsTable"
+  },{
+    "key" : "simulated",
+    "value" : "true"
+  }]
+}

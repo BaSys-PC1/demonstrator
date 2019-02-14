@@ -6,5 +6,5 @@
   "componentImplementationJavaClass" : "de.dfki.cos.basys.demonstrator.device.festo.FestoComponent",
   "inChannelName" : "_SE5NIDB4Eei1bbwBPPZWOA#in",
   "outChannelName" : "_SE5NIDB4Eei1bbwBPPZWOA#out",
-  "externalConnectionString" : "opc.tcp://10.2.100.2:4848"
+  "externalConnectionString" : "opc.tcp://10.2.10.7:4848"
 }

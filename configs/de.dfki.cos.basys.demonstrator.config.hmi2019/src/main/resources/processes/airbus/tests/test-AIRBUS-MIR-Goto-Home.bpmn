@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_062ggb8" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="2.0.3">
+  <bpmn:process id="test-AIRBUS-MIR-HOME" name="test-AIRBUS-MIR-HOME" isExecutable="true">
+    <bpmn:serviceTask id="ServiceTask_0gkk168" name="Reset Airbus MiR 200" camunda:type="external" camunda:topic="BasysTask">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="assignee">_rnjBgOHAEeieRbude1ENJg</camunda:inputParameter>
+          <camunda:inputParameter name="command">{
+    "eClass" : "http://www.dfki.de/iui/basys/model/component#//CommandRequest",
+    "controlCommand" : "RESET"
+  }</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_0ykw2bd</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1mbyd56</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:startEvent id="StartEvent_1oa94k6">
+      <bpmn:outgoing>SequenceFlow_0ykw2bd</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_0ykw2bd" sourceRef="StartEvent_1oa94k6" targetRef="ServiceTask_0gkk168" />
+    <bpmn:intermediateCatchEvent id="IntermediateCatchEvent_1vwf25c">
+      <bpmn:timerEventDefinition id="TimerEventDefinition_052ul7d">
+        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT1S</bpmn:timeDuration>
+      </bpmn:timerEventDefinition>
+    </bpmn:intermediateCatchEvent>
+    <bpmn:serviceTask id="ServiceTask_1asc10m" name="MiR200 fährt zurück zum Bahnhof" camunda:type="external" camunda:topic="BasysTask">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="assignee">_rnjBgOHAEeieRbude1ENJg</camunda:inputParameter>
+          <camunda:inputParameter name="command">{
+    "eClass" : "http://www.dfki.de/iui/basys/model/component#//CapabilityRequest",
+    "capabilityVariant" : {
+      "eClass" : "http://www.dfki.de/iui/basys/model/resourceinstance#//GeneralCapabilityVariant",
+      "id" : "_HScaA-6gEei5pumxNykfZQ",
+      "name" : "Move To MiR200-Bahnhof",
+      "capability" : {
+        "eClass" : "http://www.dfki.de/iui/basys/model/capability#//MoveToLocation",
+        "id" : "_H_WjaO6gtti8pumxNykfZQ",
+        "name" : "",
+        "targetLocation" : {
+          "eClass" : "http://www.dfki.de/iui/basys/model/topology#//AGVStation",
+          "$ref" : "http://localhost:8080/services/entity/_f9hsZeGqEeieRbude1ENJg"
+        }
+      }
+    }
+  }</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_1mbyd56</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0lldtqr</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="EndEvent_0ci8kk1">
+      <bpmn:incoming>SequenceFlow_0lldtqr</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:intermediateCatchEvent id="IntermediateCatchEvent_01dx5ic">
+      <bpmn:timerEventDefinition id="TimerEventDefinition_1t51moa">
+        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT1S</bpmn:timeDuration>
+      </bpmn:timerEventDefinition>
+    </bpmn:intermediateCatchEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_1mbyd56" sourceRef="ServiceTask_0gkk168" targetRef="ServiceTask_1asc10m" />
+    <bpmn:sequenceFlow id="SequenceFlow_0lldtqr" sourceRef="ServiceTask_1asc10m" targetRef="EndEvent_0ci8kk1" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="test-AIRBUS-MIR-HOME">
+      <bpmndi:BPMNShape id="ServiceTask_0gkk168_di" bpmnElement="ServiceTask_0gkk168">
+        <dc:Bounds x="145" y="201" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="StartEvent_1oa94k6_di" bpmnElement="StartEvent_1oa94k6">
+        <dc:Bounds x="87" y="223" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="60" y="259" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0ykw2bd_di" bpmnElement="SequenceFlow_0ykw2bd">
+        <di:waypoint x="123" y="241" />
+        <di:waypoint x="145" y="241" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="89" y="216" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="IntermediateCatchEvent_1vwf25c_di" bpmnElement="IntermediateCatchEvent_1vwf25c">
+        <dc:Bounds x="655" y="88" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_1asc10m_di" bpmnElement="ServiceTask_1asc10m">
+        <dc:Bounds x="871" y="201" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_0ci8kk1_di" bpmnElement="EndEvent_0ci8kk1">
+        <dc:Bounds x="993" y="223" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="IntermediateCatchEvent_01dx5ic_di" bpmnElement="IntermediateCatchEvent_01dx5ic">
+        <dc:Bounds x="434" y="88" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1mbyd56_di" bpmnElement="SequenceFlow_1mbyd56">
+        <di:waypoint x="245" y="241" />
+        <di:waypoint x="871" y="241" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0lldtqr_di" bpmnElement="SequenceFlow_0lldtqr">
+        <di:waypoint x="971" y="241" />
+        <di:waypoint x="993" y="241" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

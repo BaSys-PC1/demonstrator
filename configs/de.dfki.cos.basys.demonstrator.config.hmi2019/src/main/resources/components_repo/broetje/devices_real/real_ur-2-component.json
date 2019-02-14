@@ -1,0 +1,14 @@
+{
+  "eClass" : "http://www.dfki.de/iui/basys/model/component#//ComponentConfiguration",
+  "componentCategory" : "DEVICE_COMPONENT",
+  "componentId" : "_oSS_kC91EemDsYHPQ-MfMA",
+  "componentName" : "Broetje UR10-2",
+  "componentImplementationJavaClass" : "de.dfki.cos.basys.demonstrator.device.urrpc.UrRpcComponent",
+  "inChannelName" : "_oSS_kC91EemDsYHPQ-MfMA#in",
+  "outChannelName" : "_oSS_kC91EemDsYHPQ-MfMA#out",
+  "externalConnectionString" : "http://10.250.6.29:8081",
+  "properties" : [ {
+    "key" : "recipe",
+    "value" : "1"
+  }]
+}

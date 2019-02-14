@@ -23,6 +23,7 @@
     <module>de.dfki.cos.basys.demonstrator.device.laser</module>
     <module>de.dfki.cos.basys.demonstrator.device.mirrest</module>
     <module>de.dfki.cos.basys.demonstrator.device.mobipick</module>
+    <module>de.dfki.cos.basys.demonstrator.device.nexo</module>
     <module>de.dfki.cos.basys.demonstrator.device.urrpc</module>
   </modules>
   

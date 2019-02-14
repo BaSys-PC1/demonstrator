@@ -1,0 +1,14 @@
+{
+  "eClass" : "http://www.dfki.de/iui/basys/model/component#//ComponentConfiguration",
+  "componentCategory" : "DEVICE_COMPONENT",
+  "componentId" : "__aNxMCYQEemIQdfsybOlKw",
+  "componentName" : "My Nexo (Sim)",
+  "componentImplementationJavaClass" : "de.dfki.cos.basys.demonstrator.device.bosch.NexoRestComponent",
+  "inChannelName" : "__aNxMCYQEemIQdfsybOlKw#in",
+  "outChannelName" : "__aNxMCYQEemIQdfsybOlKw#out",
+  "externalConnectionString" : "http://192.168.1.11:5000",
+  "properties" : [ {
+    "key" : "simulated",
+    "value" : "true"
+  }]
+}

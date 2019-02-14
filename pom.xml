@@ -23,6 +23,7 @@
     <module>provision</module>
     <module>platform</module>
     <module>devices</module>
+    <module>services</module>
     <module>configs</module>
     <module>karaf</module>
   </modules>

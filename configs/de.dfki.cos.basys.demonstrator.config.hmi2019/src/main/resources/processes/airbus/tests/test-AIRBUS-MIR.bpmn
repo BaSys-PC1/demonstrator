@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_062ggb8" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="2.0.3">
+  <bpmn:process id="test-AIRBUS-MIR" name="test-AIRBUS-MIR" isExecutable="true">
+    <bpmn:serviceTask id="ServiceTask_0gkk168" name="Reset Airbus MiR 200" camunda:type="external" camunda:topic="BasysTask">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="assignee">_rnjBgOHAEeieRbude1ENJg</camunda:inputParameter>
+          <camunda:inputParameter name="command">{
+    "eClass" : "http://www.dfki.de/iui/basys/model/component#//CommandRequest",
+    "controlCommand" : "RESET"
+  }</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_0ykw2bd</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1mbyd56</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:startEvent id="StartEvent_1oa94k6">
+      <bpmn:outgoing>SequenceFlow_0ykw2bd</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_0ykw2bd" sourceRef="StartEvent_1oa94k6" targetRef="ServiceTask_0gkk168" />
+    <bpmn:intermediateCatchEvent id="IntermediateCatchEvent_1vwf25c">
+      <bpmn:timerEventDefinition id="TimerEventDefinition_052ul7d">
+        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT1S</bpmn:timeDuration>
+      </bpmn:timerEventDefinition>
+    </bpmn:intermediateCatchEvent>
+    <bpmn:serviceTask id="ServiceTask_09p3pav" name="MiR200 bringt Logistiktisch zum Montageort" camunda:type="external" camunda:topic="BasysTask">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="assignee">_rnjBgOHAEeieRbude1ENJg</camunda:inputParameter>
+          <camunda:inputParameter name="command">{
+    "eClass" : "http://www.dfki.de/iui/basys/model/component#//CapabilityRequest",
+    "capabilityVariant" : {
+      "eClass" : "http://www.dfki.de/iui/basys/model/resourceinstance#//LogisticsCapabilityVariant",
+      "binding" : "",
+      "id" : "_Psn3Yu6oEeiRCMnnQ5xACA",
+      "name" : "Logistiktisch zu Montageort",
+      "capability" : {
+        "eClass" : "http://www.dfki.de/iui/basys/model/capability#//Transport",
+        "id" : "_NVtAv-8TEeiCkq8wQOcW2w",
+        "loadCarrierUnit" : "TOOL"
+      },
+      "appliedOn" : [ {
+        "eClass" : "http://www.dfki.de/iui/basys/model/topology#//EquipmentModule",
+        "$ref" : "http://localhost:8080/services/entity/_YR04EOHCEeieRbude1ENJg"
+      }, {
+        "eClass" : "http://www.dfki.de/iui/basys/model/topology#//AGVStation",
+        "$ref" : "http://localhost:8080/services/entity/_2yVg9eGqEeieRbude1ENJg"
+      } ]
+    }
+  }</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_1nyjxxk</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0syfs4y</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="ServiceTask_1asc10m" name="MiR200 fährt zurück zum Bahnhof" camunda:type="external" camunda:topic="BasysTask">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="assignee">_rnjBgOHAEeieRbude1ENJg</camunda:inputParameter>
+          <camunda:inputParameter name="command">{
+    "eClass" : "http://www.dfki.de/iui/basys/model/component#//CapabilityRequest",
+    "capabilityVariant" : {
+      "eClass" : "http://www.dfki.de/iui/basys/model/resourceinstance#//GeneralCapabilityVariant",
+      "id" : "_HScaA-6gEei5pumxNykfZQ",
+      "name" : "Move To MiR200-Bahnhof",
+      "capability" : {
+        "eClass" : "http://www.dfki.de/iui/basys/model/capability#//MoveToLocation",
+        "id" : "_H_WjaO6gtti8pumxNykfZQ",
+        "name" : "",
+        "targetLocation" : {
+          "eClass" : "http://www.dfki.de/iui/basys/model/topology#//AGVStation",
+          "$ref" : "http://localhost:8080/services/entity/_f9hsZeGqEeieRbude1ENJg"
+        }
+      }
+    }
+  }</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_12w0mep</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0lldtqr</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="EndEvent_0ci8kk1">
+      <bpmn:incoming>SequenceFlow_0lldtqr</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:intermediateCatchEvent id="IntermediateCatchEvent_01dx5ic">
+      <bpmn:timerEventDefinition id="TimerEventDefinition_1t51moa">
+        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT1S</bpmn:timeDuration>
+      </bpmn:timerEventDefinition>
+    </bpmn:intermediateCatchEvent>
+    <bpmn:serviceTask id="ServiceTask_05x38we" name="WAIT" camunda:type="external" camunda:topic="BasysTask">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="assignee">WAIT</camunda:inputParameter>
+          <camunda:inputParameter name="command">5000</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_1ish2ew</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1nyjxxk</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="ServiceTask_0kokwuz" name="MiR200 bringt Robotertisch zum Montageort" camunda:type="external" camunda:topic="BasysTask">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="assignee">_rnjBgOHAEeieRbude1ENJg</camunda:inputParameter>
+          <camunda:inputParameter name="command">{
+    "eClass" : "http://www.dfki.de/iui/basys/model/component#//CapabilityRequest",
+    "capabilityVariant" : {
+      "eClass" : "http://www.dfki.de/iui/basys/model/resourceinstance#//LogisticsCapabilityVariant",
+      "id" : "_d91dwu6pEeiRCMnnQ5xACA",
+      "name" : "Robotisch zu Montageort",
+      "capability" : {
+        "eClass" : "http://www.dfki.de/iui/basys/model/capability#//Transport",
+        "id" : "_SAyPz-8TEeiCkq8wQOcW2w",
+        "loadCarrierUnit" : "TOOL"
+      },
+      "appliedOn" : [ {
+        "eClass" : "http://www.dfki.de/iui/basys/model/topology#//EquipmentModule",
+        "$ref" : "http://localhost:8080/services/entity/_hx68AOHHEeieRbude1ENJg"
+      }, {
+        "eClass" : "http://www.dfki.de/iui/basys/model/topology#//AGVStation",
+        "$ref" : "http://localhost:8080/services/entity/_2yVg9eGqEeieRbude1ENJg"
+      } ]
+    }
+  }</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_1mbyd56</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1ish2ew</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="SequenceFlow_1mbyd56" sourceRef="ServiceTask_0gkk168" targetRef="ServiceTask_0kokwuz" />
+    <bpmn:sequenceFlow id="SequenceFlow_1ish2ew" sourceRef="ServiceTask_0kokwuz" targetRef="ServiceTask_05x38we" />
+    <bpmn:sequenceFlow id="SequenceFlow_1nyjxxk" sourceRef="ServiceTask_05x38we" targetRef="ServiceTask_09p3pav" />
+    <bpmn:sequenceFlow id="SequenceFlow_0syfs4y" sourceRef="ServiceTask_09p3pav" targetRef="ServiceTask_0tawyhn" />
+    <bpmn:serviceTask id="ServiceTask_0tawyhn" name="WAIT" camunda:type="external" camunda:topic="BasysTask">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="assignee">WAIT</camunda:inputParameter>
+          <camunda:inputParameter name="command">5000</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_0syfs4y</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_12w0mep</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="SequenceFlow_12w0mep" sourceRef="ServiceTask_0tawyhn" targetRef="ServiceTask_1asc10m" />
+    <bpmn:sequenceFlow id="SequenceFlow_0lldtqr" sourceRef="ServiceTask_1asc10m" targetRef="EndEvent_0ci8kk1" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="test-AIRBUS-MIR">
+      <bpmndi:BPMNShape id="ServiceTask_0gkk168_di" bpmnElement="ServiceTask_0gkk168">
+        <dc:Bounds x="145" y="201" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="StartEvent_1oa94k6_di" bpmnElement="StartEvent_1oa94k6">
+        <dc:Bounds x="87" y="223" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="60" y="259" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0ykw2bd_di" bpmnElement="SequenceFlow_0ykw2bd">
+        <di:waypoint x="123" y="241" />
+        <di:waypoint x="145" y="241" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="89" y="216" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="IntermediateCatchEvent_1vwf25c_di" bpmnElement="IntermediateCatchEvent_1vwf25c">
+        <dc:Bounds x="655" y="88" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_09p3pav_di" bpmnElement="ServiceTask_09p3pav">
+        <dc:Bounds x="609" y="201" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_1asc10m_di" bpmnElement="ServiceTask_1asc10m">
+        <dc:Bounds x="871" y="201" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_0ci8kk1_di" bpmnElement="EndEvent_0ci8kk1">
+        <dc:Bounds x="993" y="223" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="IntermediateCatchEvent_01dx5ic_di" bpmnElement="IntermediateCatchEvent_01dx5ic">
+        <dc:Bounds x="434" y="88" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_05x38we_di" bpmnElement="ServiceTask_05x38we">
+        <dc:Bounds x="456" y="201" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_0kokwuz_di" bpmnElement="ServiceTask_0kokwuz">
+        <dc:Bounds x="300" y="201" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1mbyd56_di" bpmnElement="SequenceFlow_1mbyd56">
+        <di:waypoint x="245" y="241" />
+        <di:waypoint x="300" y="241" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1ish2ew_di" bpmnElement="SequenceFlow_1ish2ew">
+        <di:waypoint x="400" y="241" />
+        <di:waypoint x="456" y="241" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1nyjxxk_di" bpmnElement="SequenceFlow_1nyjxxk">
+        <di:waypoint x="556" y="241" />
+        <di:waypoint x="609" y="241" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0syfs4y_di" bpmnElement="SequenceFlow_0syfs4y">
+        <di:waypoint x="709" y="241" />
+        <di:waypoint x="749" y="241" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ServiceTask_0tawyhn_di" bpmnElement="ServiceTask_0tawyhn">
+        <dc:Bounds x="749" y="201" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_12w0mep_di" bpmnElement="SequenceFlow_12w0mep">
+        <di:waypoint x="849" y="241" />
+        <di:waypoint x="871" y="241" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0lldtqr_di" bpmnElement="SequenceFlow_0lldtqr">
+        <di:waypoint x="971" y="241" />
+        <di:waypoint x="993" y="241" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

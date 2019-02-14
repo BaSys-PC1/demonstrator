@@ -9,19 +9,15 @@
 
   <modelVersion>4.0.0</modelVersion>
   <groupId>de.dfki.cos.basys.demonstrator</groupId>
-  <artifactId>config</artifactId>
+  <artifactId>service</artifactId>
 
-  <name>BaSys 4.0 Demonstrator - Configurations</name>
+  <name>BaSys 4.0 Demonstrator - Service Components</name>
 
   <packaging>pom</packaging>
   <version>0.1.1-SNAPSHOT</version>
- 
-  <modules>
-	<module>de.dfki.cos.basys.demonstrator.config.cebit2018</module>  
-	<module>de.dfki.cos.basys.demonstrator.config.hmi2019</module>  
-	<module>de.dfki.cos.basys.demonstrator.config.p4p</module>  
-	<module>de.dfki.cos.basys.demonstrator.config.pss2</module>  
-	<module>de.dfki.cos.basys.demonstrator.config.zf</module>  
+
+   <modules>
+    <module>de.dfki.cos.basys.demonstrator.service.worldmodel</module>
   </modules>
   
 </project>
