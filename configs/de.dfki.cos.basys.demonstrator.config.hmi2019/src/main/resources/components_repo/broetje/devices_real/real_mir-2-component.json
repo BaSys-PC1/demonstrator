@@ -11,10 +11,13 @@
     "key" : "auth",
     "value" : "YWRtaW46OGM2OTc2ZTViNTQxMDQxNWJkZTkwOGJkNGRlZTE1ZGZiMTY3YTljODczZmM0YmI4YTgxZjZmMmFiNDQ4YTkxOA=="
   },{
-    "key" : "missionName_Robotable",
-    "value" : "BringRobotTable"
+    "key" : "missionName_GotoLeft",
+    "value" : "GotoLeft"
   },{
-    "key" : "missionName_Logistiktisch",
-    "value" : "BringLogisticsTable"
+    "key" : "missionName_GotoCenter",
+    "value" : "GotoCenter"
+  },{
+    "key" : "missionName_GotoRight",
+    "value" : "GotoRight"
   }]
 }

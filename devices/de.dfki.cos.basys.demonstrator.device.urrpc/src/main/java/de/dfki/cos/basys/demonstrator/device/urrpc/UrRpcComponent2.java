@@ -1,10 +1,14 @@
 package de.dfki.cos.basys.demonstrator.device.urrpc;
 
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.xmlrpc.XmlRpcException;
 
+import de.dfki.cos.basys.common.wmrestclient.dto.RivetPosition;
+import de.dfki.cos.basys.common.wmrestclient.dto.RivetPosition.State;
 import de.dfki.cos.basys.platform.model.domain.capability.CapabilityPackage;
 import de.dfki.cos.basys.platform.model.domain.resourceinstance.CapabilityVariant;
 import de.dfki.cos.basys.platform.model.runtime.component.CapabilityRequest;
@@ -15,7 +19,10 @@ import de.dfki.cos.basys.platform.runtime.component.device.packml.UnitConfigurat
 import de.dfki.cos.basys.platform.runtime.component.device.xmlrpc.XmlRpcDeviceComponent;
 
 public class UrRpcComponent2 extends XmlRpcDeviceComponent {	
-		
+
+	public static final int RECIPE_RIVETING = 4;
+	public static final int RECIPE_SEALING = 5;
+	
 	public UrRpcComponent2(ComponentConfiguration config) {
 		super(config);
 		//resetOnComplete = true;
@@ -61,6 +68,42 @@ public class UrRpcComponent2 extends XmlRpcDeviceComponent {
 			recipe = 2;				
 		} else if (c.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getMoveToLocation())) {			
 			recipe = 3;					
+		} else if (c.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getBeschichten())) {			
+			recipe = RECIPE_SEALING;		
+			List<Map<String,Object>> params = new LinkedList<Map<String,Object>>();
+			
+			//TODO: take params from request
+			String sector = "LEFT";
+			int count = 5;
+		
+			List<RivetPosition> rivetPositions = getRivetPositions(sector, count, State.CHECKED_IO);
+			for (RivetPosition rivetPosition : rivetPositions) {
+				Map<String, Object> p = new HashMap<>();
+				p.put("frameIndex", rivetPosition.getFrameIndex());
+				p.put("rivetIndex", rivetPosition.getIndex());
+				p.put("state", rivetPosition.getState());
+				params.add(p);
+			}
+			
+			config.setPayload(params);
+		} else if (c.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getAnEinpressen())) {			
+			recipe = RECIPE_RIVETING;				
+			List<Map<String,Object>> params = new LinkedList<Map<String,Object>>();
+			
+			//TODO: take params from request
+			String sector = "LEFT";
+			int count = 5;
+			
+			List<RivetPosition> rivetPositions = getRivetPositions(sector, count, State.EMPTY);
+			for (RivetPosition rivetPosition : rivetPositions) {
+				Map<String, Object> p = new HashMap<>();
+				p.put("frameIndex", rivetPosition.getFrameIndex());
+				p.put("rivetIndex", rivetPosition.getIndex());
+				p.put("state", rivetPosition.getState());
+				params.add(p);
+			}
+			
+			config.setPayload(params);
 		}
 		
 		config.setRecipe(recipe);
@@ -77,12 +120,12 @@ public class UrRpcComponent2 extends XmlRpcDeviceComponent {
 	public void onStarting() {		
 		if (getUnitConfig().getRecipe() > 0) {
 			
-			if (getUnitConfig().getRecipe() == 4) {
-			
-				//ask the WM for indexes
-				//setElementsId(ids);
+			if (getUnitConfig().getPayload() != null) {
+				@SuppressWarnings("unchecked")
+				List<Map<String,Object>> rivetPositions = (List<Map<String,Object>>) getUnitConfig().getPayload();
+				setRivetPositions(rivetPositions);
 			}
-			
+						
 			setCurrentRoutine(getUnitConfig().getRecipe());
 			// FIXME: do we need to wait a short time? 
 			// From the second command onwards, the rpc server has a status of finished, 
@@ -115,6 +158,15 @@ public class UrRpcComponent2 extends XmlRpcDeviceComponent {
 			}
 		}		
 	}
+	
+	private List<RivetPosition> getRivetPositions(String sector, int count, RivetPosition.State state) {
+		List<RivetPosition> rivetPositions = new LinkedList<RivetPosition>();	
+		
+		// TODO: ask WorldModelService
+		
+		return rivetPositions;
+	}
+	
 
 	/*
 	 * private XML-RPC functions 
@@ -150,13 +202,24 @@ public class UrRpcComponent2 extends XmlRpcDeviceComponent {
 	}
 
 	
-	private void setElementsIds(List<Map<String,Object>> elements) {	
+	private void setRivetPositions(List<Map<String,Object>> positions) {	
 		try {
-			client.execute("set_elements_ids", elements);
+			client.execute("set_rivet_positions", positions);
 		} catch (XmlRpcException ex) {
 			LOGGER.error("Exception occurred: {}", ex.toString());
 		}
 	}
+	
+	private List<Map<String,Object>> getRivetPositions() {	
+		Object params[] = { };
+		try {
+			return (List<Map<String,Object>>)client.execute("get_rivet_positions", params);
+		} catch (XmlRpcException ex) {
+			LOGGER.error("Exception occurred: {}", ex.toString());
+			return null;
+		}
+	}
+	
 
 	private Object getCurrentStatus() {
 		Object params[] = {};

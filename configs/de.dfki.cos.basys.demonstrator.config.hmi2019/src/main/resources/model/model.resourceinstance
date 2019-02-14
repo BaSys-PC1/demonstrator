@@ -89,13 +89,20 @@
   </resourceInstances>
   <resourceInstances id="_l6_J8C91EemDsYHPQ-MfMA" name="Broetje UR10-1">
     <resourceType href="model.resourcetype#_LILOCTD5EeiuBvcKgWzd3Q"/>
-    <capabilityApplications/>
+    <capabilityApplications>
+      <capabilityAssertion href="model.resourcetype#_jNgp8FNhEexbbdo05KXzGQ"/>
+    </capabilityApplications>
   </resourceInstances>
   <resourceInstances id="_oSS_kC91EemDsYHPQ-MfMA" name="Broetje UR10-2">
     <resourceType href="model.resourcetype#_LILOCTD5EeiuBvcKgWzd3Q"/>
-    <capabilityApplications/>
+    <capabilityApplications>
+      <capabilityAssertion href="model.resourcetype#_jNgp8FNhEexbbdo05KXzGQ"/>
+    </capabilityApplications>
   </resourceInstances>
   <resourceInstances id="_qG2tcC91EemDsYHPQ-MfMA" name="My Hololens">
     <resourceType href="model.resourcetype#_A2a1pC92EemDsYHPQ-MfMA"/>
+    <capabilityApplications>
+      <capabilityAssertion href="model.resourcetype#_wJ6vUDB2EemAF8ZdAI0X3Q"/>
+    </capabilityApplications>
   </resourceInstances>
 </resourceinstance:ResourceInstanceRepository>

@@ -39,6 +39,12 @@
       <equipmentModules xsi:type="topology:AGVStation" id="_OeDfBe5GEeiwXpX4q8WAnQ" name="EntryPosition"/>
       <equipmentModules xsi:type="topology:AGVStation" id="_PVRa5e5GEeiwXpX4q8WAnQ" name="ColaStation"/>
     </areas>
-    <areas id="_cSX5QC8aEem9kNkAwht4XA" name="Broetje Demo Area"/>
+    <areas id="_cSX5QC8aEem9kNkAwht4XA" name="Broetje Demo Area">
+      <equipmentModules xsi:type="topology:AGVStation" id="_HM3kBDBrEem8P9knmM6g-Q" name="Left"/>
+      <equipmentModules xsi:type="topology:AGVStation" id="_HzUgBTBrEem8P9knmM6g-Q" name="Center"/>
+      <equipmentModules xsi:type="topology:AGVStation" id="_IO3MhTBrEem8P9knmM6g-Q" name="Right"/>
+      <equipmentModules xsi:type="topology:AGVStation" id="_IqVnlTBrEem8P9knmM6g-Q" name="Wait-1"/>
+      <equipmentModules xsi:type="topology:AGVStation" id="_JJfoxTBrEem8P9knmM6g-Q" name="Wait-2"/>
+    </areas>
   </sites>
 </topology:Enterprise>

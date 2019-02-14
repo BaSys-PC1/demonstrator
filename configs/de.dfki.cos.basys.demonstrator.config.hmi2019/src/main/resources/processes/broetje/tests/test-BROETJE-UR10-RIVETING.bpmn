@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_062ggb8" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="2.2.4">
   <bpmn:process id="test-BROETJE-UR10-RIVETING" name="test-BROETJE-UR10-RIVETING" isExecutable="true">
-    <bpmn:startEvent id="StartEvent_0vvvgpo" camunda:formKey="start">
+    <bpmn:startEvent id="StartEvent_0vvvgpo">
       <bpmn:extensionElements>
         <camunda:formData>
           <camunda:formField id="count" label="Count" type="long" defaultValue="3" />
           <camunda:formField id="sector" label="Sector" type="enum">
             <camunda:value id="LEFT" name="LEFT" />
             <camunda:value id="RIGHT" name="RIGHT" />
+            <camunda:value id="CENTER" name="CENTER" />
           </camunda:formField>
         </camunda:formData>
       </bpmn:extensionElements>
@@ -33,24 +34,13 @@
           <camunda:inputParameter name="command">{
     "eClass" : "http://www.dfki.de/iui/basys/model/component#//CapabilityRequest",
     "capabilityVariant" : {
-      "eClass" : "http://www.dfki.de/iui/basys/model/resourceinstance#//HandlingCapabilityVariant",
-      "id" : "_boVY1O8TEeiCkq8wQOcW2w",
-      "name" : "Raceway an Montageort führen",
+      "eClass" : "http://www.dfki.de/iui/basys/model/resourceinstance#//GeneralCapabilityVariant",
+      "id" : "_Pe9ygzBqEem8P9knmM6g-Q",
+      "name" : "Goto Home From Safe Position",
       "capability" : {
-        "eClass" : "http://www.dfki.de/iui/basys/model/capability#//Guiding",
-        "id" : "_cLzSZ-8TEeiCkq8wQOcW2w"
-      },
-      "object" : {
-        "eClass" : "http://www.dfki.de/iui/basys/model/productdefinition#//MaterialEntry",
-        "$ref" : "http://localhost:8080/services/entity/_9rG-geHJEeieRbude1ENJg"
-      },
-      "from" : {
-        "eClass" : "http://www.dfki.de/iui/basys/model/topology#//EquipmentModule",
-        "$ref" : "http://localhost:8080/services/entity/_YR04EOHCEeieRbude1ENJg"
-      },
-      "to" : {
-        "eClass" : "http://www.dfki.de/iui/basys/model/topology#//WorkCell",
-        "$ref" : "http://localhost:8080/services/entity/_bDfJYuGsEeieRbude1ENJg"
+        "eClass" : "http://www.dfki.de/iui/basys/model/capability#//MoveToLocation",
+        "id" : "_QwedyDBqEem8P9knmM6g-Q",
+        "name" : "SAFE_HOME_POSITION"
       }
     }
   }</camunda:inputParameter>
@@ -69,24 +59,14 @@
           <camunda:inputParameter name="command">{
     "eClass" : "http://www.dfki.de/iui/basys/model/component#//CapabilityRequest",
     "capabilityVariant" : {
-      "eClass" : "http://www.dfki.de/iui/basys/model/resourceinstance#//HandlingCapabilityVariant",
-      "id" : "_boVY1O8TEeiCkq8wQOcW2w",
-      "name" : "Raceway an Montageort führen",
+      "eClass" : "http://www.dfki.de/iui/basys/model/resourceinstance#//GeneralCapabilityVariant",
+      "binding" : "",
+      "id" : "_cKKSwzBqEem8P9knmM6g-Q",
+      "name" : "Goto Safe Position",
       "capability" : {
-        "eClass" : "http://www.dfki.de/iui/basys/model/capability#//Guiding",
-        "id" : "_cLzSZ-8TEeiCkq8wQOcW2w"
-      },
-      "object" : {
-        "eClass" : "http://www.dfki.de/iui/basys/model/productdefinition#//MaterialEntry",
-        "$ref" : "http://localhost:8080/services/entity/_9rG-geHJEeieRbude1ENJg"
-      },
-      "from" : {
-        "eClass" : "http://www.dfki.de/iui/basys/model/topology#//EquipmentModule",
-        "$ref" : "http://localhost:8080/services/entity/_YR04EOHCEeieRbude1ENJg"
-      },
-      "to" : {
-        "eClass" : "http://www.dfki.de/iui/basys/model/topology#//WorkCell",
-        "$ref" : "http://localhost:8080/services/entity/_bDfJYuGsEeieRbude1ENJg"
+        "eClass" : "http://www.dfki.de/iui/basys/model/capability#//MoveToLocation",
+        "id" : "_ciFqqDBqEem8P9knmM6g-Q",
+        "name" : "SAFE_POSITION"
       }
     }
   }</camunda:inputParameter>
@@ -99,30 +79,29 @@
       <bpmn:extensionElements>
         <camunda:inputOutput>
           <camunda:inputParameter name="assignee">_l6_J8C91EemDsYHPQ-MfMA</camunda:inputParameter>
-          <camunda:inputParameter name="command">{
+          <camunda:inputParameter name="command">
+            <camunda:script scriptFormat="freemarker">{
     "eClass" : "http://www.dfki.de/iui/basys/model/component#//CapabilityRequest",
+    "inputParameters" : [ {
+      "name" : "count",
+      "value" : "${count}",
+      "type" : "INTEGER"
+    }, {
+      "name" : "sector",
+      "value" : "${sector}",
+      "type" : "STRING"
+    } ],
     "capabilityVariant" : {
-      "eClass" : "http://www.dfki.de/iui/basys/model/resourceinstance#//HandlingCapabilityVariant",
-      "id" : "_boVY1O8TEeiCkq8wQOcW2w",
-      "name" : "Raceway an Montageort führen",
+      "eClass" : "http://www.dfki.de/iui/basys/model/resourceinstance#//ManufacturingCapabilityVariant",
+      "id" : "_9ZlhgTBpEem8P9knmM6g-Q",
+      "name" : "Perform Riveting",
       "capability" : {
-        "eClass" : "http://www.dfki.de/iui/basys/model/capability#//Guiding",
-        "id" : "_cLzSZ-8TEeiCkq8wQOcW2w"
-      },
-      "object" : {
-        "eClass" : "http://www.dfki.de/iui/basys/model/productdefinition#//MaterialEntry",
-        "$ref" : "http://localhost:8080/services/entity/_9rG-geHJEeieRbude1ENJg"
-      },
-      "from" : {
-        "eClass" : "http://www.dfki.de/iui/basys/model/topology#//EquipmentModule",
-        "$ref" : "http://localhost:8080/services/entity/_YR04EOHCEeieRbude1ENJg"
-      },
-      "to" : {
-        "eClass" : "http://www.dfki.de/iui/basys/model/topology#//WorkCell",
-        "$ref" : "http://localhost:8080/services/entity/_bDfJYuGsEeieRbude1ENJg"
+        "eClass" : "http://www.dfki.de/iui/basys/model/capability#//Fügen",
+        "id" : "__VQkBDBpEem8P9knmM6g-Q"
       }
     }
-  }</camunda:inputParameter>
+  }</camunda:script>
+          </camunda:inputParameter>
         </camunda:inputOutput>
       </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_0kas6wd</bpmn:incoming>

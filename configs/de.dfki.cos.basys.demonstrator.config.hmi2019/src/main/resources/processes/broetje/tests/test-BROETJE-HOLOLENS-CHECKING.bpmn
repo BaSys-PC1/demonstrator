@@ -2,6 +2,16 @@
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_062ggb8" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="2.2.4">
   <bpmn:process id="test-BROETJE-HOLOLENS-CHECKING" name="test-BROETJE-HOLOLENS-CHECKING" isExecutable="true">
     <bpmn:startEvent id="StartEvent_1oa94k6">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="count" label="Count" type="long" defaultValue="3" />
+          <camunda:formField id="sector" label="Sector" type="enum">
+            <camunda:value id="LEFT" name="LEFT" />
+            <camunda:value id="RIGHT" name="RIGHT" />
+            <camunda:value id="CENTER" name="CENTER" />
+          </camunda:formField>
+        </camunda:formData>
+      </bpmn:extensionElements>
       <bpmn:outgoing>SequenceFlow_1rvnokn</bpmn:outgoing>
     </bpmn:startEvent>
     <bpmn:serviceTask id="ServiceTask_1sz8sl7" name="Reset Hololens" camunda:type="external" camunda:topic="BasysTask">
@@ -19,9 +29,42 @@
     </bpmn:serviceTask>
     <bpmn:sequenceFlow id="SequenceFlow_1rvnokn" sourceRef="StartEvent_1oa94k6" targetRef="ServiceTask_1sz8sl7" />
     <bpmn:endEvent id="EndEvent_179fgda">
-      <bpmn:incoming>SequenceFlow_0hhkpt6</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_0kts9x4</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:sequenceFlow id="SequenceFlow_0hhkpt6" sourceRef="ServiceTask_1sz8sl7" targetRef="EndEvent_179fgda" />
+    <bpmn:sequenceFlow id="SequenceFlow_0hhkpt6" sourceRef="ServiceTask_1sz8sl7" targetRef="ServiceTask_1l12f4a" />
+    <bpmn:serviceTask id="ServiceTask_1l12f4a" name="Check Rivet Positions" camunda:type="external" camunda:topic="BasysTask">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="assignee">_qG2tcC91EemDsYHPQ-MfMA</camunda:inputParameter>
+          <camunda:inputParameter name="command">
+            <camunda:script scriptFormat="freemarker">{
+    "eClass" : "http://www.dfki.de/iui/basys/model/component#//CapabilityRequest",
+    "inputParameters" : [ {
+      "name" : "count",
+      "value" : "${count}",
+      "type" : "INTEGER"
+    }, {
+      "name" : "sector",
+      "value" : "${sector}",
+      "type" : "STRING"
+    } ],
+    "capabilityVariant" : {
+      "eClass" : "http://www.dfki.de/iui/basys/model/resourceinstance#//GeneralCapabilityVariant",
+      "id" : "_erwWszBzEem8P9knmM6g-Q",
+      "name" : "Check Rivet Positions",
+      "capability" : {
+        "eClass" : "http://www.dfki.de/iui/basys/model/capability#//Checking",
+        "id" : "_gFo64jBzEem8P9knmM6g-Q"
+      }
+    }
+  }</camunda:script>
+          </camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_0hhkpt6</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0kts9x4</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="SequenceFlow_0kts9x4" sourceRef="ServiceTask_1l12f4a" targetRef="EndEvent_179fgda" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="test-BROETJE-HOLOLENS-CHECKING">
@@ -39,11 +82,18 @@
         <di:waypoint x="152" y="400" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="EndEvent_179fgda_di" bpmnElement="EndEvent_179fgda">
-        <dc:Bounds x="323" y="382" width="36" height="36" />
+        <dc:Bounds x="482" y="382" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_0hhkpt6_di" bpmnElement="SequenceFlow_0hhkpt6">
         <di:waypoint x="252" y="400" />
-        <di:waypoint x="323" y="400" />
+        <di:waypoint x="299" y="400" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ServiceTask_1l12f4a_di" bpmnElement="ServiceTask_1l12f4a">
+        <dc:Bounds x="299" y="360" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0kts9x4_di" bpmnElement="SequenceFlow_0kts9x4">
+        <di:waypoint x="399" y="400" />
+        <di:waypoint x="482" y="400" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
