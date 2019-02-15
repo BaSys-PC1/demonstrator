@@ -3,7 +3,7 @@
   "componentCategory" : "DEVICE_COMPONENT",
   "componentId" : "_oSS_kC91EemDsYHPQ-MfMA",
   "componentName" : "Broetje UR10-2",
-  "componentImplementationJavaClass" : "de.dfki.cos.basys.demonstrator.device.urrpc.UrRpcComponent",
+  "componentImplementationJavaClass" : "de.dfki.cos.basys.demonstrator.device.urrpc.BroetjeUrRpcComponent",
   "inChannelName" : "_oSS_kC91EemDsYHPQ-MfMA#in",
   "outChannelName" : "_oSS_kC91EemDsYHPQ-MfMA#out",
   "externalConnectionString" : "http://10.250.6.29:8081",

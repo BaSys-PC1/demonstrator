@@ -41,6 +41,14 @@
 			<version>${version.basys.common}</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.glassfish/javax.json -->
+		<dependency>
+		    <groupId>org.glassfish</groupId>
+		    <artifactId>javax.json</artifactId>
+		    <version>1.1.4</version>
+		</dependency>
+
+
 		<!-- comment to remove all imported (non-local) bundles from your compilation 
 			classpath -->
 		<dependency>

@@ -15,7 +15,7 @@ public class UrRpcComponent extends XmlRpcDeviceComponent {
 		
 	public UrRpcComponent(ComponentConfiguration config) {
 		super(config);
-		//resetOnComplete = true;
+		resetOnComplete = true;
 	}
 	
 	@Override

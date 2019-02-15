@@ -47,8 +47,26 @@ public class MirRestComponent extends DeviceComponent {
 		TopologyElement te = null;
 		if (c.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getMoveToLocation())) {
 			te = ((MoveToLocation) c.getCapability()).getTargetLocation();
-			config.setRecipe(1);
-			config.setPayload(te);
+			
+			if (te.getId().equals("_HM3kBDBrEem8P9knmM6g-Q")) { //Left
+				String missionName = getConfig().getProperty("missionName_GotoLeft").getValue();
+				config.setPayload(missionName);
+				config.setRecipe(2);
+			} 
+			else if (te.getId().equals("_HzUgBTBrEem8P9knmM6g-Q")) { //Center
+				String missionName = getConfig().getProperty("missionName_GotoCenter").getValue();
+				config.setPayload(missionName);
+				config.setRecipe(2);
+			}
+			else if (te.getId().equals("_IO3MhTBrEem8P9knmM6g-Q")) { //Right
+				String missionName = getConfig().getProperty("missionName_GotoRight").getValue();
+				config.setPayload(missionName);
+				config.setRecipe(2);
+			}
+			else {			
+				config.setRecipe(1);
+				config.setPayload(te);
+			}
 		}
 
 		if (c.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getTransport())) {
@@ -88,7 +106,12 @@ public class MirRestComponent extends DeviceComponent {
 			}
 		} else if (getUnitConfig().getRecipe() == 2) {
 			String missionName = ((String) getUnitConfig().getPayload());
-			currentMission = client.enqueueMissionInstanceByName(missionName);
+			try {
+				currentMission = client.enqueueMissionInstanceByName(missionName);	
+			} catch (Exception e) {
+				e.printStackTrace();
+				stop();
+			}
 		}
 	}
 	

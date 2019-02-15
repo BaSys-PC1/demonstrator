@@ -3,7 +3,7 @@
   "componentCategory" : "DEVICE_COMPONENT",
   "componentId" : "_l6_J8C91EemDsYHPQ-MfMA",
   "componentName" : "Broetje UR10-1 (Sim)",
-  "componentImplementationJavaClass" : "de.dfki.cos.basys.demonstrator.device.urrpc.UrRpcComponent",
+  "componentImplementationJavaClass" : "de.dfki.cos.basys.demonstrator.device.urrpc.BroetjeUrRpcComponent",
   "inChannelName" : "_l6_J8C91EemDsYHPQ-MfMA#in",
   "outChannelName" : "_l6_J8C91EemDsYHPQ-MfMA#out",
   "externalConnectionString" : "http://10.250.6.29:8081",
