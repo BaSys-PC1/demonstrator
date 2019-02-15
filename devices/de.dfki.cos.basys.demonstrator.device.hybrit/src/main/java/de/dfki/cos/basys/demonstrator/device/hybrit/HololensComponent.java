@@ -56,7 +56,12 @@ public class HololensComponent extends TecsDeviceComponent {
 		//******************************************************
 		// TODO
 		//******************************************************
-
+		if(c.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getInspect()))
+		{
+			// 
+			HumanTaskDTO task = new HumanTaskDTO();
+			config.setPayload(task);
+		}
 //		if (c.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getQAVisualisationCapability())) {
 //			config.setPayload("hallo");
 //		}
