@@ -15,6 +15,8 @@ import de.dfki.cos.basys.platform.runtime.component.ComponentException;
 import de.dfki.cos.basys.platform.runtime.component.device.packml.UnitConfiguration;
 import de.dfki.cos.basys.platform.runtime.component.device.tecs.DeviceStatus;
 import de.dfki.cos.basys.platform.runtime.component.device.tecs.TecsDeviceComponent;
+import de.dfki.cos.hrc.hmi19.RivotStateQAChangedEvent;
+import de.dfki.cos.hrc.hololens.HoloLens;
 import de.dfki.iui.hrc.hybritcommand.CommandResponse;
 import de.dfki.iui.hrc.hybritcommand.CommandState;
 import de.dfki.iui.hrc.hybritcommand.CommandStateEvent;
@@ -26,7 +28,7 @@ import de.dfki.tecs.ps.PSFactory;
 
 public class HololensComponent extends TecsDeviceComponent {
 
-	private SmartwatchTECS client;
+	private HoloLensTECS client;
 
 	public HololensComponent(ComponentConfiguration config) {
 		super(config);
@@ -38,9 +40,10 @@ public class HololensComponent extends TecsDeviceComponent {
 		super.connectToExternal();
 		String psUri = componentConfig.getProperty("ps-uri").getValue();
 
-		client = new SmartwatchTECS(protocol, psUri);
+		client = new HoloLensTECS(protocol, psUri);
 	}
 
+	// ANPASSEN!!!!
 	@Override
 	protected UnitConfiguration translateCapabilityRequest(CapabilityRequest req) {
 		// TODO Auto-generated method stub
@@ -48,29 +51,32 @@ public class HololensComponent extends TecsDeviceComponent {
 		UnitConfiguration config = new UnitConfiguration();
 		
 		CapabilityVariant<?, ?> c = req.getCapabilityVariant();
-		if (c.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getQAVisualisationCapability())) {
-			config.setPayload("hallo");
-		}
-		if (c.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getBuffering())) {
-			HumanTaskDTO task = new HumanTaskDTO("businessKey","operationId","Raceways bereitstellen","smartwatch-lg-3691");
-			config.setPayload(task);
-		}
-		if (c.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getScrewing())) {
-			HumanTaskDTO task = new HumanTaskDTO("businessKey","operationId","Raceway montieren","smartwatch-lg-3691");
-			config.setPayload(task);
-		}
-		if (c.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getTake())) {
-			HumanTaskDTO task = new HumanTaskDTO("businessKey","operationId","Akkuschrauber nehmen","smartwatch-lg-3691");
-			config.setPayload(task);
-		}
-		if (c.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getPassingOn())) {
-			HumanTaskDTO task = new HumanTaskDTO("businessKey","operationId","Raceway montieren","smartwatch-lg-3691");
-			config.setPayload(task);
-		}
 		
 		
-		// falls InteractionCapability --> nehm topic String
+		//******************************************************
+		// TODO
+		//******************************************************
 
+//		if (c.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getQAVisualisationCapability())) {
+//			config.setPayload("hallo");
+//		}
+//		if (c.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getBuffering())) {
+//			HumanTaskDTO task = new HumanTaskDTO("businessKey","operationId","Raceways bereitstellen","smartwatch-lg-3691");
+//			config.setPayload(task);
+//		}
+//		if (c.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getScrewing())) {
+//			HumanTaskDTO task = new HumanTaskDTO("businessKey","operationId","Raceway montieren","smartwatch-lg-3691");
+//			config.setPayload(task);
+//		}
+//		if (c.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getTake())) {
+//			HumanTaskDTO task = new HumanTaskDTO("businessKey","operationId","Akkuschrauber nehmen","smartwatch-lg-3691");
+//			config.setPayload(task);
+//		}
+//		if (c.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getPassingOn())) {
+//			HumanTaskDTO task = new HumanTaskDTO("businessKey","operationId","Raceway montieren","smartwatch-lg-3691");
+//			config.setPayload(task);
+//		}
+		
 		return config;
 	}
 	
@@ -85,15 +91,7 @@ public class HololensComponent extends TecsDeviceComponent {
 
 		Object payload = getUnitConfig().getPayload();
 
-		if (payload instanceof String) {
-			try {
-				String notification = (String) payload;
-				client.showNotification(notification);
-			} catch (TException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		} else if (payload instanceof HumanTaskDTO) {
+		if (payload instanceof HumanTaskDTO) {
 			try {
 				HumanTaskDTO task = (HumanTaskDTO) payload;
 				client.requestTaskExecution(task);
@@ -113,13 +111,13 @@ public class HololensComponent extends TecsDeviceComponent {
 	}
 
 	//TODO: Anpassen!!!
-	public class SmartwatchTECS extends Smartwatch.Client implements DeviceStatus {
+	public class HoloLensTECS extends HoloLens.Client implements DeviceStatus {
 		private final TProtocol prot;
 		private PSClient psClient;
 		private Thread psThread;
 		private CommandState cmdState;
 
-		public SmartwatchTECS(TProtocol prot, String psUri) {
+		public HoloLensTECS(TProtocol prot, String psUri) {
 			super(prot);
 			this.prot = prot;
 
@@ -130,7 +128,7 @@ public class HololensComponent extends TecsDeviceComponent {
 			cmdState = CommandState.READY;
 
 			psClient = PSFactory.createPSClient(URI.create(psUri));
-			psClient.subscribe("CommandStateEvent");
+			psClient.subscribe("RivotStateQAChangedEvent");
 			psClient.connect();
 
 			psThread = new Thread(() -> {
@@ -138,19 +136,19 @@ public class HololensComponent extends TecsDeviceComponent {
 					while (psClient.canRecv()) {
 						Event event = psClient.recv();
 						LOGGER.debug("Received event of type {} on channel {} from {}.", event.getEtype(), event.getChannel(), event.getSource());
-						if (event.is("CommandStateEvent")) {
-							CommandStateEvent cse = new CommandStateEvent();
-							event.parseData(cse);
+						if (event.is("RivotStateQAChangedEvent")) {
+							RivotStateQAChangedEvent rsce = new RivotStateQAChangedEvent();
+							event.parseData(rsce);
 
-							if (cse.response.state.equals(CommandState.FINISHED)) {
-								cmdState = CommandState.FINISHED;
-							}
+							// **********************************************
+							// TODO report changed rivet state to world model
+							// **********************************************
+
 						}
 					}
 					try {
 						Thread.sleep(100);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
+					} catch (InterruptedException e) {					
 						e.printStackTrace();
 					}
 				}
@@ -169,8 +167,8 @@ public class HololensComponent extends TecsDeviceComponent {
 		}
 
 		@Override
-		public CommandState showNotification(String notification) throws TException {
-			CommandState state = super.showNotification(notification);
+		public CommandState showNotification(String notification, String businessKey) throws TException {
+			CommandState state = super.showNotification(notification, businessKey);
 			cmdState = state;
 			return cmdState;
 		}
