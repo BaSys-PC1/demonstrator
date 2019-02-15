@@ -7,17 +7,17 @@
   <componentRequests xsi:type="component:CommandRequest" controlCommand="STOP"/>
   <componentRequests xsi:type="component:CapabilityRequest">
     <capabilityVariant xsi:type="resourceinstance:GeneralCapabilityVariant" id="_AVNdU_PeEei3sNJG4Bmkrw" name="Goto Home Position">
-      <capability xsi:type="capability:MoveToLocation" id="_BiGHSPPeEei3sNJG4Bmkrw" name="HOME_POSITION"/>
+      <capability xsi:type="capability:MoveToLocation" id="_BiGHSPPeEei3sNJG4Bmkrw" name="HOME_POSE"/>
     </capabilityVariant>
   </componentRequests>
   <componentRequests xsi:type="component:CapabilityRequest">
     <capabilityVariant xsi:type="resourceinstance:GeneralCapabilityVariant" id="_Pe9ygzBqEem8P9knmM6g-Q" name="Goto Home From Safe Position">
-      <capability xsi:type="capability:MoveToLocation" id="_QwedyDBqEem8P9knmM6g-Q" name="SAFE_HOME_POSITION"/>
+      <capability xsi:type="capability:MoveToLocation" id="_QwedyDBqEem8P9knmM6g-Q" name="SAFE_HOME_POSE"/>
     </capabilityVariant>
   </componentRequests>
   <componentRequests xsi:type="component:CapabilityRequest">
     <capabilityVariant xsi:type="resourceinstance:GeneralCapabilityVariant" binding="" id="_cKKSwzBqEem8P9knmM6g-Q" name="Goto Safe Position">
-      <capability xsi:type="capability:MoveToLocation" id="_ciFqqDBqEem8P9knmM6g-Q" name="SAFE_POSITION"/>
+      <capability xsi:type="capability:MoveToLocation" id="_ciFqqDBqEem8P9knmM6g-Q" name="SAFE_POSE"/>
     </capabilityVariant>
   </componentRequests>
   <componentRequests xsi:type="component:CapabilityRequest">

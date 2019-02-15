@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_062ggb8" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="2.2.4">
-  <bpmn:process id="test-BROETJE-UR10-RIVETING" name="test-BROETJE-UR10-RIVETING" isExecutable="true">
+  <bpmn:process id="test-BROETJE-UR10-1-RIVETING" name="test-BROETJE-UR10-1-RIVETING" isExecutable="true">
     <bpmn:startEvent id="StartEvent_0vvvgpo">
       <bpmn:extensionElements>
         <camunda:formData>
@@ -40,7 +40,7 @@
       "capability" : {
         "eClass" : "http://www.dfki.de/iui/basys/model/capability#//MoveToLocation",
         "id" : "_QwedyDBqEem8P9knmM6g-Q",
-        "name" : "SAFE_HOME_POSITION"
+        "name" : "SAFE_HOME_POSE"
       }
     }
   }</camunda:inputParameter>
@@ -66,7 +66,7 @@
       "capability" : {
         "eClass" : "http://www.dfki.de/iui/basys/model/capability#//MoveToLocation",
         "id" : "_ciFqqDBqEem8P9knmM6g-Q",
-        "name" : "SAFE_POSITION"
+        "name" : "SAFE_POSE"
       }
     }
   }</camunda:inputParameter>
@@ -114,7 +114,7 @@
     <bpmn:sequenceFlow id="SequenceFlow_0zx1cd5" sourceRef="ServiceTask_1kspmuy" targetRef="ServiceTask_0knda1r" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
-    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="test-BROETJE-UR10-RIVETING">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="test-BROETJE-UR10-1-RIVETING">
       <bpmndi:BPMNShape id="StartEvent_0vvvgpo_di" bpmnElement="StartEvent_0vvvgpo">
         <dc:Bounds x="15" y="434" width="36" height="36" />
       </bpmndi:BPMNShape>

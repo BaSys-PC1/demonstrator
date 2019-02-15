@@ -101,11 +101,13 @@ public class BroetjeUrRpcComponent extends XmlRpcDeviceComponent {
 			switch (state) {
 			case "busy":
 				// wait for completion
-				//check for element states
-				// get_element_state param=id
-				// if change detected: update WM
 				
-				List<Map<String,Object>> positions = (List<Map<String,Object>>)xmlrpcGetPayload();
+				if (getUnitConfig().getRecipe() == UrRpcConstants.ROUTINE_PERFORM_RIVETING 
+				    || getUnitConfig().getRecipe() == UrRpcConstants.ROUTINE_PERFORM_SEALING) {
+				
+					List<Map<String,Object>> positions = (List<Map<String,Object>>)xmlrpcGetPayload();
+					// if change detected: update WM
+				}
 				break;
 			case "finished":
 				executing=false;
@@ -129,7 +131,9 @@ public class BroetjeUrRpcComponent extends XmlRpcDeviceComponent {
 		int count = 0;
 		String sector = null;
 		
-		for (Variable v : req.getInputParameters()) {
+		Variable[] vars = req.getInputParameters().toArray(new Variable[0]);
+		
+		for (Variable v : vars) {
 			if ("count".equalsIgnoreCase(v.getName())) {
 				count = Integer.parseInt(v.getValue());
 			}
@@ -146,7 +150,7 @@ public class BroetjeUrRpcComponent extends XmlRpcDeviceComponent {
 				.build();
 	
 		Request wmReq = CommFactory.getInstance().createRequest(jsonRequest.toString());						
-		Channel wmInChannel = CommFactory.getInstance().openChannel(context.getSharedChannelPool(), "world-model-service#in", false, null);
+		Channel wmInChannel = CommFactory.getInstance().openChannel(context.getSharedChannelPool(), "world-model#in", false, null);
 		Response wmResp = wmInChannel.sendRequest(wmReq);
 		
 		JsonReader jsonReader = Json.createReader(new StringReader(wmResp.getPayload()));
@@ -155,6 +159,7 @@ public class BroetjeUrRpcComponent extends XmlRpcDeviceComponent {
 					
 		for (JsonObject rivetPosition : rivetPositions) {
 			Map<String, Object> p = new HashMap<>();
+			p.put("id", rivetPosition.getString("id"));
 			p.put("frameIndex", rivetPosition.getInt("frameIndex"));
 			p.put("rivetIndex", rivetPosition.getInt("index"));
 			p.put("state", rivetPosition.getString("state"));

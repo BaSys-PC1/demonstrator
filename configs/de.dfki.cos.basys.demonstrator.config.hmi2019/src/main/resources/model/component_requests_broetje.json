@@ -24,7 +24,7 @@
       "capability" : {
         "eClass" : "http://www.dfki.de/iui/basys/model/capability#//MoveToLocation",
         "id" : "_BiGHSPPeEei3sNJG4Bmkrw",
-        "name" : "HOME_POSITION"
+        "name" : "HOME_POSE"
       }
     }
   }, {
@@ -36,7 +36,7 @@
       "capability" : {
         "eClass" : "http://www.dfki.de/iui/basys/model/capability#//MoveToLocation",
         "id" : "_QwedyDBqEem8P9knmM6g-Q",
-        "name" : "SAFE_HOME_POSITION"
+        "name" : "SAFE_HOME_POSE"
       }
     }
   }, {
@@ -49,7 +49,7 @@
       "capability" : {
         "eClass" : "http://www.dfki.de/iui/basys/model/capability#//MoveToLocation",
         "id" : "_ciFqqDBqEem8P9knmM6g-Q",
-        "name" : "SAFE_POSITION"
+        "name" : "SAFE_POSE"
       }
     }
   }, {

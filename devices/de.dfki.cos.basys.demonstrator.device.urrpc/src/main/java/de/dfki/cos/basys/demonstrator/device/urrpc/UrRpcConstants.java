@@ -33,7 +33,11 @@ public class UrRpcConstants {
 	public static final int ROUTINE_PERFORM_RIVETING = 101;				// Broetje
 	public static final int ROUTINE_PERFORM_SEALING = 102;				// Broetje
 	
-
+	
+	/*
+	 * Error codes, require additional XML-RPC methods get_error_code/set_error_code 
+	 */
+		
 	public static final int ERRORCODE_OK = 0;
 	public static final int ERRORCODE_UNKNOWN_ROUTINE = -1;
 	public static final int ERRORCODE_UNKNOWN_POSE = -2;
