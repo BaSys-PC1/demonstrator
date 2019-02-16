@@ -159,7 +159,7 @@ public class BroetjeUrRpcComponent extends XmlRpcDeviceComponent {
 					
 		for (JsonObject rivetPosition : rivetPositions) {
 			Map<String, Object> p = new HashMap<>();
-			p.put("id", rivetPosition.getString("id"));
+			//p.put("id", rivetPosition.getString("id"));
 			p.put("frameIndex", rivetPosition.getInt("frameIndex"));
 			p.put("rivetIndex", rivetPosition.getInt("index"));
 			p.put("state", rivetPosition.getString("state"));
@@ -206,12 +206,6 @@ public class BroetjeUrRpcComponent extends XmlRpcDeviceComponent {
 	
 	private void xmlrpcSetPayload(Object payload) {	
 		Object params[]  = { payload };
-		//FIXME: @Fabio: was wird auf Serverseite erwartet?
-		// Liste als erstes Argument oder die Elemente als einzelne Parameter
-//		if (payload instanceof List) {
-//			params = ((List)payload).toArray();
-//		}
-		
 		try {
 			client.execute("set_rivet_positions", params);
 		} catch (XmlRpcException ex) {

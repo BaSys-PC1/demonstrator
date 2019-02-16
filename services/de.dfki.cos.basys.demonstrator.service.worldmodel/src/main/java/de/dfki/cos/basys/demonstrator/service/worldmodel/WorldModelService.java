@@ -13,6 +13,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import de.dfki.cos.basys.common.emf.json.JsonUtils;
 import de.dfki.cos.basys.common.wmrestclient.WorldModelRestClient;
+import de.dfki.cos.basys.common.wmrestclient.WorldModelRestClientImpl;
 import de.dfki.cos.basys.common.wmrestclient.WorldModelRestClientMockup;
 import de.dfki.cos.basys.common.wmrestclient.dto.RivetPosition;
 import de.dfki.cos.basys.common.wmrestclient.dto.RivetPosition.State;
@@ -39,7 +40,10 @@ public class WorldModelService extends ServiceComponent {
 
 	@Override
 	public void connectToExternal() throws ComponentException {
-		client = new WorldModelRestClientMockup(getConfig().getExternalConnectionString());
+		if ("-".equals(getConfig().getExternalConnectionString()))
+			client = new WorldModelRestClientMockup(getConfig().getExternalConnectionString());
+		else 
+			client = new WorldModelRestClientImpl(getConfig().getExternalConnectionString());
 	}
 	
 	@Override
