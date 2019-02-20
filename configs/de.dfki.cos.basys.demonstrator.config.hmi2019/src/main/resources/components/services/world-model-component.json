@@ -6,5 +6,5 @@
   "componentImplementationJavaClass" : "de.dfki.cos.basys.demonstrator.service.worldmodel.WorldModelService",
   "inChannelName" : "world-model#in",
   "outChannelName" : "world-model#out",
-  "externalConnectionString" : "-"
+  "externalConnectionString" : "http://127.0.0.1:12345/world/"
 }
