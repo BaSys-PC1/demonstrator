@@ -1,6 +1,7 @@
 package de.dfki.cos.basys.demonstrator.device.urrpc;
 
 import java.io.StringReader;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -34,6 +35,7 @@ public class BroetjeUrRpcComponent extends XmlRpcDeviceComponent {
 		
 	@Override
 	protected UnitConfiguration translateCapabilityRequest(CapabilityRequest req) {
+		LOGGER.debug("################### translateCapabilityRequest({})", req.toString());
 
 		UnitConfiguration config = new UnitConfiguration();
 		config.setRecipe(-1);
@@ -61,7 +63,7 @@ public class BroetjeUrRpcComponent extends XmlRpcDeviceComponent {
 			config.setRecipe(UrRpcConstants.ROUTINE_PERFORM_RACEWAY_POSITIONING);				
 		} else if (c.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getFügen())) {			
 			config.setRecipe(UrRpcConstants.ROUTINE_PERFORM_RIVETING);
-			Object rivetPositions = getRivetPositions(req, "EMPTY");
+			Object rivetPositions = getRivetPositions(req, "EMPTY");								
 			config.setPayload(rivetPositions);
 		} else if (c.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getBeschichten())) {			
 			config.setRecipe(UrRpcConstants.ROUTINE_PERFORM_SEALING);
@@ -75,11 +77,14 @@ public class BroetjeUrRpcComponent extends XmlRpcDeviceComponent {
 	
 	@Override
 	public void onResetting() {
+		LOGGER.debug("################### onResetting()");
 		xmlrpcResetServer();
 	}
 	
 	@Override
-	public void onStarting() {		
+	public void onStarting() {	
+		LOGGER.debug("################### onStarting()");
+		
 		if (getUnitConfig().getRecipe() >= 0) {
 			
 			if (getUnitConfig().getPayload() != null) {
@@ -87,26 +92,46 @@ public class BroetjeUrRpcComponent extends XmlRpcDeviceComponent {
 			}
 						
 			xmlrpcSetCurrentRoutine(getUnitConfig().getRecipe());
+			
+			// ##################################################################################
 			// FIXME: do we need to wait a short time? 
 			// From the second command onwards, the rpc server has a status of finished, 
 			// which can be queried in onExecute if the UR responds slower than the internal state change to execute
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			// ##################################################################################
+
 		}
 	}
 	
 	@Override
 	public void onExecute() {
+		LOGGER.debug("################### onExecute()");
+		
 		boolean executing = true;
 		while(executing) {
 			String state = xmlrpcGetCurrentStatus().toString();
+			
+			LOGGER.debug("################### Received robot state " + state + "###################");
+			
 			switch (state) {
 			case "busy":
 				// wait for completion
 				
 				if (getUnitConfig().getRecipe() == UrRpcConstants.ROUTINE_PERFORM_RIVETING 
 				    || getUnitConfig().getRecipe() == UrRpcConstants.ROUTINE_PERFORM_SEALING) {
-				
-					List<Map<String,Object>> positions = (List<Map<String,Object>>)xmlrpcGetPayload();
+									
+					List<?> tmp = Arrays.asList((Object[])xmlrpcGetPayload());	
+					List<Map<String,Object>> positions = (List<Map<String,Object>>)tmp; 
+					
+					LOGGER.debug("################### xmlrpcGetPayload result: {}", positions.toString());
+					
+					
 					// if change detected: update WM
+					// TODO
 				}
 				break;
 			case "finished":
@@ -125,6 +150,7 @@ public class BroetjeUrRpcComponent extends XmlRpcDeviceComponent {
 	}
 	
 	private List<Map<String,Object>> getRivetPositions(CapabilityRequest req, String state) {
+		LOGGER.debug("################### getRivetPositions({},{})", req.toString(), state); 
 
 		List<Map<String,Object>> result = new LinkedList<Map<String,Object>>();
 		
@@ -175,6 +201,8 @@ public class BroetjeUrRpcComponent extends XmlRpcDeviceComponent {
 	 */
 	
 	private Object xmlrpcResetServer() {
+		LOGGER.debug("################### xmlrpcResetServer()");
+		
 		Object params[] = {};
 		try {
 			return client.execute("reset_server", params);
@@ -185,6 +213,8 @@ public class BroetjeUrRpcComponent extends XmlRpcDeviceComponent {
 	}
 
 	private Object xmlrpcGetCurrentRoutine() {
+		LOGGER.debug("################### xmlrpcGetCurrentRoutine()");
+		
 		Object params[] = {};
 		try {
 			return client.execute("get_routine", params);
@@ -195,9 +225,13 @@ public class BroetjeUrRpcComponent extends XmlRpcDeviceComponent {
 	}
 
 	private void xmlrpcSetCurrentRoutine(int code) {
+		LOGGER.debug("################### xmlrpcSetCurrentRoutine({})", code);
 		Object params[] = { code };
 		try {
-			client.execute("set_routine", params);
+			String result = 
+			client.execute("set_routine", params).toString();
+			LOGGER.debug("############################ xmlrpcSetCurrentRoutine result = " + result + "############################");
+
 		} catch (XmlRpcException ex) {
 			LOGGER.error("Exception occurred: {}", ex.toString());
 		}
@@ -205,15 +239,21 @@ public class BroetjeUrRpcComponent extends XmlRpcDeviceComponent {
 
 	
 	private void xmlrpcSetPayload(Object payload) {	
+		LOGGER.debug("################### xmlrpcSetPayload({})", payload.toString());
+		
 		Object params[]  = { payload };
 		try {
-			client.execute("set_rivet_positions", params);
+			String result = 
+			client.execute("set_rivet_positions", params).toString();
+			LOGGER.debug("############################ set_rivet_positions result = " + result + "############################");
 		} catch (XmlRpcException ex) {
 			LOGGER.error("Exception occurred: {}", ex.toString());
 		}
 	}
 	
 	private Object xmlrpcGetPayload() {	
+		LOGGER.debug("################### xmlrpcGetPayload()");
+		
 		Object params[] = { };
 		try {
 			return client.execute("get_rivet_positions", params);
@@ -225,6 +265,8 @@ public class BroetjeUrRpcComponent extends XmlRpcDeviceComponent {
 	
 
 	private Object xmlrpcGetCurrentStatus() {
+		LOGGER.debug("################### xmlrpcGetCurrentStatus()");
+		
 		Object params[] = {};
 		try {
 			return client.execute("get_status", params);
@@ -235,6 +277,8 @@ public class BroetjeUrRpcComponent extends XmlRpcDeviceComponent {
 	}
 	
 	private Object xmlrpcGetErrorCode() {
+		LOGGER.debug("################### xmlrpcGetErrorCode()");
+		
 		Object params[] = {};
 		try {
 			return client.execute("get_error_code", params);
