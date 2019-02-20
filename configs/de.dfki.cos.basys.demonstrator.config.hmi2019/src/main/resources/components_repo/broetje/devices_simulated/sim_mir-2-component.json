@@ -6,7 +6,7 @@
   "componentImplementationJavaClass" : "de.dfki.cos.basys.demonstrator.device.mirrest.MirRestComponent",
   "inChannelName" : "_kZY0UC91EemDsYHPQ-MfMA#in",
   "outChannelName" : "_kZY0UC91EemDsYHPQ-MfMA#out",
-  "externalConnectionString" : "http://10.250.6.23",
+  "externalConnectionString" : "http://10.250.5.7",
   "properties" : [ {
     "key" : "auth",
     "value" : "YWRtaW46OGM2OTc2ZTViNTQxMDQxNWJkZTkwOGJkNGRlZTE1ZGZiMTY3YTljODczZmM0YmI4YTgxZjZmMmFiNDQ4YTkxOA=="

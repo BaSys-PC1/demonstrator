@@ -6,7 +6,7 @@
   "componentImplementationJavaClass" : "de.dfki.cos.basys.demonstrator.device.urrpc.BroetjeUrRpcComponent",
   "inChannelName" : "_l6_J8C91EemDsYHPQ-MfMA#in",
   "outChannelName" : "_l6_J8C91EemDsYHPQ-MfMA#out",
-  "externalConnectionString" : "http://10.250.6.29:8081",
+  "externalConnectionString" : "http://10.250.5.6:8081",
   "properties" : [ {
     "key" : "recipe",
     "value" : "1"

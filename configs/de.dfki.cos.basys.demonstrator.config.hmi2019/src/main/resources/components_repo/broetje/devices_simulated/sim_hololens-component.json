@@ -6,10 +6,10 @@
   "componentImplementationJavaClass" : "de.dfki.cos.basys.demonstrator.device.hybrit.HololensComponent",
   "inChannelName" : "_qG2tcC91EemDsYHPQ-MfMA#in",
   "outChannelName" : "_qG2tcC91EemDsYHPQ-MfMA#out",
-  "externalConnectionString" : "tecs.tcp://10.250.6.13:9030",
+  "externalConnectionString" : "tecs.tcp://10.250.5.2:9030",
   "properties" : [ {
     "key" : "ps-uri",
-    "value" : "tecs-ps://smartwatch-lg-3691@10.250.6.14:9000"
+    "value" : "tecs-ps://hololens-basys@10.250.6.14:9000"
   },{
     "key" : "simulated",
     "value" : "true"
