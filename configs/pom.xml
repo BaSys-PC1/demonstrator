@@ -17,6 +17,7 @@
   <version>0.1.1-SNAPSHOT</version>
  
   <modules>
+	<module>de.dfki.cos.basys.demonstrator.config.cluster40</module>  
 	<module>de.dfki.cos.basys.demonstrator.config.cebit2018</module>  
 	<module>de.dfki.cos.basys.demonstrator.config.hmi2019</module>  
 	<module>de.dfki.cos.basys.demonstrator.config.p4p</module>  
