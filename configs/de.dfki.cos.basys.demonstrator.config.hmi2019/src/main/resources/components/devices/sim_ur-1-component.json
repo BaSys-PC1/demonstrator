@@ -2,13 +2,16 @@
   "eClass" : "http://www.dfki.de/iui/basys/model/component#//ComponentConfiguration",
   "componentCategory" : "DEVICE_COMPONENT",
   "componentId" : "_l6_J8C91EemDsYHPQ-MfMA",
-  "componentName" : "Broetje UR10-1",
+  "componentName" : "Broetje UR10-1 (Sim)",
   "componentImplementationJavaClass" : "de.dfki.cos.basys.demonstrator.device.urrpc.BroetjeUrRpcComponent",
   "inChannelName" : "_l6_J8C91EemDsYHPQ-MfMA#in",
   "outChannelName" : "_l6_J8C91EemDsYHPQ-MfMA#out",
-  "externalConnectionString" : "http://10.250.5.18:8081",
+  "externalConnectionString" : "http://10.250.5.6:8081",
   "properties" : [ {
     "key" : "recipe",
     "value" : "1"
+  },{
+    "key" : "simulated",
+    "value" : "true"
   }]
 }

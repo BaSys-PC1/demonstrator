@@ -2,7 +2,7 @@
   "eClass" : "http://www.dfki.de/iui/basys/model/component#//ComponentConfiguration",
   "componentCategory" : "DEVICE_COMPONENT",
   "componentId" : "_l6_J8C91EemDsYHPQ-MfMA",
-  "componentName" : "Broetje UR10-1 (Sim)",
+  "componentName" : "Broetje UR10-1",
   "componentImplementationJavaClass" : "de.dfki.cos.basys.demonstrator.device.urrpc.BroetjeUrRpcComponent",
   "inChannelName" : "_l6_J8C91EemDsYHPQ-MfMA#in",
   "outChannelName" : "_l6_J8C91EemDsYHPQ-MfMA#out",
