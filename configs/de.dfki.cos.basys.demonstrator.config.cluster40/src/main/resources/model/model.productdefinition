@@ -49,4 +49,16 @@
       </bom>
     </assemblyGroups>
   </productGroups>
+  <productGroups id="_hm4L0Dm6EemMb7KLTLHqMg" name="LegoCars">
+    <productVariants id="_jknD0Dm6EemMb7KLTLHqMg" name="SportsCar">
+      <bom id="_otPxkDm6EemMb7KLTLHqMg">
+        <entries xsi:type="productdefinition:AssemblyGroupEntry" id="_-LUcsDm6EemMb7KLTLHqMg" name="Bed" assemblyGroup="_4dxrETm6EemMb7KLTLHqMg"/>
+        <entries xsi:type="productdefinition:AssemblyGroupEntry" binding="" id="_H01UoDm7EemMb7KLTLHqMg" name="Chassis" assemblyGroup="_07X7UTm6EemMb7KLTLHqMg"/>
+        <entries xsi:type="productdefinition:AssemblyGroupEntry" id="_K4PbQDm7EemMb7KLTLHqMg" name="Cabin" assemblyGroup="_27qYETm6EemMb7KLTLHqMg"/>
+      </bom>
+    </productVariants>
+    <assemblyGroups id="_07X7UTm6EemMb7KLTLHqMg" name="Chassis"/>
+    <assemblyGroups id="_27qYETm6EemMb7KLTLHqMg" name="Cabin"/>
+    <assemblyGroups id="_4dxrETm6EemMb7KLTLHqMg" name="Bed"/>
+  </productGroups>
 </productdefinition:ProductCatalogue>

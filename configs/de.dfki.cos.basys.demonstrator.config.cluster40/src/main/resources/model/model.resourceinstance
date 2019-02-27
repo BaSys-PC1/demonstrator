@@ -168,4 +168,157 @@
       </capabilityVariants>
     </capabilityApplications>
   </resourceInstances>
+  <resourceInstances id="_GWIe0Dm3EemMb7KLTLHqMg" name="R1">
+    <resourceType href="model.resourcetype#_ciTbgjm2EemMb7KLTLHqMg"/>
+    <capabilityApplications>
+      <capabilityAssertion href="model.resourcetype#_P8-n0Dm4EemMb7KLTLHqMg"/>
+      <capabilityVariants xsi:type="resourceinstance:AssemblyCapabilityVariant" binding="" id="_XkYzNTm6EemMb7KLTLHqMg" name="Assemble Cabin">
+        <appliedOn xsi:type="productdefinition:AssemblyGroupEntry" href="model.productdefinition#_K4PbQDm7EemMb7KLTLHqMg"/>
+      </capabilityVariants>
+      <capabilityVariants xsi:type="resourceinstance:AssemblyCapabilityVariant" binding="" id="_XkYzNTm6EemMb7KLTLHqMg" name="Assemble Bed">
+        <appliedOn xsi:type="productdefinition:AssemblyGroupEntry" href="model.productdefinition#_-LUcsDm6EemMb7KLTLHqMg"/>
+      </capabilityVariants>
+      <capabilityVariants xsi:type="resourceinstance:AssemblyCapabilityVariant" binding="" id="_XkYzNTm6EemMb7KLTLHqMg" name="Assemble Chassis">
+        <appliedOn xsi:type="productdefinition:AssemblyGroupEntry" href="model.productdefinition#_H01UoDm7EemMb7KLTLHqMg"/>
+      </capabilityVariants>
+    </capabilityApplications>
+  </resourceInstances>
+  <resourceInstances id="_IaKMEDm3EemMb7KLTLHqMg" name="R2">
+    <resourceType href="model.resourcetype#_ciTbgjm2EemMb7KLTLHqMg"/>
+    <capabilityApplications>
+      <capabilityAssertion href="model.resourcetype#_P8-n0Dm4EemMb7KLTLHqMg"/>
+      <capabilityVariants xsi:type="resourceinstance:AssemblyCapabilityVariant" binding="" id="_XkYzNTm6EemMb7KLTLHqMg" name="Assemble Cabin">
+        <appliedOn xsi:type="productdefinition:AssemblyGroupEntry" href="model.productdefinition#_K4PbQDm7EemMb7KLTLHqMg"/>
+      </capabilityVariants>
+      <capabilityVariants xsi:type="resourceinstance:AssemblyCapabilityVariant" binding="" id="_XkYzNTm6EemMb7KLTLHqMg" name="Assemble Bed">
+        <appliedOn xsi:type="productdefinition:AssemblyGroupEntry" href="model.productdefinition#_-LUcsDm6EemMb7KLTLHqMg"/>
+      </capabilityVariants>
+      <capabilityVariants xsi:type="resourceinstance:AssemblyCapabilityVariant" binding="" id="_XkYzNTm6EemMb7KLTLHqMg" name="Assemble Chassis">
+        <appliedOn xsi:type="productdefinition:AssemblyGroupEntry" href="model.productdefinition#_H01UoDm7EemMb7KLTLHqMg"/>
+      </capabilityVariants>
+    </capabilityApplications>
+  </resourceInstances>
+  <resourceInstances id="_I8xJ4Dm3EemMb7KLTLHqMg" name="R3">
+    <resourceType href="model.resourcetype#_ciTbgjm2EemMb7KLTLHqMg"/>
+    <capabilityApplications>
+      <capabilityAssertion href="model.resourcetype#_P8-n0Dm4EemMb7KLTLHqMg"/>
+      <capabilityVariants xsi:type="resourceinstance:AssemblyCapabilityVariant" binding="" id="_XkYzNTm6EemMb7KLTLHqMg" name="Assemble Cabin">
+        <appliedOn xsi:type="productdefinition:AssemblyGroupEntry" href="model.productdefinition#_K4PbQDm7EemMb7KLTLHqMg"/>
+      </capabilityVariants>
+      <capabilityVariants xsi:type="resourceinstance:AssemblyCapabilityVariant" binding="" id="_XkYzNTm6EemMb7KLTLHqMg" name="Assemble Bed">
+        <appliedOn xsi:type="productdefinition:AssemblyGroupEntry" href="model.productdefinition#_-LUcsDm6EemMb7KLTLHqMg"/>
+      </capabilityVariants>
+      <capabilityVariants xsi:type="resourceinstance:AssemblyCapabilityVariant" binding="" id="_XkYzNTm6EemMb7KLTLHqMg" name="Assemble Chassis">
+        <appliedOn xsi:type="productdefinition:AssemblyGroupEntry" href="model.productdefinition#_H01UoDm7EemMb7KLTLHqMg"/>
+      </capabilityVariants>
+    </capabilityApplications>
+  </resourceInstances>
+  <resourceInstances id="_JfVrcDm3EemMb7KLTLHqMg" name="R10">
+    <resourceType href="model.resourcetype#_9rqBszD8EeiuBvcKgWzd3Q"/>
+    <capabilityApplications>
+      <capabilityAssertion href="model.resourcetype#_P8-n0Dm4EemMb7KLTLHqMg"/>
+      <capabilityVariants xsi:type="resourceinstance:AssemblyCapabilityVariant" id="_tSWfBTm7EemMb7KLTLHqMg">
+        <appliedOn xsi:type="productdefinition:ProductVariant" href="model.productdefinition#_jknD0Dm6EemMb7KLTLHqMg"/>
+      </capabilityVariants>
+    </capabilityApplications>
+  </resourceInstances>
+  <resourceInstances id="_J_ekEDm3EemMb7KLTLHqMg" name="M1">
+    <resourceType href="model.resourcetype#_udw7hzm2EemMb7KLTLHqMg"/>
+  </resourceInstances>
+  <resourceInstances id="_KXhQoDm3EemMb7KLTLHqMg" name="M2">
+    <resourceType href="model.resourcetype#_udw7hzm2EemMb7KLTLHqMg"/>
+  </resourceInstances>
+  <resourceInstances id="_KwMPUDm3EemMb7KLTLHqMg" name="M3">
+    <resourceType href="model.resourcetype#_udw7hzm2EemMb7KLTLHqMg"/>
+  </resourceInstances>
+  <resourceInstances id="_ML9CsDm3EemMb7KLTLHqMg" name="C1">
+    <resourceType href="model.resourcetype#_sjIa2jm2EemMb7KLTLHqMg"/>
+    <capabilityApplications>
+      <capabilityAssertion href="model.resourcetype#_nslT4Dm8EemMb7KLTLHqMg"/>
+      <capabilityVariants xsi:type="resourceinstance:LogisticsCapabilityVariant" id="_WOgeAjm9EemMb7KLTLHqMg">
+        <appliedOn xsi:type="topology:EquipmentModule" href="model.topology#_j_nccDnIEemMb7KLTLHqMg"/>
+      </capabilityVariants>
+      <capabilityVariants xsi:type="resourceinstance:LogisticsCapabilityVariant" id="_WOgeAjm9EemMb7KLTLHqMg">
+        <appliedOn xsi:type="topology:EquipmentModule" href="model.topology#_netZgDnIEemMb7KLTLHqMg"/>
+      </capabilityVariants>
+      <capabilityVariants xsi:type="resourceinstance:LogisticsCapabilityVariant" id="_WOgeAjm9EemMb7KLTLHqMg">
+        <appliedOn xsi:type="topology:EquipmentModule" href="model.topology#_pnENIDnIEemMb7KLTLHqMg"/>
+      </capabilityVariants>
+    </capabilityApplications>
+  </resourceInstances>
+  <resourceInstances id="_NPC3YDm3EemMb7KLTLHqMg" name="C2">
+    <resourceType href="model.resourcetype#_sjIa2jm2EemMb7KLTLHqMg"/>
+    <capabilityApplications>
+      <capabilityAssertion href="model.resourcetype#_nslT4Dm8EemMb7KLTLHqMg"/>
+      <capabilityVariants xsi:type="resourceinstance:LogisticsCapabilityVariant" id="_WOgeAjm9EemMb7KLTLHqMg">
+        <appliedOn xsi:type="topology:EquipmentModule" href="model.topology#_j_nccDnIEemMb7KLTLHqMg"/>
+      </capabilityVariants>
+      <capabilityVariants xsi:type="resourceinstance:LogisticsCapabilityVariant" id="_WOgeAjm9EemMb7KLTLHqMg">
+        <appliedOn xsi:type="topology:EquipmentModule" href="model.topology#_netZgDnIEemMb7KLTLHqMg"/>
+      </capabilityVariants>
+      <capabilityVariants xsi:type="resourceinstance:LogisticsCapabilityVariant" id="_WOgeAjm9EemMb7KLTLHqMg">
+        <appliedOn xsi:type="topology:EquipmentModule" href="model.topology#_pnENIDnIEemMb7KLTLHqMg"/>
+      </capabilityVariants>
+    </capabilityApplications>
+  </resourceInstances>
+  <resourceInstances id="_NqTQADm3EemMb7KLTLHqMg" name="C3">
+    <resourceType href="model.resourcetype#_sjIa2jm2EemMb7KLTLHqMg"/>
+    <capabilityApplications>
+      <capabilityAssertion href="model.resourcetype#_nslT4Dm8EemMb7KLTLHqMg"/>
+      <capabilityVariants xsi:type="resourceinstance:LogisticsCapabilityVariant" id="_WOgeAjm9EemMb7KLTLHqMg">
+        <appliedOn xsi:type="topology:EquipmentModule" href="model.topology#_j_nccDnIEemMb7KLTLHqMg"/>
+      </capabilityVariants>
+      <capabilityVariants xsi:type="resourceinstance:LogisticsCapabilityVariant" id="_WOgeAjm9EemMb7KLTLHqMg">
+        <appliedOn xsi:type="topology:EquipmentModule" href="model.topology#_netZgDnIEemMb7KLTLHqMg"/>
+      </capabilityVariants>
+      <capabilityVariants xsi:type="resourceinstance:LogisticsCapabilityVariant" id="_WOgeAjm9EemMb7KLTLHqMg">
+        <appliedOn xsi:type="topology:EquipmentModule" href="model.topology#_pnENIDnIEemMb7KLTLHqMg"/>
+      </capabilityVariants>
+    </capabilityApplications>
+  </resourceInstances>
+  <resourceInstances id="_OCCakDm3EemMb7KLTLHqMg" name="C4">
+    <resourceType href="model.resourcetype#_sjIa2jm2EemMb7KLTLHqMg"/>
+    <capabilityApplications>
+      <capabilityAssertion href="model.resourcetype#_nslT4Dm8EemMb7KLTLHqMg"/>
+      <capabilityVariants xsi:type="resourceinstance:LogisticsCapabilityVariant" id="_WOgeAjm9EemMb7KLTLHqMg">
+        <appliedOn xsi:type="topology:EquipmentModule" href="model.topology#_j_nccDnIEemMb7KLTLHqMg"/>
+      </capabilityVariants>
+      <capabilityVariants xsi:type="resourceinstance:LogisticsCapabilityVariant" id="_WOgeAjm9EemMb7KLTLHqMg">
+        <appliedOn xsi:type="topology:EquipmentModule" href="model.topology#_netZgDnIEemMb7KLTLHqMg"/>
+      </capabilityVariants>
+      <capabilityVariants xsi:type="resourceinstance:LogisticsCapabilityVariant" id="_WOgeAjm9EemMb7KLTLHqMg">
+        <appliedOn xsi:type="topology:EquipmentModule" href="model.topology#_pnENIDnIEemMb7KLTLHqMg"/>
+      </capabilityVariants>
+    </capabilityApplications>
+  </resourceInstances>
+  <resourceInstances id="_OUzlkDm3EemMb7KLTLHqMg" name="C5">
+    <resourceType href="model.resourcetype#_sjIa2jm2EemMb7KLTLHqMg"/>
+    <capabilityApplications>
+      <capabilityAssertion href="model.resourcetype#_nslT4Dm8EemMb7KLTLHqMg"/>
+      <capabilityVariants xsi:type="resourceinstance:LogisticsCapabilityVariant" id="_WOgeAjm9EemMb7KLTLHqMg">
+        <appliedOn xsi:type="topology:EquipmentModule" href="model.topology#_j_nccDnIEemMb7KLTLHqMg"/>
+      </capabilityVariants>
+      <capabilityVariants xsi:type="resourceinstance:LogisticsCapabilityVariant" id="_WOgeAjm9EemMb7KLTLHqMg">
+        <appliedOn xsi:type="topology:EquipmentModule" href="model.topology#_netZgDnIEemMb7KLTLHqMg"/>
+      </capabilityVariants>
+      <capabilityVariants xsi:type="resourceinstance:LogisticsCapabilityVariant" id="_WOgeAjm9EemMb7KLTLHqMg">
+        <appliedOn xsi:type="topology:EquipmentModule" href="model.topology#_pnENIDnIEemMb7KLTLHqMg"/>
+      </capabilityVariants>
+    </capabilityApplications>
+  </resourceInstances>
+  <resourceInstances id="_OpVEEDm3EemMb7KLTLHqMg" name="C6">
+    <resourceType href="model.resourcetype#_sjIa2jm2EemMb7KLTLHqMg"/>
+    <capabilityApplications>
+      <capabilityAssertion href="model.resourcetype#_nslT4Dm8EemMb7KLTLHqMg"/>
+      <capabilityVariants xsi:type="resourceinstance:LogisticsCapabilityVariant" id="_WOgeAjm9EemMb7KLTLHqMg">
+        <appliedOn xsi:type="topology:EquipmentModule" href="model.topology#_j_nccDnIEemMb7KLTLHqMg"/>
+      </capabilityVariants>
+      <capabilityVariants xsi:type="resourceinstance:LogisticsCapabilityVariant" id="_WOgeAjm9EemMb7KLTLHqMg">
+        <appliedOn xsi:type="topology:EquipmentModule" href="model.topology#_netZgDnIEemMb7KLTLHqMg"/>
+      </capabilityVariants>
+      <capabilityVariants xsi:type="resourceinstance:LogisticsCapabilityVariant" id="_WOgeAjm9EemMb7KLTLHqMg">
+        <appliedOn xsi:type="topology:EquipmentModule" href="model.topology#_pnENIDnIEemMb7KLTLHqMg"/>
+      </capabilityVariants>
+    </capabilityApplications>
+  </resourceInstances>
 </resourceinstance:ResourceInstanceRepository>

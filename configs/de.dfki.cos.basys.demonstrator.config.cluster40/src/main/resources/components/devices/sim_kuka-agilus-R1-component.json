@@ -1,0 +1,14 @@
+{
+  "eClass" : "http://www.dfki.de/iui/basys/model/component#//ComponentConfiguration",
+  "componentCategory" : "DEVICE_COMPONENT",
+  "componentId" : "_GWIe0Dm3EemMb7KLTLHqMg",
+  "componentName" : "Kuka Agilus R1 (Sim)",
+  "componentImplementationJavaClass" : "de.dfki.cos.basys.platform.runtime.component.device.TestDeviceComponent",
+  "inChannelName" : "_GWIe0Dm3EemMb7KLTLHqMg#in",
+  "outChannelName" : "_GWIe0Dm3EemMb7KLTLHqMg#out",
+  "externalConnectionString" : "tecs.tcp://10.2.0.107:9090",
+  "properties" : [ {
+    "key" : "simulated",
+    "value" : "true"
+  }]
+}
