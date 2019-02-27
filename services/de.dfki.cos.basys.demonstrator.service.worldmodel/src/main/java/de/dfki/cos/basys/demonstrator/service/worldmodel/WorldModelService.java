@@ -82,9 +82,7 @@ public class WorldModelService extends ServiceComponent {
 					SectorEnum.valueOf(SectorEnum.class, sector), 
 					count, 
 					State.valueOf(State.class, state), 
-					true);
-			
-		
+					true);	
 			
 			try {
 				ObjectMapper mapper = new ObjectMapper();
