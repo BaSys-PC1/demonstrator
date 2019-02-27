@@ -86,4 +86,70 @@
       </workCenters>
     </areas>
   </sites>
+  <sites id="_dlWuwDnIEemMb7KLTLHqMg" name="Cluster 4.0">
+    <areas id="_fzCuUDnIEemMb7KLTLHqMg">
+      <workCenters xsi:type="topology:ProductionLine" id="_gQhUgTnIEemMb7KLTLHqMg">
+        <equipmentModules id="_XmOocDnJEemMb7KLTLHqMg" name="C1">
+          <assignedResourceType href="model.resourcetype#_sjIa2jm2EemMb7KLTLHqMg"/>
+          <assignedResourceInstance href="model.resourceinstance#_ML9CsDm3EemMb7KLTLHqMg"/>
+        </equipmentModules>
+        <equipmentModules id="_YaYpQDnJEemMb7KLTLHqMg" name="C2">
+          <assignedResourceType href="model.resourcetype#_sjIa2jm2EemMb7KLTLHqMg"/>
+          <assignedResourceInstance href="model.resourceinstance#_NPC3YDm3EemMb7KLTLHqMg"/>
+        </equipmentModules>
+        <equipmentModules id="_ZFfbwDnJEemMb7KLTLHqMg" name="C3">
+          <assignedResourceType href="model.resourcetype#_sjIa2jm2EemMb7KLTLHqMg"/>
+          <assignedResourceInstance href="model.resourceinstance#_NqTQADm3EemMb7KLTLHqMg"/>
+        </equipmentModules>
+        <equipmentModules id="_ZgeuoDnJEemMb7KLTLHqMg" name="C4">
+          <assignedResourceType href="model.resourcetype#_sjIa2jm2EemMb7KLTLHqMg"/>
+          <assignedResourceInstance href="model.resourceinstance#_OCCakDm3EemMb7KLTLHqMg"/>
+        </equipmentModules>
+        <equipmentModules id="_Z79wwDnJEemMb7KLTLHqMg" name="C5">
+          <assignedResourceType href="model.resourcetype#_sjIa2jm2EemMb7KLTLHqMg"/>
+          <assignedResourceInstance href="model.resourceinstance#_OUzlkDm3EemMb7KLTLHqMg"/>
+        </equipmentModules>
+        <equipmentModules id="_aYJ9gDnJEemMb7KLTLHqMg" name="C6">
+          <assignedResourceType href="model.resourcetype#_sjIa2jm2EemMb7KLTLHqMg"/>
+          <assignedResourceInstance href="model.resourceinstance#_OpVEEDm3EemMb7KLTLHqMg"/>
+        </equipmentModules>
+        <workCells id="_hLd50jnIEemMb7KLTLHqMg">
+          <equipmentModules id="_i7yn8DnIEemMb7KLTLHqMg" name="R1">
+            <assignedResourceType href="model.resourcetype#_ciTbgjm2EemMb7KLTLHqMg"/>
+            <assignedResourceInstance href="model.resourceinstance#_GWIe0Dm3EemMb7KLTLHqMg"/>
+          </equipmentModules>
+          <equipmentModules id="_j_nccDnIEemMb7KLTLHqMg" name="M1">
+            <assignedResourceType href="model.resourcetype#_udw7hzm2EemMb7KLTLHqMg"/>
+            <assignedResourceInstance href="model.resourceinstance#_J_ekEDm3EemMb7KLTLHqMg"/>
+          </equipmentModules>
+        </workCells>
+        <workCells id="_loKuojnIEemMb7KLTLHqMg">
+          <equipmentModules binding="" id="_mjE3sDnIEemMb7KLTLHqMg" name="R2">
+            <assignedResourceType href="model.resourcetype#_ciTbgjm2EemMb7KLTLHqMg"/>
+            <assignedResourceInstance href="model.resourceinstance#_IaKMEDm3EemMb7KLTLHqMg"/>
+          </equipmentModules>
+          <equipmentModules id="_netZgDnIEemMb7KLTLHqMg" name="M2">
+            <assignedResourceType href="model.resourcetype#_udw7hzm2EemMb7KLTLHqMg"/>
+            <assignedResourceInstance href="model.resourceinstance#_KXhQoDm3EemMb7KLTLHqMg"/>
+          </equipmentModules>
+        </workCells>
+        <workCells id="_oEpYIjnIEemMb7KLTLHqMg">
+          <equipmentModules binding="" id="_o_hE8DnIEemMb7KLTLHqMg" name="R3">
+            <assignedResourceType href="model.resourcetype#_ciTbgjm2EemMb7KLTLHqMg"/>
+            <assignedResourceInstance href="model.resourceinstance#_I8xJ4Dm3EemMb7KLTLHqMg"/>
+          </equipmentModules>
+          <equipmentModules id="_pnENIDnIEemMb7KLTLHqMg" name="M3">
+            <assignedResourceType href="model.resourcetype#_udw7hzm2EemMb7KLTLHqMg"/>
+            <assignedResourceInstance href="model.resourceinstance#_KwMPUDm3EemMb7KLTLHqMg"/>
+          </equipmentModules>
+        </workCells>
+        <workCells id="_u_wwIjnIEemMb7KLTLHqMg">
+          <equipmentModules id="_vZPAEDnIEemMb7KLTLHqMg" name="R10">
+            <assignedResourceType href="model.resourcetype#_9rqBszD8EeiuBvcKgWzd3Q"/>
+            <assignedResourceInstance href="model.resourceinstance#_JfVrcDm3EemMb7KLTLHqMg"/>
+          </equipmentModules>
+        </workCells>
+      </workCenters>
+    </areas>
+  </sites>
 </topology:Enterprise>

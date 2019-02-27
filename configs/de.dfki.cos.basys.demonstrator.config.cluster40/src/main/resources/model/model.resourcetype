@@ -208,6 +208,50 @@
           </slot>
         </pattern>
       </capabilityAssertions>
+      <capabilityAssertions id="_P8-n0Dm4EemMb7KLTLHqMg" name="Assembling">
+        <pattern>
+          <type href="http://www.dfki.de/iui/basys/model/capability#//Fügen"/>
+        </pattern>
+      </capabilityAssertions>
+    </resourceTypes>
+    <resourceTypes xsi:type="resourcetype:Robot" id="_ciTbgjm2EemMb7KLTLHqMg" name="Agilus">
+      <capabilityAssertions id="_jNgp8FNhEeibbdx05KXzGQ" name="Agilus PickAndPlace">
+        <pattern>
+          <type href="http://www.dfki.de/iui/basys/model/capability#//PickAndPlace"/>
+          <slot>
+            <feature xsi:type="ecore:EAttribute" href="http://www.dfki.de/iui/basys/model/capability#//LogisticsCapability/payload"/>
+            <range xsi:type="pattern:PValue">
+              <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+              <restrictions>
+                <restriction xsi:type="pattern:PDoubleRestriction" function="&lt;" value="11.0"/>
+              </restrictions>
+            </range>
+          </slot>
+          <slot>
+            <feature xsi:type="ecore:EAttribute" href="http://www.dfki.de/iui/basys/model/capability#//PickAndPlace/reach"/>
+            <range xsi:type="pattern:PValue">
+              <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+              <restrictions>
+                <restriction xsi:type="pattern:PDoubleRestriction" function="&lt;" value="1101.0"/>
+              </restrictions>
+            </range>
+          </slot>
+          <slot>
+            <feature xsi:type="ecore:EAttribute" href="http://www.dfki.de/iui/basys/model/capability#//PickAndPlace/positionRepeatability"/>
+            <range xsi:type="pattern:PValue">
+              <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+              <restrictions>
+                <restriction xsi:type="pattern:PDoubleRestriction" value="0.1"/>
+              </restrictions>
+            </range>
+          </slot>
+        </pattern>
+      </capabilityAssertions>
+      <capabilityAssertions id="_P8-n0Dm4EemMb7KLTLHqMg" name="Assembling">
+        <pattern>
+          <type href="http://www.dfki.de/iui/basys/model/capability#//Fügen"/>
+        </pattern>
+      </capabilityAssertions>
     </resourceTypes>
   </catalogues>
   <catalogues manufacturer="ABB">
@@ -374,6 +418,22 @@
               <type href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
             </range>
           </slot>
+        </pattern>
+      </capabilityAssertions>
+    </resourceTypes>
+  </catalogues>
+  <catalogues manufacturer="Other">
+    <resourceTypes xsi:type="resourcetype:Carrier" id="_sjIa2jm2EemMb7KLTLHqMg" name="Carrier">
+      <capabilityAssertions id="_nslT4Dm8EemMb7KLTLHqMg" name="Transport">
+        <pattern>
+          <type href="http://www.dfki.de/iui/basys/model/capability#//Transport"/>
+        </pattern>
+      </capabilityAssertions>
+    </resourceTypes>
+    <resourceTypes xsi:type="resourcetype:Fixture" id="_udw7hzm2EemMb7KLTLHqMg" name="Fixture">
+      <capabilityAssertions id="_uypXoDm8EemMb7KLTLHqMg">
+        <pattern>
+          <type href="http://www.dfki.de/iui/basys/model/capability#//Capability"/>
         </pattern>
       </capabilityAssertions>
     </resourceTypes>
