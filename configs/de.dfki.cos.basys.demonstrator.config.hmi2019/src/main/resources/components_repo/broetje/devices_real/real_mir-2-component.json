@@ -9,7 +9,7 @@
   "externalConnectionString" : "http://10.250.5.7",
   "properties" : [ {
     "key" : "auth",
-    "value" : "YWRtaW46OGM2OTc2ZTViNTQxMDQxNWJkZTkwOGJkNGRlZTE1ZGZiMTY3YTljODczZmM0YmI4YTgxZjZmMmFiNDQ4YTkxOA=="
+    "value" : "YWRtaW46NzkzNWUyZGJkYzExMWZkYjhkOTExNjFjMzI3Y2UxNDhhMTRkZDc5MGUxM2Q1MWE5ZjFhMTk3ZTA0M2VhN2QwZg=="
   },{
     "key" : "missionName_GotoLeft",
     "value" : "GotoLeft"
