@@ -1,16 +1,34 @@
 package de.dfki.cos.basys.demonstrator.device.hybrit;
 
+import java.io.StringReader;
 import java.net.URI;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+
+import javax.json.Json;
+import javax.json.JsonArray;
+import javax.json.JsonArrayBuilder;
+import javax.json.JsonObject;
+import javax.json.JsonReader;
 
 import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TProtocol;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import de.dfki.cos.basys.platform.model.domain.capability.CapabilityPackage;
-import de.dfki.cos.basys.platform.model.domain.capability.MoveToLocation;
 import de.dfki.cos.basys.platform.model.domain.resourceinstance.CapabilityVariant;
+import de.dfki.cos.basys.platform.model.runtime.communication.Channel;
+import de.dfki.cos.basys.platform.model.runtime.communication.Request;
+import de.dfki.cos.basys.platform.model.runtime.communication.Response;
 import de.dfki.cos.basys.platform.model.runtime.component.CapabilityRequest;
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration;
-import de.dfki.cos.basys.platform.model.runtime.component.ResponseStatus;
+import de.dfki.cos.basys.platform.model.runtime.component.Variable;
+import de.dfki.cos.basys.platform.runtime.communication.CommFactory;
 import de.dfki.cos.basys.platform.runtime.component.ComponentException;
 import de.dfki.cos.basys.platform.runtime.component.device.packml.UnitConfiguration;
 import de.dfki.cos.basys.platform.runtime.component.device.tecs.DeviceStatus;
@@ -19,9 +37,7 @@ import de.dfki.cos.hrc.hmi19.RivotStateQAChangedEvent;
 import de.dfki.cos.hrc.hololens.HoloLens;
 import de.dfki.iui.hrc.hybritcommand.CommandResponse;
 import de.dfki.iui.hrc.hybritcommand.CommandState;
-import de.dfki.iui.hrc.hybritcommand.CommandStateEvent;
 import de.dfki.iui.hrc.hybritcommand.HumanTaskDTO;
-import de.dfki.iui.smartwatch.Smartwatch;
 import de.dfki.tecs.Event;
 import de.dfki.tecs.ps.PSClient;
 import de.dfki.tecs.ps.PSFactory;
@@ -29,24 +45,26 @@ import de.dfki.tecs.ps.PSFactory;
 public class HololensComponent extends TecsDeviceComponent {
 
 	private HoloLensTECS client;
+	private final String businessKey;
 
 	public HololensComponent(ComponentConfiguration config) {
 		super(config);
-		//resetOnComplete = true;
+		this.businessKey = "HMI19";
 	}
 
 	@Override
 	public void connectToExternal() throws ComponentException {
 		super.connectToExternal();
+		// Establish TECS connection for receiving status events
 		String psUri = componentConfig.getProperty("ps-uri").getValue();
 
-		client = new HoloLensTECS(protocol, psUri);
+		// Establish connection to rpc server running on the HoloLens
+		client = new HoloLensTECS(protocol, psUri, businessKey);
 	}
 
-	// ANPASSEN!!!!
 	@Override
 	protected UnitConfiguration translateCapabilityRequest(CapabilityRequest req) {
-		// TODO Auto-generated method stub
+		LOGGER.debug("################### translateCapabilityRequest({})", req.toString());
 		
 		UnitConfiguration config = new UnitConfiguration();
 		
@@ -56,33 +74,142 @@ public class HololensComponent extends TecsDeviceComponent {
 		//******************************************************
 		// TODO
 		//******************************************************
-		if(c.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getInspect()))
+		if(c.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getChecking()))
 		{
-			// 
+			// Get conrete instances of rivets to check
+			List<Map<String,Object>> rivetPositions = getRivetPositions(req, "EMPTY"); // SQUEEZED
+			
+			// We assume that all rivet positions are with the same (logical) Stringer unit
+			String frameIndex = rivetPositions.get(0).get("frameIndex").toString();
+			// We assume that only horizontal stringers are processed
+			String frameType = "SpantH9x2";
+			JsonArrayBuilder builder = Json.createArrayBuilder();
+			for(int i=0; i<rivetPositions.size(); i++) {
+				builder.add(rivetPositions.get(i).get("rivetIndex").toString());
+			}
+			JsonArray indices2Check = builder.build();		
+			
+			// Build description (json) of the checking task for HumanTaskDto	
+			String desc = Json.createObjectBuilder()
+					.add("description", "Check highlited rivots for quality and mark as iO or niO.")
+					.add("ooiID", frameType)
+					.add("position", frameIndex)	
+					.add("indices2Check", Json.createArrayBuilder(indices2Check))		
+					.build().toString();
+			
+			LOGGER.debug("##################################" + desc);
+							
+//	        String desc = "{\n" +
+//                    "    \"description\" : \"Check highlited rivots for quality and mark as iO or niO.\",\n" +
+//                    "    \"ooiID\" : \"SpantH9x2\",\n" + 
+//                    "    \"position\" : \"1\",\n" +  
+//                    "    \"indices2Check\" : [\n" + 
+//                    "        \"1\",\"2\",\"5\"\n" +
+//                    "    ]\n" +
+//                    "    \n" +
+//                    "}";
+			
+			
 			HumanTaskDTO task = new HumanTaskDTO();
+			task.businessKey = this.businessKey;
+			task.clientId = client.psClient.getClientId();
+			task.operationId = "QABroetjeDemoHMI19";
+			task.description = desc;
+			
 			config.setPayload(task);
 		}
-//		if (c.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getQAVisualisationCapability())) {
-//			config.setPayload("hallo");
-//		}
-//		if (c.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getBuffering())) {
-//			HumanTaskDTO task = new HumanTaskDTO("businessKey","operationId","Raceways bereitstellen","smartwatch-lg-3691");
-//			config.setPayload(task);
-//		}
-//		if (c.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getScrewing())) {
-//			HumanTaskDTO task = new HumanTaskDTO("businessKey","operationId","Raceway montieren","smartwatch-lg-3691");
-//			config.setPayload(task);
-//		}
-//		if (c.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getTake())) {
-//			HumanTaskDTO task = new HumanTaskDTO("businessKey","operationId","Akkuschrauber nehmen","smartwatch-lg-3691");
-//			config.setPayload(task);
-//		}
-//		if (c.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getPassingOn())) {
-//			HumanTaskDTO task = new HumanTaskDTO("businessKey","operationId","Raceway montieren","smartwatch-lg-3691");
-//			config.setPayload(task);
-//		}
 		
 		return config;
+	}
+	
+	@Override
+	public void busyWait(DeviceStatus device) {
+		
+		boolean executing = true;
+		CommandState state = CommandState.EXECUTING;
+		
+		while(executing) {
+            try {
+            	state = device.getCommandState().state;
+            } catch (TException ex) {
+                LOGGER.warn("HoloLens agent not responding. Retrying ...");
+                waitForMS(1500);
+                reconnect();
+                continue;
+            }
+
+			LOGGER.debug("CommandState is " + state);
+            
+			switch(state) {
+			case EXECUTING:
+				// Wait
+				break;
+			case ABORTED: 
+				LOGGER.error("Task execution failed! Stopping ....");
+				executing= false;
+                setErrorCode(1);
+				stop();
+                break;
+			case FINISHED: 
+				executing= false;
+				break;
+			case PAUSED: 
+				//?
+				break;
+			default:
+				LOGGER.warn("Received unexpected CommandState {} during task execution!", state);
+				break;
+			}
+            waitForMS(1500);
+            
+        } 		
+		
+	}
+	
+	private List<Map<String,Object>> getRivetPositions(CapabilityRequest req, String state) {
+		LOGGER.debug("################### getRivetPositions({},{})", req.toString(), state); 
+
+		List<Map<String,Object>> result = new LinkedList<Map<String,Object>>();
+		
+		int count = 0;
+		String sector = null;
+		
+		Variable[] vars = req.getInputParameters().toArray(new Variable[0]);
+		
+		for (Variable v : vars) {
+			if ("count".equalsIgnoreCase(v.getName())) {
+				count = Integer.parseInt(v.getValue());
+			}
+			else if ("sector".equalsIgnoreCase(v.getName())) {
+				sector = v.getValue();
+			}
+		}
+		
+		JsonObject jsonRequest = Json.createObjectBuilder()
+				.add("action", "getRivetPositions")
+				.add("count", count)
+				.add("sector", sector)
+				.add("state", state)
+				.build();
+	
+		Request wmReq = CommFactory.getInstance().createRequest(jsonRequest.toString());						
+		Channel wmInChannel = CommFactory.getInstance().openChannel(context.getSharedChannelPool(), "world-model#in", false, null);
+		Response wmResp = wmInChannel.sendRequest(wmReq);
+		
+		JsonReader jsonReader = Json.createReader(new StringReader(wmResp.getPayload()));
+		JsonArray jsonArray = jsonReader.readArray();
+		List<JsonObject> rivetPositions = jsonArray.getValuesAs(JsonObject.class);
+					
+		for (JsonObject rivetPosition : rivetPositions) {
+			Map<String, Object> p = new HashMap<>();
+			//p.put("id", rivetPosition.getString("id"));
+			p.put("frameIndex", rivetPosition.getInt("frameIndex"));
+			p.put("rivetIndex", rivetPosition.getInt("index"));
+			p.put("state", rivetPosition.getString("state"));
+			result.add(p);
+		}		
+				
+		return result;
 	}
 	
 	@Override
@@ -90,21 +217,41 @@ public class HololensComponent extends TecsDeviceComponent {
 		super.onResetting();
 		client.reset();
 	}
+	
+	private void waitForMS(long millis) {
+		try {
+			Thread.sleep(1500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+	}
 
 	@Override
 	public void onStarting() {
-
 		Object payload = getUnitConfig().getPayload();
-
 		if (payload instanceof HumanTaskDTO) {
-			try {
-				HumanTaskDTO task = (HumanTaskDTO) payload;
-				client.requestTaskExecution(task);
-			} catch (TException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			HumanTaskDTO task = (HumanTaskDTO) payload;
+			boolean informed = false;
+			CommandState state = CommandState.ABORTED;
+			while(!informed)
+			{
+				try {					
+					state = client.requestTaskExecution(task);
+					if(state == CommandState.ACCEPTED) {
+	                    informed = true;
+					}
+					else {
+						LOGGER.warn("HoloLens agent currently busy. Retrying ...");
+						waitForMS(1500);
+					}
+				} catch (TException e) {
+					LOGGER.warn("HoloLens agent not responding. Retrying ..");
+					waitForMS(1500);
+					reconnect();
+				}
 			}
-		} else {
+		} 
+		else {
 			setErrorCode(99);
 			stop();
 		}
@@ -112,19 +259,20 @@ public class HololensComponent extends TecsDeviceComponent {
 
 	@Override
 	public void onExecute() {
-		busyWait(client);
+		this.busyWait(client);
 	}
 
-	//TODO: Anpassen!!!
 	public class HoloLensTECS extends HoloLens.Client implements DeviceStatus {
 		private final TProtocol prot;
 		private PSClient psClient;
 		private Thread psThread;
 		private CommandState cmdState;
+		private String businessKey;
 
-		public HoloLensTECS(TProtocol prot, String psUri) {
+		public HoloLensTECS(TProtocol prot, String psUri, String businessKey) {
 			super(prot);
 			this.prot = prot;
+			this.businessKey = businessKey;
 
 			init(psUri);
 		}
@@ -132,10 +280,12 @@ public class HololensComponent extends TecsDeviceComponent {
 		private void init(String psUri) {
 			cmdState = CommandState.READY;
 
+			// Configure PS client
 			psClient = PSFactory.createPSClient(URI.create(psUri));
 			psClient.subscribe("RivotStateQAChangedEvent");
 			psClient.connect();
 
+			// Start listening to events on separate thread
 			psThread = new Thread(() -> {
 				while (true) {
 					while (psClient.canRecv()) {
@@ -166,10 +316,6 @@ public class HololensComponent extends TecsDeviceComponent {
 			cmdState = CommandState.READY;
 		}
 		
-		public synchronized CommandResponse getCommandState() {
-			CommandResponse response = new CommandResponse(cmdState, "");
-			return response;
-		}
 
 		@Override
 		public CommandState showNotification(String notification, String businessKey) throws TException {
@@ -183,6 +329,13 @@ public class HololensComponent extends TecsDeviceComponent {
 			CommandState state = super.requestTaskExecution(task);
 			cmdState = state;
 			return cmdState;
+		}
+
+		@Override
+		public CommandResponse getCommandState() throws TException {
+			CommandResponse cmdRsp = super.getCommandState(businessKey);
+			cmdState = cmdRsp.state;
+			return cmdRsp;
 		}
 
 	}
