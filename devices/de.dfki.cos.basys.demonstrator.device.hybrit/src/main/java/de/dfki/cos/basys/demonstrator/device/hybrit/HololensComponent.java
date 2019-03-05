@@ -2,12 +2,10 @@ package de.dfki.cos.basys.demonstrator.device.hybrit;
 
 import java.io.StringReader;
 import java.net.URI;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 import javax.json.Json;
 import javax.json.JsonArray;
@@ -17,8 +15,6 @@ import javax.json.JsonReader;
 
 import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TProtocol;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 import de.dfki.cos.basys.platform.model.domain.capability.CapabilityPackage;
 import de.dfki.cos.basys.platform.model.domain.resourceinstance.CapabilityVariant;
@@ -33,7 +29,7 @@ import de.dfki.cos.basys.platform.runtime.component.ComponentException;
 import de.dfki.cos.basys.platform.runtime.component.device.packml.UnitConfiguration;
 import de.dfki.cos.basys.platform.runtime.component.device.tecs.DeviceStatus;
 import de.dfki.cos.basys.platform.runtime.component.device.tecs.TecsDeviceComponent;
-import de.dfki.cos.hrc.hmi19.RivotStateQAChangedEvent;
+import de.dfki.cos.hrc.hmi19.RivetStateQAChangedEvent;
 import de.dfki.cos.hrc.hololens.HoloLens;
 import de.dfki.iui.hrc.hybritcommand.CommandResponse;
 import de.dfki.iui.hrc.hybritcommand.CommandState;
@@ -292,7 +288,7 @@ public class HololensComponent extends TecsDeviceComponent {
 						Event event = psClient.recv();
 						LOGGER.debug("Received event of type {} on channel {} from {}.", event.getEtype(), event.getChannel(), event.getSource());
 						if (event.is("RivotStateQAChangedEvent")) {
-							RivotStateQAChangedEvent rsce = new RivotStateQAChangedEvent();
+							RivetStateQAChangedEvent rsce = new RivetStateQAChangedEvent();
 							event.parseData(rsce);
 
 							// **********************************************
