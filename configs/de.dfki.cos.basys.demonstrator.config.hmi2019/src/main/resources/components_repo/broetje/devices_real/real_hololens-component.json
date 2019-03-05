@@ -9,6 +9,6 @@
   "externalConnectionString" : "tecs.tcp://10.250.5.2:9030",
   "properties" : [ {
     "key" : "ps-uri",
-    "value" : "tecs-ps://hololens-basys@10.250.6.14:9000"
+    "value" : "tecs-ps://hololens-basys@127.0.0.1:9000"
   }]
 }
