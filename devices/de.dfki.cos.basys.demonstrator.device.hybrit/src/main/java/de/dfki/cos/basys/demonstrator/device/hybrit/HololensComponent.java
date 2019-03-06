@@ -19,6 +19,7 @@ import org.apache.thrift.protocol.TProtocol;
 import de.dfki.cos.basys.platform.model.domain.capability.CapabilityPackage;
 import de.dfki.cos.basys.platform.model.domain.resourceinstance.CapabilityVariant;
 import de.dfki.cos.basys.platform.model.runtime.communication.Channel;
+import de.dfki.cos.basys.platform.model.runtime.communication.Notification;
 import de.dfki.cos.basys.platform.model.runtime.communication.Request;
 import de.dfki.cos.basys.platform.model.runtime.communication.Response;
 import de.dfki.cos.basys.platform.model.runtime.component.CapabilityRequest;
@@ -29,6 +30,7 @@ import de.dfki.cos.basys.platform.runtime.component.ComponentException;
 import de.dfki.cos.basys.platform.runtime.component.device.packml.UnitConfiguration;
 import de.dfki.cos.basys.platform.runtime.component.device.tecs.DeviceStatus;
 import de.dfki.cos.basys.platform.runtime.component.device.tecs.TecsDeviceComponent;
+import de.dfki.cos.hrc.hmi19.RivetStateQA;
 import de.dfki.cos.hrc.hmi19.RivetStateQAChangedEvent;
 import de.dfki.cos.hrc.hololens.HoloLens;
 import de.dfki.iui.hrc.hybritcommand.CommandResponse;
@@ -259,7 +261,6 @@ public class HololensComponent extends TecsDeviceComponent {
 	}
 
 	public class HoloLensTECS extends HoloLens.Client implements DeviceStatus {
-		private final TProtocol prot;
 		private PSClient psClient;
 		private Thread psThread;
 		private CommandState cmdState;
@@ -267,18 +268,38 @@ public class HololensComponent extends TecsDeviceComponent {
 
 		public HoloLensTECS(TProtocol prot, String psUri, String businessKey) {
 			super(prot);
-			this.prot = prot;
 			this.businessKey = businessKey;
 
 			init(psUri);
 		}
 
+		// UGLY! Find common sense in libHRC!
+		private String translateRivetState(RivetStateQA state) {
+			String result = null;
+			if(state != null) {
+				switch(state) {
+				case IO:
+					result = "CHECKED_IO";
+					break;				
+				case NIO:
+					result = "CHECKED_NIO";
+					break;
+				case UNCHECKED:
+					result = "UNCHECKED";
+					break;
+				default:
+					// Ignore	
+				}
+			}
+			return result;
+		}
+		
 		private void init(String psUri) {
 			cmdState = CommandState.READY;
 
 			// Configure PS client
 			psClient = PSFactory.createPSClient(URI.create(psUri));
-			psClient.subscribe("RivotStateQAChangedEvent");
+			psClient.subscribe("RivetStateQAChangedEvent");
 			psClient.connect();
 
 			// Start listening to events on separate thread
@@ -287,13 +308,23 @@ public class HololensComponent extends TecsDeviceComponent {
 					while (psClient.canRecv()) {
 						Event event = psClient.recv();
 						LOGGER.debug("Received event of type {} on channel {} from {}.", event.getEtype(), event.getChannel(), event.getSource());
-						if (event.is("RivotStateQAChangedEvent")) {
+						if (event.is("RivetStateQAChangedEvent")) {
 							RivetStateQAChangedEvent rsce = new RivetStateQAChangedEvent();
 							event.parseData(rsce);
 
 							// **********************************************
 							// TODO report changed rivet state to world model
 							// **********************************************
+							JsonObject jsonNotification = Json.createObjectBuilder()
+									.add("action", "updateRivetPosition")
+									.add("frameID", rsce.frameID)
+									.add("frameIndex", rsce.frameIndex)
+									.add("rivetIndex", rsce.rivetIndex)
+									.add("state", translateRivetState(rsce.state))
+									.build();
+							Notification wmNoti = CommFactory.getInstance().createNotification(jsonNotification.toString());						
+							Channel wmInChannel = CommFactory.getInstance().openChannel(context.getSharedChannelPool(), "world-model#in", false, null);
+							wmInChannel.sendNotification(wmNoti);
 
 						}
 					}
