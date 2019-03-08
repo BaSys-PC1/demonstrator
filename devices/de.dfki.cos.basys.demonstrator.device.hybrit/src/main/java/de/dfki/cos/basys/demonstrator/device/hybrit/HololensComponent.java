@@ -89,7 +89,7 @@ public class HololensComponent extends TecsDeviceComponent {
 			
 			// Build description (json) of the checking task for HumanTaskDto	
 			String desc = Json.createObjectBuilder()
-					.add("description", "Check highlited rivots for quality and mark as iO or niO.")
+					.add("description", "Check highlited rivets for quality and mark as iO or niO.")
 					.add("ooiID", frameType)
 					.add("position", frameIndex)	
 					.add("indices2Check", Json.createArrayBuilder(indices2Check))		
@@ -317,11 +317,11 @@ public class HololensComponent extends TecsDeviceComponent {
 							// **********************************************
 							JsonObject jsonNotification = Json.createObjectBuilder()
 									.add("action", "updateRivetPosition")
-									.add("frameID", rsce.frameID)
 									.add("frameIndex", rsce.frameIndex)
 									.add("rivetIndex", rsce.rivetIndex)
 									.add("state", translateRivetState(rsce.state))
 									.build();
+				
 							Notification wmNoti = CommFactory.getInstance().createNotification(jsonNotification.toString());						
 							Channel wmInChannel = CommFactory.getInstance().openChannel(context.getSharedChannelPool(), "world-model#in", false, null);
 							wmInChannel.sendNotification(wmNoti);
