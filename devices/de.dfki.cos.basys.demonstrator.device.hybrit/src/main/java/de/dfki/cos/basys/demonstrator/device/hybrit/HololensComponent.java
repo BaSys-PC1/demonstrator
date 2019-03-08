@@ -30,6 +30,7 @@ import de.dfki.cos.basys.platform.runtime.component.ComponentException;
 import de.dfki.cos.basys.platform.runtime.component.device.packml.UnitConfiguration;
 import de.dfki.cos.basys.platform.runtime.component.device.tecs.DeviceStatus;
 import de.dfki.cos.basys.platform.runtime.component.device.tecs.TecsDeviceComponent;
+import de.dfki.cos.hrc.hmi19.FrameType;
 import de.dfki.cos.hrc.hmi19.RivetStateQA;
 import de.dfki.cos.hrc.hmi19.RivetStateQAChangedEvent;
 import de.dfki.cos.hrc.hololens.HoloLens;
@@ -80,7 +81,7 @@ public class HololensComponent extends TecsDeviceComponent {
 			// We assume that all rivet positions are with the same (logical) Stringer unit
 			String frameIndex = rivetPositions.get(0).get("frameIndex").toString();
 			// We assume that only horizontal stringers are processed
-			String frameType = "SpantH9x2";
+			String frameType = FrameType.H8x2.name();
 			JsonArrayBuilder builder = Json.createArrayBuilder();
 			for(int i=0; i<rivetPositions.size(); i++) {
 				builder.add(rivetPositions.get(i).get("rivetIndex").toString());
@@ -89,23 +90,13 @@ public class HololensComponent extends TecsDeviceComponent {
 			
 			// Build description (json) of the checking task for HumanTaskDto	
 			String desc = Json.createObjectBuilder()
-					.add("description", "Check highlited rivets for quality and mark as iO or niO.")
-					.add("ooiID", frameType)
-					.add("position", frameIndex)	
-					.add("indices2Check", Json.createArrayBuilder(indices2Check))		
+					.add("description", "Check highlited rivots for quality and mark as iO or niO.")
+					.add("frametype", frameType)
+					.add("frameindex", frameIndex)	
+					.add("rivetindeces", Json.createArrayBuilder(indices2Check))		
 					.build().toString();
 			
 			LOGGER.debug("##################################" + desc);
-							
-//	        String desc = "{\n" +
-//                    "    \"description\" : \"Check highlited rivots for quality and mark as iO or niO.\",\n" +
-//                    "    \"ooiID\" : \"SpantH9x2\",\n" + 
-//                    "    \"position\" : \"1\",\n" +  
-//                    "    \"indices2Check\" : [\n" + 
-//                    "        \"1\",\"2\",\"5\"\n" +
-//                    "    ]\n" +
-//                    "    \n" +
-//                    "}";
 			
 			
 			HumanTaskDTO task = new HumanTaskDTO();
