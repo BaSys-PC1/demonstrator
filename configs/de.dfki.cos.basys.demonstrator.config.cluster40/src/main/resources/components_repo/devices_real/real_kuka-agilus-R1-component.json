@@ -3,8 +3,8 @@
   "componentCategory" : "DEVICE_COMPONENT",
   "componentId" : "_GWIe0Dm3EemMb7KLTLHqMg",
   "componentName" : "Kuka Agilus R1",
-  "componentImplementationJavaClass" : "de.dfki.cos.basys.platform.runtime.component.device.TestDeviceComponent",
+  "componentImplementationJavaClass" : "de.dfki.cos.basys.demonstrator.device.cluster40.KukaAgilusComponent",
   "inChannelName" : "_GWIe0Dm3EemMb7KLTLHqMg#in",
   "outChannelName" : "_GWIe0Dm3EemMb7KLTLHqMg#out",
-  "externalConnectionString" : "tecs.tcp://10.2.0.107:9090"
+  "externalConnectionString" : "opc.tcp://10.2.100.2:4848"
 }
