@@ -10,6 +10,7 @@ import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Modified;
 import org.osgi.service.component.annotations.Reference;
 
+import de.dfki.cos.basys.common.wmrestclient.dto.Hull;
 import de.dfki.cos.basys.demonstrator.service.worldmodel.WorldModelService;
 import de.dfki.cos.basys.demonstrator.service.worldmodel.WorldModelServiceImpl;
 import de.dfki.cos.basys.platform.model.domain.linebalancing.StaticWorldModel;
@@ -85,7 +86,7 @@ public final class WorldModelServiceComponent extends BasysOsgiComponent impleme
 	 */
 
 	@Override
-	public String getHull() {
+	public Hull getHull() {
 		return impl.getHull();
 	}
 

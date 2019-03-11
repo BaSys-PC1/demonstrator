@@ -5,12 +5,14 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import de.dfki.cos.basys.common.wmrestclient.dto.Hull;
+
 @Path("/worldmodel")
 public interface WorldModelService {
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/")
-	String getHull();
+	Hull getHull();
 	
 }

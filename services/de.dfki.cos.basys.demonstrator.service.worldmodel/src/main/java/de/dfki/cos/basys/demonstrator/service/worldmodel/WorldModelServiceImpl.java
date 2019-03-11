@@ -15,6 +15,7 @@ import de.dfki.cos.basys.common.emf.json.JsonUtils;
 import de.dfki.cos.basys.common.wmrestclient.WorldModelRestClient;
 import de.dfki.cos.basys.common.wmrestclient.WorldModelRestClientImpl;
 import de.dfki.cos.basys.common.wmrestclient.WorldModelRestClientMockup;
+import de.dfki.cos.basys.common.wmrestclient.dto.Hull;
 import de.dfki.cos.basys.common.wmrestclient.dto.RivetPosition;
 import de.dfki.cos.basys.common.wmrestclient.dto.RivetPosition.State;
 import de.dfki.cos.basys.common.wmrestclient.dto.Sector.SectorEnum;
@@ -48,8 +49,11 @@ public class WorldModelServiceImpl extends ServiceComponent implements WorldMode
 	}
 	
 	@Override
-	public String getHull() {
-		return "{ \"todo\" : \"implement\"}";
+	public Hull getHull() {
+		List<Hull> hulls = client.getHulls();
+		return hulls.get(0);
+		
+		//return "{ \"todo\" : \"implement\"}";
 	}
 	
 	@Override

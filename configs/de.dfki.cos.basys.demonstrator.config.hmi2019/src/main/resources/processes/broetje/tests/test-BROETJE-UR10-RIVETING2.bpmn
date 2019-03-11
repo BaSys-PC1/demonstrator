@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_062ggb8" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="2.2.4">
+  <bpmn:process id="test-BROETJE-UR10-1-RIVETING-SMALL" name="test-BROETJE-UR10-1-RIVETING-SMALL" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_0vvvgpo">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="count" label="Count" type="long" defaultValue="3" />
+          <camunda:formField id="sector" label="Sector" type="enum">
+            <camunda:value id="LEFT" name="LEFT" />
+            <camunda:value id="RIGHT" name="RIGHT" />
+            <camunda:value id="CENTER" name="CENTER" />
+          </camunda:formField>
+        </camunda:formData>
+      </bpmn:extensionElements>
+      <bpmn:outgoing>SequenceFlow_0ww7eki</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:serviceTask id="ServiceTask_0rc7hwv" name="Reset UR10-1" camunda:type="external" camunda:topic="BasysTask">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="assignee">_l6_J8C91EemDsYHPQ-MfMA</camunda:inputParameter>
+          <camunda:inputParameter name="command">{
+    "eClass" : "http://www.dfki.de/iui/basys/model/component#//CommandRequest",
+    "controlCommand" : "RESET"
+  }</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_0ww7eki</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1jx3lnp</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="ServiceTask_0hz3fig" name="UR10-1 Goto Home Position From Safe" camunda:type="external" camunda:topic="BasysTask">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="assignee">_l6_J8C91EemDsYHPQ-MfMA</camunda:inputParameter>
+          <camunda:inputParameter name="command">{
+    "eClass" : "http://www.dfki.de/iui/basys/model/component#//CapabilityRequest",
+    "capabilityVariant" : {
+      "eClass" : "http://www.dfki.de/iui/basys/model/resourceinstance#//GeneralCapabilityVariant",
+      "id" : "_Pe9ygzBqEem8P9knmM6g-Q",
+      "name" : "Goto Home From Safe Position",
+      "capability" : {
+        "eClass" : "http://www.dfki.de/iui/basys/model/capability#//MoveToLocation",
+        "id" : "_QwedyDBqEem8P9knmM6g-Q",
+        "name" : "SAFE_HOME_POSE"
+      }
+    }
+  }</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="EndEvent_1fvv2ds">
+      <bpmn:incoming>SequenceFlow_1b9yjnc</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:serviceTask id="ServiceTask_0knda1r" name="UR10-1 Goto Safe Position" camunda:type="external" camunda:topic="BasysTask">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="assignee">_l6_J8C91EemDsYHPQ-MfMA</camunda:inputParameter>
+          <camunda:inputParameter name="command">{
+    "eClass" : "http://www.dfki.de/iui/basys/model/component#//CapabilityRequest",
+    "capabilityVariant" : {
+      "eClass" : "http://www.dfki.de/iui/basys/model/resourceinstance#//GeneralCapabilityVariant",
+      "binding" : "",
+      "id" : "_cKKSwzBqEem8P9knmM6g-Q",
+      "name" : "Goto Safe Position",
+      "capability" : {
+        "eClass" : "http://www.dfki.de/iui/basys/model/capability#//MoveToLocation",
+        "id" : "_ciFqqDBqEem8P9knmM6g-Q",
+        "name" : "SAFE_POSE"
+      }
+    }
+  }</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="ServiceTask_1kspmuy" name="UR10-1 Perform Riveting" camunda:type="external" camunda:topic="BasysTask">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="assignee">_l6_J8C91EemDsYHPQ-MfMA</camunda:inputParameter>
+          <camunda:inputParameter name="command">
+            <camunda:script scriptFormat="freemarker">{
+    "eClass" : "http://www.dfki.de/iui/basys/model/component#//CapabilityRequest",
+    "inputParameters" : [ {
+      "name" : "count",
+      "value" : "${count}",
+      "type" : "INTEGER"
+    }, {
+      "name" : "sector",
+      "value" : "${sector}",
+      "type" : "STRING"
+    } ],
+    "capabilityVariant" : {
+      "eClass" : "http://www.dfki.de/iui/basys/model/resourceinstance#//ManufacturingCapabilityVariant",
+      "id" : "_9ZlhgTBpEem8P9knmM6g-Q",
+      "name" : "Perform Riveting",
+      "capability" : {
+        "eClass" : "http://www.dfki.de/iui/basys/model/capability#//Fügen",
+        "id" : "__VQkBDBpEem8P9knmM6g-Q"
+      }
+    }
+  }</camunda:script>
+          </camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_1bt7ax0</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1b9yjnc</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="SequenceFlow_0ww7eki" sourceRef="StartEvent_0vvvgpo" targetRef="ServiceTask_0rc7hwv" />
+    <bpmn:sequenceFlow id="SequenceFlow_1jx3lnp" sourceRef="ServiceTask_0rc7hwv" targetRef="ServiceTask_1srweo8" />
+    <bpmn:sequenceFlow id="SequenceFlow_1b9yjnc" sourceRef="ServiceTask_1kspmuy" targetRef="EndEvent_1fvv2ds" />
+    <bpmn:serviceTask id="ServiceTask_1srweo8" name="WAIT" camunda:type="external" camunda:topic="BasysTask">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="assignee">WAIT</camunda:inputParameter>
+          <camunda:inputParameter name="command">5000</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_1jx3lnp</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1bt7ax0</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="SequenceFlow_1bt7ax0" sourceRef="ServiceTask_1srweo8" targetRef="ServiceTask_1kspmuy" />
+    <bpmn:serviceTask id="ServiceTask_0mvv3fv" name="WAIT" camunda:type="external" camunda:topic="BasysTask">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="assignee">WAIT</camunda:inputParameter>
+          <camunda:inputParameter name="command">2000</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+    </bpmn:serviceTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="test-BROETJE-UR10-1-RIVETING-SMALL">
+      <bpmndi:BPMNShape id="StartEvent_0vvvgpo_di" bpmnElement="StartEvent_0vvvgpo">
+        <dc:Bounds x="15" y="434" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_0rc7hwv_di" bpmnElement="ServiceTask_0rc7hwv">
+        <dc:Bounds x="104" y="412" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_0hz3fig_di" bpmnElement="ServiceTask_0hz3fig">
+        <dc:Bounds x="156" y="126" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_1fvv2ds_di" bpmnElement="EndEvent_1fvv2ds">
+        <dc:Bounds x="712" y="434" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_0knda1r_di" bpmnElement="ServiceTask_0knda1r">
+        <dc:Bounds x="560" y="264" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_1kspmuy_di" bpmnElement="ServiceTask_1kspmuy">
+        <dc:Bounds x="475" y="412" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0ww7eki_di" bpmnElement="SequenceFlow_0ww7eki">
+        <di:waypoint x="51" y="452" />
+        <di:waypoint x="104" y="452" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1jx3lnp_di" bpmnElement="SequenceFlow_1jx3lnp">
+        <di:waypoint x="204" y="452" />
+        <di:waypoint x="285" y="452" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1b9yjnc_di" bpmnElement="SequenceFlow_1b9yjnc">
+        <di:waypoint x="575" y="452" />
+        <di:waypoint x="712" y="452" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ServiceTask_1srweo8_di" bpmnElement="ServiceTask_1srweo8">
+        <dc:Bounds x="285" y="412" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1bt7ax0_di" bpmnElement="SequenceFlow_1bt7ax0">
+        <di:waypoint x="385" y="452" />
+        <di:waypoint x="475" y="452" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ServiceTask_0mvv3fv_di" bpmnElement="ServiceTask_0mvv3fv">
+        <dc:Bounds x="419" y="-89" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

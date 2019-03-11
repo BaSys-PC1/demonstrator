@@ -86,8 +86,6 @@ public class BroetjeUrRpcComponent extends XmlRpcDeviceComponent {
 	
 	@Override
 	public void onStarting() {		
-
-
 		if (getUnitConfig().getRecipe() >= 0) {
 			
 			if (getUnitConfig().getPayload() != null) {
@@ -106,13 +104,6 @@ public class BroetjeUrRpcComponent extends XmlRpcDeviceComponent {
 				e.printStackTrace();
 			}
 			// ##################################################################################
-
-
-
-
-
-
-
 		}
 	}
 	
@@ -152,29 +143,37 @@ public class BroetjeUrRpcComponent extends XmlRpcDeviceComponent {
 			}
 
 			//check messages here in order to get messages also after finished
-			List<Map<String, Object>> messages =  (List<Map<String, Object>>) xmlrpcGetMessages();
-			if (messages != null && messages.size() > 0) {
-				for (Map<String, Object> message : messages) {
-					if (message.get("topic").equals("rivet_state_changed")) {
-						//String rivetId = (String) message.get("id");
-						int rivetIndex = (int) message.get("rivetIndex");
-						int frameIndex = (int) message.get("frameIndex");
-						String rivetState = (String) message.get("state");
-						
-						JsonObject jsonRequest = Json.createObjectBuilder()
-								.add("action", "updateRivetPosition")
-								//.add("rivetId", rivetId)
-								.add("rivetIndex", rivetIndex)
-								.add("frameIndex", frameIndex)
-								.add("state", rivetState)
-								.build();
-						
-						Notification not = CommFactory.getInstance().createNotification(jsonRequest.toString());
-						Channel wmInChannel = CommFactory.getInstance().openChannel(context.getSharedChannelPool(), "world-model#in", false, null);
-						wmInChannel.sendNotification(not);
-					}
+			Object[] messages = xmlrpcGetMessages();			
+			for (int i = 0; i<messages.length; i++) {
+				Map<String, Object> message = (Map<String, Object>)messages[i];
+				if (message.get("topic").equals("rivet_state_changed")) {
+					//String rivetId = (String) message.get("id");
+					int rivetIndex = (int) message.get("rivetIndex");
+					int frameIndex = (int) message.get("frameIndex");
+					String rivetState = (String) message.get("state");
+					
+					JsonObject jsonRequest = Json.createObjectBuilder()
+							.add("action", "updateRivetPosition")
+							//.add("rivetId", rivetId)
+							.add("rivetIndex", rivetIndex)
+							.add("frameIndex", frameIndex)
+							.add("state", rivetState)
+							.build();
+					
+					Notification not = CommFactory.getInstance().createNotification(jsonRequest.toString());
+					Channel wmInChannel = CommFactory.getInstance().openChannel(context.getSharedChannelPool(), "world-model#in", false, null);
+					wmInChannel.sendNotification(not);
 				}
 			}
+			
+//			else {
+//				List<Map<String, Object>> messages =  (List<Map<String, Object>>) obj;
+//				if (messages != null && messages.size() > 0) {
+//					for (Map<String, Object> message : messages) {
+//				
+//					}
+//				}
+//			}
 			
 			try {
 				Thread.sleep(100);
@@ -291,11 +290,14 @@ public class BroetjeUrRpcComponent extends XmlRpcDeviceComponent {
 		}
 	}
 	
-	private Object xmlrpcGetMessages() {	
+	private Object[] xmlrpcGetMessages() {	
 		LOGGER.debug("xmlrpcGetMessages");
 		Object params[] = { true };
 		try {
-			return client.execute("get_messages", params);
+			Object obj = client.execute("get_messages", params);
+			//if (obj!=null && obj.getClass().isArray()) {
+			return (Object[])obj;
+			//}			
 		} catch (XmlRpcException ex) {
 			LOGGER.error("Exception occurred: {}", ex.toString());
 			return null;
