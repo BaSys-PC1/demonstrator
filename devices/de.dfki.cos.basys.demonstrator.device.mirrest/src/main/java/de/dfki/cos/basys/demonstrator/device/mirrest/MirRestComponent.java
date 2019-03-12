@@ -63,6 +63,16 @@ public class MirRestComponent extends DeviceComponent {
 				config.setPayload(missionName);
 				config.setRecipe(2);
 			}
+			else if (te.getId().equals("_IqVnlTBrEem8P9knmM6g-Q")) { //Wait-1
+				String missionName = getConfig().getProperty("missionName_GotoWait_1").getValue();
+				config.setPayload(missionName);
+				config.setRecipe(2);
+			}
+			else if (te.getId().equals("_JJfoxTBrEem8P9knmM6g-Q")) { //Wait-2
+				String missionName = getConfig().getProperty("missionName_GotoWait_2").getValue();
+				config.setPayload(missionName);
+				config.setRecipe(2);
+			}
 			else {			
 				config.setRecipe(1);
 				config.setPayload(te);

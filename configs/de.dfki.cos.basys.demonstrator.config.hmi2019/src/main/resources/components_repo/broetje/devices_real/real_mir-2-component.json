@@ -19,5 +19,11 @@
   },{
     "key" : "missionName_GotoRight",
     "value" : "GotoRight"
+  },{
+    "key" : "missionName_GotoWait_1",
+    "value" : "GotoWait_1"
+  },{
+    "key" : "missionName_GotoWait_2",
+    "value" : "GotoWait_2"
   }]
 }
