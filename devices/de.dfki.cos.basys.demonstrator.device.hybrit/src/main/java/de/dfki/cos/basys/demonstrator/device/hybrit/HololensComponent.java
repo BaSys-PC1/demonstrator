@@ -308,8 +308,8 @@ public class HololensComponent extends TecsDeviceComponent {
 							// **********************************************
 							JsonObject jsonNotification = Json.createObjectBuilder()
 									.add("action", "updateRivetPosition")
-									.add("frameIndex", rsce.frameIndex)
-									.add("rivetIndex", rsce.rivetIndex)
+									.add("frameIndex", Integer.parseInt(rsce.frameIndex))
+									.add("rivetIndex", Integer.parseInt(rsce.rivetIndex))
 									.add("state", translateRivetState(rsce.state))
 									.build();
 				
