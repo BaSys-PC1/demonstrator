@@ -2,14 +2,14 @@
   "eClass" : "http://www.dfki.de/iui/basys/model/component#//ComponentConfiguration",
   "componentCategory" : "DEVICE_COMPONENT",
   "componentId" : "_gsXwAC91EemDsYHPQ-MfMA",
-  "componentName" : "Broetje MiR100-1 (Sim)",
+  "componentName" : "Broetje MiR100-1",
   "componentImplementationJavaClass" : "de.dfki.cos.basys.demonstrator.device.mirrest.MirRestComponent",
   "inChannelName" : "_gsXwAC91EemDsYHPQ-MfMA#in",
   "outChannelName" : "_gsXwAC91EemDsYHPQ-MfMA#out",
   "externalConnectionString" : "http://10.250.5.4",
   "properties" : [ {
     "key" : "auth",
-    "value" : "YWRtaW46OGM2OTc2ZTViNTQxMDQxNWJkZTkwOGJkNGRlZTE1ZGZiMTY3YTljODczZmM0YmI4YTgxZjZmMmFiNDQ4YTkxOA=="
+    "value" : "bXJrOjZjNGIwNmRjYTU4NmM1NzkxYmI2Nzc4MjFjZjU3YWQ0ZjcyOGVmMTZmMWNjN2ZiMDg1MmEwNmY3Yzc5NmI1M2Y="
   },{
     "key" : "missionName_GotoLeft",
     "value" : "GotoLeft"
@@ -19,8 +19,5 @@
   },{
     "key" : "missionName_GotoRight",
     "value" : "GotoRight"
-  },{
-    "key" : "simulated",
-    "value" : "true"
   }]
 }
