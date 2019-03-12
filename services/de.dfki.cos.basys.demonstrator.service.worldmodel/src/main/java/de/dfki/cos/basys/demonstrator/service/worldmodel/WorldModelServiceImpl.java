@@ -74,7 +74,10 @@ public class WorldModelServiceImpl extends ServiceComponent implements WorldMode
 				//TODO: check if sending notification in handleNotification is possible -> otherwise do handleNotification in extra thread in CommProvider
 				Notification not2 = CommFactory.getInstance().createNotification(not.getPayload());
 				outChannel.sendNotification(not2);
-			}			
+			}
+			else {
+				LOGGER.warn("Updating rivet position {} FAILED!", rivetPosition.toString());
+			}
 		}	
 	}
 	
