@@ -69,10 +69,6 @@ public class HololensComponent extends TecsDeviceComponent {
 		
 		CapabilityVariant<?, ?> c = req.getCapabilityVariant();
 		
-		
-		//******************************************************
-		// TODO
-		//******************************************************
 		if(c.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getChecking()))
 		{
 			// Get conrete instances of rivets to check
@@ -97,8 +93,7 @@ public class HololensComponent extends TecsDeviceComponent {
 					.build().toString();
 			
 			LOGGER.debug("##################################" + desc);
-			
-			
+						
 			HumanTaskDTO task = new HumanTaskDTO();
 			task.businessKey = this.businessKey;
 			task.clientId = client.psClient.getClientId();
