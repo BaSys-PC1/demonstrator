@@ -34,6 +34,7 @@ import de.dfki.cos.basys.platform.runtime.component.service.ServiceComponent;
 public class WorldModelServiceImpl extends ServiceComponent implements WorldModelService {
 
 	WorldModelRestClient client;
+	String hullID = null;
 	
 	public WorldModelServiceImpl(ComponentConfiguration config) {
 		super(config);
@@ -96,13 +97,16 @@ public class WorldModelServiceImpl extends ServiceComponent implements WorldMode
 			String sector = jsonIn.getString("sector");
 			String state = jsonIn.getString("state");			
 			
+			if(hullID == null)
+				hullID = client.getHulls().get(0).getId();	
+			
 			List<RivetPosition> result = client.getRivetPositions(
-					null, 
+					hullID, 
 					SectorEnum.valueOf(SectorEnum.class, sector), 
 					count, 
 					State.valueOf(State.class, state), 
 					true);	
-			
+		
 			try {
 				ObjectMapper mapper = new ObjectMapper();
 				String jsonResponse = mapper.writeValueAsString(result);
