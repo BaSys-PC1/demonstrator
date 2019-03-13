@@ -44,6 +44,7 @@ import de.dfki.tecs.ps.PSFactory;
 public class HololensComponent extends TecsDeviceComponent {
 
 	private HoloLensTECS client;
+	private String clientID = "dummy";
 	private final String businessKey;
 
 	public HololensComponent(ComponentConfiguration config) {
@@ -59,6 +60,7 @@ public class HololensComponent extends TecsDeviceComponent {
 
 		// Establish connection to rpc server running on the HoloLens
 		client = new HoloLensTECS(protocol, psUri, businessKey);
+		clientID = client.psClient.getClientId();
 	}
 
 	@Override
@@ -96,7 +98,7 @@ public class HololensComponent extends TecsDeviceComponent {
 						
 			HumanTaskDTO task = new HumanTaskDTO();
 			task.businessKey = this.businessKey;
-			task.clientId = client.psClient.getClientId();
+			task.clientId = clientID;
 			task.operationId = "QABroetjeDemoHMI19";
 			task.description = desc;
 			
