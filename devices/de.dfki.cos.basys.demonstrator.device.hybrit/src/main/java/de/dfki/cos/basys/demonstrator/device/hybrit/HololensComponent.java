@@ -299,10 +299,7 @@ public class HololensComponent extends TecsDeviceComponent {
 						if (event.is("RivetStateQAChangedEvent")) {
 							RivetStateQAChangedEvent rsce = new RivetStateQAChangedEvent();
 							event.parseData(rsce);
-
-							// **********************************************
-							// TODO report changed rivet state to world model
-							// **********************************************
+				
 							JsonObject jsonNotification = Json.createObjectBuilder()
 									.add("action", "updateRivetPosition")
 									.add("frameIndex", Integer.parseInt(rsce.frameIndex))
