@@ -52,7 +52,8 @@ public class WorldModelServiceImpl extends ServiceComponent implements WorldMode
 	@Override
 	public Hull getHull() {
 		List<Hull> hulls = client.getHulls();
-		return hulls.get(0);
+		//return hulls.get(0);
+		return client.getHull(hulls.get(0).getId());
 		
 		//return "{ \"todo\" : \"implement\"}";
 	}
