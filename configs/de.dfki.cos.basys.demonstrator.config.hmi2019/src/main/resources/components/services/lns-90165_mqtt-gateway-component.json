@@ -11,5 +11,8 @@
   }, {
     "key" : "outgoing",
     "value" : "basys#components#status#> hybrit/devices"
+  },{
+    "key" : "outgoing",
+    "value" : "world-model#out hybrit/worldmodel"
   }]
 }
