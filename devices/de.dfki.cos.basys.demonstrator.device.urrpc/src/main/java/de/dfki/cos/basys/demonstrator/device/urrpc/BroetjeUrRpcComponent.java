@@ -66,7 +66,7 @@ public class BroetjeUrRpcComponent extends XmlRpcDeviceComponent {
 			config.setRecipe(UrRpcConstants.ROUTINE_PERFORM_RACEWAY_POSITIONING);				
 		} else if (c.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getFügen())) {			
 			config.setRecipe(UrRpcConstants.ROUTINE_PERFORM_RIVETING);
-			Object rivetPositions = getRivetPositions(req, "EMPTY");
+			Object rivetPositions = getRivetPositions(req, "INSERTED");
 			config.setPayload(rivetPositions);
 		} else if (c.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getBeschichten())) {			
 			config.setRecipe(UrRpcConstants.ROUTINE_PERFORM_SEALING);

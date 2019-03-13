@@ -74,7 +74,7 @@ public class HololensComponent extends TecsDeviceComponent {
 		if(c.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getChecking()))
 		{
 			// Get conrete instances of rivets to check
-			List<Map<String,Object>> rivetPositions = getRivetPositions(req, "EMPTY"); // SQUEEZED
+			List<Map<String,Object>> rivetPositions = getRivetPositions(req, "SQUEEZED");
 			
 			// We assume that all rivet positions are with the same (logical) Stringer unit
 			String frameIndex = rivetPositions.get(0).get("frameIndex").toString();
