@@ -2,7 +2,7 @@
   "eClass" : "http://www.dfki.de/iui/basys/model/component#//ComponentConfiguration",
   "componentCategory" : "DEVICE_COMPONENT",
   "componentId" : "_gsXwAC91EemDsYHPQ-MfMA",
-  "componentName" : "Broetje MiR100-1",
+  "componentName" : "Broetje MiR100-1 (Sim)",
   "componentImplementationJavaClass" : "de.dfki.cos.basys.demonstrator.device.mirrest.MirRestComponent",
   "inChannelName" : "_gsXwAC91EemDsYHPQ-MfMA#in",
   "outChannelName" : "_gsXwAC91EemDsYHPQ-MfMA#out",
@@ -25,5 +25,8 @@
   },{
     "key" : "missionName_GotoWait_2",
     "value" : "GoBacktoPark2"
+  },{
+    "key" : "simulated",
+    "value" : "true"
   }]
 }
