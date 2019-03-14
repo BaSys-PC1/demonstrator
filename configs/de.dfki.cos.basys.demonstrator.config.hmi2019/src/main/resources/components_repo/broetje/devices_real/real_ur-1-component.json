@@ -10,8 +10,5 @@
   "properties" : [ {
     "key" : "recipe",
     "value" : "1"
-  },{
-    "key" : "simulated",
-    "value" : "true"
   }]
 }
