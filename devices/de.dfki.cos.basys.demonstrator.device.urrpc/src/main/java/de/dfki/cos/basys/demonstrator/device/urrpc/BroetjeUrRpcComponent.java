@@ -31,15 +31,19 @@ import de.dfki.cos.basys.platform.runtime.component.device.xmlrpc.XmlRpcDeviceCo
 
 public class BroetjeUrRpcComponent extends XmlRpcDeviceComponent {	
 	
+	private boolean validTask;
+	
 	public BroetjeUrRpcComponent(ComponentConfiguration config) {
 		super(config);
 		resetOnComplete = true;
+		validTask = true;
 	}
 		
 	@Override
 	protected UnitConfiguration translateCapabilityRequest(CapabilityRequest req) {
 
-
+		validTask = true;
+		
 		UnitConfiguration config = new UnitConfiguration();
 		config.setRecipe(-1);
 		
@@ -66,11 +70,15 @@ public class BroetjeUrRpcComponent extends XmlRpcDeviceComponent {
 			config.setRecipe(UrRpcConstants.ROUTINE_PERFORM_RACEWAY_POSITIONING);				
 		} else if (c.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getFügen())) {			
 			config.setRecipe(UrRpcConstants.ROUTINE_PERFORM_RIVETING);
-			Object rivetPositions = getRivetPositions(req, "INSERTED");
+			List<Map<String,Object>> tmp = getRivetPositions(req, "INSERTED");
+			if(tmp.isEmpty()) validTask = false;
+			Object rivetPositions = tmp;
 			config.setPayload(rivetPositions);
 		} else if (c.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getBeschichten())) {			
 			config.setRecipe(UrRpcConstants.ROUTINE_PERFORM_SEALING);
-			Object rivetPositions = getRivetPositions(req, "CHECKED_IO");
+			List<Map<String,Object>> tmp = getRivetPositions(req, "CHECKED_IO");
+			if(tmp.isEmpty()) validTask = false;
+			Object rivetPositions = tmp;
 			config.setPayload(rivetPositions);
 		}
 		
@@ -86,101 +94,105 @@ public class BroetjeUrRpcComponent extends XmlRpcDeviceComponent {
 	
 	@Override
 	public void onStarting() {		
-		if (getUnitConfig().getRecipe() >= 0) {
-			
-			if (getUnitConfig().getPayload() != null) {
-				xmlrpcSetPayload(getUnitConfig().getPayload());
+		
+		if(validTask) {
+			if (getUnitConfig().getRecipe() >= 0) {
+				
+				if (getUnitConfig().getPayload() != null) {
+					xmlrpcSetPayload(getUnitConfig().getPayload());
+				}
+							
+				xmlrpcSetCurrentRoutine(getUnitConfig().getRecipe());
+				
+				// ##################################################################################
+				// FIXME: do we need to wait a short time? 
+				// From the second command onwards, the rpc server has a status of finished, 
+				// which can be queried in onExecute if the UR responds slower than the internal state change to execute
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				// ##################################################################################
 			}
-						
-			xmlrpcSetCurrentRoutine(getUnitConfig().getRecipe());
-			
-			// ##################################################################################
-			// FIXME: do we need to wait a short time? 
-			// From the second command onwards, the rpc server has a status of finished, 
-			// which can be queried in onExecute if the UR responds slower than the internal state change to execute
-			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			// ##################################################################################
 		}
 	}
 	
 	@Override
 	public void onExecute() {
 
-
-		boolean executing = true;
-		while(executing) {
-			String state = xmlrpcGetCurrentStatus().toString();
-
-
-
-			switch (state) {
-			case "busy":
-				// wait for completion
-				
-//				if (getUnitConfig().getRecipe() == UrRpcConstants.ROUTINE_PERFORM_RIVETING 
-//				    || getUnitConfig().getRecipe() == UrRpcConstants.ROUTINE_PERFORM_SEALING) {
-//									
-//					List<?> tmp = Arrays.asList((Object[])xmlrpcGetPayload());	
-//					List<Map<String,Object>> positions = (List<Map<String,Object>>)tmp; 
-//					
-//					LOGGER.debug("################### xmlrpcGetPayload result: {}", positions.toString());
-//					
-//					
-//					// if change detected: update WM
-//					// TODO
-//				}
-				break;
-			case "finished":
-				executing=false;
-				// retrieve error code here?
-				break;
-			default:
-				break;
-			}
-
-			//check messages here in order to get messages also after finished
-			Object[] messages = xmlrpcGetMessages();			
-			for (int i = 0; i<messages.length; i++) {
-				Map<String, Object> message = (Map<String, Object>)messages[i];
-				if (message.get("topic").equals("rivet_state_changed")) {
-					//String rivetId = (String) message.get("id");
-					int rivetIndex = (int) message.get("rivetIndex");
-					int frameIndex = (int) message.get("frameIndex");
-					String rivetState = (String) message.get("state");
+		if(validTask) {
+			boolean executing = true;
+			while(executing) {
+				String state = xmlrpcGetCurrentStatus().toString();
+	
+	
+	
+				switch (state) {
+				case "busy":
+					// wait for completion
 					
-					JsonObject jsonRequest = Json.createObjectBuilder()
-							.add("action", "updateRivetPosition")
-							//.add("rivetId", rivetId)
-							.add("rivetIndex", rivetIndex)
-							.add("frameIndex", frameIndex)
-							.add("state", rivetState)
-							.build();
-					
-					Notification not = CommFactory.getInstance().createNotification(jsonRequest.toString());
-					Channel wmInChannel = CommFactory.getInstance().openChannel(context.getSharedChannelPool(), "world-model#in", false, null);
-					wmInChannel.sendNotification(not);
+	//				if (getUnitConfig().getRecipe() == UrRpcConstants.ROUTINE_PERFORM_RIVETING 
+	//				    || getUnitConfig().getRecipe() == UrRpcConstants.ROUTINE_PERFORM_SEALING) {
+	//									
+	//					List<?> tmp = Arrays.asList((Object[])xmlrpcGetPayload());	
+	//					List<Map<String,Object>> positions = (List<Map<String,Object>>)tmp; 
+	//					
+	//					LOGGER.debug("################### xmlrpcGetPayload result: {}", positions.toString());
+	//					
+	//					
+	//					// if change detected: update WM
+	//					// TODO
+	//				}
+					break;
+				case "finished":
+					executing=false;
+					// retrieve error code here?
+					break;
+				default:
+					break;
 				}
-			}
-			
-//			else {
-//				List<Map<String, Object>> messages =  (List<Map<String, Object>>) obj;
-//				if (messages != null && messages.size() > 0) {
-//					for (Map<String, Object> message : messages) {
-//				
-//					}
-//				}
-//			}
-			
-			try {
-				Thread.sleep(100);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}		
+	
+				//check messages here in order to get messages also after finished
+				Object[] messages = xmlrpcGetMessages();			
+				for (int i = 0; i<messages.length; i++) {
+					Map<String, Object> message = (Map<String, Object>)messages[i];
+					if (message.get("topic").equals("rivet_state_changed")) {
+						//String rivetId = (String) message.get("id");
+						int rivetIndex = (int) message.get("rivetIndex");
+						int frameIndex = (int) message.get("frameIndex");
+						String rivetState = (String) message.get("state");
+						
+						JsonObject jsonRequest = Json.createObjectBuilder()
+								.add("action", "updateRivetPosition")
+								//.add("rivetId", rivetId)
+								.add("rivetIndex", rivetIndex)
+								.add("frameIndex", frameIndex)
+								.add("state", rivetState)
+								.build();
+						
+						Notification not = CommFactory.getInstance().createNotification(jsonRequest.toString());
+						Channel wmInChannel = CommFactory.getInstance().openChannel(context.getSharedChannelPool(), "world-model#in", false, null);
+						wmInChannel.sendNotification(not);
+					}
+				}
+				
+	//			else {
+	//				List<Map<String, Object>> messages =  (List<Map<String, Object>>) obj;
+	//				if (messages != null && messages.size() > 0) {
+	//					for (Map<String, Object> message : messages) {
+	//				
+	//					}
+	//				}
+	//			}
+				
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}		
+		}
 	}
 	
 	private List<Map<String,Object>> getRivetPositions(CapabilityRequest req, String state) {
