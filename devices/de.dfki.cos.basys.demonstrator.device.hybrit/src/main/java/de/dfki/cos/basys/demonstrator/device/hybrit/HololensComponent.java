@@ -46,10 +46,12 @@ public class HololensComponent extends TecsDeviceComponent {
 	private HoloLensTECS client;
 	private String clientID = "dummy";
 	private final String businessKey;
+	private boolean validTask;
 
 	public HololensComponent(ComponentConfiguration config) {
 		super(config);
 		this.businessKey = "HMI19";
+		validTask = true;
 	}
 
 	@Override
@@ -67,6 +69,8 @@ public class HololensComponent extends TecsDeviceComponent {
 	protected UnitConfiguration translateCapabilityRequest(CapabilityRequest req) {
 		LOGGER.debug("################### translateCapabilityRequest({})", req.toString());
 		
+		validTask = true;
+		
 		UnitConfiguration config = new UnitConfiguration();
 		
 		CapabilityVariant<?, ?> c = req.getCapabilityVariant();
@@ -75,34 +79,38 @@ public class HololensComponent extends TecsDeviceComponent {
 		{
 			// Get conrete instances of rivets to check
 			List<Map<String,Object>> rivetPositions = getRivetPositions(req, "SQUEEZED");
-			
-			// We assume that all rivet positions are with the same (logical) Stringer unit
-			String frameIndex = rivetPositions.get(0).get("frameIndex").toString();
-			// We assume that only horizontal stringers are processed
-			String frameType = FrameType.H8x2.name();
-			JsonArrayBuilder builder = Json.createArrayBuilder();
-			for(int i=0; i<rivetPositions.size(); i++) {
-				builder.add(rivetPositions.get(i).get("rivetIndex").toString());
+			if(!rivetPositions.isEmpty()) {				
+				
+				// We assume that all rivet positions are with the same (logical) Stringer unit
+				String frameIndex = rivetPositions.get(0).get("frameIndex").toString();
+				// We assume that only horizontal stringers are processed
+				String frameType = FrameType.H8x2.name();
+				JsonArrayBuilder builder = Json.createArrayBuilder();
+				for(int i=0; i<rivetPositions.size(); i++) {
+					builder.add(rivetPositions.get(i).get("rivetIndex").toString());
+				}
+				JsonArray indices2Check = builder.build();		
+				
+				// Build description (json) of the checking task for HumanTaskDto	
+				String desc = Json.createObjectBuilder()
+						.add("description", "Check highlited rivots for quality and mark as iO or niO.")
+						.add("frametype", frameType)
+						.add("frameindex", frameIndex)	
+						.add("rivetindeces", Json.createArrayBuilder(indices2Check))		
+						.build().toString();
+				
+				LOGGER.debug("##################################" + desc);
+							
+				HumanTaskDTO task = new HumanTaskDTO();
+				task.businessKey = this.businessKey;
+				task.clientId = clientID;
+				task.operationId = "QABroetjeDemoHMI19";
+				task.description = desc;
+				
+				config.setPayload(task);
 			}
-			JsonArray indices2Check = builder.build();		
-			
-			// Build description (json) of the checking task for HumanTaskDto	
-			String desc = Json.createObjectBuilder()
-					.add("description", "Check highlited rivots for quality and mark as iO or niO.")
-					.add("frametype", frameType)
-					.add("frameindex", frameIndex)	
-					.add("rivetindeces", Json.createArrayBuilder(indices2Check))		
-					.build().toString();
-			
-			LOGGER.debug("##################################" + desc);
-						
-			HumanTaskDTO task = new HumanTaskDTO();
-			task.businessKey = this.businessKey;
-			task.clientId = clientID;
-			task.operationId = "QABroetjeDemoHMI19";
-			task.description = desc;
-			
-			config.setPayload(task);
+			else
+				validTask = false;
 		}
 		
 		return config;
@@ -214,38 +222,42 @@ public class HololensComponent extends TecsDeviceComponent {
 
 	@Override
 	public void onStarting() {
-		Object payload = getUnitConfig().getPayload();
-		if (payload instanceof HumanTaskDTO) {
-			HumanTaskDTO task = (HumanTaskDTO) payload;
-			boolean informed = false;
-			CommandState state = CommandState.ABORTED;
-			while(!informed)
-			{
-				try {					
-					state = client.requestTaskExecution(task);
-					if(state == CommandState.ACCEPTED) {
-	                    informed = true;
-					}
-					else {
-						LOGGER.warn("HoloLens agent currently busy. Retrying ...");
+		if(validTask) {
+			Object payload = getUnitConfig().getPayload();
+			if (payload instanceof HumanTaskDTO) {
+				HumanTaskDTO task = (HumanTaskDTO) payload;
+				boolean informed = false;
+				CommandState state = CommandState.ABORTED;
+				while(!informed)
+				{
+					try {					
+						state = client.requestTaskExecution(task);
+						if(state == CommandState.ACCEPTED) {
+		                    informed = true;
+						}
+						else {
+							LOGGER.warn("HoloLens agent currently busy. Retrying ...");
+							waitForMS(1500);
+						}
+					} catch (TException e) {
+						LOGGER.warn("HoloLens agent not responding. Retrying ..");
 						waitForMS(1500);
+						reconnect();
 					}
-				} catch (TException e) {
-					LOGGER.warn("HoloLens agent not responding. Retrying ..");
-					waitForMS(1500);
-					reconnect();
 				}
+			} 
+			else {
+				setErrorCode(99);
+				stop();
 			}
-		} 
-		else {
-			setErrorCode(99);
-			stop();
 		}
 	}
 
 	@Override
 	public void onExecute() {
-		this.busyWait(client);
+		if(validTask) {
+			this.busyWait(client);
+		}
 	}
 
 	public class HoloLensTECS extends HoloLens.Client implements DeviceStatus {
@@ -273,7 +285,7 @@ public class HololensComponent extends TecsDeviceComponent {
 					result = "CHECKED_NIO";
 					break;
 				case UNCHECKED:
-					result = "UNCHECKED";
+					result = "SQUEEZED";
 					break;
 				default:
 					// Ignore	
