@@ -17,7 +17,7 @@ import de.dfki.cos.basys.platform.model.runtime.component.ResponseStatus;
 import de.dfki.cos.basys.platform.runtime.component.ComponentContext;
 import de.dfki.cos.basys.platform.runtime.component.ComponentException;
 import de.dfki.cos.basys.platform.runtime.component.device.DeviceComponent;
-import de.dfki.cos.basys.platform.runtime.component.device.packml.UnitConfiguration;
+import de.dfki.cos.basys.platform.runtime.component.packml.UnitConfiguration;
 
 public class MirRestComponent extends DeviceComponent {	
 	
@@ -33,6 +33,12 @@ public class MirRestComponent extends DeviceComponent {
 	public void connectToExternal() throws ComponentException {
 		super.connectToExternal();
 		client = new MirRestClientImpl(getConfig().getExternalConnectionString(),getConfig().getProperty("auth").getValue());
+		try {
+			Status status = client.getRobotStatus();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@Override

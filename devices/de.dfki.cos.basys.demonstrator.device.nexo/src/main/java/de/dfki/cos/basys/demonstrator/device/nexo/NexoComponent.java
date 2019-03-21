@@ -13,8 +13,8 @@ import de.dfki.cos.basys.platform.model.runtime.component.ResponseStatus;
 import de.dfki.cos.basys.platform.runtime.component.ComponentContext;
 import de.dfki.cos.basys.platform.runtime.component.ComponentException;
 import de.dfki.cos.basys.platform.runtime.component.device.DeviceComponent;
-import de.dfki.cos.basys.platform.runtime.component.device.packml.UnitConfiguration;
 import de.dfki.cos.basys.platform.runtime.component.device.rest.RestDeviceComponent;
+import de.dfki.cos.basys.platform.runtime.component.packml.UnitConfiguration;
 
 public class NexoComponent extends RestDeviceComponent {	
 	

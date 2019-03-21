@@ -13,7 +13,7 @@ import de.dfki.cos.basys.platform.runtime.component.ComponentContext;
 import de.dfki.cos.basys.platform.runtime.component.ComponentException;
 import de.dfki.cos.basys.platform.runtime.component.device.opcua.OpcUaDeviceComponent;
 import de.dfki.cos.basys.platform.runtime.component.device.opcua.OpcUaException;
-import de.dfki.cos.basys.platform.runtime.component.device.packml.UnitConfiguration;
+import de.dfki.cos.basys.platform.runtime.component.packml.UnitConfiguration;
 
 public class KukaAgilusComponent extends OpcUaDeviceComponent {
 

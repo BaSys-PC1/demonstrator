@@ -27,9 +27,9 @@ import de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration
 import de.dfki.cos.basys.platform.model.runtime.component.Variable;
 import de.dfki.cos.basys.platform.runtime.communication.CommFactory;
 import de.dfki.cos.basys.platform.runtime.component.ComponentException;
-import de.dfki.cos.basys.platform.runtime.component.device.packml.UnitConfiguration;
 import de.dfki.cos.basys.platform.runtime.component.device.tecs.DeviceStatus;
 import de.dfki.cos.basys.platform.runtime.component.device.tecs.TecsDeviceComponent;
+import de.dfki.cos.basys.platform.runtime.component.packml.UnitConfiguration;
 import de.dfki.cos.hrc.hmi19.FrameType;
 import de.dfki.cos.hrc.hmi19.RivetStateQA;
 import de.dfki.cos.hrc.hmi19.RivetStateQAChangedEvent;
