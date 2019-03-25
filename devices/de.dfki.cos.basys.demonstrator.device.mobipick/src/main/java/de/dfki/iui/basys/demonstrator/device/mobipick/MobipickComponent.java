@@ -64,8 +64,8 @@ public class MobipickComponent extends RosDeviceComponent {
 					"	\"tasks\" : [\r\n" + 
 					"		{\r\n" + 
 					"			\"id\" : \"task0\",\r\n" + 
-					"			\"type\" : \"bring\" ,\r\n" + 
-					"			\"args\" : [\"Powerdrill\", \"sempr:LocalCS_78\"]\r\n" + 
+					"			\"type\" : \"bring_preferred\" ,\r\n" + 
+					"			\"args\" : [\"Powerdrill\", \"sempr:SpatialObject_581\", \"sempr:LocalCS_116\"]\r\n" + 
 					"		}\r\n" + 
 					"	],\r\n" + 
 					"	\"constraints\" : []\r\n" + 
