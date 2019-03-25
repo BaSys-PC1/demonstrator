@@ -56,6 +56,17 @@ public abstract class TecsDeviceComponent extends DeviceComponent {
 		}
 	}
 	
+	
+	@Override
+	public boolean isConnectedToExternal() {
+		boolean result = socket.isOpen();
+		if (result != connectedToExternal) {
+			LOGGER.info("connectedToExternal changed: " + result);
+			connectedToExternal = result;
+			updateRegistrationAndNotify();
+		}
+		return result;
+	}
 	/*
 	 * Connect to Tecs server for publish subscribe.
 	 * clientId = the id of the client
