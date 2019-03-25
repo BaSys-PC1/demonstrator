@@ -1,0 +1,10 @@
+{
+  "eClass" : "http://www.dfki.de/iui/basys/model/component#//ComponentConfiguration",
+  "componentCategory" : "DEVICE_COMPONENT",
+  "componentId" : "_rrDawOG7EeieRbude1ENJg",
+  "componentName" : "My Mobipick",
+  "componentImplementationJavaClass" : "de.dfki.iui.basys.demonstrator.device.mobipick.MobipickComponent",
+  "inChannelName" : "_rrDawOG7EeieRbude1ENJg#in",
+  "outChannelName" : "_rrDawOG7EeieRbude1ENJg#out",
+  "externalConnectionString" : "ws://echo.websocket.org:80"
+ }
