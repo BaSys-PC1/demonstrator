@@ -93,7 +93,7 @@ public class HololensComponent extends TecsDeviceComponent {
 				
 				// Build description (json) of the checking task for HumanTaskDto	
 				String desc = Json.createObjectBuilder()
-						.add("description", "Check highlited rivots for quality and mark as iO or niO.")
+						.add("description", "Check highlited rivets for quality and mark as iO or niO.")
 						.add("frametype", frameType)
 						.add("frameindex", frameIndex)	
 						.add("rivetindeces", Json.createArrayBuilder(indices2Check))		
@@ -219,6 +219,20 @@ public class HololensComponent extends TecsDeviceComponent {
             e.printStackTrace();
         }
 	}
+	
+	private void updateRivetPosition(int frameIndex, int rivetIndex, String state) {
+		LOGGER.debug("+++++++++++++++++++++++++++++++++++++++updateRivetPosition({},{},{})", frameIndex, rivetIndex, state);
+		JsonObject jsonNotification = Json.createObjectBuilder()
+				.add("action", "updateRivetPosition")
+				.add("frameIndex", frameIndex)
+				.add("rivetIndex", rivetIndex)
+				.add("state", state)
+				.build();
+
+		Notification wmNoti = CommFactory.getInstance().createNotification(jsonNotification.toString());						
+		Channel wmInChannel = CommFactory.getInstance().openChannel(context.getSharedChannelPool(), "world-model#in", false, null);
+		wmInChannel.sendNotification(wmNoti);
+	}
 
 	@Override
 	public void onStarting() {
@@ -234,6 +248,17 @@ public class HololensComponent extends TecsDeviceComponent {
 						state = client.requestTaskExecution(task);
 						if(state == CommandState.ACCEPTED) {
 		                    informed = true;
+		                    
+//		                    if(task.operationId.equals("QABroetjeDemoHMI19")) {
+//			            		JsonReader jsonReader = Json.createReader(new StringReader(task.description));
+//			            		JsonObject json = jsonReader.readObject();
+//			            		int frameindex = Integer.parseInt(json.getString("frameindex"));
+//			            		JsonArray rivets = json.getJsonArray("rivetindeces");
+//			            		for(int i=0; i<rivets.size(); i++) {
+//			            			updateRivetPosition(frameindex, Integer.parseInt((String)rivets.getString(i)), "CHECKING");
+//			            		}		            		
+//		                    }
+
 						}
 						else {
 							LOGGER.warn("HoloLens agent currently busy. Retrying ...");
@@ -285,7 +310,7 @@ public class HololensComponent extends TecsDeviceComponent {
 					result = "CHECKED_NIO";
 					break;
 				case UNCHECKED:
-					result = "SQUEEZED";
+					result = "SQUEEZED";//CHECKING
 					break;
 				default:
 					// Ignore	
@@ -311,17 +336,11 @@ public class HololensComponent extends TecsDeviceComponent {
 						if (event.is("RivetStateQAChangedEvent")) {
 							RivetStateQAChangedEvent rsce = new RivetStateQAChangedEvent();
 							event.parseData(rsce);
-				
-							JsonObject jsonNotification = Json.createObjectBuilder()
-									.add("action", "updateRivetPosition")
-									.add("frameIndex", Integer.parseInt(rsce.frameIndex))
-									.add("rivetIndex", Integer.parseInt(rsce.rivetIndex))
-									.add("state", translateRivetState(rsce.state))
-									.build();
-				
-							Notification wmNoti = CommFactory.getInstance().createNotification(jsonNotification.toString());						
-							Channel wmInChannel = CommFactory.getInstance().openChannel(context.getSharedChannelPool(), "world-model#in", false, null);
-							wmInChannel.sendNotification(wmNoti);
+							
+							// Inform World model about new rivet state
+							updateRivetPosition(Integer.parseInt(rsce.frameIndex), 
+									Integer.parseInt(rsce.rivetIndex),
+									translateRivetState(rsce.state));
 
 						}
 					}
