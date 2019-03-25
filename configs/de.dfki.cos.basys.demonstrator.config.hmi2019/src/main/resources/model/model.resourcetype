@@ -455,9 +455,9 @@
   </catalogues>
   <catalogues manufacturer="Microsoft">
     <resourceTypes xsi:type="resourcetype:MovableTool" id="_A2a1pC92EemDsYHPQ-MfMA" name="Hololens" documentation="https://docs.microsoft.com/en-us/windows/mixed-reality/hololens-hardware-details#device-specifications">
-      <capabilityAssertions id="_wJ6vUDB2EemAF8ZdAI0X3Q">
+      <capabilityAssertions id="_wJ6vUDB2EemAF8ZdAI0X3Q" name="Guide Worker">
         <pattern>
-          <type href="http://www.dfki.de/iui/basys/model/capability#//Checking"/>
+          <type href="http://www.dfki.de/iui/basys/model/capability#//NotifyWorker"/>
         </pattern>
       </capabilityAssertions>
     </resourceTypes>
