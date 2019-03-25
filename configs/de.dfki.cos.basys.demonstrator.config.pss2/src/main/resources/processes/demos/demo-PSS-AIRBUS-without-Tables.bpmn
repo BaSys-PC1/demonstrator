@@ -9,7 +9,7 @@
       <bpmn:outgoing>SequenceFlow_1tiineg</bpmn:outgoing>
       <bpmn:outgoing>SequenceFlow_0pnmyit</bpmn:outgoing>
     </bpmn:parallelGateway>
-    <bpmn:serviceTask id="ServiceTask_08yxyda" name="MobiPick beschafft Akkuschrauber, übergibt und fährt heim." camunda:type="external" camunda:topic="BasysTask">
+    <bpmn:serviceTask id="ServiceTask_08yxyda" name="MobiPick beschafft Akkuschrauber, übergibt und fährt zurück" camunda:type="external" camunda:topic="BasysTask">
       <bpmn:extensionElements>
         <camunda:inputOutput>
           <camunda:inputParameter name="assignee">_rrDawOG7EeieRbude1ENJg</camunda:inputParameter>
@@ -87,7 +87,7 @@
     <bpmn:endEvent id="EndEvent_0vv0tzw">
       <bpmn:incoming>SequenceFlow_0qqbp89</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:serviceTask id="ServiceTask_1jyovw3" name="Reset RoboTable" camunda:type="external" camunda:topic="BasysTask">
+    <bpmn:serviceTask id="ServiceTask_1jyovw3" name="Reset Robotertisch" camunda:type="external" camunda:topic="BasysTask">
       <bpmn:extensionElements>
         <camunda:inputOutput>
           <camunda:inputParameter name="assignee">_apHtUOHHEeieRbude1ENJg</camunda:inputParameter>
@@ -100,7 +100,7 @@
       <bpmn:incoming>SequenceFlow_0dyki85</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0714xhu</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:serviceTask id="ServiceTask_02v2fjb" name="Reset MobiPick" camunda:type="external" camunda:topic="BasysTask">
+    <bpmn:serviceTask id="ServiceTask_02v2fjb" name="Reset      MobiPick" camunda:type="external" camunda:topic="BasysTask">
       <bpmn:extensionElements>
         <camunda:inputOutput>
           <camunda:inputParameter name="assignee">_rrDawOG7EeieRbude1ENJg</camunda:inputParameter>
@@ -156,7 +156,7 @@
       <bpmn:outgoing>SequenceFlow_0j515sx</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:sequenceFlow id="SequenceFlow_0j515sx" sourceRef="ServiceTask_14rfsut" targetRef="ParallelGateway_1kgin0m" />
-    <bpmn:serviceTask id="ServiceTask_0vps64x" name="Reset Smartwatch" camunda:type="external" camunda:topic="BasysTask">
+    <bpmn:serviceTask id="ServiceTask_0vps64x" name="Reset   Smartwatch" camunda:type="external" camunda:topic="BasysTask">
       <bpmn:extensionElements>
         <camunda:inputOutput>
           <camunda:inputParameter name="assignee">_2s80wO5aEeiMDIqI5-KD3Q</camunda:inputParameter>
@@ -170,7 +170,7 @@
       <bpmn:outgoing>SequenceFlow_0hdmx5b</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:sequenceFlow id="SequenceFlow_0hdmx5b" sourceRef="ServiceTask_0vps64x" targetRef="ServiceTask_14rfsut" />
-    <bpmn:serviceTask id="ServiceTask_0su0iym" name="UR10: Homeposition anfahren" camunda:type="external" camunda:topic="BasysTask">
+    <bpmn:serviceTask id="ServiceTask_0su0iym" name="UR10 fährt Homeposition an" camunda:type="external" camunda:topic="BasysTask">
       <bpmn:extensionElements>
         <camunda:inputOutput>
           <camunda:inputParameter name="assignee">_apHtUOHHEeieRbude1ENJg</camunda:inputParameter>
@@ -193,7 +193,7 @@
       <bpmn:outgoing>SequenceFlow_1wgkk9n</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:sequenceFlow id="SequenceFlow_1wgkk9n" sourceRef="ServiceTask_0su0iym" targetRef="ParallelGateway_1kgin0m" />
-    <bpmn:serviceTask id="ServiceTask_03bgk6n" name="Reset RoboTable" camunda:type="external" camunda:topic="BasysTask">
+    <bpmn:serviceTask id="ServiceTask_03bgk6n" name="Reset Robotertisch" camunda:type="external" camunda:topic="BasysTask">
       <bpmn:extensionElements>
         <camunda:inputOutput>
           <camunda:inputParameter name="assignee">_apHtUOHHEeieRbude1ENJg</camunda:inputParameter>
@@ -218,7 +218,7 @@
       <bpmn:outgoing>SequenceFlow_00hc3nd</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:sequenceFlow id="SequenceFlow_00hc3nd" sourceRef="ServiceTask_1kdsx5h" targetRef="ServiceTask_03bgk6n" />
-    <bpmn:serviceTask id="ServiceTask_1b2ot4c" name="UR10: Warten auf Rückzugsignal" camunda:type="external" camunda:topic="BasysTask">
+    <bpmn:serviceTask id="ServiceTask_1b2ot4c" name="UR10 wartet auf Rückzugsignal" camunda:type="external" camunda:topic="BasysTask">
       <bpmn:extensionElements>
         <camunda:inputOutput>
           <camunda:inputParameter name="assignee">_apHtUOHHEeieRbude1ENJg</camunda:inputParameter>
@@ -240,7 +240,7 @@
       <bpmn:outgoing>SequenceFlow_1pwihyd</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:sequenceFlow id="SequenceFlow_1pwihyd" sourceRef="ServiceTask_1b2ot4c" targetRef="ServiceTask_1kdsx5h" />
-    <bpmn:serviceTask id="ServiceTask_0drufd4" name="Reset RoboTable" camunda:type="external" camunda:topic="BasysTask">
+    <bpmn:serviceTask id="ServiceTask_0drufd4" name="Reset Robotertisch" camunda:type="external" camunda:topic="BasysTask">
       <bpmn:extensionElements>
         <camunda:inputOutput>
           <camunda:inputParameter name="assignee">_apHtUOHHEeieRbude1ENJg</camunda:inputParameter>
