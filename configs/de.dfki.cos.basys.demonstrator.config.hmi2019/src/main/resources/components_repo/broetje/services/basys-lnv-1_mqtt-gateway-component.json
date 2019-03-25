@@ -7,7 +7,7 @@
   "externalConnectionString" : "tcp://basys-lnv-1.mrk40.dfki.lan:1883",
   "properties" : [ {
     "key" : "incoming",
-    "value" : "basys/components/command task-scheduler#in"
+    "value" : "basys/components/command process-controller#in"
   }, {
     "key" : "outgoing",
     "value" : "basys#components#status#> hybrit/devices"
