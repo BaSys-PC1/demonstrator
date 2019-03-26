@@ -35,6 +35,8 @@ public class MirRestComponent extends RestDeviceComponent {
 		super.connectToExternal();
 		if (isConnectedToExternal()) {
 			mirClient = new MirRestClientImpl(endpoint,getConfig().getProperty("auth").getValue());
+		} else {
+			throw new ComponentException("MiR endpoint not available!");
 		}
 //		try {
 //			Status status = client.getRobotStatus();
