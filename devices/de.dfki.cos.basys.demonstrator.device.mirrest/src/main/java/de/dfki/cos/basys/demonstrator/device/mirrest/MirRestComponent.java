@@ -17,11 +17,12 @@ import de.dfki.cos.basys.platform.model.runtime.component.ResponseStatus;
 import de.dfki.cos.basys.platform.runtime.component.ComponentContext;
 import de.dfki.cos.basys.platform.runtime.component.ComponentException;
 import de.dfki.cos.basys.platform.runtime.component.device.DeviceComponent;
+import de.dfki.cos.basys.platform.runtime.component.device.rest.RestDeviceComponent;
 import de.dfki.cos.basys.platform.runtime.component.packml.UnitConfiguration;
 
-public class MirRestComponent extends DeviceComponent {	
+public class MirRestComponent extends RestDeviceComponent {	
 	
-	MirRestClient client = null;
+	MirRestClient mirClient = null;
 	MissionInstanceInfo currentMission = null;
 	
 	public MirRestComponent(ComponentConfiguration config) {
@@ -32,15 +33,17 @@ public class MirRestComponent extends DeviceComponent {
 	@Override
 	public void connectToExternal() throws ComponentException {
 		super.connectToExternal();
-		client = new MirRestClientImpl(getConfig().getExternalConnectionString(),getConfig().getProperty("auth").getValue());
-		try {
-			Status status = client.getRobotStatus();
+		if (isConnectedToExternal()) {
+			mirClient = new MirRestClientImpl(endpoint,getConfig().getProperty("auth").getValue());
 		}
-		catch (Exception e) {
-			e.printStackTrace();
-		}
+//		try {
+//			Status status = client.getRobotStatus();
+//		}
+//		catch (Exception e) {
+//			e.printStackTrace();
+//		}
 	}
-	
+
 	@Override
 	protected UnitConfiguration translateCapabilityRequest(CapabilityRequest req) {
 
@@ -105,7 +108,7 @@ public class MirRestComponent extends DeviceComponent {
 	
 	@Override
 	public void onResetting() {
-		Status status = client.setRobotStatus(MiRState.READY);
+		Status status = mirClient.setRobotStatus(MiRState.READY);
 		currentMission = null;
 	}
 	
@@ -115,7 +118,7 @@ public class MirRestComponent extends DeviceComponent {
 			TopologyElement targetElement = ((TopologyElement) getUnitConfig().getPayload());
 			LOGGER.info("Moving to position: " + targetElement.getName());
 			try {
-				currentMission = client.gotoSymbolicPosition(targetElement.getName());
+				currentMission = mirClient.gotoSymbolicPosition(targetElement.getName());
 			} catch (Exception e) {
 				e.printStackTrace();
 				stop();
@@ -123,7 +126,7 @@ public class MirRestComponent extends DeviceComponent {
 		} else if (getUnitConfig().getRecipe() == 2) {
 			String missionName = ((String) getUnitConfig().getPayload());
 			try {
-				currentMission = client.enqueueMissionInstanceByName(missionName);	
+				currentMission = mirClient.enqueueMissionInstanceByName(missionName);	
 			} catch (Exception e) {
 				e.printStackTrace();
 				stop();
@@ -136,7 +139,7 @@ public class MirRestComponent extends DeviceComponent {
 		try {
 			boolean executing = true;
 			while(executing) {
-				currentMission = client.getMissionInstanceInfo(currentMission.id);
+				currentMission = mirClient.getMissionInstanceInfo(currentMission.id);
 				LOGGER.debug("MissionState is " + currentMission.state);
 				 
 				switch (currentMission.state.toLowerCase()) {
@@ -182,9 +185,9 @@ public class MirRestComponent extends DeviceComponent {
 		super.onStopping();
 		
 		try {
-			Status status = client.setRobotStatus(MiRState.PAUSED);
+			Status status = mirClient.setRobotStatus(MiRState.PAUSED);
 			if (currentMission != null) {
-				client.dequeueMissionInstance(currentMission.id);
+				mirClient.dequeueMissionInstance(currentMission.id);
 				currentMission = null;
 			}
 			
