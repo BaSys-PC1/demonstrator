@@ -44,4 +44,4 @@ buildNumber.properties
 MANIFEST.MF
 build.properties
 
-/src/main/resources/components
+/src/main/resources/components/
