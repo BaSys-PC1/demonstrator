@@ -104,6 +104,13 @@
 			<type>bundle</type>
 		</dependency>
 		
+		<dependency>				
+			<groupId>de.dfki.cos.basys.demonstrator.platform</groupId>
+			<artifactId>de.dfki.cos.basys.platform.osgi.services.ext</artifactId>
+			<version>${project.version}</version>
+			<type>bundle</type>
+		</dependency>
+		
 		<dependency>
 			<groupId>de.dfki.cos.basys.platform.wrapper-bundle-settings</groupId>
 			<artifactId>jersey-bundle</artifactId>
