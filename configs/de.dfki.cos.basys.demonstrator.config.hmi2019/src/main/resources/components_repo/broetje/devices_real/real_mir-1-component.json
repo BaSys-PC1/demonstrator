@@ -25,5 +25,8 @@
   },{
     "key" : "missionName_GotoWait_2",
     "value" : "GoBacktoPark2"
+  },{
+    "key" : "observeExternalConnection",
+    "value" : "true"
   }]
 }
