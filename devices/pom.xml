@@ -18,7 +18,6 @@
 
    <modules>
     <module>de.dfki.cos.basys.demonstrator.device.button</module>
-    <module>de.dfki.cos.basys.demonstrator.device.cluster40</module>
     <module>de.dfki.cos.basys.demonstrator.device.festo</module>
     <module>de.dfki.cos.basys.demonstrator.device.hybrit</module>
     <module>de.dfki.cos.basys.demonstrator.device.laser</module>
