@@ -19,9 +19,9 @@ import de.dfki.cos.basys.platform.model.runtime.component.Variable;
 import de.dfki.cos.basys.platform.model.runtime.component.VariableType;
 import de.dfki.cos.basys.platform.model.runtime.component.impl.VariableImpl;
 import de.dfki.cos.basys.platform.runtime.component.ComponentException;
-import de.dfki.cos.basys.platform.runtime.component.device.packml.UnitConfiguration;
 import de.dfki.cos.basys.platform.runtime.component.device.tecs.DeviceStatus;
 import de.dfki.cos.basys.platform.runtime.component.device.tecs.TecsDeviceComponent;
+import de.dfki.cos.basys.platform.runtime.component.packml.UnitConfiguration;
 import de.dfki.iui.hrc.hybritcommand.CommandResponse;
 import de.dfki.iui.hrc.siam.CeBITDialogue;
 

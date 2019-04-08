@@ -20,6 +20,7 @@
 	<module>de.dfki.cos.basys.runtime.component.device.tecs</module> 
 	<module>de.dfki.cos.basys.runtime.component.device.stako</module> 
 	<module>de.dfki.cos.basys.runtime.connector</module>  
+	<module>de.dfki.cos.basys.platform.osgi.services.ext</module>
   </modules>
 
 </project>

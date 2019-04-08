@@ -75,34 +75,61 @@
       <capabilityVariants id="_pP-sQPlxEeie-749oDWDFA" name="Raceway montieren"/>
     </capabilityApplications>
   </resourceInstances>
-  <resourceInstances id="_gsXwAC91EemDsYHPQ-MfMA" name="Broetje Mir 100-1">
+  <resourceInstances id="_gsXwAC91EemDsYHPQ-MfMA" name="Broetje Mir 100-1" serialNumber="00200035">
     <resourceType href="model.resourcetype#_ZRW8sjJhEei1p5hKOf5Slw"/>
     <capabilityApplications>
       <capabilityAssertion href="model.resourcetype#_vmBh8FNlEei1Nvtoff5AwQ"/>
+      <capabilityVariants xsi:type="resourceinstance:GeneralCapabilityVariant" id="_BqOFY08YEemYiuEVKgLUbw" name="Goto Sector LEFT">
+        <capability xsi:type="capability:MoveToLocation" id="_U7loeE8YEemYiuEVKgLUbw"/>
+      </capabilityVariants>
+      <capabilityVariants xsi:type="resourceinstance:GeneralCapabilityVariant" id="_BqOFY08YEemYiuEVKgLUbv" name="Goto Sector RIGHT">
+        <capability xsi:type="capability:MoveToLocation" id="_VkuFCE8YEemYiuEVKgLUbw"/>
+      </capabilityVariants>
+      <capabilityVariants xsi:type="resourceinstance:GeneralCapabilityVariant" id="_LfFRs08YEemYiuEVKgLUbw" name="Goto Wait 1">
+        <capability xsi:type="capability:MoveToLocation" id="_WDFcCE8YEemYiuEVKgLUbw"/>
+      </capabilityVariants>
     </capabilityApplications>
   </resourceInstances>
-  <resourceInstances binding="" id="_kZY0UC91EemDsYHPQ-MfMA" name="Broetje Mir 100-2">
+  <resourceInstances binding="" id="_kZY0UC91EemDsYHPQ-MfMA" name="Broetje Mir 100-2" serialNumber="00200036">
     <resourceType href="model.resourcetype#_ZRW8sjJhEei1p5hKOf5Slw"/>
     <capabilityApplications>
       <capabilityAssertion href="model.resourcetype#_vmBh8FNlEei1Nvtoff5AwQ"/>
+      <capabilityVariants xsi:type="resourceinstance:GeneralCapabilityVariant" id="_BqOFY08YEemYiuEVFgLUbw" name="Goto Sector LEFT">
+        <capability xsi:type="capability:MoveToLocation" id="_U7loeE8YEemYiuRVKgLUbw"/>
+      </capabilityVariants>
+      <capabilityVariants xsi:type="resourceinstance:GeneralCapabilityVariant" binding="" id="_BqOFY08YEebYiuEVKgLUbv" name="Goto Sector RIGHT">
+        <capability xsi:type="capability:MoveToLocation" id="_VkuFCE8YEeFYiuEVKgLUbw"/>
+      </capabilityVariants>
+      <capabilityVariants xsi:type="resourceinstance:GeneralCapabilityVariant" id="_LfFRs08YEfmYiuEVKgLUbw" name="Goto Wait 2">
+        <capability xsi:type="capability:MoveToLocation" id="_WDEcCE8YEemYiuEVKgLUbw" name=""/>
+      </capabilityVariants>
     </capabilityApplications>
   </resourceInstances>
-  <resourceInstances id="_l6_J8C91EemDsYHPQ-MfMA" name="Broetje UR10-1">
+  <resourceInstances id="_l6_J8C91EemDsYHPQ-MfMA" name="Broetje UR10-1" serialNumber="2017303292">
     <resourceType href="model.resourcetype#_LILOCTD5EeiuBvcKgWzd3Q"/>
     <capabilityApplications>
       <capabilityAssertion href="model.resourcetype#_jNgp8FNhEexbbdo05KXzGQ"/>
+      <capabilityVariants xsi:type="resourceinstance:ManufacturingCapabilityVariant" id="_fhy5cU8VEemYiuEVKgLUbw" name="Perform Riveting">
+        <capability xsi:type="capability:Fügen" id="_LXbcdE8WEemYiuEVKgLUbw"/>
+      </capabilityVariants>
     </capabilityApplications>
   </resourceInstances>
-  <resourceInstances id="_oSS_kC91EemDsYHPQ-MfMA" name="Broetje UR10-2">
+  <resourceInstances id="_oSS_kC91EemDsYHPQ-MfMA" name="Broetje UR10-2" serialNumber="2017303258">
     <resourceType href="model.resourcetype#_LILOCTD5EeiuBvcKgWzd3Q"/>
     <capabilityApplications>
       <capabilityAssertion href="model.resourcetype#_jNgp8FNhEexbbdo05KXzGQ"/>
+      <capabilityVariants xsi:type="resourceinstance:ManufacturingCapabilityVariant" id="_oz1skU8VEemYiuEVKgLUbw" name="Perform Sealing">
+        <capability xsi:type="capability:Beschichten" id="_N9hU-k8WEemYiuEVKgLUbw"/>
+      </capabilityVariants>
     </capabilityApplications>
   </resourceInstances>
-  <resourceInstances id="_qG2tcC91EemDsYHPQ-MfMA" name="My Hololens">
+  <resourceInstances id="_qG2tcC91EemDsYHPQ-MfMA" name="My Hololens" serialNumber="00198127">
     <resourceType href="model.resourcetype#_A2a1pC92EemDsYHPQ-MfMA"/>
     <capabilityApplications>
       <capabilityAssertion href="model.resourcetype#_wJ6vUDB2EemAF8ZdAI0X3Q"/>
+      <capabilityVariants xsi:type="resourceinstance:ManufacturingCapabilityVariant" id="_FZ3R0U8WEemYiuEVKgLUbw" name="Perform Checking">
+        <capability xsi:type="capability:Checking" id="_OpfqQk8WEemYiuEVKgLUbw"/>
+      </capabilityVariants>
     </capabilityApplications>
   </resourceInstances>
 </resourceinstance:ResourceInstanceRepository>

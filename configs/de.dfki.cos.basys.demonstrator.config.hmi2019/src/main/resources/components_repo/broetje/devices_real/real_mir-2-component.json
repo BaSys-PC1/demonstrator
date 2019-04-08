@@ -9,7 +9,7 @@
   "externalConnectionString" : "http://10.250.5.7",
   "properties" : [ {
     "key" : "auth",
-    "value" : "YWRtaW46OGM2OTc2ZTViNTQxMDQxNWJkZTkwOGJkNGRlZTE1ZGZiMTY3YTljODczZmM0YmI4YTgxZjZmMmFiNDQ4YTkxOA=="
+    "value" : "bXJrOjZjNGIwNmRjYTU4NmM1NzkxYmI2Nzc4MjFjZjU3YWQ0ZjcyOGVmMTZmMWNjN2ZiMDg1MmEwNmY3Yzc5NmI1M2Y="
   },{
     "key" : "missionName_GotoLeft",
     "value" : "GotoLeft"
@@ -19,5 +19,14 @@
   },{
     "key" : "missionName_GotoRight",
     "value" : "GotoRight"
+  },{
+    "key" : "missionName_GotoWait_1",
+    "value" : "GoBacktoPark1"
+  },{
+    "key" : "missionName_GotoWait_2",
+    "value" : "GoBacktoPark2"
+  },{
+    "key" : "observeExternalConnection",
+    "value" : "true"
   }]
 }

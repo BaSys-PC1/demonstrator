@@ -3,7 +3,7 @@
   "componentId" : "world-model",
   "componentName" : "world-model",
   "componentCategory" : "SERVICE_COMPONENT",
-  "componentImplementationJavaClass" : "de.dfki.cos.basys.demonstrator.service.worldmodel.WorldModelService",
+  "componentImplementationJavaClass" : "de.dfki.cos.basys.demonstrator.service.worldmodel.WorldModelServiceImpl",
   "inChannelName" : "world-model#in",
   "outChannelName" : "world-model#out",
   "externalConnectionString" : "-"

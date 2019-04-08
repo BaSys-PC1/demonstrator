@@ -32,7 +32,7 @@
 		<dependency>
 			<groupId>de.dfki.cos.basys.common</groupId>
 			<artifactId>de.dfki.cos.basys.common.mirrestclient</artifactId>
-			<version>0.2.2-SNAPSHOT</version>
+			<version>${version.basys.common}</version>
 		</dependency>
 
 

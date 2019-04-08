@@ -4,7 +4,7 @@
   <parent>
     <groupId>de.dfki.cos.basys.pom</groupId>
     <artifactId>compiled-bundle-settings</artifactId>
-	<version>0.2.0</version>
+    <version>0.2.2-SNAPSHOT</version>
 	<relativePath></relativePath>
   </parent>
 
@@ -16,10 +16,5 @@
   <name>BaSys 4.0 Demonstrator - Bundle Instructions</name>
 
   <packaging>pom</packaging>
-
-	<properties>
-		<version.basys.common>0.2.5-SNAPSHOT</version.basys.common>
-		<version.basys.platform>0.2.5-SNAPSHOT</version.basys.platform>
-	</properties>
   
 </project>

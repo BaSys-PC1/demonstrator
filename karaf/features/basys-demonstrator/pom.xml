@@ -18,11 +18,6 @@
 	<description>The BaSys 4.0 Demonstrator Karaf Feature with platform extensions and device implementations</description>
 
 	<packaging>kar</packaging>
-
-	<properties>
-		<version.basys.common>0.2.5-SNAPSHOT</version.basys.common>
-		<version.basys.platform>0.2.5-SNAPSHOT</version.basys.platform>
-	</properties>
 	
 	<dependencies>
 			
@@ -100,6 +95,13 @@
 		<dependency>
 			<groupId>de.dfki.cos.basys.demonstrator.device</groupId>
 			<artifactId>de.dfki.cos.basys.demonstrator.device.urrpc</artifactId>
+			<version>${project.version}</version>
+			<type>bundle</type>
+		</dependency>
+		
+		<dependency>				
+			<groupId>de.dfki.cos.basys.demonstrator.platform</groupId>
+			<artifactId>de.dfki.cos.basys.platform.osgi.services.ext</artifactId>
 			<version>${project.version}</version>
 			<type>bundle</type>
 		</dependency>

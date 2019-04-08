@@ -20,8 +20,8 @@ import de.dfki.cos.basys.platform.model.domain.capability.ProjectPath;
 import de.dfki.cos.basys.platform.model.domain.resourceinstance.CapabilityVariant;
 import de.dfki.cos.basys.platform.model.runtime.component.CapabilityRequest;
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration;
-import de.dfki.cos.basys.platform.runtime.component.device.packml.UnitConfiguration;
 import de.dfki.cos.basys.platform.runtime.component.device.rest.RestDeviceComponent;
+import de.dfki.cos.basys.platform.runtime.component.packml.UnitConfiguration;
 
 public class LaserDeviceComponent extends RestDeviceComponent {
 
